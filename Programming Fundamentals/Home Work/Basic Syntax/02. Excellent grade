@@ -1,9 +1,0 @@
-
-function excellentGrade(grade) {
-    let currentGrade = Number(grade);
-    if (currentGrade >= 5.5) {
-        console.log('Excellent');
-    } else {
-        console.log('Not excellent');
-    }
-}
