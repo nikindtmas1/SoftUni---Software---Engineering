@@ -1,0 +1,7 @@
+function distinctArray(inputArr) {
+
+    let items = inputArr;
+    let unicItems = Array.from(new Set(items));
+
+    console.log(unicItems.join(' '));
+}
