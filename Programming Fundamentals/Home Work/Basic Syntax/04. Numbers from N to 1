@@ -1,0 +1,7 @@
+
+function fromNTo1(n) {
+    let start = Number(n);
+    for (let i = start; i >= 1; i--) {
+        console.log(i);
+    }
+}
