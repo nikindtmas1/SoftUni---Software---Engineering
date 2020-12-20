@@ -1,0 +1,17 @@
+
+function sumOfOddNumbers(n){
+    let num = Number(n);
+  
+    let oddCountar = 0;
+    let sumOddNum = 0;
+    for(let i = 1; oddCountar < num; i++){
+        if(i % 2 == 1){
+            oddCountar++;
+            sumOddNum += i;
+            console.log(i); 
+        }
+    }
+   console.log(`Sum: ${sumOddNum}`);
+    
+
+}
