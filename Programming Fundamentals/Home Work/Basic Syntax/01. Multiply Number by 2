@@ -1,0 +1,7 @@
+
+function multiplyBy2(number) {
+    let num = Number(number);
+    let multiply = num * 2;
+    console.log(multiply);
+
+}
