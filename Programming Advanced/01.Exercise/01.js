@@ -1,4 +1,4 @@
-function solveFruit(typeFruit, weight, price){
+function solveFruit(typeFruit, weight, price) {
 
     const product = typeFruit;
     const weightKg = weight / 1000;
