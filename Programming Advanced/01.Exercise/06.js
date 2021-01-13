@@ -32,7 +32,6 @@ function cookingByNumbers(arg1, arg2, arg3, arg4, arg5, arg6) {
         }
     }
 
-
 }
 
 cookingByNumbers('9', 'dice', 'spice', 'chop', 'bake', 'fillet');
