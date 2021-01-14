@@ -32,7 +32,8 @@ function lastKNumbers(arg1, arg2) {
         index++;
     }
 
-    console.log(result.join(', '));
+    return result;
 }
 
-lastKNumbers(8, 2);
+console.log(lastKNumbers(8, 2));
+
