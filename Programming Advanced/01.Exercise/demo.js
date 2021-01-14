@@ -1,26 +1,26 @@
-function solve(arg1) {
+function solve(arg1, arg2, arg3) {
 
-    let number = arg1.toString();
-    let sum = 0;
-    let isSame = true;
-    let currNum = 0;
+let steps = Number(arg1);
+let footprintMt = Number(arg2);
+let speedKmh = Number(arg3);
+let speedMsStr = (speedKmh * 5 / 18).toFixed(2);
+let speedMs = Number(speedMsStr);
 
-    for (let i = 0; i < number.length; i++) {
+let length = steps * footprintMt;
+let rest = Math.trunc(length / 500);
 
-        sum += Number(number[i]);
+let timeSec = (length / speedMs) + (rest * 60);
+let timeMin = timeSec / 60;
+let hours = timeSec / 60 /60;
 
-        if (i > 0 && Number(number[i]) !== currNum) {
-            isSame = false;
-        }
 
-        currNum = Number(number[i]);
 
-    }
+console.log(length);
+console.log(rest);
+console.log(timeSec);
 
-    console.log(isSame);
-    console.log(sum);
 
 }
 
-solve(2222222);
-solve(1234);
+solve(4000, 0.60, 5);
+solve(2564, 0.70, 5.5);
