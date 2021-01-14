@@ -1,6 +1,7 @@
 function lastKNumbers(arg1, arg2) {
 
     let n = Number(arg1);
+    
     let k = Number(arg2);
 
     let result = [];
@@ -23,7 +24,6 @@ function lastKNumbers(arg1, arg2) {
 
                 sum += result[i];
             }
-
 
         }
 
