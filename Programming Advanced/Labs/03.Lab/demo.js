@@ -1,5 +1,6 @@
 function demo(){
 
+    /*
     let obj = {
         name: 'engineering',
         director: 'Ted Thomson',
@@ -11,7 +12,6 @@ function demo(){
 
     
     let {name, employeeCount} = obj;
-    /*
     console.log(obj.age(46));
     console.log(name);
     console.log(employeeCount);
@@ -26,17 +26,40 @@ function demo(){
     }
     
     console.log( parser[reset]());
-    */
-
-     let myObj = {
+    
+    let myObj = {
 
         firstName: 'Nikolai',
         lastName: 'Nikolaev',
         fullName() {
             return this.firstName + ' ' + this.lastName;
         }
-     }
+    }
+    
+    console.log(myObj.fullName());
+    */
 
-     console.log(myObj.fullName());
+    function  print() {
+        console.log(`${this.name} is printing a page`);
+    }
+
+    function  scan() {
+
+        console.log(`${this.name} is scanning a page`);
+        
+    }
+
+    const printer = { name: 'ACME Printer',
+                    print};
+
+    const scanner = { name: 'Initech Scanner',
+                    scan};
+                
+    const copier = { name: 'ComTron Copier',
+                    print,
+                    scan};
+
+printer.print();
+
 }
 demo();
