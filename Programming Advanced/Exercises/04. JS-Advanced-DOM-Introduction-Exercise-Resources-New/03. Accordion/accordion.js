@@ -1,16 +1,16 @@
 function toggle() {
     let button = document.querySelector('.button')
     let divExtra = document.querySelector('#extra')
-    
-    if(divExtra.style.display === 'none' || divExtra.style.display === ''){
+
+    if (divExtra.style.display === 'none' || divExtra.style.display === '') {
         divExtra.style.display = 'block';
-    }else{
+    } else {
         divExtra.style.display = 'none';
     }
 
-    if(button.textContent === 'More'){
+    if (button.textContent === 'More') {
         button.textContent = 'Less'
-    }else{
+    } else {
         button.textContent = 'More';
     }
     // divExtra.style.display = divExtra.style.display === 'none' 
