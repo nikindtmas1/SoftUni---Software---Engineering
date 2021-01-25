@@ -1,44 +1,19 @@
 function solve() {
-  const btn = document.getElementById('formatItBtn');
-  let input = document.getElementById('input');
-  let output = document.getElementById('output');
-  let inputText = input.value;
-  btn.click();
-  let inputArr = inputText.split('.').filter((x) => x != '');
-  let result = [];
-  let final = [];
-
-  if (inputArr.length <= 3 && inputArr.length !== 0) {
-    result.push(`<p>${inputArr}<p/>`);
-    output.textContent = result;
-  } else if (inputArr.length > 3) {
-
-    let index = 0;
-    // let currLetter = inputArr[index];
-    // result.push(currLetter);
-    // index++;
-    while (index < inputArr.length) {
-      currLetter = inputArr[index];
-      result.push(currLetter);
-      if ((index + 1) % 3 === 0) {
-        final.push(`<p>${result}</p>`);
-        //output.textContent = result;
-
-        result = [];
-      }
-
-      index++;
-
+  let inputText = document.getElementById('input').value;
+  let sentenceList = Array.from(inputText.split(". "))
+  let trial = []
+  while(sentenceList.length>=3) {
+    if (sentenceList[0]=="") {
+      break;
     }
-
-    if (result.length > 0) {
-      final.push(`<p>${result}</p>`);
-
+      trial = sentenceList.splice(0,3)
+      let paragraph = document.createElement("P")
+      paragraph.innerHTML = trial.join(".") + '.'
+       document.getElementById('output').appendChild(paragraph) 
     }
-
-    let print = final.join('\n');
-    output.textContent = print;
-
+    if (sentenceList.length < 3 && sentenceList[0]!="") {
+      let paragraph = document.createElement("P")
+      paragraph.innerHTML = sentenceList.join(".")
+       document.getElementById('output').appendChild(paragraph) 
+    }
   }
-
-}
