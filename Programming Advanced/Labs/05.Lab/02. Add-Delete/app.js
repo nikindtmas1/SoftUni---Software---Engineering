@@ -1,19 +1,25 @@
 function addItem() {
-    let text = document.getElementById('newText').value;
-
-    let liElement = document.createElement('li');
-
-    liElement.appendChild(document.createTextNode(text));
 
 
-    document.getElementById('items').appendChild(liElement);
+  let liElement = createElement('li', document.getElementById('newText').value);
 
-    document.getElementById('newText').value = '';
-}
+  const deleteBtn = createElement('a', '[Delete]');
+  deleteBtn.href = '#';
+  deleteBtn.addEventListener('click', (ev) => {
+    ev.target.parentNode.remove(ev)
+  });
 
-function remove(){
+  liElement.appendChild(deleteBtn);
 
-  const lielement = document.getElementById('li-to-delete');
+  document.getElementById('items').appendChild(liElement);
 
-  lielement.parentNode.removeChild(lielement)
+  document.getElementById('newText').value = '';
+
+  
+  function createElement(type, content) {
+    const element = document.createElement(type);
+    element.textContent = content;
+    return element;
+
+  }
 }
