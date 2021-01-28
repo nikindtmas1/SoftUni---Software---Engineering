@@ -15,21 +15,21 @@ function encodeAndDecodeMessages() {
 
             text: textareas[1],
             btn: buttons[1],
-            func: (char) => String.fromCharCode(char.charCodeAt(0) + 1)
+            func: (char) => String.fromCharCode(char.charCodeAt(0) - 1)
         }
 
     }
     document.getElementById('main').addEventListener('click', function (e){
 
         if(e.target.tagName !== 'BUTTON'){
-            return
+            return;
         }
 
         const type = e.target
         .textContent.toLowerCase().trim().includes('encode') ? 'encode' : 'decode';
 
         const massage = map[type].text.value
-        .split('').map(map[type].func().join(''));
+        .split('').map(map[type].func).join('');
        map.encode.text.value = '';
        map.decode.text.value = massage;
     })
