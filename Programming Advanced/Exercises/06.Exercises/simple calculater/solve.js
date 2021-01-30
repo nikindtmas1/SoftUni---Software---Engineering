@@ -1,32 +1,33 @@
-function solve(){
+function solve() {
 
     let firstElem;
     let secondElem;
     let resultElem;
-return {
+    
+    return {
 
-    init: () => {
-        firstElem = document.queriselector(selector1);
-        secondElem = document.queriselector(selector2);
-        resultElem = document.queriselector(resultSelector);
-    },
+        init: (selector1, selector2, resultSelector) => {
+            firstElem = document.querySelector(selector1);
+            secondElem = document.querySelector(selector2);
+            resultElem = document.querySelector(resultSelector);
+        },
 
-    add: () => {
-        resultElem.value = Number(firstElem.value) + Number(secondElem.value);
+        add: () => {
+            resultElem.value = Number(firstElem.value) + Number(secondElem.value);
 
-    },
+        },
 
-    substract: () => {
+        subtract: () => {
 
-        resultElem.value = Number(firstElem.value) - Number(secondElem.value);
+            resultElem.value = Number(firstElem.value) - Number(secondElem.value);
 
+        }
     }
-}
 
 }
 
 let obj = solve()
-    obj.init('#num1','#num2', '#result',)
+    obj.init('#num1','#num2','#result',)
 
     let add = obj.add
-    let substract = obj.substract
+    let subtract = obj.subtract
