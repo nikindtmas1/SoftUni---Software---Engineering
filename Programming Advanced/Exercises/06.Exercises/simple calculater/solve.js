@@ -3,7 +3,7 @@ function solve() {
     let firstElem;
     let secondElem;
     let resultElem;
-    
+
     return {
 
         init: (selector1, selector2, resultSelector) => {
@@ -27,7 +27,7 @@ function solve() {
 }
 
 let obj = solve()
-    obj.init('#num1','#num2','#result',)
+    obj.init('#num1','#num2','#result')
 
     let add = obj.add
     let subtract = obj.subtract
