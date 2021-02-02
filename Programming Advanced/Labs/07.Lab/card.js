@@ -22,5 +22,5 @@ return {
 }
 }
 
-createCard('D', '11');
-//console.log(myCard.toString());
+myCard = createCard('Q','s');
+console.log(myCard.toString());
