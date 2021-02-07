@@ -16,7 +16,8 @@ class Stringer{
     }
 
     toString(){
-        return this.innerLength === 0 
+      
+        return this.innerLength === 0
         ? '...'
         : this.innerString.slice(0, this.innerLength) + '...'
     }
@@ -28,4 +29,4 @@ console.log(test.toString()); // Te...
 test.decrease(5);
 console.log(test.toString()); // ...
 test.increase(4);
-console.log(test.toString());
+console.log(test.toString()); // Test
