@@ -2,6 +2,7 @@ function solve() {
 
     let addButton = document.querySelector('#container button');
     let ulElement = document.querySelector('#adoption ul');
+    let ulAdopted = document.querySelector('#adopted ul');
     let inputItems = Array.from(document.querySelectorAll('#container input'));
     let [inputName, inputAge, inputKind, inputOwner] = inputItems;
     //addEventListener
@@ -50,8 +51,37 @@ function solve() {
             divElement.appendChild(inputElement);
             divElement.appendChild(btnTakeIt);
             liElement.appendChild(divElement);
+
+            btnTakeIt.addEventListener('click', newHome)
         });
+
+        function newHome(e) {
+            let currantButton = e.currentTarget.parentElement;
+            let currantInput = currantButton.querySelector('input');
+            //move currant item to new home - adopted section
+            if (currantInput.value !== '') {
+                let newLiElement = currantButton.parentElement;
+                let oldOwner = newLiElement.querySelector('span');
+                let newOwner = currantInput.value;
+
+                oldOwner.textContent = `New Owner: ${newOwner}`;
+
+                ulAdopted.appendChild(newLiElement);
+                currantButton.remove();
+                //create new button
+                let checkedButton = document.createElement('button');
+
+                checkedButton.textContent = 'Checked';
+
+                newLiElement.appendChild(checkedButton);
+
+                checkedButton.addEventListener('click', (e) => {
+                    newLiElement.remove();
+                });
+            }
+        }
     });
+
 
 }
 
