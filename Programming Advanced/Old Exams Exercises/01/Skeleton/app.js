@@ -2,12 +2,12 @@ function solve() {
     let addButton = document.getElementById('add');
    
     //sections
-    let openSection = document.querySelector('.orange');
-    let progresSection = document.querySelector('.yellow');
-    let completeSection = document.querySelector('.green');
+    let openSection = document.getElementsByTagName('section')[1];
+    let progresSection = document.getElementsByTagName('section')[2];
+    let completeSection = document.getElementsByTagName('section')[3];
     //parents
-    let parentSection = openSection.parentElement.parentElement;
-    let parentDiv = parentSection.children[1];
+    // let parentSection = openSection.parentElement.parentElement;
+    // let parentDiv = parentSection.children[1];
 
     //Description: To organize the exam
   
@@ -35,8 +35,8 @@ function solve() {
 
         //contents
         h3Element.textContent = firstInput.value;
-        firstPElement.textContent = textArea.value;
-        secondPElement.textContent = secondInput.value;
+        firstPElement.textContent = `Description: ${textArea.value}`;
+        secondPElement.textContent = `Due Date: ${secondInput.value}`;
         divElement.className = 'flex';
         buttonStart.textContent = 'Start';
         buttonStart.className = 'green';
@@ -50,7 +50,7 @@ function solve() {
         articleElement.appendChild(firstPElement);
         articleElement.appendChild(secondPElement);
         articleElement.appendChild(divElement);
-        parentDiv.appendChild(articleElement);
+        openSection.lastElementChild.appendChild(articleElement);
 
 
         firstInput.value = '';
@@ -58,11 +58,12 @@ function solve() {
         textArea.value = '';
         //addEventListener buttonStart
         buttonStart.addEventListener('click', (ev) => {
-            let paretProgres = progresSection.parentElement.parentElement;
-            let inProgres = paretProgres.querySelector('#in-progress');
+             progresSection.lastElementChild.appendChild(articleElement);
+             
+            // let inProgres = paretProgres.querySelector('#in-progress');
 
-            inProgres.appendChild(articleElement);
-            let oldBtn = inProgres.querySelector('button');
+            // inProgres.appendChild(articleElement);
+            let oldBtn = articleElement.querySelector('button');
             oldBtn.parentElement.remove();
             //create elements
             let newDivBtn = document.createElement('div');
@@ -86,9 +87,9 @@ function solve() {
             });
             //addEventListener btnFinish
             btnFinish.addEventListener('click', (ev) => {
-                let parentComplete = completeSection.parentElement.parentElement;
-                parentComplete.appendChild(articleElement);
-                let buttonsParent = parentComplete.querySelector('button').parentElement;
+                //let parentComplete = completeSection.parentElement.parentElement;
+                completeSection.lastElementChild.appendChild(articleElement);
+                let buttonsParent = articleElement.querySelector('button').parentElement;
                 //remove buttons
                buttonsParent.remove();
             });
