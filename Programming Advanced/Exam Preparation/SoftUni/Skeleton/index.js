@@ -66,7 +66,10 @@ function solve() {
             divElement.appendChild(ulElement);
             divSec.appendChild(divElement);
         }
-   
+
+        // inputs[0].value = '';
+        // inputs[1].value = '';
+
       btnDel.addEventListener('click', (ev)=> {
           let target = ev.currentTarget;
           let parent = target.parentElement;
