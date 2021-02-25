@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Characters</title>
+</head>
+<body>
+    <h1>Star Wars Characters</h1>
+    <ul class="characters"></ul>
+    <button id="load">Get cheracters</button>
+    <script>
+        const url = 'https://swapi.dev/api/people/';
+        const httpRequest = new XMLHttpRequest();
+        
+        httpRequest.addEventListener('loadend', function(){
+            //console.log(this);
+            let respons = JSON.parse(this.response);
+            //console.log(respons);
+            let characters = respons.results;
+            //console.log(characters);
+            const charactersElement = document.querySelector('.characters');
+
+            charactersElement.innerHTML = characters.map((x) => `<li>${x.name}</li>`).join('') //(`<li>${characters.name}</li>`);//.map((x) => `<li>${x.name}</li>`).join('')
+        });
+
+    
+        httpRequest.open('GET', url);    
+        document.getElementById('load').addEventListener('click',()=>{
+
+            httpRequest.send();
+        });
+    </script>
+</body>
+</html>
