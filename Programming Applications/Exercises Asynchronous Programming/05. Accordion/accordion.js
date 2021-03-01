@@ -62,21 +62,21 @@ async function solution() {
                 }
                 //                 const buttParent = butt.parentElement;
                 // const buttChild = buttParent.querySelector('button');
-               
+                //btn.removeEventListener()
+                btn.addEventListener('click', (ev) => {
+                    //if(e.target.className === 'button'){
+                    btn.textContent = 'More';
+                    let currAcordeon = btn.parentElement.parentElement
+                    currAccordeon.querySelectorAll('.extra').style.display = 'none';
+                    console.log(currAcordeon);
+        
+                })
 
             }
             textData()
-
-            btn.addEventListener('click', (e) => {
-                //if(e.target.className === 'button'){
-                btn.textContent = 'More';
-                let currAcordeon = btn.parentElement.parentElement
-                currAccordeon.querySelectorAll('.extra').style.display = 'none';
-                console.log(currAcordeon);
-
-            })
-
         })
+        
+    
     }
 
    
