@@ -32,7 +32,11 @@
 
         formEl.addEventListener('formdata', event => {
 
-            console.log(event);
+            console.log([...event.formData.entries()]);
+            const title = event.formData.get('title');
+            const content = event.formData.get('content');
+
+            postData({title,content})
         });
 
         async function getData(){
