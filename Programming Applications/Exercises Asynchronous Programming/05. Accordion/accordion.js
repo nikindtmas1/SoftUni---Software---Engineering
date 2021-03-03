@@ -1,8 +1,6 @@
 async function solution() {
 
-    const url = 'http://localhost:3030/jsonstore/advanced/articles/list';
-
-    const respons = await fetch(url);
+    const respons = await fetch('http://localhost:3030/jsonstore/advanced/articles/list');
     const data = await respons.json();
 
     let mainSec = document.getElementById('main');
@@ -42,10 +40,9 @@ async function solution() {
             currDivAccordeon.appendChild(divExtra);
             //console.log(currDivHead.querySelector('span').textContent);
 
-
+        
             async function textData() {
                 const urlData = 'http://localhost:3030/jsonstore/advanced/articles/details';
-
 
                 const currRes = await fetch(urlData);
                 const currData = await currRes.json();

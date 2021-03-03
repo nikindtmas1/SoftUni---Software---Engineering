@@ -11,27 +11,23 @@ function attachEvents() {
     let codeForecast;
 
     async function getLocation() {
-       
-        const url = `http://localhost:3030/jsonstore/forecaster/locations`;
-        // try {}
-        // catch (error) {
-        //     divForcast.style.display = '';
-        //     throw new Error(divForcast.textContent = error)
-        //     // divForcast.textContent = error;
-        // }
-        let respons = await fetch(url);
-        let data = await respons.json();
 
+
+        let responsNow = await fetch(`http://localhost:3030/jsonstore/forecaster/locations`);
+        let data = await responsNow.json();
+
+      
 
         for (let i = 0; i < data.length; i++) {
 
             if (data[i].name == location.value) {
 
                 codeForecast = data[i].code;
-
+               
             }
         }
         location.value = '';
+
 
         forecastNow()
         forecastThreeDays()
@@ -53,13 +49,12 @@ function attachEvents() {
             return currSymbol;
         }
         async function forecastNow() {
-           
-            let forcastNow = `http://localhost:3030/jsonstore/forecaster/today/${codeForecast}`;
 
+            let forcastNow = `http://localhost:3030/jsonstore/forecaster/today/${codeForecast}`;
             const responsNow = await fetch(forcastNow);
             const dataNow = await responsNow.json();
+           
 
-         
             const divEl = document.createElement('div');
             divEl.className = 'forecasts';
 
@@ -152,7 +147,7 @@ function attachEvents() {
             divInfo.appendChild(spanUpcoming3);
 
             divUpcoming.appendChild(divInfo);
-        
+
         }
     }
 
