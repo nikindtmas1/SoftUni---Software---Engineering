@@ -54,6 +54,10 @@ function attachEvents() {
             const responsNow = await fetch(forcastNow);
             const dataNow = await responsNow.json();
            
+            // if(responsNow.ok == false){
+            //     const error = await responsNow.json();
+            //     return alert(error.message)
+            // }
 
             const divEl = document.createElement('div');
             divEl.className = 'forecasts';

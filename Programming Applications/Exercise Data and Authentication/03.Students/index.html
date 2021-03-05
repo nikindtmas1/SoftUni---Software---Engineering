@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <table id="results">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Faculty Number</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h2 style="text-decoration: underline;">FORM</h2>
+    <form id="registerForm" action="http://localhost:3030/jsonstore/collections/students">
+        <input type="text" name="firstName">
+        <input type="text" name="lastName">
+        <input type="text" name="facultyNum">
+        <input type="text" name="grade">
+        <input type="submit" value="submit">
+    </form>
+    <script src="./app.js"></script>
+</body>
+
+</html>
