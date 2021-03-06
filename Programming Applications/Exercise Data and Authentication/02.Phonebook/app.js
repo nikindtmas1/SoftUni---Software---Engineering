@@ -6,45 +6,84 @@ function attachEvents() {
         const phone = document.getElementById('phone').value;
 
         await createPerson({person,phone});
+        const ulEl = document.getElementById('phonebook');
+        ulEl.innerHTML = '';
+        getPhoneBook();
 
         document.getElementById('person').value = '';
         document.getElementById('phone').value = '';
-        const ulEl = document.getElementById('phonebook');
-        const liEl = document.createElement('li');
-         liEl.textContent = `${person}: ${phone}`
-        ulEl.appendChild(liEl)
-
       
-    })
+    });
+
     document.getElementById('btnLoad').addEventListener('click', async() => {
 
-        getPhoneBook()
-    })
+        getPhoneBook();
+    });
+
+    document.querySelector('ul').addEventListener('click', (event) => {
+        
+        if(event.target.textContent == 'Delete'){
+            const id = event.target.parentNode.className;
+
+            deletePerson(id);
+            const ulEl = document.getElementById('phonebook');
+            ulEl.innerHTML = '';
+            getPhoneBook();
+        }
+        
+    });
 }
 
 attachEvents();
 
+
+
 async function getPhoneBook(){
 
     const response = await fetch('http://localhost:3030/jsonstore/phonebook');
-    console.log(response);
     const data = await response.json();
-    const ulEl = document.getElementById('phonebook')
+
+    const ulEl = document.getElementById('phonebook');
+    
      Object.values(data).forEach(line => {
-         const liEl = document.createElement('li');
-         liEl.textContent = `${line.person}: ${line.phone}`
-        ulEl.appendChild(liEl)
+         const liEl =  e('li',`${line._id}`,`${line.person}: ${line.phone}`);
+         liEl.appendChild(e('button','','Delete'));
+         ulEl.appendChild(liEl)
      });
     
     
 }
 
 async function createPerson(input) {
-    const response = await fetch('http://localhost:3030/jsonstore/phonebook', {
+    await fetch('http://localhost:3030/jsonstore/phonebook', {
         method: 'post',
         headers: { 'Content-Type': 'application/js' },
         body: JSON.stringify(input)
     });
-    const data = await response.json();
+
+}
+
+async function deletePerson(id){
+    
+    await fetch('http://localhost:3030/jsonstore/phonebook/' + id, {
+        method: 'delete',
+    
+    });
+
+}
+
+function e(type, className, content){
+
+const element = document.createElement(type)
+
+if(className){
+    element.className = className;
+}
+
+if(content){
+    element.textContent = content;
+}
+
+return element;
 
 }
