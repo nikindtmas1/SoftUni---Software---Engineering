@@ -25,7 +25,7 @@ async function students() {
         };
         postStudent(studentInfo);
         //document.querySelectorAll('#results').children.innerHTML = '';
-        //getStudentsInfo();
+        getStudentsInfo();
     });
 
     
