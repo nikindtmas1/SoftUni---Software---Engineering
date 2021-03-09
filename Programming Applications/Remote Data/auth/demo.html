@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form id="registerForm" method="POST" action="http://localhost:3030/jsonstore/advanced/articles/details">
+        <input type="text" name="title">
+        <textarea name="content"></textarea>
+        <input type="submit" value="Publishe article">
+        </form>
+
+    <form id="loginForm" method="POST" action="http://localhost:3030/users/register">
+
+        <input type="text" name="email" />
+
+        <input type="password" name="password" />
+
+        <input type="password" name="repass" />
+
+        <input type="submit" value="Register" />
+
+    </form>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', ev => {
+            ev.preventDefault();
+            const formData = new FormData(ev.target);
+
+            const email = formData.get('email');
+            const password = formData.get('password');
+            const repassword = formData.get('repass');
+
+            if(email == '' || password == ''){
+              return  alert('All fields are required!');
+            }else if(password !== repassword){
+                return  alert('Password don\'match!');
+            }
+
+            register(email,password)
+        })
+
+        async function register(email, password) {
+
+            const response = await fetch('http://localhost:3030/users/register', {
+                method: 'post',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify({email, password})
+            });
+
+            if(response.ok){
+                const data = await response.json();
+                sessionStorage.setItem('authToken', data.accessToken)
+            }else{
+                const error = await response.json();
+                alert(`Error: ${error.message}`);
+                //response.statusText
+            }
+        }
+
+        async function getData(){
+            const options = { 
+                method:'get',
+                headers:{}
+        }
+
+            const token = sessionStorage.setItem('authToken');
+
+            if(token !== null){
+                options.headers['x-Authorization'] = token;
+            }
+            const response = await fetch('http://localhost:3030/data/records',options);
+            return await response.json();
+
+            //console.log(data);
+        }
+
+        async function login(email, password){
+            const response = await fetch('http://localhost:3030/users/login', {
+                method: 'post',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify({email, password})
+            });
+
+            if(response.ok){
+                const data = await response.json();
+                sessionStorage.setItem('authToken', data.accessToken)
+            }else{
+                const error = await response.json();
+                alert(`Error: ${error.message}`);
+            }
+        }
+    </script>
+</body>
+
+</html>
