@@ -56,11 +56,11 @@ function setUserNav(){
         document.getElementById('loginLink').style.display = 'none';
         document.getElementById('registerLink').style.display = 'none';
 
-        const likeBtn = document.querySelector('.btn-primary');
-        likeBtn.addEventListener('click', () => {
-            likeBtn.textContent = 'Liked';
-            //console.log('Yes');
-        });
+        // const likeBtn = document.querySelector('.btn-primary');
+        // likeBtn.addEventListener('click', () => {
+        //     likeBtn.textContent = 'Liked';
+        //     //console.log('Yes');
+        // });
 
     }else{
 

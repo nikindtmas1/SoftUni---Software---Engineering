@@ -1,8 +1,10 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { getMovieById } from '../api/data.js';
-import {deleteMovie} from '../api/data.js';
+import { deleteMovie } from '../api/data.js';
+import {getLikeByMovieId} from '../api/data.js';
+import {createLike} from '../api/data.js';
 
-const detailsTemplate = (item, isOwner,onDelete) => html`
+const detailsTemplate = (item, isOwner, onDelete,onLike) => html`
 <section id="movie-details">
     <div class="container">
         <div class="row bg-light text-dark">
@@ -14,12 +16,11 @@ const detailsTemplate = (item, isOwner,onDelete) => html`
             <div class="col-md-4 text-center">
                 <h3 class="my-3 ">Movie Description</h3>
                 <p>${item.description}</p>
-                ${isOwner? html`
+                ${isOwner ? html`
                 <a @click=${onDelete} href='/homepage' class="btn btn-danger" href="#">Delete</a>
-                <a class="btn btn-warning" href=${`/editMovie/${item._id}`}>Edit</a>
-                `: html`
-                <a class="btn btn-primary" href="#">Like</a>
-                <span class="enrolled-span">Liked 1</span>
+                <a class="btn btn-warning" href=${`/editMovie/${item._id}`}>Edit </a> 
+                `: html` <a @click=${onLike} class="btn btn-primary" href="#">Like</a>
+                <span class="enrolled-span" style="display: none">Liked 1</span>
                 `}
             </div>
         </div>
@@ -38,16 +39,31 @@ export async function detailsPage(ctx) {
 
     const userId = sessionStorage.getItem('userId');
 
-    ctx.render(detailsTemplate(item,item._ownerId == userId,onDelete));
+    ctx.render(detailsTemplate(item, item._ownerId == userId, onDelete,onLike));
 
-    async function onDelete(){
+    async function onDelete() {
         const confermed = confirm('Are you sure you want to delete this item?');
 
-        if(confermed){
+        if (confermed) {
 
             await deleteMovie(item._id);
             ctx.page.redirect('/');
         }
-        }
+    }
 
+    async function onLike(event){
+        event.preventDefault();
+        const likeBtn = event.target;
+        likeBtn.style.display = 'none';
+    
+        const data = {movieId: item._id}
+        await createLike(data);
+
+        const btnLikes = document.querySelector('.enrolled-span');
+        btnLikes.style.display = 'inline-block';
+        const getLikes = await getLikeByMovieId(item._id);
+
+        btnLikes.textContent = `Liked ${getLikes.length}`;
+
+    }
 }
