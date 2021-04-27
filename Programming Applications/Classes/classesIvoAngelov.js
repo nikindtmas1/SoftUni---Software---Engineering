@@ -34,3 +34,5 @@ class Students extends Person {
 const student = new Students ( 'Nikolay Nikolaev', 47, 'Varna University')
 
 console.log(student.getUniversity());
+console.log(student.getFirstName());
+console.log(Students.getPlanet());
