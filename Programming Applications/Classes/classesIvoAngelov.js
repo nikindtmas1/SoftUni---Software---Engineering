@@ -13,9 +13,24 @@ class Person {
     }
 }
 
-const person = new Person( 'Nikolay Nikolaev', 47 );
+// const person = new Person( 'Nikolay Nikolaev', 47 );
 
-console.log(person.name);
-console.log(person.age);
-console.log(person.getFirstName());
-console.log(Person.getPlanet());
+// console.log(person.name);
+// console.log(person.age);
+// console.log(person.getFirstName());
+// console.log(Person.getPlanet());
+
+class Students extends Person {
+    constructor( name, age, university) {
+        super( name, age )
+        this.university = university
+    }
+
+    getUniversity(){
+        return 'My university is ' + this.university
+    }
+}
+
+const student = new Students ( 'Nikolay Nikolaev', 47, 'Varna University')
+
+console.log(student.getUniversity());
