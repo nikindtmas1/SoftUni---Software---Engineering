@@ -4,8 +4,12 @@ class Person {
         this.age = age
     }
 
-    get firstName() {
+    getFirstName() {
        return this.name.split(' ')[0]
+    }
+
+    static getPlanet() {
+        return 'Earth'
     }
 }
 
@@ -13,4 +17,5 @@ const person = new Person( 'Nikolay Nikolaev', 47 );
 
 console.log(person.name);
 console.log(person.age);
-console.log(person.firstName);
+console.log(person.getFirstName());
+console.log(Person.getPlanet());
