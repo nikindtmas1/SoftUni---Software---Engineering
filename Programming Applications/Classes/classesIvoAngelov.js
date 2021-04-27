@@ -21,18 +21,18 @@ class Person {
 // console.log(Person.getPlanet());
 
 class Students extends Person {
-    constructor( name, age, university) {
+    constructor( name, age, university ) {
         super( name, age )
         this.university = university
     }
 
-    getUniversity(){
+    getUniversity() {
         return 'My university is ' + this.university
     }
 }
 
 const student = new Students ( 'Nikolay Nikolaev', 47, 'Varna University')
 
-console.log(student.getUniversity());
-console.log(student.getFirstName());
-console.log(Students.getPlanet());
+console.log( student.getUniversity() );
+console.log( student.getFirstName() );
+console.log( Students.getPlanet() );
