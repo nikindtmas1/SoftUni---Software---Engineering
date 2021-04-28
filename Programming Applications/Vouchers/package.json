@@ -1,0 +1,14 @@
+{
+  "name": "vouchers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "vauchersJson.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NN",
+  "license": "MIT",
+  "dependencies": {
+    "xlsx-to-json": "^0.3.0"
+  }
+}
