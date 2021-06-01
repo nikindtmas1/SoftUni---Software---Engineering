@@ -1,24 +1,21 @@
 const http = require('http');
+const router = require('./router');
+const homeController = require('./controllers/homeController');
+const aboutController = require('./controllers/aboutController');
+const catalogController = require('./controllers/catalogController');
+
+router.registerHandler('/', homeController);
+router.registerHandler('/about', aboutController);
+router.registerHandler('/catalog', catalogController);
 
 const port = 3000
 const server = http.createServer(requestHandler);
 
-const html = `
-<html>
-<header></header>
-<body>
-    <div>
-        <h1>My Page!</h1>
-        <p>Welcome to My Page!</p>
-    </div>
-</body>
-</html>`
-
 function requestHandler(req,res){
     console.log(">>> method: ", req.method);
     console.log(">>> url: ", req.url);
-    res.write(html);
-    res.end();
+    const handler =  router.match(req.url);
+   handler(req,res);
 }
 
 server.listen(port, () => console.log('Server listenning on port ' + port));
