@@ -6,6 +6,7 @@ const html = `
     <form method="POST" action="/create">
         <label>Name <input type="text" name="name"></label>
         <label>S/N <input type="text" name="serial"></label>
+        <input type="submit" value="Create Item">
     </form>
     <ul>
         <li>First Item</li>
