@@ -9,6 +9,7 @@
   "author": "NN",
   "license": "MIT",
   "dependencies": {
+    "formidable": "^1.2.2",
     "http": "0.0.1-security"
   }
 }
