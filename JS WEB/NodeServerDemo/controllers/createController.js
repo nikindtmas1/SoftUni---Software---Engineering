@@ -1,15 +1,18 @@
 const formidable = require('formidable');
 
-module.exports = (req,res) => {
-const form = new formidable.IncomingForm();
+const database = require('../util/database');
 
-form.parse(req, (err, fields, files) => {
-    
-})
+module.exports = (req, res) => {
+    const form = new formidable.IncomingForm();
 
-console.log('Created Item');
-res.writeHead(301, {
-    'Location':'/catalog'
-});
-res.end();
+    form.parse(req, (err, fields, files) => {
+        console.log('Created Item');
+        database.push(fields);
+        res.writeHead(301, {
+            'Location': '/catalog'
+        });
+        res.end();
+    });
+
+
 }
