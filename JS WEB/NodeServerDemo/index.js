@@ -17,7 +17,7 @@ const server = http.createServer(requestHandler);
 function requestHandler(req,res){
     console.log(">>> method: ", req.method);
     console.log(">>> url: ", req.url);
-    const handler =  router.match(req.url);
+    const handler =  router.match(req.method,req.url);
    handler(req,res);
 }
 
