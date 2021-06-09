@@ -11,7 +11,7 @@ function nextId(){
 }
 
 function addItem(item){
-    database[nextId] = item;
+    database[nextId()] = item;
 }
 
 function deleteItem(id){
