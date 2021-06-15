@@ -8,6 +8,6 @@ app.get('/', (req,res) => {
 
 app.get('/catalog', (req,res) => {
     res.send('Catalog Page');
-})
+});
 
 app.listen(3000, console.log('Server listening on port 3000'));
