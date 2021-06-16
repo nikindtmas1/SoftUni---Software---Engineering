@@ -13,6 +13,7 @@ app.get('/catalog', (req,res) => {
 });
 
 app.post('/catalog', (req,res) => {
-    res.send(201, 'Article created!');
+    res.status(201)
+    res.send('Article created!');
 });
 app.listen(3000, () => console.log(`Server listening on port: ${port}`));
