@@ -10,8 +10,5 @@ app.get('/', (req,res) => {
 
 
 
-app.post('/catalog', (req,res) => {
-    res.status(201);
-    res.send('Article created!');
-});
+
 app.listen(3000, () => console.log(`Server listening on port: ${port}`));
