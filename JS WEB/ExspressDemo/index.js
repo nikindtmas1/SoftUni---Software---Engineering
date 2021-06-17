@@ -5,8 +5,9 @@ const app = express();
 const port = 3000;
 
 const catalogRouter = require('./catalog');
+const logger = require('./logger');
 
-app.get('/', (req,res) => {
+app.get('/',logger, (req,res) => {
    res.send('Hello express!');
 });
 
