@@ -13,5 +13,8 @@ app.get('/',logger, (req,res) => {
 
 app.use(catalogRouter);
 
+app.get('/contact',logger, (req, res) => {
+   res.send('Contact Page!');
+})
 
 app.listen(3000, () => console.log(`Server listening on port: ${port}`));
