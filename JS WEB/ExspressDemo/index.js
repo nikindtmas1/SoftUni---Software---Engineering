@@ -6,6 +6,7 @@ const port = 3000;
 
 const catalogRouter = require('./catalog');
 const logger = require('./logger');
+const isAdmin = require('./guard');
 
 app.get('/',logger, (req,res) => {
    res.send('Hello express!');
@@ -18,7 +19,7 @@ app.get('/contact',logger, (req, res) => {
    res.send('Contact Page!');
 });
 
-app.get('/admin',logger, (req,res) => {
+app.get('/admin',isAdmin, (req,res) => {
    res.send('Hello admin!');
 });
 
