@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.get('/catalog', () => {
+router.get('/catalog', (req, res) => {
         res.send('Catalog Page');
 });
 
@@ -9,7 +9,7 @@ const data = {
     age: 23
 }
 
-router.post('/catalog', () => {
+router.post('/catalog', (req, res) => {
         res.json(data);
 });
 
