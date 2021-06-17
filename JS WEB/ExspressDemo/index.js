@@ -16,6 +16,10 @@ app.use(catalogRouter);
 
 app.get('/contact',logger, (req, res) => {
    res.send('Contact Page!');
-})
+});
+
+app.get('/admin',logger, (req,res) => {
+   res.send('Hello admin!');
+});
 
 app.listen(3000, () => console.log(`Server listening on port: ${port}`));
