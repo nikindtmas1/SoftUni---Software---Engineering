@@ -17,6 +17,8 @@ app.get('/',logger, (req,res) => {
 app.use(catalogRouter);
 //app.use(logger);
 
+app.use('/static', express.static('static'))
+
 app.get('/contact',logger, (req, res) => {
    res.send('Contact Page!');
 });
