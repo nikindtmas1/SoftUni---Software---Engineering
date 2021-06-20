@@ -6,6 +6,7 @@ const app = express();
 const port = 3000;
 
 app.engine('handlebars', hbs({
+    partialsDir: './views',
     extname: '.hbs'
 }));
 
