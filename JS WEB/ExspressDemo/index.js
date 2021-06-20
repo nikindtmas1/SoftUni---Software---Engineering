@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 
@@ -8,8 +9,9 @@ const catalogRouter = require('./catalog');
 const logger = require('./logger');
 const isAdmin = require('./guard');
 
+
 app.get('/',logger, (req,res) => {
-   res.send('Hello express!');
+   res.sendFile(path.resolve('./static/index.html'));
 });
 
 app.use(catalogRouter);
