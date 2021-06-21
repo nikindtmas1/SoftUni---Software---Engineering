@@ -16,7 +16,10 @@ app.get('/', (req, res) => {
     //res.send('It\'is working!')
     const data = {
         name:'Peter',
-        age:24
+        age:24,
+        items: {
+            pocket: 'Lint'
+        }
     }
     res.render('home.hbs', data);
 });
