@@ -15,9 +15,10 @@ app.set('view engine', '.hbs');
 app.get('/', (req, res) => {
     //res.send('It\'is working!')
     const data = {
-        
+        name:'Peter',
+        age:24
     }
-    res.render('home.hbs');
+    res.render('home.hbs', data);
 });
 
 app.listen(port, console.log(`Server listening on port ${port}`))
