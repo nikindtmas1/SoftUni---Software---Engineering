@@ -22,10 +22,25 @@ app.get('/', (req, res) => {
         name:'Peter',
         age:24,
         items: [
-            'Lint',
-            'Wallet',
-            'Bubblegum',
-            'Spare coins'
+            {
+                type: 'Lint',
+                qty: 15
+            }
+            ,
+            {
+                type: 'Wallet',
+                qty: 1
+            }
+            ,
+            {
+                type: 'Bubblegum',
+                qty: 10
+            }
+            ,
+            {
+                type: 'Spare coins',
+                qty: 3.5
+            }
         ]
     }
     res.render('home.hbs', ctx);
