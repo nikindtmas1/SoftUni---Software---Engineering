@@ -46,5 +46,18 @@ app.get('/', (req, res) => {
     res.render('home.hbs', ctx);
 });
 
+app.get('/catalog', (req, res) => {
+    res.render('catalog', {products: [
+        {
+            type: 'Washer',
+            qty: 45
+        },
+        {
+            type: 'Bolt 3/8',
+            qty: 118
+        }
+    ]})
+});
+
 app.listen(port, console.log(`Server listening on port ${port}`))
 
