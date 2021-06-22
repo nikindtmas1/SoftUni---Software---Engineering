@@ -14,7 +14,10 @@ app.set('view engine', '.hbs');
 
 app.get('/', (req, res) => {
     //res.send('It\'is working!')
-    const data = {
+    const ctx = {
+        user: {
+            username: 'Peter'
+        },
         name:'Peter',
         age:24,
         items: [
@@ -24,7 +27,7 @@ app.get('/', (req, res) => {
             'Spare coins'
         ]
     }
-    res.render('home.hbs', data);
+    res.render('home.hbs', ctx);
 });
 
 app.listen(port, console.log(`Server listening on port ${port}`))
