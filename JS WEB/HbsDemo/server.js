@@ -18,6 +18,7 @@ app.get('/', (req, res) => {
         user: {
             username: 'Peter'
         },
+        title: 'Home Page',
         name:'Peter',
         age:24,
         items: [
