@@ -19,8 +19,8 @@ app.get('/', (req, res) => {
         age:24,
         items: [
             'Lint',
-            'Wallert',
-            'Bublegum',
+            'Wallet',
+            'Bubblegum',
             'Spare coins'
         ]
     }
