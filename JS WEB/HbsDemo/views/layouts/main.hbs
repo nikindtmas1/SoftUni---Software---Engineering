@@ -10,7 +10,10 @@
     <nav>
         {{#if user}}
         <span>Welcome {{user.username}}!</span>
+           {{else}}
+            <a href="/login">Sign in</a>
         {{/if}}
+     
 
         <a href="/">Home</a>
         <a href="/catalog">Catalog</a>
