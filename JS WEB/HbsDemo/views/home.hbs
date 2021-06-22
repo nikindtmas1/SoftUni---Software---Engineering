@@ -4,10 +4,7 @@
 <h3>Items in pocket</h3>
 <ul>
     {{#each items}}
-    <li>
-        <span>{{type}}:</span>
-        {{qty}}
-    </li>
+    {{> item}}
     {{else}}
     <li>
         <span style="font-size: italic;">No Items</span>
