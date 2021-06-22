@@ -17,9 +17,12 @@ app.get('/', (req, res) => {
     const data = {
         name:'Peter',
         age:24,
-        items: {
-            pocket: 'Lint'
-        }
+        items: [
+            'Lint',
+            'Wallert',
+            'Bublegum',
+            'Spare coins'
+        ]
     }
     res.render('home.hbs', data);
 });
