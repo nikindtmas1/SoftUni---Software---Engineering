@@ -1,4 +1,9 @@
+body {
+    background-color: yellowgreen;
+}
+
 #container {
     width: 980px;
     margin: auto;
+    background-color: white;
 }
