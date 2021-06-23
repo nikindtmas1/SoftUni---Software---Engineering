@@ -1,0 +1,14 @@
+<h1>It's working!</h1>
+<span>Name {{name}}</span><br>
+<span>Age {{age}}</span><br>
+<h3>Items in pocket</h3>
+<ul>
+    {{#each items}}
+    {{> item}}
+    {{else}}
+    <li>
+        <span style="font-size: italic;">No Items</span>
+    </li>
+    {{/each}}
+</ul>
+{{{message}}}
