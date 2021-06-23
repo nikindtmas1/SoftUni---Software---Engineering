@@ -41,7 +41,8 @@ app.get('/', (req, res) => {
                 type: 'Spare coins',
                 qty: 3.5
             }
-        ]
+        ],
+        message: '<p>Hello there</p>'
     }
     res.render('home.hbs', ctx);
 });
