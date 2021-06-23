@@ -1,5 +1,6 @@
 const express = require('express');
 const hbs = require('express-handlebars');
+const home = require('./controllers/home');
 
 const app = express();
 
@@ -12,5 +13,6 @@ app.engine('.hbs', hbs({
 
 app.set('view engine', '.hbs');
 
+app.get('/', home);
 app.listen(port, console.log(`Server listening on port ${port}`));
 
