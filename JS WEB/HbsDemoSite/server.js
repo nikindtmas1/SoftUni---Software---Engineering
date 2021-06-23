@@ -14,5 +14,7 @@ app.engine('.hbs', hbs({
 app.set('view engine', '.hbs');
 
 app.get('/', home);
+
+app.use('/static', express.static('static'))
 app.listen(port, console.log(`Server listening on port ${port}`));
 
