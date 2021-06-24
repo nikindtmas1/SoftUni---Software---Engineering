@@ -1,1 +1,5 @@
-const router = require('express');
+const router = require('express').Router();
+
+router.get('/', (req, res) => {
+    res.render('catalog');
+})
