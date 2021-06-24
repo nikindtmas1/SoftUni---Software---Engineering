@@ -1,9 +1,16 @@
+html {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+}
+
 body {
+    margin: 0;
+    padding: 0;
     background-color: yellowgreen;
 }
 
 #container {
     width: 980px;
-    margin: auto;
+    margin: 0 auto;
     background-color: white;
 }

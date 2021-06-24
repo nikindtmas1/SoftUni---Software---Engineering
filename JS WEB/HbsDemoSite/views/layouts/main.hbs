@@ -8,20 +8,22 @@
     <title>{{title}}</title>
 </head>
 <body>
-    <nav>
-        {{#if user}}
-        <span>Welcome {{user.username}}!</span>
-           {{else}}
-            <a href="/login">Sign in</a>
-        {{/if}}
-     
+<div id='container'>
+    <header>
 
+    <nav>
         <a href="/">Home</a>
         <a href="/catalog">Catalog</a>
         <a href="/about">About</a>
     </nav>
-    {{{body}}}
 
+    </header>
+
+    <main>
+    {{{body}}}
+    </main>
     <footer>&copy; 2021</footer>
+
+    </div>
 </body>
 </html>
