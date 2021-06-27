@@ -6,7 +6,9 @@ function requestHandler(req, res){
     if(req.url === '/'){
         res.write('Hello Node!');
     }else if(req.url == '/catalog'){
-        res.write('Catalog Page');
+        res.write('Catalog Page!');
+    }else if(req.url == '/about'){
+        res.write('About Page!');
     }
     
     res.end();
