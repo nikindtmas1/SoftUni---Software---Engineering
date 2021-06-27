@@ -18,6 +18,10 @@ function requestHandler(req, res){
 
     console.log(reqUrl.pathname);
     console.log(params);
+
+    res.writeHead(200, {
+        'Content-Type': 'text/plain'
+    })
     switch(req.method){
         case 'GET':
             if(req.url === '/'){
