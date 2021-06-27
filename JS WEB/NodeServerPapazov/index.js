@@ -27,6 +27,7 @@ function requestHandler(req, res){
             }else if(req.url == '/about'){
                 res.write(about);
             }
+        break;
     }
     
     
