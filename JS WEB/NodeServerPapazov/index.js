@@ -1,7 +1,9 @@
 const http = require('http');
+
 const catalog = require('./views/catalog');
 const about = require('./views/about');
 const home = require('./views/home');
+
 const port = 3000;
 
 function requestHandler(req, res){
