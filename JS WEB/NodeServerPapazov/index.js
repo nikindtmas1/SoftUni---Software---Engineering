@@ -19,16 +19,26 @@ function requestHandler(req, res){
     console.log(reqUrl.pathname);
     console.log(params);
 
-    res.writeHead(200, {
-        'Content-Type': 'text/plain'
-    })
+    // res.writeHead(200, {
+    //     'Content-Type': 'text/plain'
+    // })
+    
     switch(req.method){
         case 'GET':
             if(req.url === '/'){
+                res.writeHead(200, {
+                    'Content-Type': 'text/html'
+                });
                 res.write(home);
             }else if(req.url == '/catalog'){
+                res.writeHead(200, {
+                    'Content-Type': 'text/html'
+                });
                 res.write(catalog);
             }else if(req.url == '/about'){
+                res.writeHead(200, {
+                    'Content-Type': 'text/html'
+                });
                 res.write(about);
             }
         break;
