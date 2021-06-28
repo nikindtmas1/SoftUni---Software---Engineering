@@ -1,9 +1,10 @@
 const http = require('http');
 const url = require('url');
 const querystring = require('querystring');
+const fs = require('fs');
 
 const catalog = require('./views/catalog');
-const about = require('./views/about');
+//const about = require('./views/about');
 const home = require('./views/home');
 
 const port = 3000;
@@ -30,22 +31,31 @@ function requestHandler(req, res){
                     'Content-Type': 'text/html'
                 });
                 res.write(home);
+                res.end();
             }else if(req.url == '/catalog'){
                 res.writeHead(200, {
                     'Content-Type': 'text/html'
                 });
                 res.write(catalog);
+                res.end();
             }else if(req.url == '/about'){
                 res.writeHead(200, {
                     'Content-Type': 'text/html'
                 });
-                res.write(about);
+                fs.readFile('./views/about.html', (err, data) => {
+                    if(err){
+                        console.log('Sam error');
+                    }
+
+                    res.write(data);
+                    res.end();
+                })
             }
         break;
     }
     
     
-    res.end();
+   
     
 }
 
