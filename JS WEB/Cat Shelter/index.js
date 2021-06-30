@@ -1,14 +1,16 @@
 const http = require('http');
 const port = 3000;
-const handlers = require('./handlers');
+//const data = require('./handlers')
 
 http.createServer((req, res) => {
-    // res.writeHead(200, {
-    //     'Content-Type': 'text/plain'
-    // });
-    for(let handler of handlers){
-        if(!handler(req,res)){
-            break;
-        }
-    }
+    res.writeHead(200, {
+        'Content-Type': 'text/plain'
+    });
+    // for(let handler of handlers){
+    //     if(!handler(req,res)){
+    //         break;
+    //     }
+    // }
+    res.write('Hello Server!');
+    res.end();
 }).listen(port, () => console.log(`Server listen on port ${port}...`));
