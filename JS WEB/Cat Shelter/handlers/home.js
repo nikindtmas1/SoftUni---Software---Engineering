@@ -15,12 +15,18 @@ module.exports = (req,res) => {
         fs.readFile(filePath, (err, data) => {
             if(err){
                 console.log(err);
-                res.writeHead(200, {
-                'Content-Type': 'text/paint'
+                res.writeHead(400, {
+                'Content-Type': 'text/plain'
                 });
+                res.write('err');
+                res.end();
+                return;
             }
-            res.write(data);
-            res.end();
+                res.writeHead(200, {
+                'Content-Type': 'text/plain'
+                });
+                res.write(data);
+                res.end();
         });
     }else{
         return true;
