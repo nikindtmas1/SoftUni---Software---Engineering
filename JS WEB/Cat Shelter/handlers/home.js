@@ -9,10 +9,10 @@ module.exports = (req,res) => {
     if(pathname == '/' && req.method == 'GET'){
         
 
-        let filePath = path.normalize(
-            path.join(__dirname, '../views/home/index.html')
-        );
-        fs.readFile(filePath, (err, data) => {
+        // let filePath = path.normalize(
+        //     path.join(__dirname, '../views/home/index.html')
+        // );
+        fs.readFile('../views/home/index.html', (err, data) => {
             if(err){
                 console.log(err);
                 res.writeHead(400, {
@@ -23,7 +23,7 @@ module.exports = (req,res) => {
                 return;
             }
                 res.writeHead(200, {
-                'Content-Type': 'text/plain'
+                'Content-Type': 'text/html'
                 });
                 res.write(data);
                 res.end();
