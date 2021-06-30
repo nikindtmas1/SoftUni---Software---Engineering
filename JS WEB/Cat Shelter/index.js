@@ -1,6 +1,6 @@
 const http = require('http');
 const port = 3000;
-//const data = require('./handlers')
+const data = require('./handlers')
 
 http.createServer((req, res) => {
     res.writeHead(200, {
