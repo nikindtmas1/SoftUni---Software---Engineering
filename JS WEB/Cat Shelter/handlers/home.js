@@ -1,11 +1,11 @@
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
-const cats = require('../data/cats');
+//const cats = require('../data/cats');
 
-module.exports = (req,res) => {
-    const pathname = url.parse(req.url).pathname;
-
+module.exports = (req, res) => {
+    let pathname = url.parse(req.url).pathname;
+    console.log(pathname);
     if(pathname === '/' && req.method === 'GET'){
         
 

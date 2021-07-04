@@ -2,6 +2,7 @@ const http = require('http');
 const url = require('url');
 const querystring = require('querystring');
 const fs = require('fs');
+const path = require('path');
 
 const catalog = require('./views/catalog');
 //const about = require('./views/about');
@@ -16,9 +17,11 @@ function requestHandler(req, res){
 
     let reqUrl = url.parse(req.url);
     let params = querystring.parse(reqUrl.query);
+    let pathname = url.parse(req.url).pathname;
 
     console.log(reqUrl.pathname);
     console.log(params);
+    console.log(pathname);
 
     // res.writeHead(200, {
     //     'Content-Type': 'text/plain'
