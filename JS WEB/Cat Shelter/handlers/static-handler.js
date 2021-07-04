@@ -1,6 +1,6 @@
 
 const  url  = require('url');
-const path = require('path');
+//const path = require('path');
 const fs = require('fs');
 
 function getContentType(url){
@@ -26,7 +26,7 @@ module.exports = (req, res) => {
 
     if(pathname.startsWith('/content') && req.method === 'GET'){
 
-        fs.readFile(`/${pathname}`, '' , (err, data) => {
+        fs.readFile(`./${pathname}`, '' , (err, data) => {
             if(err){
                 console.log(err);
                 res.writeHead(404, {
@@ -37,6 +37,14 @@ module.exports = (req, res) => {
                 res.end();
                 return;
             }
+
+            console.log(pathname);
+            res.writeHead(200, {
+                'Content-Type': getContentType(pathname)
+            });
+
+            res.write(data);
+            res.end();
         })
 
     }else{
