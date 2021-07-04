@@ -3,12 +3,26 @@ const url = require('url');
 const querystring = require('querystring');
 const fs = require('fs');
 const path = require('path');
+const pubSub = require('./pubSub');
 
 const catalog = require('./views/catalog');
 //const about = require('./views/about');
 const home = require('./views/home');
 
 const port = 3000;
+
+const names = [];
+const onCatsRequest = (name) => {
+
+    if(names.includes(name)){
+
+        console.log(`Hello ${name} again!`);
+    }else{
+
+        console.log(`We have new cat - ${name}`);
+        names.push(name);
+    }
+}
 
 function requestHandler(req, res){
 
@@ -39,6 +53,9 @@ function requestHandler(req, res){
                 res.writeHead(200, {
                     'Content-Type': 'text/html'
                 });
+
+                
+
                 res.write(catalog);
                 res.end();
             }else if(req.url == '/about'){
@@ -52,7 +69,9 @@ function requestHandler(req, res){
 
                     res.write(data);
                     res.end();
-                })
+                });
+
+                onCatsRequest(params.name);
             }
         break;
     }
