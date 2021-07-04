@@ -5,7 +5,7 @@ const path = require('path');
 
 module.exports = (req, res) => {
     let pathname = url.parse(req.url).pathname;
-    console.log(pathname);
+    //console.log(pathname);
     if(pathname === '/' && req.method === 'GET'){
         
 
