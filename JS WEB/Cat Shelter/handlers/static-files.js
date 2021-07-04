@@ -16,3 +16,6 @@ function getContentType(url){
     }
 }
 
+module.exports = (req, res) => {
+    
+}
