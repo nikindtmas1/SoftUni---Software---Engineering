@@ -1,3 +1,8 @@
+
+const  url  = require('url');
+const path = require('path');
+
+
 function getContentType(url){
     if(url.endsWith('css')){
         return 'text/css';
@@ -17,5 +22,5 @@ function getContentType(url){
 }
 
 module.exports = (req, res) => {
-    
+    const pathname = url.parse(req.url).pathname;
 }
