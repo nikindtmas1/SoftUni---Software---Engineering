@@ -4,6 +4,7 @@ const  url  = require('url');
 const fs = require('fs');
 
 function getContentType(url){
+    
     if(url.endsWith('css')){
         return 'text/css';
 
@@ -18,6 +19,7 @@ function getContentType(url){
 
     }else if('js'){
         return 'text/js';
+
     }else if('jpg'){
         return 'text/jpg';
     }
