@@ -18,6 +18,8 @@ function getContentType(url){
 
     }else if('js'){
         return 'text/js';
+    }else if('jpg'){
+        return 'text/jpg';
     }
 }
 
