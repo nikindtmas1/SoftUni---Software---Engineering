@@ -23,6 +23,10 @@ module.exports = (req, res) => {
             res.end();
         });
 
+        readstr.on('error', (err) => {
+            console.log(err);
+        });
+
     }else if(pathname === '/cats/add-breed' && req.method === 'GET'){
 
 
