@@ -29,6 +29,21 @@ module.exports = (req, res) => {
 
     }else if(pathname === '/cats/add-breed' && req.method === 'GET'){
 
+        let filePath = path.normalize(path.join(__dirname, '../views/addBreed.html'));
+
+        const readstr = fs.createReadStream(filePath);
+
+        readstr.on('data', (data) => {
+            res.write(data);
+        });
+
+        readstr.on('end', () => {
+            res.end();
+        });
+
+        readstr.on('error', (err) => {
+            console.log(err);
+        });
 
     }else{
         return true;
