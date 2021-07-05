@@ -12,7 +12,7 @@ http.createServer((req, res) => {
             break;
         }
 
-        res.write(handler);
-        res.end();
+        // res.write(handler);
+        // res.end();
     }
 }).listen(port, () => console.log(`Server listen on port ${port}...`));
