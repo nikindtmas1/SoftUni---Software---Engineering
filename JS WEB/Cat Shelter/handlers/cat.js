@@ -13,11 +13,15 @@ module.exports = (req, res) => {
 
         let filePath = path.normalize(path.join(__dirname, '../views/addCat.html'));
 
-        const items = fs.createReadStream(filePath);
+        const readstr = fs.createReadStream(filePath);
 
-        items.map('data', (data) => {
+        readstr.on('data', (data) => {
             res.write(data);
-        })
+        });
+
+        readstr.on('end', () => {
+            res.end();
+        });
 
     }else if(pathname === '/cats/add-breed' && req.method === 'GET'){
 
