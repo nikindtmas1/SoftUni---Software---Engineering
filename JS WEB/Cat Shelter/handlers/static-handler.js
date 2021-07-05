@@ -26,7 +26,7 @@ module.exports = (req, res) => {
 
     if(pathname.startsWith('/content') && req.method === 'GET'){
 
-        fs.readFile(`./${pathname}`, '' , (err, data) => {
+        fs.readFile(`./${pathname}`, 'utf-8' , (err, data) => {
             if(err){
                 console.log(err);
                 res.writeHead(404, {
