@@ -1,12 +1,23 @@
+const events = {}
+
 
 
 module.exports = {
-    publish(){
-
+    
+    publish(eventName, param){
+        if(events[eventName]){
+            eventName.forEach(callBack => {
+                callBack(param)
+            });
+        }
     },
+    
+    subscribe(eventName, callBack){
+        if(!events[eventName]){
+            events[eventName] = [];
+        }
 
-    subscribe(){
-
+        events[eventName].push(callBack);
     },
 
     
