@@ -65,7 +65,7 @@ function requestHandler(req, res){
                 //onCatsRequest(params.name);
                 pubSub.publish('cats', params.name)
             }
-        break;
+            break;
     }
     
     
