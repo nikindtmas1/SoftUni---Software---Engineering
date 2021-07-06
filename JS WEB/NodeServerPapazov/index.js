@@ -4,6 +4,7 @@ const querystring = require('querystring');
 const fs = require('fs');
 const path = require('path');
 const pubSub = require('./pubSub');
+require('./init');
 
 const catalog = require('./views/catalog');
 //const about = require('./views/about');
