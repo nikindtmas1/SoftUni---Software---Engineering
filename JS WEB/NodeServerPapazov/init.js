@@ -1,5 +1,7 @@
 const pubSub = require('./pubSub');
 
+const names = [];
+
 const onCatsRequest = (name) => {
 
     if(names.includes(name)){
@@ -11,3 +13,5 @@ const onCatsRequest = (name) => {
         names.push(name);
     }
 }
+
+pubSub.subscribe('cats', onCatsRequest)

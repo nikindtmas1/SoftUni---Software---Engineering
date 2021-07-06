@@ -3,7 +3,7 @@ const url = require('url');
 const querystring = require('querystring');
 const fs = require('fs');
 const path = require('path');
-const pubSub = require('./pubSub');
+//const pubSub = require('./pubSub');
 require('./init');
 
 const catalog = require('./views/catalog');
@@ -12,7 +12,7 @@ const home = require('./views/home');
 
 const port = 3000;
 
-const names = [];
+
 
 
 function requestHandler(req, res){
