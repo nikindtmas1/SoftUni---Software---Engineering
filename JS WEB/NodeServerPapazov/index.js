@@ -3,7 +3,7 @@ const url = require('url');
 const querystring = require('querystring');
 const fs = require('fs');
 const path = require('path');
-//const pubSub = require('./pubSub');
+const pubSub = require('./pubSub');
 require('./init');
 
 const catalog = require('./views/catalog');
@@ -62,7 +62,8 @@ function requestHandler(req, res){
                     res.end();
                 });
 
-                onCatsRequest(params.name);
+                //onCatsRequest(params.name);
+                pubSub.publish('cats', params.name)
             }
         break;
     }
