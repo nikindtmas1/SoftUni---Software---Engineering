@@ -18,15 +18,17 @@ const port = 3000;
 function requestHandler(req, res){
 
     console.log(req.method);
-    console.log(req.url);
+    //console.log(req.url);
 
     let reqUrl = url.parse(req.url);
     let params = querystring.parse(reqUrl.query);
     let pathname = url.parse(req.url).pathname;
+    let name = params.name;
 
     console.log(reqUrl.pathname);
     console.log(params);
     console.log(pathname);
+    console.log(name);
 
     // res.writeHead(200, {
     //     'Content-Type': 'text/plain'
@@ -64,9 +66,9 @@ function requestHandler(req, res){
 
                 //onCatsRequest(params.name);
 
+                
                 if(req.url === '/about/cats'){
-                    console.log(params.name);
-                    pubSub.publish('cats', params.name);
+                    pubSub.publish('cats', name);
                 }
             }
             break;
