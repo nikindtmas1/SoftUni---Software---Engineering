@@ -6,7 +6,7 @@ module.exports = {
     
     publish(eventName, param){
         if(events[eventName]){
-            eventName.forEach(callBack => {
+            events[eventName].forEach(callBack => {
                 callBack(param)
             });
         }
