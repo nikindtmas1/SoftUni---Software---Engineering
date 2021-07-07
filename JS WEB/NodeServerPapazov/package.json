@@ -2,11 +2,14 @@
   "name": "nodeserverpapazov",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "indexPubSub.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node indexPubSub.js"
   },
   "keywords": [],
   "author": "NN",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "querystring": "^0.2.1"
+  }
 }
