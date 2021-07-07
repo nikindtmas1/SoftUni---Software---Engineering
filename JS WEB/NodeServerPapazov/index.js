@@ -63,7 +63,11 @@ function requestHandler(req, res){
                 });
 
                 //onCatsRequest(params.name);
-                pubSub.publish('cats', params.name)
+
+                if(req.url === '/about/cats'){
+                    console.log(params.name);
+                    pubSub.publish('cats', params.name);
+                }
             }
             break;
     }
