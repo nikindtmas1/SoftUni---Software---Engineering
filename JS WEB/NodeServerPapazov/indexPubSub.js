@@ -24,8 +24,18 @@ const reqHendlar = (req, res) => {
 
             res.write(data);
             res.end();
-        })
+        });
     
+    }else if(path === '/dogs'){
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        fs.readFile('./views/dogs.html', (err, data) => {
+            if(err){
+                console.log('Sam Err');
+            }
+
+            res.write(data);
+            res.end();
+        });
     }
 }
 
