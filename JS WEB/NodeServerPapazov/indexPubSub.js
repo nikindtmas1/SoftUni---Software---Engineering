@@ -14,6 +14,8 @@ const reqHendlar = (req, res) => {
     console.log(path);
     console.log(params);
 
+    const names = [];
+
     switch(path){
         case '/cats':
             res.writeHead(200, {'Content-Type': 'text/html'});
@@ -28,12 +30,18 @@ const reqHendlar = (req, res) => {
                 
 
         case '/dogs':
+            let qrName = params.name;
+            if(names.includes(qrName)){
+                console.log(`Hello ${qrName} again!`);
+            }else{
+                console.log(`We have new name ${qrName}!`);
+            }
             res.writeHead(200, {'Content-Type': 'text/html'});
-        fs.readFile('./views/dogs.html', (err, data) => {
+            fs.readFile('./views/dogs.html', (err, data) => {
             if(err){
                 console.log('Sam Err');
             }
-
+           
             res.write(data);
             res.end();
         });
