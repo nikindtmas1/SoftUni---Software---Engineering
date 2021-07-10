@@ -7,9 +7,9 @@ const fs = require('fs');
 const port = 5000;
 
 const reqHendlar = (req, res) => {
-    let reqUrl = req.url;
+    let reqUrl = url.parse(req.url);
     let path = url.parse(reqUrl).pathname;
-    let params = querystring.parse(reqUrl.query);
+    let params = querystring.parse(reqUrl.query)
 
     console.log(path);
     console.log(params);
