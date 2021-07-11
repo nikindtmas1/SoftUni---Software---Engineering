@@ -1,7 +1,5 @@
 const events = {}
 
-
-
 module.exports = {
     
     publish(eventName, param){
