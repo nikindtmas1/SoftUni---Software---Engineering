@@ -4,17 +4,12 @@ const querystring = require('querystring');
 const fs = require('fs');
 const pubSub = require('./pubSub');
 
-const names = [];
+
 const port = 5000;
 
-const onCatsReq = (name) => {
-    if(names.includes(name)){
-        console.log(`Hello ${name} again!`);
-    }else{
-        console.log(`We have new cat - ${name}!`);
-        names.push(name);
-    }
-}
+
+
+pubSub.subscribe('cats', onCatsReq);
 
 const reqHendlar = (req, res) => {
     let reqUrl = url.parse(req.url);
