@@ -3,10 +3,16 @@ const url = require('url');
 const querystring = require('querystring');
 const fs = require('fs');
 const pubSub = require('./pubSub');
-const { publish } = require('./pubSub');
+
 require('./init');
 
 const port = 5000;
+
+const catsLogger = (name) => {
+    console.log(`logged new cats ${name}`);
+};
+
+pubSub.subscribe('cats', catsLogger);
 
 const reqHendlar = (req, res) => {
     let reqUrl = url.parse(req.url);
