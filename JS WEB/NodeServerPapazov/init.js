@@ -11,4 +11,4 @@ const onCatsReq = (name) => {
     }
 }
 
-pubSub.subscribe('cats', onCatsRequest)
+pubSub.subscribe('cats', onCatsReq);
