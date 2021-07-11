@@ -3,7 +3,7 @@ const url = require('url');
 const querystring = require('querystring');
 const fs = require('fs');
 const pubSub = require('./pubSub');
-
+const events = require('events');
 require('./init');
 
 const port = 5000;
