@@ -14,7 +14,14 @@ const reqHendlar = (req, res) => {
     console.log(path);
     console.log(params);
 
-    const names = [];
+    const onCatsReq = (name) => {
+        const names = [];
+        if(names.includes(name)){
+            console.log(`Hello ${name} again!`);
+        }else{
+            console.log(`We have new name ${name}!`);
+        }
+    }
 
     switch(path){
         case '/cats':
@@ -30,12 +37,8 @@ const reqHendlar = (req, res) => {
                 
 
         case '/dogs':
-            let qrName = params.name;
-            if(names.includes(qrName)){
-                console.log(`Hello ${qrName} again!`);
-            }else{
-                console.log(`We have new name ${qrName}!`);
-            }
+            //let qrName = params.name;
+            
             res.writeHead(200, {'Content-Type': 'text/html'});
             fs.readFile('./views/dogs.html', (err, data) => {
             if(err){
