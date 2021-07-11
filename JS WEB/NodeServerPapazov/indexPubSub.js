@@ -39,7 +39,7 @@ const reqHendlar = (req, res) => {
             onCatsReq(params.name);
                 break;
         case '/dogs':
-            //let qrName = params.name;
+            
             
             res.writeHead(200, {'Content-Type': 'text/html'});
             fs.readFile('./views/dogs.html', (err, data) => {
