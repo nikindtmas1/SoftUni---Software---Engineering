@@ -13,9 +13,9 @@ const reqHendlar = (req, res) => {
 
     console.log(path);
     console.log(params);
+    const names = [];
 
     const onCatsReq = (name) => {
-        const names = [];
         if(names.includes(name)){
             console.log(`Hello ${name} again!`);
         }else{
@@ -34,7 +34,7 @@ const reqHendlar = (req, res) => {
                     res.write(data);
                     res.end();
                 });
-                
+            onCatsReq(params.name);
 
         case '/dogs':
             //let qrName = params.name;
