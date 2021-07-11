@@ -3,13 +3,10 @@ const url = require('url');
 const querystring = require('querystring');
 const fs = require('fs');
 const pubSub = require('./pubSub');
+const { publish } = require('./pubSub');
 require('./init');
 
 const port = 5000;
-
-
-
-pubSub.subscribe('cats', onCatsReq);
 
 const reqHendlar = (req, res) => {
     let reqUrl = url.parse(req.url);
@@ -19,9 +16,6 @@ const reqHendlar = (req, res) => {
     console.log(path);
     console.log(params);
    
-
-   
-
     switch(path){
         case '/cats':
             res.writeHead(200, 
@@ -34,8 +28,9 @@ const reqHendlar = (req, res) => {
                     res.write(data);
                     res.end();
                 });
-            onCatsReq(params.name);
-                break;
+            //onCatsReq(params.name);
+            pubSub.publish('cats', params.name);
+             break;
         case '/dogs':
             
             
