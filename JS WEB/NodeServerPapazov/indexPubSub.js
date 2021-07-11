@@ -6,6 +6,15 @@ const fs = require('fs');
 const names = [];
 const port = 5000;
 
+const onCatsReq = (name) => {
+    if(names.includes(name)){
+        console.log(`Hello ${name} again!`);
+    }else{
+        console.log(`We have new cat - ${name}!`);
+        names.push(name);
+    }
+}
+
 const reqHendlar = (req, res) => {
     let reqUrl = url.parse(req.url);
     let path = url.parse(reqUrl).pathname;
@@ -15,14 +24,7 @@ const reqHendlar = (req, res) => {
     console.log(params);
    
 
-    const onCatsReq = (name) => {
-        if(names.includes(name)){
-            console.log(`Hello ${name} again!`);
-        }else{
-            console.log(`We have new name ${name}!`);
-            names.push(name);
-        }
-    }
+   
 
     switch(path){
         case '/cats':
