@@ -5,6 +5,7 @@ const fs = require('fs');
 const pubSub = require('./pubSub');
 const events = require('events');
 require('./init');
+const stream = require('stream');
 
 const port = 5000;
 
@@ -62,6 +63,8 @@ const reqHendlar = (req, res) => {
             res.writeHead(200, {
                 'Content-Type': 'text/html'
             });
+
+
     }
     
     // if(path === '/cats'){
