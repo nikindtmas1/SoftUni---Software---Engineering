@@ -65,9 +65,13 @@ const reqHendlar = (req, res) => {
             });
 
            const fileMous = fs.createReadStream('./views/mous.html');
-        //    fileMous.on('data', data => res.write(data));
-        //    fileMous.on('end', () => res.end());
-            fileMous.pipe(res);
+           fileMous.on('data', data => res.write(data));
+           fileMous.on('end', () => res.end());
+            //fileMous.pipe(res);
+           break;
+
+           case '/rabbit':
+
            break;
     }
     
