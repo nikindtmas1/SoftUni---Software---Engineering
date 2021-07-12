@@ -8,9 +8,9 @@ require('./init');
 
 const port = 5000;
 
-let eventEmiter = new events.EventEmitter();
+let eventEmitter = new events.EventEmitter();
 
-eventEmiter.on('cats', (name) => {
+eventEmitter.on('cats', (name) => {
     console.log(`From eventEmiter ${name}`);
 })
 
@@ -42,7 +42,7 @@ const reqHendlar = (req, res) => {
                 });
             //onCatsReq(params.name);
             pubSub.publish('cats', params.name);
-            eventEmiter.emit('cats', params.name);
+            eventEmitter.emit('cats', params.name);
              break;
         case '/dogs':
             
