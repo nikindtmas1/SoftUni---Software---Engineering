@@ -57,6 +57,11 @@ const reqHendlar = (req, res) => {
             res.end();
         });
         break;
+
+        case 'mous':
+            res.writeHead(200, {
+                'Content-Type': 'text/html'
+            });
     }
     
     // if(path === '/cats'){
