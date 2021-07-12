@@ -64,7 +64,9 @@ const reqHendlar = (req, res) => {
                 'Content-Type': 'text/html'
             });
 
-
+           const fileMous = fs.createReadStream('./views/mous.html');
+           fileMous.on('data', data => res.write(data));
+           fileMous.on('end', () => res.end());
     }
     
     // if(path === '/cats'){
