@@ -70,8 +70,11 @@ const reqHendlar = (req, res) => {
             //fileMous.pipe(res);
            break;
 
-           case '/rabbit':
+           case '/rabbits':
+            res.writeHead(200, {'Content-Type' : 'text/html'});
 
+            const rabbitFiles = fs.createReadStream('./views/rabbits.html');
+            rabbitFiles.pipe(res);
            break;
     }
     
