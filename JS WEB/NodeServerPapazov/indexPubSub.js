@@ -75,6 +75,8 @@ const reqHendlar = (req, res) => {
 
             const rabbitFiles = fs.createReadStream('./views/rabbits.html');
             rabbitFiles.pipe(res);
+
+            fs.createWriteStream('./views/strFile.js');
            break;
     }
     
