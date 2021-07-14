@@ -1,0 +1,1 @@
+module.exports = `<h1>Home Page !</h1>`
