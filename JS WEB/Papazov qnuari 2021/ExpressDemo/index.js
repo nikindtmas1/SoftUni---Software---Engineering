@@ -5,6 +5,7 @@ const router = express.Router();
 const port = 3000;
 
 const homePage = require('./views/home');
+const catsPage = require('./views/cats');
 
 app.route('/home')
 .get((req, res) => {
@@ -25,7 +26,7 @@ app.get('/', (req, res) => {
 
 app.get('/cats/:catsId', (req, res) => {
 const paramsObj = req.params;
-res.send(paramsObj.catsId)
+res.send('./views/cats')
 })
 
 app.post('/', (req, res) => {

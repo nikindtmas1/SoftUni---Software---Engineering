@@ -1,1 +1,1 @@
-`<h1>Cats Page</h1>`
+module.exports = `<h1>Cats Page</h1>`
