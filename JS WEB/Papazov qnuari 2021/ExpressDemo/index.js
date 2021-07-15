@@ -1,11 +1,13 @@
 const express = require('express');
+const catPage = require('./views/cats');
 
 const app = express();
 const router = express.Router();
 const port = 3000;
 
 const homePage = require('./views/home');
-const catsPage = require('./views/cats');
+//const catsPage = require(catPage);
+//const catPage = require('./views/cats');
 
 app.route('/home')
 .get((req, res) => {
@@ -24,9 +26,13 @@ app.get('/', (req, res) => {
     res.send('Hello Express!');
 });
 
+app.get('./cats',
+(req, res)=> {
+    res.send(catPage)
+})
 app.get('/cats/:catsId', (req, res) => {
 const paramsObj = req.params;
-res.send('./views/cats')
+res.send(req.params.catsId)
 })
 
 app.post('/', (req, res) => {
