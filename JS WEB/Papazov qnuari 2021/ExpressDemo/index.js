@@ -14,6 +14,7 @@ const homePage = require('./views/home');
 
 app.engine('handlebars', handlebars());
 app.set('view engine', 'handlebars');
+
 app.route('/home')
 .get((req, res) => {
     res.send(homePage);
@@ -44,4 +45,7 @@ app.post('/', (req, res) => {
     res.send('POST request');
 })
 
+app.get('/dogs', (req, res) => {
+    res.render('dogs', {layout: false})
+})
 app.listen(port, () => console.log(`Server runing on port ${port}...`));
