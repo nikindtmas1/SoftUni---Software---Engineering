@@ -1,5 +1,6 @@
 const express = require('express');
 //const catPage = require('./views/cats');
+const middleware = require('./middleware/middleware');
 
 const app = express();
 const router = express.Router();
@@ -26,7 +27,7 @@ app.get('/', (req, res) => {
     res.send('Hello Express!');
 });
 
-app.get('/cats',
+app.get('/cats',middleware,
 (req, res)=> {
     res.sendFile(__dirname + '/views/cats.html');
 })

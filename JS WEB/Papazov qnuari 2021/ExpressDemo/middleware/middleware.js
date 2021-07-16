@@ -1,6 +1,8 @@
 const midwar = (req,res,nex) => {
     const message = 'From middleware';
-
-    res.send(message);
+    console.log(message);
+    //res.send(message);
     nex();
 }
+
+module.exports = midwar;
