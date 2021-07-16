@@ -28,11 +28,11 @@ app.get('/', (req, res) => {
 
 app.get('/cats',
 (req, res)=> {
-    res.sendFile(__dirname + '/views/cats.html')
+    res.sendFile(__dirname + '/views/cats.html');
 })
 app.get('/cats/:catsId', (req, res) => {
 const paramsObj = req.params;
-res.send(req.params.catsId)
+res.send(paramsObj.catsId)
 })
 
 app.post('/', (req, res) => {
