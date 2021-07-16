@@ -1,15 +1,19 @@
 const express = require('express');
 //const catPage = require('./views/cats');
 const middleware = require('./middleware/middleware');
+const handlebars = require('express-handlebars');
 
 const app = express();
 const router = express.Router();
+
 const port = 3000;
 
 const homePage = require('./views/home');
 //const catsPage = require(catPage);
 //const catPage = require('./views/cats');
 
+app.engine('handlebars', handlebars());
+app.set('view engine', 'handlebars');
 app.route('/home')
 .get((req, res) => {
     res.send(homePage);
