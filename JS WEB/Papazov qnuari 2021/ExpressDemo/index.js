@@ -1,5 +1,5 @@
 const express = require('express');
-const catPage = require('./views/cats');
+//const catPage = require('./views/cats');
 
 const app = express();
 const router = express.Router();
@@ -26,9 +26,9 @@ app.get('/', (req, res) => {
     res.send('Hello Express!');
 });
 
-app.get('./cats',
+app.get('/cats',
 (req, res)=> {
-    res.send(catPage)
+    res.sendFile(__dirname + '/views/cats.html')
 })
 app.get('/cats/:catsId', (req, res) => {
 const paramsObj = req.params;
