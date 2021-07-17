@@ -16,7 +16,10 @@ app.engine('handlebars', handlebars());
 app.set('view engine', 'handlebars');
 
 app.get('/dogs', (req, res) => {
-    res.render('dogs', {layout: false})
+
+    let name = 'Navcho';
+
+    res.render('dogs', {layout: false, name: name})
 })
 
 app.route('/home')
