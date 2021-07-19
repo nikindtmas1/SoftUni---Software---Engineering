@@ -20,7 +20,12 @@ app.get('/dogs', (req, res) => {
     let name = 'Navcho';
 
     res.render('dogs', {layouts: true, name: name})
-})
+});
+
+app.post('/dogs', (req, res) => {
+
+    res.status(201).send('dog created')
+});
 
 app.route('/home')
 .get((req, res) => {
