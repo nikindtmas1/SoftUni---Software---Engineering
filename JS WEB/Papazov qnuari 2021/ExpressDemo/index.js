@@ -19,7 +19,7 @@ app.get('/dogs', (req, res) => {
 
     let name = 'Navcho';
 
-    res.render('dogs', {layout: false, name: name})
+    res.render('dogs', {layouts: true, name: name})
 })
 
 app.route('/home')
