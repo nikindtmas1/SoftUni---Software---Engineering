@@ -21,13 +21,15 @@ app.set('view engine', 'handlebars');
 
 app.get('/dogs', (req, res) => {
 
-    let name = 'Navcho';
+    //let name = 'Navcho';
 
-    res.render('dogs', {layouts: true, name: name})
+    res.render('dogs', {dogs: dogs.getAll()})
 });
 
 app.post('/dogs', (req, res) => {
     console.log(req.body);
+    let dogName = req.body.dog
+    dogs.add(dogName);
     res.redirect('/dogs');
 });
 
