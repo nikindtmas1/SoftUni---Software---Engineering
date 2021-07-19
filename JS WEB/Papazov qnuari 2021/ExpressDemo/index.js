@@ -3,6 +3,7 @@ const express = require('express');
 const middleware = require('./middleware/middleware');
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
+const dogs = require('./dogs');
 
 const app = express();
 const router = express.Router();
