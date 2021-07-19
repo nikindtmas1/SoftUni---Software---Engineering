@@ -52,5 +52,10 @@ app.post('/', (req, res) => {
     res.send('POST request');
 })
 
+app.get('/elephants', (req, res) => {
+    
+    let elename = 'Garry';
 
+    res.render('elephants', {layouts: true, elename});
+});
 app.listen(port, () => console.log(`Server runing on port ${port}...`));
