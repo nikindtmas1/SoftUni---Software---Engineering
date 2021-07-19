@@ -23,8 +23,8 @@ app.get('/dogs', (req, res) => {
 });
 
 app.post('/dogs', (req, res) => {
-
-    res.status(201).send('dog created')
+    console.log(req.body);
+    res.status(201).send('dog created');
 });
 
 app.route('/home')
