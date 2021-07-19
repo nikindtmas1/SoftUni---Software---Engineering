@@ -2,6 +2,7 @@ const express = require('express');
 //const catPage = require('./views/cats');
 const middleware = require('./middleware/middleware');
 const handlebars = require('express-handlebars');
+const bodyParser = require('body-parser');
 
 const app = express();
 const router = express.Router();
@@ -11,6 +12,8 @@ const port = 3000;
 const homePage = require('./views/home');
 //const catsPage = require(catPage);
 //const catPage = require('./views/cats');
+
+app.use(bodyParser.urlencoded({extended: false}))
 
 app.engine('handlebars', handlebars());
 app.set('view engine', 'handlebars');
@@ -24,7 +27,7 @@ app.get('/dogs', (req, res) => {
 
 app.post('/dogs', (req, res) => {
     console.log(req.body);
-    res.status(201).send('dog created');
+    res.redirect('/dogs');
 });
 
 app.route('/home')
