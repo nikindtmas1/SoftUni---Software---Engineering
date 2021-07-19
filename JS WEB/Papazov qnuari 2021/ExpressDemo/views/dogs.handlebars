@@ -6,5 +6,9 @@
         <input type="text" id="dog-name" name="dog" />
         <input type="submit" value="create" />
     </form>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores a quo similique fugit eveniet reprehenderit sed cum cupiditate! Velit asperiores molestias voluptatem perferendis odit dicta sunt, adipisci et praesentium nostrum?</p>
-    <p>In template</p>
+    
+    <ul>
+        {{#each dogs}}
+            <li>{{this}}</li>
+        {{/each}}
+    </ul>
