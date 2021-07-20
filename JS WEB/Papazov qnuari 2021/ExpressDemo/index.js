@@ -14,7 +14,9 @@ const homePage = require('./views/home');
 //const catsPage = require(catPage);
 //const catPage = require('./views/cats');
 
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use('/static', express.static('static'));
 
 app.engine('handlebars', handlebars());
 app.set('view engine', 'handlebars');
