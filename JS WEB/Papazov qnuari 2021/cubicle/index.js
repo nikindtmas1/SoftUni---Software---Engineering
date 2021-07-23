@@ -6,6 +6,12 @@ const config = require('./config/config');
 
 const handlebars = require('express-handlebars');
 
+app.engine('hbs', handlebars({
+    extname:'hbs'
+}));
+
+app.set('view engine', 'hbs');
+
 app.get('/', (req, res) => {
     res.send('Hello, Express!');
 });
