@@ -4,6 +4,8 @@ const app = express();
 console.log(process.env.NODE_ENV);
 const config = require('./config/config');
 
+const handlebars = require('express-handlebars');
+
 app.get('/', (req, res) => {
     res.send('Hello, Express!');
 });
