@@ -1,6 +1,7 @@
 const express = require('express');
 
 const app = express();
+console.log(process.env.NODE_ENV);
 const port = 5000;
 
 app.get('/', (req, res) => {
