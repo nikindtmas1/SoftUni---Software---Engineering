@@ -13,7 +13,7 @@ app.engine('hbs', handlebars({
 app.set('view engine', 'hbs');
 
 app.get('/', (req, res) => {
-    res.send('Hello, Express!');
+    res.render('home', {layout: false});
 });
 
 app.listen(config.PORT, () => console.log(`Server listening on port ${config.PORT}...`))
