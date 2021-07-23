@@ -2,10 +2,10 @@ const express = require('express');
 
 const app = express();
 console.log(process.env.NODE_ENV);
-const port = 5000;
+const config = require('./config/config');
 
 app.get('/', (req, res) => {
     res.send('Hello, Express!');
 });
 
-app.listen(port, () => console.log(`Server listening on port ${port}...`))
+app.listen(config.PORT, () => console.log(`Server listening on port ${config.PORT}...`))
