@@ -12,6 +12,8 @@ app.engine('hbs', handlebars({
 
 app.set('view engine', 'hbs');
 
+app.use(express.static('static'))
+
 app.get('/', (req, res) => {
     res.render('home', {layout: false});
 });
