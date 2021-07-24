@@ -1,14 +1,14 @@
+const express = require('express');
+const router = express.Router();
 
 
-const productController = {
+router.get('/',(req, res) => {
+    res.render('home', {layout: false});
+})
 
-    index(req, res){
-        res.render('home', {layout: false});
-    },
-
-    create(req, res){
+router.get('/create', (req, res) => {
         res.render('create', {layout: false});
-    }
-}
+    });
 
-module.exports = productController
+
+module.exports = router;
