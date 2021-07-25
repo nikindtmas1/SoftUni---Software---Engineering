@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/create', (req, res) => {
-    res.render('create', { layout: false });
+    res.render('create');
 });
 
 router.get('/details', (req, res) => {
