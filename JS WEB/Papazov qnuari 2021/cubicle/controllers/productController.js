@@ -14,7 +14,5 @@ router.get('/details', (req, res) => {
     res.render('datails', {layout: false});
 });
 
-router.get('/about', (req, res) => {
-    res.render('about', {layout: false});
-})
+
 module.exports = router;
