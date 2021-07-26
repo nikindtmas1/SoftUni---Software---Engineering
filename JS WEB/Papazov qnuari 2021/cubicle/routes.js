@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const productController = require('./controllers/productController');
-const aboutController = require('./controllers/aboutController');
+const homeController = require('./controllers/homeController');
 
 
-router.use('/', productController);
-router.use('/about', aboutController);
+router.use('/products', productController);
+router.use('/', homeController);
 router.get('*', (req, res) => {
     res.render('404');
 });
