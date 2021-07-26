@@ -11,7 +11,8 @@ router.get('/create', (req, res) => {
 });
 
 router.get('/details/:productId', (req, res) => {
-    res.render('datails', {title: 'Product Details'});
+    console.log(req.params.productId);
+    res.render('details', {title: 'Product Details'});
 });
 
 
