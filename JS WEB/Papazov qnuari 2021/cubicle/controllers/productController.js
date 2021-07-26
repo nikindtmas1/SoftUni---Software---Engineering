@@ -10,8 +10,8 @@ router.get('/create', (req, res) => {
     res.render('create', {title: 'Create'});
 });
 
-router.get('/details', (req, res) => {
-    res.render('datails', {layout: false});
+router.get('/details/:productId', (req, res) => {
+    res.render('datails');
 });
 
 
