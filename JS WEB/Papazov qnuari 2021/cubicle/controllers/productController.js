@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Cube = require('../models/cubic');
 const uniqid = require('uniqid');
 
 router.get('/', (req, res) => {
