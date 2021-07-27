@@ -18,7 +18,7 @@ function createProduct(data){
 
         productsData.push(cube);
 
-    fs.watchFile('../config/products.json', JSON.stringify(productsData), (err) => {
+    fs.watchFile(__dirname + '/../config/products.json', JSON.stringify(productsData), (err) => {
         if(err){
             console.log(err);
             return;
