@@ -1,5 +1,6 @@
 const Cube = require('../models/cubic');
 const uniqid = require('uniqid');
+const fs = require('fs');
 
 function createProduct(data){
     let cube = new Cube(
@@ -10,7 +11,7 @@ function createProduct(data){
         data.difficultyLevel
         );
 
-    
+    fs.watchFile('../config/products.json');
 }
 
 module.exports = {
