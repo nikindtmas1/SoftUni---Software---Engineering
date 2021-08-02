@@ -14,7 +14,7 @@ router.get('/create', (req, res) => {
 
 router.post('/create', (req, res) => {
     let data = req.body;
-    let cub = new Cube(uniqid(), data.name, data.description, data.imageUrl, data.level);
+    let cub = new Cube(uniqid(), data.name, data.description, data.imageUrl, data.difficultyLevel);
     console.log(cub);
     //productService.create(req.body)
     res.redirect('/products')
