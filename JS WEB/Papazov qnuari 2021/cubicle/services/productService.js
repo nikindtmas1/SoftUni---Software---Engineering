@@ -5,8 +5,13 @@ const productsData = require('../config/products.json');
 const path = require('path');
 
 
-function getAll(){
-    return productsData;
+function getAll(query){
+
+    let result = productsData;
+    if( query.search ){
+        result = result.filter(x => x.name.toLowerCase().includes(query.search));
+    }
+    return result;
     
 }
 
