@@ -4,7 +4,7 @@ const productService = require('../services/productService');
 
 
 router.get('/', (req, res) => {
-    let products = productService.getAll();
+    let products = productService.getAll(req.query);
     res.render('home', {title: 'Browse', products});
 })
 
@@ -12,7 +12,7 @@ router.get('/create', (req, res) => {
     res.render('create', {title: 'Create'});
 });
 
-router.post('/create', (req, res) => {
+router.post('/create', validateProduct, (req, res) => {
     let data = req.body;
     
     //console.log(cube);
