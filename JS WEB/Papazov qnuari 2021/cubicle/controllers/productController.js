@@ -26,5 +26,18 @@ router.get('/details/:productId', (req, res) => {
     res.render('details', {title: 'Product Details', product});
 });
 
+function validateProduct(req, res, next){
+    let isValid = true;
+
+    if( req.body.name.trim().length < 2 ){
+        isValid = false;
+    }else if(!req.body.imageUrl){
+        isValid = false;
+    }
+
+    if(isValid){
+        next();
+    }
+}
 
 module.exports = router;
