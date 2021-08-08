@@ -1,5 +1,5 @@
 const express = require('express');
-const handlebars = require('handlebars');
+const handlebars = require('express-handlebars');
 
 function setupExpress(app){
 
