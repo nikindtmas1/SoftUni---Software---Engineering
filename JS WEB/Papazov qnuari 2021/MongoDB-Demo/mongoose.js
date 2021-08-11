@@ -25,13 +25,44 @@ db.once('open', ()=> {console.log('Connected to data base')});
 
 let student = new Student({
     firstName:'Nikolay',
-    lastName: 'Nikolaew',
+    lastName: 'Nikolaev',
     facultyNumber: '123456',
     age: 47
 });
 
-student.save((err, result) => {
-    if (err) return console.log(err);
+// studantsSchema.methods.getInfo = function(){
+//     console.log(`Hello my name is ${this.firstName} and I'm ${this.age} years old!`);
+// }
 
-    console.log(result);
+// Student.find()
+// .then((student) => {
+//     student.forEach(x => {
+//         x.getInfo
+//     });
+// });
+
+// student.save((err, result) => {
+//     if (err) return console.log(err);
+
+//     console.log(result);
+// });
+
+// Student.find()
+// .then(res => {
+//     console.log(res);
+// })
+
+// Student.findById('61126e3d440f781130145fe8')
+// .then(res => {
+//     console.log(res);
+// });
+
+// Student.updateOne({_id:'61126e3d440f781130145fe8'}, {$set: {lastName: 'Nikolaev', age: 45}})
+// .then(res => {
+//     console.log(res);
+// })
+
+Student.findById('61126e3d440f781130145fe8')
+.then(res => {
+    console.log(res);
 });
