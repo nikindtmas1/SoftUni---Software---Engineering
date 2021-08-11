@@ -1,4 +1,4 @@
-const fs = require('fs/promises');
+const fs = require('fs');
 const productsDb = require('../config/products.json');
 const path = require('path');
 
