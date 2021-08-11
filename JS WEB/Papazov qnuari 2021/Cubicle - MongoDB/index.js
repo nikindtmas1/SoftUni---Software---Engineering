@@ -6,8 +6,10 @@ console.log(process.env.NODE_ENV);
 const config = require('./config/config');
 
 const expressConfig = require('./config/express');
+const mongooseConfig = require('./config/mongoose');
 
 expressConfig(app);
+mongooseConfig(app);
 
 app.use(routes);
 
