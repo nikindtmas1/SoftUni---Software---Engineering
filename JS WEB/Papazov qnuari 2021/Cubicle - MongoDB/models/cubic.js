@@ -1,4 +1,6 @@
-
+const fs = require('fs/promises');
+const productsDb = require('../config/products.json');
+const path = require('path');
 
 class Cube {
     constructor(id, name, description, imageUrl, level){
@@ -9,7 +11,23 @@ class Cube {
         this.level = level;
     }
 
-    
+    save(){
+
+        productsDb.push(this);
+
+       return fs.writeFile(
+            path.join(__dirname, '../config/products.json'),
+            JSON.stringify(productsDb)
+        )
+    }
+
+    static getAll(){
+        return productsDb;
+    }
+
+    static getOne(id){
+      return  productsDb.find(x => x.id == id);
+    }
 }
 
 module.exports = Cube;
