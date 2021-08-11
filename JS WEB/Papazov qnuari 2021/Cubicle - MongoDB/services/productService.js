@@ -1,30 +1,30 @@
 const Cube = require('../models/cubic');
 const uniqid = require('uniqid');
-const fs = require('fs');
-const productsData = require('../config/products.json');
-const path = require('path');
+const productData = require('../data/productData');
+
 
 
 function getAll(query){
 
-    let result = productsData;
+    let products = productData.getAll();
     if( query.search ){
-        result = result.filter(x => x.name.toLowerCase().includes(query.search));
+        products = products.filter(x => x.name.toLowerCase().includes(query.search));
     }
 
     if(query.from){
-        result = result.filter(x => Number(x.level) >= query.from)
+        products = products.filter(x => Number(x.level) >= query.from)
     }
 
     if(query.to){
-        result = result.filter(x => Number(x.level) <= query.to)
+        products = products.filter(x => Number(x.level) <= query.to)
     }
-    return result;
+    return products;
     
 }
 
 function getOne(id){
-    return productsData.find(x => x.id == id);
+    
+    return productData.getOne(id);
 }
 
 function create(data){
@@ -36,14 +36,16 @@ function create(data){
     data.difficultyLevel
     );
 
-        productsData.push(cube);
+    
 
-    fs.writeFile(path.join(__dirname, '/../config/products.json'), JSON.stringify(productsData), (err) => {
-        if(err){
-            console.log(err);
-            return;
-        }
-    });
+        return productData.create(cube);
+
+    // fs.writeFile(path.join(__dirname, '/../config/products.json'), JSON.stringify(productsData), (err) => {
+    //     if(err){
+    //         console.log(err);
+    //         return;
+    //     }
+    // });
 }
 
 module.exports = {
