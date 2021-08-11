@@ -1,4 +1,4 @@
-const productsDb = require('../config/products.json');
+//const productsDb = require('../config/products.json');
 const Model = require('./Model');
 
 class Cube extends Model {
