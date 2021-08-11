@@ -1,3 +1,5 @@
+
+
 class Cube {
     constructor(id, name, description, imageUrl, level){
         this.id = id;
@@ -6,6 +8,8 @@ class Cube {
         this.imageUrl = imageUrl;
         this.level = level;
     }
+
+    
 }
 
 module.exports = Cube;
