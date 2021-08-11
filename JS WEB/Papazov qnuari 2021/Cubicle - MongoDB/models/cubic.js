@@ -1,7 +1,15 @@
-//const productsDb = require('../config/products.json');
-const Model = require('./Model');
+const mongoose = require('mongoose');
+const cubeSchema = new mongoose.Schema({
+    name: {
+        type:String,
+        required: true
+    },
+    description: String,
+    imageUrl: String,
+    difficultyLevel: Number
+})
 
-class Cube extends Model {
+class Cube {
     constructor(id, name, description, imageUrl, level){
         this.id = id;
         this.name = name;
