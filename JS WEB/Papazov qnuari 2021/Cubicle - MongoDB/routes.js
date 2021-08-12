@@ -7,7 +7,7 @@ const accessoryController = require('./controllers/accessoryController');
 
 
 router.use('/products', productController);
-router.use('/accessory', accessoryController);
+router.use('/accessories', accessoryController);
 router.use('/', homeController);
 router.get('*', (req, res) => {
     res.render('404');
