@@ -1,6 +1,6 @@
 const Cube = require('../models/cubic');
 //const uniqid = require('uniqid');
-//const productData = require('../data/productData');
+const productData = require('../data/productData');
 
 
 
