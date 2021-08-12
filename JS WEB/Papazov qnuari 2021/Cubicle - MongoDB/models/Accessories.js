@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const accessorySchema = new mongoose.Schema({
-    id: mongoose.Types.ObjectId,
+    id: mongoose.Schema.Types.ObjectId,
     name: String,
     imageUrl: String,
     description: String,
