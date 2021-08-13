@@ -30,7 +30,8 @@ router.get('/details/:productId',async (req, res) => {
     res.render('details', {title: 'Product Details', product});
 });
 
-router.get('/:productId/attach', (req, res) => {
+router.get('/products/:productId/attach', (req, res) => {
+   
     res.render('attachAccessory');
 });
 
