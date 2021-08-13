@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const productService = require('../services/productService');
+const accessoryService = require('../services/accessoryService');
 
 
 router.get('/', (req, res) => {
@@ -27,6 +28,10 @@ router.get('/details/:productId',async (req, res) => {
 
     let product =await productService.getOne(req.params.productId);
     res.render('details', {title: 'Product Details', product});
+});
+
+router.get('/:productId/attach', (req, res) => {
+    res.render('attachAccessory');
 });
 
 function validateProduct(req, res, next){
