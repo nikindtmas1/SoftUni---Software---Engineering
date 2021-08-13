@@ -30,9 +30,10 @@ router.get('/details/:productId',async (req, res) => {
     res.render('details', {title: 'Product Details', product});
 });
 
-router.get('/products/:productId/attach', (req, res) => {
-   
-    res.render('attachAccessory');
+router.get('/:productId/attach', async (req, res) => {
+   let product = await productService.getOne(req.params.productId);
+   let accessory = await accessoryService.getAll();
+    res.render('attachAccessory', {product, accessory});
 });
 
 function validateProduct(req, res, next){
