@@ -47,8 +47,14 @@ function create(data){
     // });
 }
 
+async function attachAccessory(productId, accessoryId){
+   let product = await Cube.findById(productId);
+   let accessory = await Accessory.findById(accessoryId);
+}
+
 module.exports = {
     getAll,
     getOne,
-    create
+    create,
+    attachAccessory
 }
