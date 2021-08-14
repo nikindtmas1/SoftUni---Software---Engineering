@@ -32,9 +32,14 @@ router.get('/details/:productId',async (req, res) => {
 
 router.get('/:productId/attach', async (req, res) => {
    let product = await productService.getOne(req.params.productId);
-   let accessory = await accessoryService.getAll();
-    res.render('attachAccessory', {product, accessory});
+   let accessories = await accessoryService.getAll();
+    res.render('attachAccessory', {product, accessories});
 });
+
+router.post('/:productId/attach', (req, res) => {
+    productService.attachAccessory(req.params.productId, req.body.accessory)
+    .then(() => res.redirect(`/products/details/${req.params.productId}`));
+})
 
 function validateProduct(req, res, next){
     let isValid = true;
