@@ -1,7 +1,7 @@
 const Cube = require('../models/cubic');
 //const uniqid = require('uniqid');
 //const productData = require('../data/productData');
-
+const Accessory = require('../models/Accessory');
 
 
 async function getAll(query){
@@ -50,11 +50,20 @@ function create(data){
 async function attachAccessory(productId, accessoryId){
    let product = await Cube.findById(productId);
    let accessory = await Accessory.findById(accessoryId);
+
+   product.accessories.push(accessory);
+
+   return product.save();
+}
+
+function getOneWithAccessories(id){
+    return Cube.findById(id).populate('accessories').lean();
 }
 
 module.exports = {
     getAll,
     getOne,
+    getOneWithAccessories,
     create,
     attachAccessory
 }
