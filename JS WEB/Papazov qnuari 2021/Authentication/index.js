@@ -35,6 +35,7 @@ app.get('/', (req, res) => {
 
 app.get('/show', (req, res) => {
     console.log(req.cookies);
+    res.send(req.cookies);
 });
 
 app.get('/login/:username', (req, res) => {
