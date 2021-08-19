@@ -5,7 +5,7 @@ const productController = require('./controllers/productController')
 
 router.use('/', productController);
 router.get('*', (req, res) => {
-    res.render('404');
+    res.render('404.hbs');
 });
 
 module.exports = router;
