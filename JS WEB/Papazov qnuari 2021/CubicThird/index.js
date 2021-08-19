@@ -1,17 +1,15 @@
 const express = require('express');
-const exprhbs = require('express-handlebars')
-
-
 const app = express();
+const setupExpress = require('./config/configExpress');
+setupExpress(app);
 const port = 5000;
 
-app.engine('handlebars', exprhbs());
-app.set('view engine', 'handlebars');
+
 
 
 app.get('/', (req,res) => {
 
-    res.render('home.handlebars');
+    res.render('home.hbs');
 })
 
 app.listen(port, () => console.log(`Server running on port: ${port}...`));
