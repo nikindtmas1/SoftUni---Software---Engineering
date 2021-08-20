@@ -1,4 +1,4 @@
-const Cube = require('./Models/cube');
+const Cube = require('../Models/cube');
 
 async function getAll(query){
 
