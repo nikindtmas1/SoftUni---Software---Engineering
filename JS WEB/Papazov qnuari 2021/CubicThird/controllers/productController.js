@@ -16,7 +16,7 @@ router.get('/about', (req, res) => {
 });
 
 router.get('/create', (req, res) => {
-    res.render('create.hbs');
+    res.render('create', {title: 'Create'});
 });
 
 router.get('/details/:productId', (req, res) => {
