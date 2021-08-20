@@ -1,6 +1,6 @@
 const config = {
 
-    dvelopment: {
+    development: {
         PORT: 5000
     },
 
