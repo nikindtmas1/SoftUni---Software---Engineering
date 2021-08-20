@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const productService = require('./services/productService');
+const productService = require('../services/productService');
 
 
 router.get('/', (req,res) => {
@@ -23,7 +23,7 @@ router.get('/details/:productId', (req, res) => {
     res.render('details.hbs');
 });
 
-router.post('/create', (req, res) => {
+router.post('/create', validateProduct, (req, res) => {
 
     let data = req.body;
     console.log(data);
@@ -31,5 +31,20 @@ router.post('/create', (req, res) => {
 
     res.redirect('/');
 })
+
+function validateProduct(req, res, next){
+
+    let isValid = true;
+
+    if(req.body.name.trim().length < 2){
+        isValid = false;
+    }else if(!req.body.imageUrl){
+        isValid = false;
+    }
+
+    if(isValid){
+        next();
+    }
+}
 
 module.exports = router;
