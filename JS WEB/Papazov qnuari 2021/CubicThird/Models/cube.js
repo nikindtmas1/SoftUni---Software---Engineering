@@ -21,11 +21,11 @@ const cubeSchema = new mongoose.Schema({
     },
 
     difficultyLevel: {
-        type: String,
+        type: Number,
         required: true,
         min: 1,
         max: 6
     }
 });
 
-module.exports = mongoose.model('cube', cubeSchema);
+module.exports = mongoose.model('Cube', cubeSchema);
