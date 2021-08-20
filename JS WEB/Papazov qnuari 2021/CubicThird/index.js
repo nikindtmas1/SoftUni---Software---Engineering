@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+console.log(process.env.NODE_ENV);
 const setupExpress = require('./config/configExpress');
 setupExpress(app);
 const routes = require('./routes');
