@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const productService = require('./services/productService');
 
 
 router.get('/', (req,res) => {
-    res.render('home.hbs');
+    productService.getAll(req.query)
+    .then(products => {
+
+        res.render('home', {title: 'Brows', products});
+    })
 });
 
 router.get('/about', (req, res) => {
@@ -22,6 +27,9 @@ router.post('/create', (req, res) => {
 
     let data = req.body;
     console.log(data);
+    productService.create(data);
+
+    res.redirect('/');
 })
 
 module.exports = router;
