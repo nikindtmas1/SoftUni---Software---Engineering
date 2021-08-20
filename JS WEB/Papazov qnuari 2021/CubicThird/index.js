@@ -4,10 +4,13 @@ const setupExpress = require('./config/configExpress');
 setupExpress(app);
 const routes = require('./routes');
 const config = require('./config/configPort');
+const mongooseConfig = require('./config/mongoose');
+mongooseConfig(app);
 //const port = 5000;
 
 
 app.use(routes);
+
 
 // app.get('/', (req,res) => {
 
