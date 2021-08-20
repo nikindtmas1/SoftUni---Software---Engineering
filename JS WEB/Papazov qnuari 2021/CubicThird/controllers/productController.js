@@ -18,4 +18,10 @@ router.get('/details/:productId', (req, res) => {
     res.render('details.hbs');
 });
 
+router.post('/create', (req, res) => {
+
+    let data = req.body;
+    console.log(data);
+})
+
 module.exports = router;
