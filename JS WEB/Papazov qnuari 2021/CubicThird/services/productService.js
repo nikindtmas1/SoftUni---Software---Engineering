@@ -1,11 +1,17 @@
+const Cube = require('./Models/cube');
 
-function getAll(){
+async function getAll(query){
 
+    let products = await Cube.find({}).lean();
+
+    return products;
 
 }
 
 function create(data){
+let cube = new Cube(data);
 
+return cube.save();
 
 }
 
