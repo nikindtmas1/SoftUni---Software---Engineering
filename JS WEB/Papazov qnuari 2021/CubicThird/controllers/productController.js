@@ -12,7 +12,7 @@ router.get('/', (req,res) => {
 });
 
 router.get('/about', (req, res) => {
-    res.render('about.hbs');
+    res.render('about', {title: 'About'});
 });
 
 router.get('/create', (req, res) => {
