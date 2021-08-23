@@ -19,8 +19,10 @@ router.get('/create', (req, res) => {
     res.render('create', {title: 'Create'});
 });
 
-router.get('/details/:productId', (req, res) => {
-    res.render('details.hbs');
+router.get('/details/:productId', async (req, res) => {
+
+    let product = await productService.getOne(req.params.productId)
+    res.render('details', {title: 'Product Details', product});
 });
 
 router.post('/create', validateProduct, (req, res) => {
