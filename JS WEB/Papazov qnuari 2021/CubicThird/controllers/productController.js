@@ -43,7 +43,7 @@ router.get('/:productId/attach', (req,res) => {
 });
 
 function validateProduct(req, res, next){
-console.log(req.body)
+
     let isValid = true;
 
     if(req.body.name.trim().length < 2){
