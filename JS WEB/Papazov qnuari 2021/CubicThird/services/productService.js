@@ -15,8 +15,14 @@ return cube.save();
 
 }
 
+async function getOne(id){
+    let product = await Cube.findById(id).lean();
+    return product;
+}
+
 module.exports = {
 
     getAll,
-    create
+    create,
+    getOne
 }
