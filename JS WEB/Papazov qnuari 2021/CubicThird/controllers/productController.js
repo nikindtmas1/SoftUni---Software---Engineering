@@ -24,9 +24,9 @@ router.get('/details/:productId', (req, res) => {
 });
 
 router.post('/create', validateProduct, (req, res) => {
-
+   
     let data = req.body;
-    console.log(data);
+  
     productService.create(data);
 
     res.redirect('/');
