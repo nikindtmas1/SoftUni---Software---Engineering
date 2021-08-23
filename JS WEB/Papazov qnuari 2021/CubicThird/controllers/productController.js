@@ -32,7 +32,11 @@ router.post('/create', validateProduct, (req, res) => {
     productService.create(data);
 
     res.redirect('/');
-})
+});
+
+router.get('/attach', (req,res) => {
+    res.render('attachAccessory', {title: 'AttachAccessory'})
+});
 
 function validateProduct(req, res, next){
 
