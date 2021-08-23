@@ -7,6 +7,8 @@ const routes = require('./routes');
 const config = require('./config/configPort');
 const mongooseConfig = require('./config/mongoose');
 mongooseConfig(app);
+const bodyParser = require('body-parser').urlencoded({ extended: false });
+app.use(bodyParser);
 //const port = 5000;
 
 

@@ -12,25 +12,35 @@ router.get('/', (req,res) => {
 });
 
 router.get('/about', (req, res) => {
-    res.render('about.hbs');
+    res.render('about', {title: 'About'});
 });
 
 router.get('/create', (req, res) => {
     res.render('create', {title: 'Create'});
 });
 
-router.get('/details/:productId', (req, res) => {
-    res.render('details.hbs');
+router.get('/details/:productId', async (req, res) => {
+
+    let product = await productService.getOne(req.params.productId)
+    res.render('details', {title: 'Product Details', product});
 });
 
 router.post('/create', validateProduct, (req, res) => {
-
+   
     let data = req.body;
-    console.log(data);
+  
     productService.create(data);
 
     res.redirect('/');
-})
+});
+
+router.get('/accessories/create', (req,res) => {
+    res.render('createAccessory', {title: 'CreateAccessory'})
+});
+
+router.get('/:productId/attach', (req,res) => {
+    res.render('attachAccessory', {title: 'AttachAccessory'})
+});
 
 function validateProduct(req, res, next){
 console.log(req.body)
