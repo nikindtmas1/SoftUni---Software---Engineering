@@ -34,13 +34,7 @@ router.post('/products/create', validateProduct, (req, res) => {
     res.redirect('/products');
 });
 
-router.get('/accessories/create', (req,res) => {
-    res.render('createAccessory', {title: 'CreateAccessory'})
-});
 
-router.get('/:productId/attach', (req,res) => {
-    res.render('attachAccessory', {title: 'AttachAccessory'})
-});
 
 function validateProduct(req, res, next){
 
