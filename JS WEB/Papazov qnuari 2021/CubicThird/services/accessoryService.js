@@ -31,5 +31,6 @@ module.exports = {
     createAccessory,
     getAllAccessories,
     getOneAccessory,
+    getAllWithouth
     
 }
