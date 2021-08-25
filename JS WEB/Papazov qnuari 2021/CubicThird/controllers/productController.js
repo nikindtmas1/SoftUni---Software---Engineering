@@ -22,7 +22,10 @@ router.get('/products/create', (req, res) => {
 
 router.get('/details/:productId', async (req, res) => {
 
-    let product = await productService.getOne(req.params.productId)
+    //let product = await productService.getOne(req.params.productId);
+    let product =await productService.getOneWithAccessories(req.params.productId);
+
+
     res.render('details', {title: 'Product Details', product});
 });
 
@@ -31,6 +34,11 @@ router.get('/:productId/attach', async (req,res) => {
     let accessories = await accessoryService.getAllAccessories();
     res.render('attachAccessory', {product, accessories});
 });
+
+router.post('/:productId/attach', (req, res) => {
+    productService.attachAccessory(req.params.productId, req.body.accessory)
+    .then(() => res.redirect(`/products/details/${req.params.productId}`));
+})
 
 router.post('/products/create', validateProduct, (req, res) => {
    
