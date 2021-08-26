@@ -1,4 +1,5 @@
 const Cube = require('../Models/cube');
+const Accessory = require('../Models/accessory');
 
 async function getAll(query){
 
