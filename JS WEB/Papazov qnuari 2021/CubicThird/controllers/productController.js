@@ -30,14 +30,15 @@ router.get('/details/:productId', async (req, res) => {
 });
 
 router.get('/:productId/attach', async (req,res) => {
-    let product = await accessoryService.getOneAccessory(req.params.productId);
+    let product = await productService.getOne(req.params.productId);
+    //let product = await accessoryService.getOneAccessory(req.params.productId);
     let accessories = await accessoryService.getAllAccessories();
     res.render('attachAccessory', {product, accessories});
 });
 
 router.post('/:productId/attach', (req, res) => {
     productService.attachAccessory(req.params.productId, req.body.accessory)
-    .then(() => res.redirect(`/products/details/${req.params.productId}`));
+    .then(() => res.redirect(`/details/${req.params.productId}`));
 })
 
 router.post('/products/create', validateProduct, (req, res) => {
