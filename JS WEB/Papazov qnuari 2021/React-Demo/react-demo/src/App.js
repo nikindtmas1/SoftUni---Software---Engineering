@@ -1,6 +1,13 @@
 //import logo from './logo.svg';
 import './App.css';
 import Heading from './components/heading';
+import BookList from './components/BookList';
+
+const booksData =  [
+  {title: 'Harry Potter', description:'Wizards and stuff'},
+  {title: 'Lord of the rings', description: 'asdasd'},
+  {title: 'Lost simbol', description: 'Dan Broun'}
+]
 
 function App() {
   return (
@@ -23,6 +30,8 @@ function App() {
 
     <div className='Site-Wrapper'>
       <Heading />
+
+      <BookList books={booksData} />
     </div>
   );
 }
