@@ -11,10 +11,12 @@ class BookList extends Component{
        
         return(
             <div className='Book-List'>
-                <h1>Our Book Callection</h1>
-                <Book title='Harry Potter' description='Wizards and stuff' />
-                <Book title='Lord of the rings' description='asdasd' />
-                <Book title='Lost simbol' description='Dan Broun' />
+                <h2>Our Book Callection</h2>
+               {
+                   this.props.books.map(x => {
+                       return <Book title={x.title} description={x.description} />
+                   })
+               }
             </div>
 
         )
