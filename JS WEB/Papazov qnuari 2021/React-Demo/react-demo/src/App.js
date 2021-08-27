@@ -6,7 +6,8 @@ import BookList from './components/BookList';
 const booksData =  [
   {title: 'Harry Potter', description:'Wizards and stuff'},
   {title: 'Lord of the rings', description: 'asdasd'},
-  {title: 'Lost simbol', description: 'Dan Broun'}
+  {title: 'Lost simbol', description: 'Dan Broun'},
+  {title: 'The Bible', description: 'Very importan'},
 ]
 
 function App() {
