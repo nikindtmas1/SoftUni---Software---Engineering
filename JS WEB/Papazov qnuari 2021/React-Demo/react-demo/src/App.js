@@ -21,7 +21,7 @@ function App() {
     //   </header>
     // </div>
 
-    <div className='SIte-Wrapper'>
+    <div className='Site-Wrapper'>
       <Heading />
     </div>
   );
