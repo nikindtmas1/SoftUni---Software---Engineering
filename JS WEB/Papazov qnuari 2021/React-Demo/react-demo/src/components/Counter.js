@@ -14,6 +14,7 @@ class Counter extends Component {
         return (
             <div className='Counter'>
                 <h3>Book Counter</h3>
+                <button onClick={() => this.setState({count: this.state.count - 1})}>-</button>
                 <span>{this.state.count}</span>
                 <button onClick={() => this.setState({count: this.state.count + 1})}>+</button>
             </div>
