@@ -2,6 +2,7 @@
 import './App.css';
 import Heading from './components/heading';
 import BookList from './components/BookList';
+import Counter from './components/Counter';
 
 const booksData =  [
   {title: 'Harry Potter', description:'Wizards and stuff'},
@@ -32,6 +33,7 @@ function App() {
     <div className='Site-Wrapper'>
       <Heading />
 
+      <Counter />
       <BookList books={booksData} />
     </div>
   );
