@@ -9,7 +9,7 @@ class Counter extends Component {
     render(){
         return (
             <div className='Counter'>
-
+                <h3>Book Counter</h3>
                 <span>10</span>
                 <button>+</button>
             </div>
