@@ -9,7 +9,9 @@ class Counter extends Component {
             count: 11
         }
     }
-
+resetCounter(){
+    this.setState({count: 0})
+}
     render(){
         return (
             <div className='Counter'>
@@ -17,6 +19,7 @@ class Counter extends Component {
                 <button onClick={() => this.setState({count: this.state.count - 1})}>-</button>
                 <span>{this.state.count}</span>
                 <button onClick={() => this.setState({count: this.state.count + 1})}>+</button>
+                <button onClick={this.resetCounter.bind(this)}>Reset</button>
             </div>
             )
     }
