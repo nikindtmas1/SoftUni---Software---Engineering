@@ -4,7 +4,7 @@ function Book(props){
 
 
 return(
-    <article onClick={() => console.log(`${props.title} is clicked`)}>
+    <article className={props.isSelected ? 'Selected-book' : ''}>
         <h3>{props.title}</h3>
         <p>{props.description || 'Default Description'}</p>
     </article>
