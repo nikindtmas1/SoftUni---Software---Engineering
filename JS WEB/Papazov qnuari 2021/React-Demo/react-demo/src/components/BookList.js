@@ -7,6 +7,10 @@ class BookList extends Component{
         super(props)
     }
 
+    bookClicked(title){
+        console.log(`The book ${title} has been ...`);
+    }
+
     render(){
        
         return(
@@ -14,7 +18,12 @@ class BookList extends Component{
                 <h2>Our Book Callection</h2>
                {
                    this.props.books.map(x => {
-                       return <Book title={x.title} description={x.description} />
+                       return <Book 
+                       title={x.title} 
+                       description={x.description}
+                       clickHandler={this.bookClicked.bind(this, x.title)}
+                       author={x.author}
+                       />
                    })
                }
             </div>
