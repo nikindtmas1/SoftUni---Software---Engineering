@@ -1,7 +1,13 @@
 
 
 function Book(props){
-
+if(!props.title){
+    return (
+    <article>
+        <p>No information provided</p>
+    </article>
+    )
+}
 
 return(
     <article>
