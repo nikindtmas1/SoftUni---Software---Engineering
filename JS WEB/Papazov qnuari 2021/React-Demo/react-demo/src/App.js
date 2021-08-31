@@ -7,8 +7,9 @@ import Counter from './components/Counter';
 const booksData =  [
   {title: 'Harry Potter', description:'Wizards and stuff'},
   {title: 'Lord of the rings', description: 'asdasd'},
-  {title: 'Lost simbol', description: 'Dan Broun'},
-  {title: 'The Bible', description: 'Very importan'},
+  {title: 'Lost simbol', description: 'Dan Broun', author: 'Niki'},
+  {title: 'The Bible', description: 'Very importan', author: 'God'},
+  {title: null, description: 'Missing book'},
 ]
 
 function App() {
