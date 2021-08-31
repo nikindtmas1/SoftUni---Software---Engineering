@@ -11,7 +11,7 @@ if(!props.title){
 
 return(
     <article>
-        <h3 onClick={props.clickHandler}>{props.title}</h3>
+        <h3 onClick={props.clickHandler}>{props.title ? props.title : 'Title no provided'}</h3>
         <p>{props.description || 'Default Description'}</p>
     </article>
 )
