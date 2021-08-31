@@ -8,7 +8,7 @@ class BookList extends Component{
     }
 
     bookClicked(title){
-        console.log(`The book ${title} has been ...`);
+        console.log(`The book ${title} has been added to list`);
     }
 
     render(){
