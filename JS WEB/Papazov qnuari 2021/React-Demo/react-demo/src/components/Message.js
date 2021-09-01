@@ -24,6 +24,10 @@ class Message extends Component{
         console.log('ComponentDidUpdate');
     }
 
+    componentWillUnmount(){
+        console.log('ComponentWillUnMount ');
+    }
+
     render(){
         console.log('Render');
         return <span>{this.props.text} | {this.state.company}</span>
