@@ -21,7 +21,9 @@ class BookList extends Component{
                        return <Book 
                        title={x.title} 
                        description={x.description}
-                       clickHandler={this.bookClicked.bind(this, x.title)}
+                       isSelected={true}
+                       //clickHandler={this.bookClicked.bind(this, x.title)}
+                       clickHandler={() => this.bookClicked(x.title)}
                        author={x.author}
                        isSelected={true}
                        />
