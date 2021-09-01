@@ -6,10 +6,27 @@ class Message extends Component{
         super(props)
 
         console.log('Constructor');
+
+        this.state = {
+            company: 'SoftUni'
+        }
+    }
+
+    componentDidMount(){
+        console.log('ComponentDidMount');
+
+        setTimeout(() => {
+            this.setState({company: 'Software university'})
+        }, 1000)
+    }
+
+    componentDidUpdate(){
+        console.log('ComponentDidUpdate');
     }
 
     render(){
-        return <span>{this.props.text}</span>
+        console.log('Render');
+        return <span>{this.props.text} | {this.state.company}</span>
     }
 }
 
