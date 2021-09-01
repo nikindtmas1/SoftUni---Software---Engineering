@@ -3,6 +3,7 @@ import './App.css';
 import Heading from './components/heading';
 import BookList from './components/BookList';
 import Counter from './components/Counter';
+import Footer from './components/Footer';
 
 const booksData =  [
   {title: 'Harry Potter', description:'Wizards and stuff'},
@@ -36,6 +37,8 @@ function App() {
 
       <Counter />
       <BookList books={booksData} />
+
+      <Footer />
     </div>
   );
 }
