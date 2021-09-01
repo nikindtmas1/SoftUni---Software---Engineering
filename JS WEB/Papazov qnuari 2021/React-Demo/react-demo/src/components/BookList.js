@@ -23,6 +23,7 @@ class BookList extends Component{
                        description={x.description}
                        clickHandler={this.bookClicked.bind(this, x.title)}
                        author={x.author}
+                       isSelected={true}
                        />
                    })
                }
