@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import Welcome from './component/Home';
-import Navigation from './component/Navigation';
+import Welcome from './component/Header/Header';
+import Navigation from './component/Navigation/Navigation';
+
+
 
 function App() {
   return (
