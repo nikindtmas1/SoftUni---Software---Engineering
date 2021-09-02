@@ -1,13 +1,13 @@
 {
     "posts": [
         {
-            "_id": 1,
+            "id": 1,
             "content": "Some content 1",
             "authot": "Pesho"
         },
 
         {
-            "_id": 2,
+            "id": 2,
             "content": "Some content 2",
             "authot": "Gosho"
         }
