@@ -1,4 +1,5 @@
 import { Component } from "react";
+import styles from './Aside.module.css';
 
 class Aside extends Component{
 
@@ -6,9 +7,9 @@ class Aside extends Component{
 
         return (
 
-            <aside>
+            <aside className={styles.Aside}>
                 <ul>
-                    <li>Going to 1</li>
+                    <li className={styles.listItem}>Going to 1</li>
                     <li>Going to 2</li>
                     <li>Going to 3</li>
                     <li>Going to 4</li>
