@@ -8,7 +8,7 @@ class Aside extends Component{
         return (
 
             <aside className={styles.Aside}>
-                <ul>
+                <ul className={styles.listItem}>
                     <li className={styles.listItem}>Going to 1</li>
                     <li className={styles.listItem}>Going to 2</li>
                     <li className={styles.listItem}>Going to 3</li>
