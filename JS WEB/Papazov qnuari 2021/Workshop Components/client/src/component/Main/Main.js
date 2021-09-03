@@ -7,16 +7,17 @@ class Main extends Component{
 
         return(
           
-            <main className='main-container'>
+            <main className='Main'>
                 <h1 className={styles.h1}>Main Component</h1>
-                {posts.map(x => 
-                <p>{x.content}</p>
-                    
-                    )}
+               
             </main>
+
+            
         )
     }
 
 }
 
 export default Main;
+
+// {posts.map(x => <p key={x._id}>{x.content}</p>)}
