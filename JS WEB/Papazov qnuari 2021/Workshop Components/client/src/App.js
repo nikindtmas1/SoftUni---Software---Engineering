@@ -3,6 +3,7 @@ import './App.css';
 import Welcome from './component/Header/Header';
 import Navigation from './component/Navigation/Navigation';
 import Aside from './component/Aside/Aside';
+import Footer from './component/Footer/Footer';
 
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
     <Navigation />
 
     <Aside />
+
+    <Footer />
     </div>
   );
 }
