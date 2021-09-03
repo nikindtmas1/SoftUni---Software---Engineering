@@ -2,7 +2,7 @@
 import './App.css';
 import Welcome from './component/Header/Header';
 import Navigation from './component/Navigation/Navigation';
-
+import Aside from './component/Aside/Aside';
 
 
 function App() {
@@ -12,6 +12,8 @@ function App() {
     <Welcome />
 
     <Navigation />
+
+    <Aside />
     </div>
   );
 }
