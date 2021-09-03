@@ -18,6 +18,7 @@ class Aside extends Component{
                     <li className={styles.listItem}>Going to 7</li>
                     <li className={styles.listItem}>Going to 8</li>
                     <li className={styles.listItem}>Going to 9</li>
+                    <li className={styles.listItem}>Going to 10</li>
                 </ul>
             </aside>
         )
