@@ -6,13 +6,13 @@ class Navigation extends Component{
         return(
             <nav className={styles.Navigation}>
                 <ul>
-                    <li className={styles.listItem}>
-                        <a href='#'>Going to 1 </a>
-                        <a href='#'>Going to 2 </a>
-                        <a href='#'>Going to 3 </a>
-                        <a href='#'>Going to 4 </a>
-                        <a href='#'>Going to 5 </a>
-                        <a href='#'>Going to 6 </a>
+                    <li >
+                        <a href='#' className={styles.listItem}>Going to 1 </a>
+                        <a href='#' className={styles.listItem}>Going to 2 </a>
+                        <a href='#' className={styles.listItem}>Going to 3 </a>
+                        <a href='#' className={styles.listItem}>Going to 4 </a>
+                        <a href='#' className={styles.listItem}>Going to 5 </a>
+                        <a href='#' className={styles.listItem}>Going to 6 </a>
                     </li>
 
                 </ul>
