@@ -7,7 +7,7 @@ class Footer extends Component{
 
         return (
 
-            <footer>
+            <footer className={styles.Footer}>
                   <ul>
                     <li >
                         <a href='#' className={styles.listItem}>Going to 1 </a>
@@ -19,6 +19,7 @@ class Footer extends Component{
                     </li>
 
                 </ul>
+                <p>Software University</p>
             </footer>
         )
     }
