@@ -1,14 +1,20 @@
 import { Component } from "react";
 import styles from './Main.module.css';
 
-const Main = () => {
+const Main = ({
+    posts
+}) => {
 
     return (
 
         <main className={styles.Main}>
-            
+
             <h1>Soooooome Heading</h1>
-            <p>Some posts</p>
+
+            {posts.map(x => 
+            <p>{x.content}</p>
+                
+                )}
 
         </main>
 
