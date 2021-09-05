@@ -40,7 +40,7 @@ class App extends Component{
       <div className={styles.Container}>
       <Aside />
 
-      <Main posts={this.state.posts}/>
+      <Main posts={this.state.posts} />
         
       </div>
       <Footer />
