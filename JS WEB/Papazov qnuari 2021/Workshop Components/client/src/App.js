@@ -37,9 +37,12 @@ class App extends Component{
       <Welcome />
   
       <Navigation />
-  
+      <div className={styles.Container}>
       <Aside />
+
       <Main posts={this.state.posts}/>
+        
+      </div>
       <Footer />
       </div>
     )
