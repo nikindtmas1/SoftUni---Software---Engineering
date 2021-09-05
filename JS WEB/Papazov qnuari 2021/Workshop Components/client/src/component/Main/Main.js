@@ -12,7 +12,7 @@ const Main = ({
             <h1>Soooooome Heading</h1>
 
             {posts.map(x => 
-            <p>{x.content}</p>
+            <p key={x._id}>{x.content}</p>
                 
                 )}
 
