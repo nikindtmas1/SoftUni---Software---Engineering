@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Post from "../Post/Post";
 import styles from './Main.module.css';
 
 const Main = ({
@@ -11,10 +12,14 @@ const Main = ({
 
             <h1>Soooooome Heading</h1>
 
+            <div className='posts'>
+
             {posts.map(x => 
-            <p key={x._id}>{x.content}</p>
+            <Post key={x._id}>{x.content}</Post>
                 
                 )}
+                
+            </div>
 
         </main>
 
