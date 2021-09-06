@@ -15,7 +15,11 @@ const Main = ({
             <div className='posts'>
 
             {posts.map(x => 
-            <Post key={x._id}>{x.content}</Post>
+            <Post 
+            key={x._id} 
+            content={x.content}
+            author={x.author}
+            />
                 
                 )}
                 
