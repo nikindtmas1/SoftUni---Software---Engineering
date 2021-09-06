@@ -1,13 +1,20 @@
 import './Post.css';
 
 const Post = ({
-    children
+    content,
+    author
 }) => {
 
     return (
-        <li>
-
-        </li>
+        <div className='post'>
+            <img src='' />
+            <p className='post-description'>{content}</p>
+                <div>
+                    <span>
+                        <small>Author:</small> {author}
+                    </span>
+                </div>
+        </div>
     )
 
 }
