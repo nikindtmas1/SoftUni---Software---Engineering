@@ -7,7 +7,7 @@ const Post = ({
 
     return (
         <div className='Post'>
-            <img src='' />
+            <img src='../public/bird_blue.png' />
             <p className='description'>{content}</p>
                 <div>
                     <span>
