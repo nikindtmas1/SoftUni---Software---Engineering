@@ -1,9 +1,13 @@
+import styles from './About.module.css';
 
 
 const About = () => {
 
     return (
-        <h1>About Page</h1>
+        <main className={styles.Main}>
+
+            <h1>About Page</h1>
+        </main>
     )
 
 }
