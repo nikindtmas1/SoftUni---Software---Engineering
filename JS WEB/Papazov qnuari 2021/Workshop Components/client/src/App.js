@@ -10,6 +10,8 @@ import Navigation from './component/Navigation/Navigation';
 import Aside from './component/Aside/Aside';
 import Footer from './component/Footer/Footer';
 import Main from './component/Main/Main';
+import About from './component/About/About';
+import Contact from './component/Contact/Contact';
 
 
 class App extends Component{
@@ -41,6 +43,8 @@ class App extends Component{
       <div className={styles.Container}>
       <Aside />
 
+      <Route path='/about' component={About} />
+      <Route path='/contact' component={Contact} />
       <Main posts={this.state.posts} />
         
       </div>
