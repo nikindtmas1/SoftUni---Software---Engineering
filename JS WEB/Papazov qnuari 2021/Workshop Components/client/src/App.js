@@ -43,9 +43,15 @@ class App extends Component{
       <div className={styles.Container}>
       <Aside />
 
+      <Switch>
       <Route path='/about' component={About} />
       <Route path='/contact' component={Contact} />
+      <Route path='/'>
+
       <Main posts={this.state.posts} />
+      </Route>
+      </Switch>
+      
         
       </div>
       <Footer />
