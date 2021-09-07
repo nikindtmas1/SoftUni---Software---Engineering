@@ -2,6 +2,7 @@
 import { Component } from 'react';
 
 import * as postService from './services/postServices';
+import { Route, Link, NavLink, Redirect, Switch } from 'react-router-dom';
 
 import styles from'./App.module.css';
 import Welcome from './component/Header/Header';
