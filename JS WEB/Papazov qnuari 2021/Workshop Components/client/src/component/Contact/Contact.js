@@ -1,8 +1,11 @@
-
+import styles from './Contact.module.css';
 const Contact = () => {
 
     return (
-        <h1>Contact As</h1>
+        <main className={styles.Main}>
+
+            <h1>Contact Us</h1>
+        </main>
     )
 }
 
