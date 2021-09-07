@@ -6,9 +6,9 @@ const Post = ({
 }) => {
 
     return (
-        <div className='post'>
+        <div className='Post'>
             <img src='' />
-            <p className='post-description'>{content}</p>
+            <p className='description'>{content}</p>
                 <div>
                     <span>
                         <small>Author:</small> {author}
