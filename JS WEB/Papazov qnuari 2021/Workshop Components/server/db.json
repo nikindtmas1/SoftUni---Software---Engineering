@@ -10,6 +10,11 @@
             "id": 2,
             "content": "Some content 2",
             "authot": "Gosho"
+        },
+        {
+            "id": 3,
+            "content": "Some content 3",
+            "authot": "Stamat"
         }
     ]
 }
