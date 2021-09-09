@@ -8,7 +8,8 @@ const Navigation = () => {
           <p className={styles.dashboard}>Dashboard</p>
           <ul>
               <li>
-                  <a>Go to 1</a>
+                  <a>Register</a>
+                  <a>Login</a>
               </li>
           </ul>
 
