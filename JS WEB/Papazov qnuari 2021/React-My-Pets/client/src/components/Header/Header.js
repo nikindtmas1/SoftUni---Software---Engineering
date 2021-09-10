@@ -11,21 +11,21 @@ const Header = () => {
 
                 <section class="navbar-dashboard">
                     <div class="first-bar">
-                        <a href="#">Dashboard</a>
+                        <a href="/">Dashboard</a>
                         <a class="button" href="#">My Pets</a>
                         <a class="button" href="/create">Add Pet</a>
                     </div>
                     <div class="second-bar">
                         <ul>
                             <li>Welcome, Pesho!</li>
-                            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                         </ul>
                     </div>
                 </section>
                 <section class="navbar-anonymous">
                     <ul>
-                        <li><a href="#"><i class="fas fa-user-plus"></i> Register</a></li>
-                        <li><a href="#"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                        <li><a href="/register"><i class="fas fa-user-plus"></i> Register</a></li>
+                        <li><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
                     </ul>
                 </section>
             </nav>
