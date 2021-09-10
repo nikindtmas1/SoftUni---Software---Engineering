@@ -13,7 +13,7 @@ const Header = () => {
                     <div class="first-bar">
                         <a href="#">Dashboard</a>
                         <a class="button" href="#">My Pets</a>
-                        <a class="button" href="#">Add Pet</a>
+                        <a class="button" href="/create">Add Pet</a>
                     </div>
                     <div class="second-bar">
                         <ul>
