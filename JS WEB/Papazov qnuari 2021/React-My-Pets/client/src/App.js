@@ -17,9 +17,13 @@ class App extends Component {
     return (
       <div className="container">
         <Header />
+
         <Main />
-      
-        
+        <Switch>
+          
+          <Route path='/create' component={Create} />
+        </Switch>
+
         <Footer />
       </div>
     );
