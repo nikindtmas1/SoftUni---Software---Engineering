@@ -86,6 +86,44 @@ const Header = () => {
                 color: rgb(0, 0, 0);
                 font-weight: bold;
               }
+
+              .dashboard nav{
+                background: transparent;
+            }
+            .navbar-dashboard{
+                display: flex;
+                justify-content: space-between;    
+                width: 100vw;
+            }
+            .navbar .first-bar{
+                display: flex;
+                align-items: center;
+            }
+            .navbar .first-bar a{
+                color: white;
+                margin-right: 0.5rem;
+            }
+            .navbar .first-bar input{  
+                margin-right: 0.5rem;
+            }
+            #site-header > nav > section > div.first-bar > a:nth-child(1){
+                font-weight: bold;
+                font-size: 1.5rem;
+            }
+            .navbar .first-bar form{
+                display: flex;
+                align-items: center;
+            }
+            .navbar .second-bar ul{
+                display: flex;
+                align-items: center;
+            }
+            .navbar .second-bar ul li{
+                margin-right: 0.5rem;
+            }
+            .navbar-anonymous ul{
+                display: flex;
+            }
             `}</style>
         </header>
 
