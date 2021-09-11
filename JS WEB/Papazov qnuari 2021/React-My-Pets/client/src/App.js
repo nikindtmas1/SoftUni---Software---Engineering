@@ -11,6 +11,7 @@ import Main from './components/Main/Main';
 import Create from './components/Create/Create';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
+import Dashboard from './components/Dashboard/Dashboard';
 
 class App extends Component { 
 
@@ -22,6 +23,7 @@ class App extends Component {
 
         <main id="site-content">
         <Switch>
+          <Route path='/dashboard' component={Dashboard} />
           <Register path='/register' component={Register} />
           <Route path='/login' component={Login} />
           <Route path='/create' component={Create} />
@@ -29,8 +31,28 @@ class App extends Component {
             <Main />
           </Route>
         </Switch>
+        <style jsx>
+          {`
+          #site-content>section.basic {
+            text-align: center;
+        }
+          `}
+        </style>
         </main>
         <Footer />
+
+        <style jsx>
+          {`
+          #container {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 0;
+        }
+          `}
+        </style>
       </div>
     );
 
