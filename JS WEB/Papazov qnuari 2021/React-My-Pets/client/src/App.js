@@ -20,7 +20,7 @@ class App extends Component {
       <div className="container">
         <Header />
 
-        
+        <main id="site-content">
         <Switch>
           <Register path='/register' component={Register} />
           <Route path='/login' component={Login} />
@@ -29,7 +29,7 @@ class App extends Component {
             <Main />
           </Route>
         </Switch>
-
+        </main>
         <Footer />
       </div>
     );
