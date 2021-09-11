@@ -52,6 +52,23 @@ const Dashboard = () => {
                         </div>
                     </li>
                 </ul>
+
+                <style jsx>
+                    {`
+                    .dashboard>nav>ul {
+                        display: flex;
+                    
+                    }
+                    
+                    .dashboard>nav>ul li:not(:last-child) {
+                        padding-right: 1rem;
+                    }
+                    
+                    .dashboard .navbar {
+                        justify-content: center;
+                    }
+                    `}
+                </style>
             </section>
 
     )
