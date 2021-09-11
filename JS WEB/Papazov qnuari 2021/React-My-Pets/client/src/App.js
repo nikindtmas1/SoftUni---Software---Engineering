@@ -12,6 +12,7 @@ import Create from './components/Create/Create';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Dashboard from './components/Dashboard/Dashboard';
+import MyPet from './components/MyPet/MyPet';
 
 class App extends Component { 
 
@@ -24,6 +25,7 @@ class App extends Component {
         <main id="site-content">
         <Switch>
           <Route path='/dashboard' component={Dashboard} />
+          <Route path='/mypet' component={MyPet} />
           <Register path='/register' component={Register} />
           <Route path='/login' component={Login} />
           <Route path='/create' component={Create} />
