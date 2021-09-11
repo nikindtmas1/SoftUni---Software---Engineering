@@ -22,14 +22,36 @@ const Main = () => {
 
             <style jsx>
                 {`
-
-                .basic {
-                    background: linear-gradient(rgba(250, 248, 248, 0.2), rgba(25, 167, 173, 0.2)), url(../img/We-need-to-talk-about-pets.jpg) no-repeat center;
-                    background-size: cover;
-                    height: 85vh;
-                    position: relative;
-                    overflow: hidden;
+                .fa-heart {
+                    color: red;
                 }
+                .basic h1,
+                .my-pets h1,
+                .dashboard h1 {
+                    text-align: center;
+                    margin: 0rem;
+                    padding: 2rem 0 1rem 0;
+                }
+                
+                .detailsMyPet>p:nth-child(2),
+                .deletePet>p:nth-child(2),
+                .otherPet>p:nth-child(2),
+                .myPet>p:nth-child(2) {
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                }
+                
+                .detailsOtherPet,
+                .detailsMyPet,
+                .deletePet,
+                .otherPet,
+                .myPet {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+
 
                 .basic h1,
                 .my-pets h1,
@@ -46,9 +68,44 @@ const Main = () => {
                 .pet-info {
                     padding-bottom: 1rem;
                 }
+                .img {
+                    width: 15rem;
+                    position: relative;
+                    overflow: hidden;
+                    padding: 0rem;
+                }
+                
+                img {
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                }
+                
+                .img::after {
+                    display: block;
+                    content: "";
+                    padding-top: 100%;
+                }
+
+                .button {
+                    display: block;
+                    padding: 0.6rem 1rem;
+                    border-radius: 0.4rem;
+                    text-decoration: none;
+                    font-weight: bold;
+                    background: cadetblue;
+                    color: rgb(255, 255, 255);
+                    border: none;
+                    font-size: 1rem;
+                
+                }
                 `}
             </style>
-            </div>
+        </div>
 
     )
 
