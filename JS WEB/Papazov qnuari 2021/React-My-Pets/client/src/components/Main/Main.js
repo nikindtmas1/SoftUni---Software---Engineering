@@ -3,7 +3,7 @@ const Main = () => {
 
     return (
 
-        <main id="site-content">
+        <div>
             <section class="basic">
                 <h1> Welcome to pet my pet!</h1>
             </section>
@@ -39,7 +39,7 @@ const Main = () => {
                 }
                 `}
             </style>
-        </main>
+            </div>
 
     )
 
