@@ -27,6 +27,16 @@ const Login = () => {
                         <input class="button" type="submit" class="submit" value="Login" />
                     </fieldset>
                 </form>
+
+                <style jsx>
+                    {`
+                    .login form,
+                    .register form,
+                    .create form {
+                        margin: 5rem auto;
+                    }
+                    `}
+                </style>
             </section>
 
     )
