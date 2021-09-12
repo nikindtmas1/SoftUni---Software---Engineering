@@ -76,6 +76,16 @@ const Dashboard = () => {
                         font-size: 1.2rem;
                         font-weight: bold;
                     }
+                    .detailsOtherPet,
+                    .detailsMyPet,
+                    .deletePet,
+                    .otherPet,
+                    .myPet {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    
                     .dashboard>nav>ul {
                         display: flex;
                     
@@ -95,6 +105,12 @@ const Dashboard = () => {
                         text-align: center;
                         margin: 0rem;
                         padding: 2rem 0 1rem 0;
+                    }
+                    .my-pets .my-pets-list,
+                    .dashboard .other-pets-list {
+                        display: flex;
+                        justify-content: space-around;
+                        flex-wrap: wrap;
                     }
                     .img {
                         width: 15rem;
@@ -130,6 +146,13 @@ const Dashboard = () => {
                         border: none;
                         font-size: 1rem;
                     
+                    }
+                    h3 {
+                        margin-bottom: 0;
+                    }
+                    
+                    .pet-info {
+                        padding-bottom: 1rem;
                     }
                     `}
                 </style>
