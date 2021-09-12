@@ -31,6 +31,15 @@ const Header = () => {
             </nav>
 
             <style jsx>{`
+
+                a {
+                    text-decoration: none;
+                    display: inline-block;
+                }
+                
+                li {
+                    list-style-type: none;
+                }
               nav.navbar {
                 display: flex;
                 flex-wrap: wrap;
@@ -86,6 +95,18 @@ const Header = () => {
                 color: rgb(0, 0, 0);
                 font-weight: bold;
               }
+              .button {
+                display: block;
+                padding: 0.6rem 1rem;
+                border-radius: 0.4rem;
+                text-decoration: none;
+                font-weight: bold;
+                background: cadetblue;
+                color: rgb(255, 255, 255);
+                border: none;
+                font-size: 1rem;
+            
+            }
 
               .dashboard nav{
                 background: transparent;
