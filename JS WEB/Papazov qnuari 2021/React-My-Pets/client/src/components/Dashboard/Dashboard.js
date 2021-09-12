@@ -112,6 +112,32 @@ const Dashboard = () => {
                         justify-content: space-around;
                         flex-wrap: wrap;
                     }
+                    .navbar-dashboard{
+                        display: flex;
+                        justify-content: space-between;    
+                        width: 100vw;
+                    }
+                    nav.navbar ul li a {
+                        display: block;
+                        padding: 0.4rem 0.8rem;
+                        border-radius: 0.4rem;
+                        text-decoration: none;
+                        font-weight: bold;
+                        background: cadetblue;
+                        color: rgb(255, 255, 255);
+                      }
+                      nav.navbar ul {
+                        background: transparent;
+                        padding: 0.5rem;
+                        border-radius: 0.3rem;
+                        margin: 0;
+                      }
+                      nav.navbar ul li {
+                        display: block;
+                        list-style: none outside;
+                        position: relative;
+                      }
+                      
                     .img {
                         width: 15rem;
                         position: relative;
@@ -146,6 +172,13 @@ const Dashboard = () => {
                         border: none;
                         font-size: 1rem;
                     
+                    }
+                    .button:hover,
+                    nav.navbar ul li a:hover,
+                    nav.navbar ul li:hover > a {
+                      background: rgb(248, 215, 107);
+                      color: rgb(0, 0, 0);
+                      font-weight: bold;
                     }
                     h3 {
                         margin-bottom: 0;
