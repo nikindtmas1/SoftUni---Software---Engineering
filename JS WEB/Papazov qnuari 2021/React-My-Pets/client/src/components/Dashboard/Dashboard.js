@@ -24,7 +24,7 @@ const Dashboard = () => {
                         <p class="description">This is not my cat Gosho</p>
                         <div class="pet-info">
                             <a href="#"><button class="button"><i class="fas fa-heart"></i> Pet</button></a>
-                            <a href="#"><button class="button">Details</button></a>
+                            <a href="/deatails"><button class="button">Details</button></a>
                             <i class="fas fa-heart"></i> <span> 2</span>
                         </div>
                     </li>
@@ -55,10 +55,20 @@ const Dashboard = () => {
 
                 <style jsx>
                     {`
-
-.fa-heart {
-    color: red;
-}
+                    .pet-info {
+                        padding-bottom: 1rem;
+                    }
+                    a {
+                        text-decoration: none;
+                        display: inline-block;
+                    }
+                    
+                    li {
+                        list-style-type: none;
+                    }
+                    .fa-heart {
+                        color: red;
+                    }
                     .detailsMyPet>p:nth-child(2),
                     .deletePet>p:nth-child(2),
                     .otherPet>p:nth-child(2),
