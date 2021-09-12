@@ -80,6 +80,13 @@ const MyPet = () => {
             .pet-info {
                 padding-bottom: 1rem;
             }
+
+            a {
+                text-decoration: none;
+                display: inline-block;
+            }
+            
+            
             `}
         </style>
     </section>
