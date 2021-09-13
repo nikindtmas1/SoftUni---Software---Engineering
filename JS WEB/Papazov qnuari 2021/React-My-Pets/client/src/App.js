@@ -14,6 +14,7 @@ import Register from './components/Register/Register';
 import Dashboard from './components/Dashboard/Dashboard';
 import MyPet from './components/MyPet/MyPet';
 import DetailsOtherPet from './components/DetailsOtherPet/DetailsOtherPet';
+import DetailsMyPet from './components/DetailsMyPet/DetailsMyPet';
 
 class App extends Component { 
 
@@ -32,7 +33,7 @@ class App extends Component {
           <Register path='/register' component={Register} />
           <Route path='/login' component={Login} />
           <Route path='/create' component={Create} />
-          <Route path='/pets/details/:petId' component={DetailsOtherPet} />
+          <Route path='/pets/details/:petId' component={DetailsMyPet} />
           <Route path='/'>
             <Main />
           </Route>
