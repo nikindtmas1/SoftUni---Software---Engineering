@@ -43,6 +43,7 @@ class Dashboard extends Component {
                     description={x.description}
                     imageURL={x.imageURL}
                     category={x.category}
+                    likes={x.likes}
                     />)}
             
                 </ul>
