@@ -32,6 +32,7 @@ class App extends Component {
           <Register path='/register' component={Register} />
           <Route path='/login' component={Login} />
           <Route path='/create' component={Create} />
+          <Route path='/pets/details/:petId' component={DetailsOtherPet} />
           <Route path='/'>
             <Main />
           </Route>
