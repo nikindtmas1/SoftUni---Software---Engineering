@@ -26,6 +26,7 @@ class App extends Component {
         <main id="site-content">
         <Switch>
           <Route path='/dashboard' component={Dashboard} />
+          <Route path='/dashboard/:category' component={Dashboard} />
           <Route path='/details' component={DetailsOtherPet} />
           <Route path='/mypet' component={MyPet} />
           <Register path='/register' component={Register} />
