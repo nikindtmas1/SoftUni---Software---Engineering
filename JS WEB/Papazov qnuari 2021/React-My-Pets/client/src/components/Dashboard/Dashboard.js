@@ -2,21 +2,30 @@ import { NavLink } from 'react-router-dom';
 import { Component } from 'react';
 import Pet from '../Pet/Pet';
 
+import * as petsService from '../../services/PetService'
+
 class Dashboard extends Component {
 
     constructor(props){
         super(props)
 
         this.state = {
-            pets: []
+            pets: [],
+            currantCategory: 'all'
         }
     }
 
     componentDidMount(){
-        fetch('http://localhost:5000/pets')
-        .then(res => res.json())
-        .then(res => this.setState({pets: res}))
-        .catch(error => console.log(error))
+       petsService.getAll()
+       .then(res => this.setState({pets: res}))
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.match.params.category == this.props.match.params.category){
+            return;
+        }
+        petsService.getAll(this.props.match.params.category)
+       .then(res => this.setState({pets: res, currantCategory: this.props.match.params.category}))
     }
 
     render(){
