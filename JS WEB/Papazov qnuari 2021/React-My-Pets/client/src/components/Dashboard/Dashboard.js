@@ -36,7 +36,14 @@ class Dashboard extends Component {
                 </nav>
                 <ul className="other-pets-list">
 
-                    {this.state.pets.map(x => <Pet key={x.id} name={x.name} />)}
+                    {this.state.pets.map(x => <Pet 
+                    key={x.id}
+                    name={x.name}
+                    id={x.id}
+                    description={x.description}
+                    imageURL={x.imageURL}
+                    category={x.category}
+                    />)}
             
                 </ul>
 
