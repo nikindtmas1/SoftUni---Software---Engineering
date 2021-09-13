@@ -36,11 +36,11 @@ class Dashboard extends Component {
                 <nav className="navbar">
                     <ul>
                         <li><NavLink activeClassName='nav-link-selected' to='/dashboard/all'>All</NavLink></li>
-                        <li><NavLink to='/dashboard/cats'>Cats</NavLink></li>
-                        <li><NavLink to='/dashboard/dogs'>Dogs</NavLink></li>
-                        <li><NavLink to='/dashboard/parrots'>Parrots</NavLink></li>
-                        <li><NavLink to='/dashboard/reptiles'>Reptiles</NavLink></li>
-                        <li><NavLink to='/dashboard/other'>Other</NavLink></li>
+                        <li><NavLink to='/Cat'>Cats</NavLink></li>
+                        <li><NavLink to='/dashboard/Dog'>Dogs</NavLink></li>
+                        <li><NavLink to='/dashboard/Parrot'>Parrots</NavLink></li>
+                        <li><NavLink to='/dashboard/Reptile'>Reptiles</NavLink></li>
+                        <li><NavLink to='/dashboard/Other'>Other</NavLink></li>
                     </ul>
                 </nav>
                 <ul className="other-pets-list">
