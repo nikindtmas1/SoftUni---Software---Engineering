@@ -14,16 +14,23 @@ const app = http.createServer((req, res) => {
             res.writeHead(200, {
                 'Content-Type': 'text/html',
             });
-            let html = fs.readFileSync('./views/home/index.html')
+            let html = fs.readFileSync('./views/home/index.html');
             res.write(html);
             break;
         case'/content/styles/site.css':
             res.writeHead(200, {
                 'Content-Type': 'text/css',
             });
-            let contentCss = fs.readFileSync('./content/styles/site.css')
+            let contentCss = fs.readFileSync('./content/styles/site.css');
             res.write(contentCss);
         break;
+
+        case'/cats/add-breed':
+            res.writeHead(200, {
+                'Content-Type': 'text/html',
+            });
+            let addBreed = fs.readFileSync('./views/addBreed.html');
+            res.write(addBreed)
         default:
             res.statusCode = 404
             break;
