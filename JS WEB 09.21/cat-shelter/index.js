@@ -12,14 +12,14 @@ const app = http.createServer((req, res) => {
     switch (req.url) {
         case '/':
             res.writeHead(200, {
-                'Content-Type': 'text/html',
+                'Content-Type': 'text/html'
             });
             let html = fs.readFileSync('./views/home/index.html');
             res.write(html);
             break;
         case'/content/styles/site.css':
             res.writeHead(200, {
-                'Content-Type': 'text/css',
+                'Content-Type': 'text/css'
             });
             let contentCss = fs.readFileSync('./content/styles/site.css');
             res.write(contentCss);
@@ -27,10 +27,19 @@ const app = http.createServer((req, res) => {
 
         case'/cats/add-breed':
             res.writeHead(200, {
-                'Content-Type': 'text/html',
+                'Content-Type': 'text/html'
             });
             let addBreed = fs.readFileSync('./views/addBreed.html');
-            res.write(addBreed)
+            res.write(addBreed);
+        break;
+
+        case'/cats/add-cat':
+            res.writeHead(200, {
+                'Content-Type': 'text/html'
+            })
+            let addCat = fs.readFileSync('./views/addCat.html');
+            res.write(addCat);
+        break;
         default:
             res.statusCode = 404
             break;
