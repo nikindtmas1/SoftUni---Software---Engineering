@@ -7,7 +7,7 @@ const cats = require('../data/cats.json');
 module.exports = (req, res) => {
 
     const pathName = url.parse(req.url).pathName;
-
+    console.log(pathName);
     if(pathName === '/' && req.method === 'GET'){
             // TO DO LOGIC
         let filePath = path.normalize(
