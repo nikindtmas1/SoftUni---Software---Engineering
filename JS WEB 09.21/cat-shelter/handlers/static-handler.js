@@ -20,7 +20,7 @@ function getContentType(url){
 module.exports = (req, res) => {
 
     let urlObj = url.parse(req.url);
-    console.log(urlObj.pathname);
+    //console.log(urlObj.pathname);
     if(urlObj.pathname.startsWith('/content') && req.method === 'GET'){
 
         fs.readFile(`./${urlObj.pathname}`, 'utf-8', (error, data) => {
