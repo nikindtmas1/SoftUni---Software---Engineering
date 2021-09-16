@@ -13,7 +13,7 @@ const app = http.createServer((req, res) => {
         }
         
     }
-    //et urlObj = url.parse(req.url);
+    //let urlObj = url.parse(req.url);
     // console.log('hostname: ' + urlObj.hostname);
     // console.log('href: ' + urlObj.href);
     // console.log('path: ' + urlObj.path);
