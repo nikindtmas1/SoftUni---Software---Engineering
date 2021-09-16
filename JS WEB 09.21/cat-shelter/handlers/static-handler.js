@@ -35,7 +35,7 @@ module.exports = (req, res) => {
                 return;
             }
 
-            console.log(urlObj.pathname);
+            //console.log(urlObj.pathname);
 
             res.writeHead(200, 
                 {
