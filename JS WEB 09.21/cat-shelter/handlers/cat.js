@@ -37,9 +37,33 @@ module.exports = (req, res) => {
 
         });
 
-    }
+    }else if(urlObj.pathname === '/cats/add-breed' && req.method === 'GET'){
 
-    if(urlObj.pathname === '/cats/add-breed' && req.method === 'GET'){
+        let filePath = path.normalize(
+            path.join(__dirname, '../views/addBreed.html')
+        );
+
+        fs.readFile(filePath, (error, data) => {
+            if(error){
+                console.log(error);
+
+                res.writeHead(404, {
+                    'Content-Type': 'text/html'
+                });
+                res.write('File Not Found');
+                res.end();
+                return;
+            }
+
+            res.writeHead(200, {
+                'Content-Type': 'text/html'
+            })
+            res.write(data);
+            res.end();
+
+        });
+
+    }else if(urlObj.pathname === '/cats/add-breed' && req.method === 'POST'){
 
         let filePath = path.normalize(
             path.join(__dirname, '../views/addBreed.html')
