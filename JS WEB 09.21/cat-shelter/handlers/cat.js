@@ -29,7 +29,11 @@ module.exports = (req, res) => {
                 return;
             }
 
-            
+            res.writeHead(200, {
+                'Content-Type': 'text/html'
+            })
+            res.write(data);
+            res.end();
 
         });
 
