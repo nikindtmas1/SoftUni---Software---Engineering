@@ -6,9 +6,9 @@ const cats = require('../data/cats.json');
 
 module.exports = (req, res) => {
 
-    const pathName = url.parse(req.url).pathName;
-    console.log(pathName);
-    if(pathName === '/' && req.method === 'GET'){
+    const urlObj = url.parse(req.url);
+    console.log(urlObj.path);
+    if(urlObj.path === '/' && req.method === 'GET'){
             // TO DO LOGIC
         let filePath = path.normalize(
             path.join(__dirname, '../views/home/index.html')
@@ -36,4 +36,33 @@ module.exports = (req, res) => {
     }else {
         return true;
     }
+
+    if(urlObj.path === '/content/styles/site.css' && req.method === 'GET'){
+        // TO DO LOGIC
+    let filePath = path.normalize(
+        path.join(__dirname, '../views/home/index.html')
+    );
+
+    fs.readFile(filePath, (error, data) => {
+        if(error){
+            console.log(error);
+            res.writeHead(404, {
+                'Content-Type': 'text/html'
+            });
+
+            res.write('file not found');
+            res.end();
+            return;
+        }
+
+        res.writeHead(200, {
+            'Content-Type': 'text/css'
+        });
+
+        res.write(data);
+        res.end();
+    });
+}else {
+    return true;
+}
 }
