@@ -38,7 +38,7 @@ module.exports = (req, res) => {
         });
 
     }else if(urlObj.pathname === '/cats/add-breed' && req.method === 'GET'){
-
+            console.log(req.method);
         let filePath = path.normalize(
             path.join(__dirname, '../views/addBreed.html')
         );
@@ -63,7 +63,7 @@ module.exports = (req, res) => {
 
         });
 
-    }else if(urlObj.pathname === '/cats/add-breed' && req.method === 'POST'){
+    }else if(urlObj.pathname === '/cats/add-breed' && req.method.toLowerCase() == 'post'){
         console.log(req.method);
         let formData = '';
 
@@ -73,22 +73,24 @@ module.exports = (req, res) => {
 
         req.on('end', () => {
 
-            console.log(formData);
+            //console.log(formData);
 
-            let body = fs.parse(formData);
-            console.log(body);
+            let body = qs.parse(formData);
+            //console.log(body);
             fs.readFile('./data/breeds.json' , (error, data) => {
                 if(error){
                     return error;
                 }
+
+                let breeds = JSON.parse(data);
+                breeds.push(body.breed);
+                let json = JSON.stringify(breeds);
+    
+                fs.writeFile('/data/breeds.json', json, 'utf-8', () => {
+                    console.log('The breed has been added');
             });
 
-            let breeds = JSON.parse(data);
-            breeds.push(body.breed);
-            let json = JSON.stringify(breeds);
-
-            fs.writeFile('/data/breeds.json', json, 'utf-8', () => {
-                console.log('The breed has been added');
+           
             });
 
             res.writeHead(200, {
