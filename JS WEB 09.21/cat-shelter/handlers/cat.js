@@ -29,10 +29,14 @@ module.exports = (req, res) => {
                 return;
             }
 
+            let catBreedPlaceholder = breeds.map((breed) => `<option value="${breed}">${breed}</option>`);
+            let modifiedData = data.toString().replace('{{catBreeds}}', catBreedPlaceholder)
             res.writeHead(200, {
                 'Content-Type': 'text/html'
             })
-            res.write(data);
+
+
+            res.write(modifiedData);
             res.end();
 
         });
