@@ -84,9 +84,11 @@ module.exports = (req, res) => {
 
                 let breeds = JSON.parse(data);
                 breeds.push(body.breed);
+                //console.log(breeds);
                 let json = JSON.stringify(breeds);
+                //console.log(json);
     
-                fs.writeFile('/data/breeds.json', json, 'utf-8', () => {
+                fs.writeFile('./data/breeds.json', json, 'utf-8', () => {
                     console.log('The breed has been added');
             });
 
@@ -94,7 +96,7 @@ module.exports = (req, res) => {
             });
 
             res.writeHead(200, {
-                pathname: '/'
+                
             });
             res.end();
         })
