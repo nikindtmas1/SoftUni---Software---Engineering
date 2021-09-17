@@ -43,7 +43,7 @@ module.exports = (req, res) => {
                 'Content-Type': 'text/html'
             });
 
-            res.write(data);
+            res.write(modifiedData);
             res.end();
         });
     }else {
