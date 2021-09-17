@@ -139,6 +139,29 @@ module.exports = (req, res) => {
             }
 
             console.log( files);
+            let oldPath = files.upload.path;
+            let newPath = path
+
+            fs.rename(oldPath, newPath, (err) => {
+                if(err) return err
+                console.log('Sam error message');
+                
+
+            });
+
+            fs.readFile('./data/cats.json', 'utf-8', (error, data) => {
+                if(error){
+                    return error;
+                }
+
+                let allCats = JSON.parse(data);
+                allCats.push({});
+                let json = JSON.stringify(allCats);
+                fs.writeFile('./data/cats.json', json, () => {
+                    res.writeHead(200, {});
+                    res.end();
+                });
+            });
 
             res.writeHead(200, {'Content-Type': 'text/plain'});
             res.end();
