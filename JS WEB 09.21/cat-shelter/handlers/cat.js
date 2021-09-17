@@ -131,6 +131,7 @@ module.exports = (req, res) => {
     }else if(urlObj.pathname === '/cats/add-cat' && req.method.toLowerCase() == 'post'){
         console.log(req.method);
         let form = new formidable.IncomingForm();
+        console.log(form);
 
         form.parse(req, (err, fields, files) => {
             if(err){
@@ -140,11 +141,11 @@ module.exports = (req, res) => {
 
             console.log( files);
             let oldPath = files.upload.path;
-            let newPath = path
+            let newPath = ''
 
             fs.rename(oldPath, newPath, (err) => {
                 if(err) return err
-                console.log('Sam error message');
+                console.log('The file has been renamed!');
                 
 
             });
@@ -155,7 +156,8 @@ module.exports = (req, res) => {
                 }
 
                 let allCats = JSON.parse(data);
-                allCats.push({});
+                console.log(allCats);
+                allCats.push({name:'Niki'});
                 let json = JSON.stringify(allCats);
                 fs.writeFile('./data/cats.json', json, () => {
                     res.writeHead(200, {});
@@ -163,8 +165,8 @@ module.exports = (req, res) => {
                 });
             });
 
-            res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.end();
+            // res.writeHead(200, {'Content-Type': 'text/plain'});
+            // res.end();
         });
     }
 }
