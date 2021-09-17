@@ -129,6 +129,7 @@ module.exports = (req, res) => {
         // });
 
     }else if(urlObj.pathname === '/cats/add-cat' && req.method.toLowerCase() == 'post'){
+        console.log(req.method);
         let form = new formidable.IncomingForm();
 
         form.parse(req, (err, fields, files) => {
@@ -136,6 +137,8 @@ module.exports = (req, res) => {
                 console.error(err.message);
                 return;
             }
+
+            console.log( files);
 
             res.writeHead(200, {'Content-Type': 'text/plain'});
             res.end();
