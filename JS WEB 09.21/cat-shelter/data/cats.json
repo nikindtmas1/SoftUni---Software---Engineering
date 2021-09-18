@@ -1,7 +1,5 @@
 [
     {},
-    {},
-    {},
     {
         "id": "611107ca02f65b5473d189aa",
         "name": "Garry",
@@ -11,5 +9,15 @@
     },
     {
         "name": "Niki"
+    },
+    {
+        "name": "Navcho",
+        "description": "asdasd",
+        "breed": "Unknown breed"
+    },
+    {
+        "name": "Pesho",
+        "description": "fdsafdsa",
+        "breed": "Unknown breed two"
     }
 ]
