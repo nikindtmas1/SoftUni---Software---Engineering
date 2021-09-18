@@ -131,15 +131,15 @@ module.exports = (req, res) => {
     }else if(urlObj.pathname === '/cats/add-cat' && req.method.toLowerCase() == 'post'){
         console.log(req.method);
         let form = new formidable.IncomingForm();
-        console.log(form);
+        //console.log(form);
 
         form.parse(req, (err, fields, files) => {
             if(err){
                 console.error(err.message);
                 return;
             }
-
-            console.log( files);
+            let parsFields = JSON.parse(fields);
+            console.log(parsFields);
             let oldPath = files.upload.path;
             let newPath = ''
 
@@ -157,7 +157,8 @@ module.exports = (req, res) => {
 
                 let allCats = JSON.parse(data);
                 console.log(allCats);
-                allCats.push({name:'Niki'});
+                let jsonFields = JSON.stringify(parsFields);
+                allCats.push({jsonFields});
                 let json = JSON.stringify(allCats);
                 fs.writeFile('./data/cats.json', json, () => {
                     res.writeHead(200, {});
