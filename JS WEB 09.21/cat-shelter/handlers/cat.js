@@ -138,17 +138,17 @@ module.exports = (req, res) => {
                 console.error(err.message);
                 return;
             }
-            let parsFields = JSON.parse(fields);
-            console.log(parsFields);
+            //let parsFields = JSON.parse(fields);
+            console.log(fields);
             let oldPath = files.upload.path;
-            let newPath = ''
+            // let newPath = ''
 
-            fs.rename(oldPath, newPath, (err) => {
-                if(err) return err
-                console.log('The file has been renamed!');
+            // fs.rename(oldPath, newPath, (err) => {
+            //     if(err) return err
+            //     console.log('The file has been renamed!');
                 
 
-            });
+            // });
 
             fs.readFile('./data/cats.json', 'utf-8', (error, data) => {
                 if(error){
@@ -157,8 +157,8 @@ module.exports = (req, res) => {
 
                 let allCats = JSON.parse(data);
                 console.log(allCats);
-                let jsonFields = JSON.stringify(parsFields);
-                allCats.push({jsonFields});
+                //let jsonFields = JSON.stringify(fields);
+                allCats.push(fields);
                 let json = JSON.stringify(allCats);
                 fs.writeFile('./data/cats.json', json, () => {
                     res.writeHead(200, {});
