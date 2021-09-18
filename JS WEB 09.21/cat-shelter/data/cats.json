@@ -1,1 +1,43 @@
-[{},{"id":"611107ca02f65b5473d189aa","name":"Garry","description":"asdasdasd","breed":"britanika","image":"Himalayan"},{"name":"Niki"},{"name":"Navcho","description":"asdasd","breed":"Unknown breed"},{"name":"Pesho","description":"fdsafdsa","breed":"Unknown breed two"},{"name":"Toto","description":"axxxx","breed":"Unknown breed"},{"name":"Miti","description":"yauuuu","breed":"Unknown breed"},{"name":"Viki","description":"Yeeeeeee","breed":"Unknown breed"},{"name":"Nancy","description":"eheheheh","breed":"Unknown breed"}]
+[
+    {},
+    {
+        "id": "611107ca02f65b5473d189aa",
+        "name": "Garry",
+        "description": "asdasdasd",
+        "breed": "britanika",
+        "image": "Himalayan"
+    },
+    {
+        "name": "Niki"
+    },
+    {
+        "name": "Navcho",
+        "description": "asdasd",
+        "breed": "Unknown breed"
+    },
+    {
+        "name": "Pesho",
+        "description": "fdsafdsa",
+        "breed": "Unknown breed two"
+    },
+    {
+        "name": "Toto",
+        "description": "axxxx",
+        "breed": "Unknown breed"
+    },
+    {
+        "name": "Miti",
+        "description": "yauuuu",
+        "breed": "Unknown breed"
+    },
+    {
+        "name": "Viki",
+        "description": "Yeeeeeee",
+        "breed": "Unknown breed"
+    },
+    {
+        "name": "Nancy",
+        "description": "eheheheh",
+        "breed": "Unknown breed"
+    }
+]
