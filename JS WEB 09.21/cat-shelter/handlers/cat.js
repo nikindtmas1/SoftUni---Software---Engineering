@@ -139,7 +139,7 @@ module.exports = (req, res) => {
                 return;
             }
             //let parsFields = JSON.parse(fields);
-            console.log(fields);
+            //console.log(fields);
             let oldPath = files.upload.path;
             // let newPath = ''
 
@@ -156,12 +156,12 @@ module.exports = (req, res) => {
                 }
 
                 let allCats = JSON.parse(data);
-                console.log(allCats);
+                //console.log(allCats);
                 //let jsonFields = JSON.stringify(fields);
                 allCats.push(fields);
                 let json = JSON.stringify(allCats);
-                fs.writeFile('./data/cats.json', json, () => {
-                    res.writeHead(200, {});
+                fs.writeFile('./data/cats.json', json, 'utf-8', () => {
+                    res.writeHead(200, {location: 'http://localhost:5000'});
                     res.end();
                 });
             });
