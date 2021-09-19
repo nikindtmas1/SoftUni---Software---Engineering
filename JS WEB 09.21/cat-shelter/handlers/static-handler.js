@@ -22,6 +22,10 @@ module.exports = (req, res) => {
     let urlObj = url.parse(req.url);
     //console.log(urlObj.pathname);
     if(urlObj.pathname.startsWith('/content') && req.method === 'GET'){
+        // if(urlObj.pathname.endsWith('jpg') || urlObj.pathname.endsWith('png')){
+
+            
+        // }
 
         fs.readFile(`./${urlObj.pathname}`, 'utf-8', (error, data) => {
             if(error){
