@@ -158,7 +158,7 @@ module.exports = (req, res) => {
                 let allCats = JSON.parse(data);
                 //console.log(allCats);
                 //let jsonFields = JSON.stringify(fields);
-                allCats.push(fields);
+                allCats.push({...fields, image: files.upload.name});
                 let json = JSON.stringify(allCats, '', 2);
                 fs.writeFile('./data/cats.json', json, 'utf-8', () => {
                     res.writeHead(302, {"Location": '/'});
