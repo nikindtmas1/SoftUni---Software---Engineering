@@ -99,8 +99,8 @@ module.exports = (req, res) => {
            
             });
 
-            res.writeHead(200, {
-                
+            res.writeHead(302, {
+                'Location': '/'
             });
             res.end();
         })
