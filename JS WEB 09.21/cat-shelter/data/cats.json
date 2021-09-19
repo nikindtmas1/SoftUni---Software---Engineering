@@ -44,5 +44,11 @@
     "name": "Mimi",
     "description": "kokokoko",
     "breed": "Unknown breed"
+  },
+  {
+    "name": "Nencho",
+    "description": "Kokokoko",
+    "breed": "Persian",
+    "image": "Himalayan.jpg"
   }
 ]
