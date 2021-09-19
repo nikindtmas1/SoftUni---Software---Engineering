@@ -89,7 +89,7 @@ module.exports = (req, res) => {
                 let breeds = JSON.parse(data);
                 breeds.push(body.breed);
                 //console.log(breeds);
-                let json = JSON.stringify(breeds);
+                let json = JSON.stringify(breeds, '', 2);
                 //console.log(json);
     
                 fs.writeFile('./data/breeds.json', json, 'utf-8', () => {
