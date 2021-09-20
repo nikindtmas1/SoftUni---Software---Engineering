@@ -26,5 +26,12 @@
     "description": "nice",
     "breed": "Angora",
     "image": "Himalayan.jpg"
+  },
+  {
+    "catId": "hbo4jfau8ktt1eujr",
+    "name": "NenchoSec",
+    "description": "Home cat2",
+    "breed": "Persian",
+    "image": "Home.jpg"
   }
 ]
