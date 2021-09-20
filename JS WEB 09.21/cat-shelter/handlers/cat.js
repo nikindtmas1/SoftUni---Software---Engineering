@@ -5,6 +5,7 @@ const qs = require('querystring');
 const formidable = require('formidable');
 const breeds = require('../data/breeds.json');
 const cats = require('../data/cats.json');
+const uniqId = require('uniqid');
 
 
 module.exports = (req, res) => {
@@ -133,6 +134,8 @@ module.exports = (req, res) => {
         let form = new formidable.IncomingForm();
         //console.log(form);
 
+        let catId = uniqId();
+        
         form.parse(req, (err, fields, files) => {
             if(err){
                 console.error(err.message);
@@ -158,7 +161,7 @@ module.exports = (req, res) => {
                 let allCats = JSON.parse(data);
                 //console.log(allCats);
                 //let jsonFields = JSON.stringify(fields);
-                allCats.push({...fields, image: files.upload.name});
+                allCats.push({catId, ...fields, image: files.upload.name});
                 let json = JSON.stringify(allCats, '', 2);
                 fs.writeFile('./data/cats.json', json, 'utf-8', () => {
                     res.writeHead(302, {"Location": '/'});
