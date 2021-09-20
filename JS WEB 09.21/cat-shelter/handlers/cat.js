@@ -213,7 +213,7 @@ module.exports = (req, res) => {
         })
     }else if(urlObj.pathname.includes('/cats-edit') && req.method === 'POST'){
 
-    }else if(urlObj.pathname.includes('/cats-find-new-home' && req.method === 'GET')){
+    }else if(urlObj.pathname.includes('/cats-find-new-home') && req.method == 'GET'){
 
         let filePath = path.normalize(
             path.join(__dirname, '../views/catShelter.html')
@@ -231,24 +231,24 @@ module.exports = (req, res) => {
                 res.end();
                 return;
             }
-            // let catId = urlObj.pathname.split("/")[2];
-            // let currentCat = cats.find((cat) => cat.catId === catId);
-            // let modifiedData = data.toString().replace('{{id}}', catId);
-            // modifiedData = modifiedData.replace('{{name}}', currentCat.name)
-            // modifiedData = modifiedData.replace('{{description}}', currentCat.description)
+            let catId = urlObj.pathname.split("/")[2];
+            let currentCat = cats.find((cat) => cat.catId === catId);
+            let modifiedData = data.toString().replace('{{id}}', catId);
+            modifiedData = modifiedData.replace('{{name}}', currentCat.name)
+            modifiedData = modifiedData.replace('{{description}}', currentCat.description)
 
-            // const breedsAsOptions = breeds.map((b) => `
-            // <option value="${b}">${b}</option>
-            // `);
-            // modifiedData = modifiedData.replace('{{catBreeds}}', breedsAsOptions.join('/'));
-            // modifiedData = modifiedData.replace('{{breed}}', currentCat.breed)
-            // console.log(currentCat);
+            const breedsAsOptions = breeds.map((b) => `
+            <option value="${b}">${b}</option>
+            `);
+            modifiedData = modifiedData.replace('{{catBreeds}}', breedsAsOptions.join('/'));
+            modifiedData = modifiedData.replace('{{breed}}', currentCat.breed)
+            console.log(currentCat);
             res.writeHead(200, {
                 'Content-Type': 'text/html'
             })
 
 
-            res.write(data);
+            res.write(modifiedData);
             res.end();
         })
 
