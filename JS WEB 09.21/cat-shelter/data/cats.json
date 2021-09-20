@@ -1,26 +1,30 @@
 [
   {
-    "name": "Nencho",
-    "description": "Kokokoko",
-    "breed": "Persian",
-    "image": "Himalayan.jpg"
+    "catId": "88t0h90kts7yqjd",
+    "name": "SlipyCat",
+    "description": "HyrHyr",
+    "breed": "Unknown breed two",
+    "image": "Slipy.jpg"
   },
   {
-    "name": "Mimi",
-    "description": "Lelelelele",
+    "catId": "88t0h49okts84x2f",
+    "name": "Nencho",
+    "description": "Home cat",
     "breed": "Persian",
     "image": "Home.jpg"
   },
   {
+    "catId": "88t0h1b0kts870ak",
     "name": "Baby",
-    "description": "Eheeee",
-    "breed": "Unknown breed two",
+    "description": "swity",
+    "breed": "Unknown breed",
     "image": "Baby.jpg"
   },
   {
-    "name": "Covid",
-    "description": "Hahahahaha",
-    "breed": "Persian",
-    "image": "Covid-19.jpg"
+    "catId": "88t0hhgkts883g3",
+    "name": "Tomi",
+    "description": "nice",
+    "breed": "Angora",
+    "image": "Himalayan.jpg"
   }
 ]
