@@ -202,7 +202,7 @@ module.exports = (req, res) => {
             `);
             modifiedData = modifiedData.replace('{{catBreeds}}', breedsAsOptions.join('/'));
             modifiedData = modifiedData.replace('{{breed}}', currentCat.breed)
-            console.log(currentCat);
+            //console.log(currentCat);
             res.writeHead(200, {
                 'Content-Type': 'text/html'
             })
@@ -211,8 +211,51 @@ module.exports = (req, res) => {
             res.write(modifiedData);
             res.end();
         })
-    }else if(urlObj.pathname.includes('/cats-edit') && req.method === 'POST'){
+    }else if(urlObj.pathname.includes('/cats-edit') && req.method.toLowerCase() == 'post'){
 
+        let form = new formidable.IncomingForm();
+        //console.log(form);
+
+        let catId = uniqId();
+        
+        form.parse(req, (err, fields, files) => {
+            if(err){
+                console.error(err.message);
+                return;
+            }
+            //let parsFields = JSON.parse(fields);
+            console.log(fields);
+            let oldPath = files.upload.path;
+            // let newPath = ''
+
+            // fs.rename(oldPath, newPath, (err) => {
+            //     if(err) return err
+            //     console.log('The file has been renamed!');
+                
+
+            // });
+
+            fs.readFile('./data/cats.json', 'utf-8', (error, data) => {
+                if(error){
+                    return error;
+                }
+
+                let allCats = JSON.parse(data);
+                let catId = urlObj.pathname.split("/")[2];
+                let currentCat = allCats.find((cat) => cat.catId === catId);
+                console.log(currentCat);
+                //let jsonFields = JSON.stringify(fields);
+                allCats.push({catId, ...fields, image: files.upload.name});
+                let json = JSON.stringify(allCats, '', 2);
+                fs.writeFile('./data/cats.json', json, 'utf-8', () => {
+                    res.writeHead(302, {"Location": '/'});
+                    res.end();
+                });
+            });
+
+            // res.writeHead(200, {'Content-Type': 'text/plain'});
+            // res.end();
+        });
     }else if(urlObj.pathname.includes('/cats-find-new-home') && req.method == 'GET'){
 
         let filePath = path.normalize(
