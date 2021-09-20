@@ -172,5 +172,30 @@ module.exports = (req, res) => {
             // res.writeHead(200, {'Content-Type': 'text/plain'});
             // res.end();
         });
+    }else if(urlObj.pathname.includes('/cats-edit') && req.method === 'GET'){
+
+        let filePath = path.normalize(
+            path.join(__dirname, '../views/editCat.html')
+        );
+        fs.readFile(filePath, 'utf-8', (error, data) => {
+            if(error){
+                console.log(error);
+
+                res.writeHead(404, {
+                    'Content-Type': 'text/html'
+                });
+                res.write('File Not Found');
+                res.end();
+                return;
+            }
+
+            res.writeHead(200, {
+                'Content-Type': 'text/html'
+            })
+
+
+            res.write(data);
+            res.end();
+        })
     }
 }
