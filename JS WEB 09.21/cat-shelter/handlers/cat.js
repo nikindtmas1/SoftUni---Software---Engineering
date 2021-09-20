@@ -130,7 +130,7 @@ module.exports = (req, res) => {
 
         // });
 
-    }else if(urlObj.pathname === '/cats/add-cat' && req.method.toLowerCase() == 'post'){
+    }else if(urlObj.pathname === '/cats/add-cat' && req.method.toLowerCase() === 'post'){
         console.log(req.method);
         let form = new formidable.IncomingForm();
         //console.log(form);
@@ -211,20 +211,23 @@ module.exports = (req, res) => {
             res.write(modifiedData);
             res.end();
         })
-    }else if(urlObj.pathname.includes('/cats-edit') && req.method.toLowerCase() == 'post'){
-
-        let form = new formidable.IncomingForm();
+    }else if(urlObj.pathname.includes('/cats-edit') && req.method.toLowerCase() === 'post'){
+        console.log(req.method);
+        // let form = new formidable.IncomingForm();
         //console.log(form);
 
-        let catId = uniqId();
+        // let catId = uniqId();
         
-        form.parse(req, (err, fields, files) => {
-            if(err){
-                console.error(err.message);
-                return;
-            }
+        // form.parse(req, (err, fields, files) => {
+        //     if(err){
+        //         console.error(err.message);
+        //         return;
+        //     }
+        // });
+
+            
             //let parsFields = JSON.parse(fields);
-            console.log(fields);
+            //console.log(fields);
             let oldPath = files.upload.path;
             // let newPath = ''
 
@@ -235,27 +238,35 @@ module.exports = (req, res) => {
 
             // });
 
-            fs.readFile('./data/cats.json', 'utf-8', (error, data) => {
+            fs.readFile('data/cats.json', 'utf-8', (error, data) => {
                 if(error){
-                    return error;
+                   console.log(error);
+                }else{
+                
+                    let currentCats = JSON.parse(data);
+                    let catId = urlObj.split("/")[2];
+                    console.log(catId);
+                    currentCats = currentCats.filter((cat) => cat.catId !== catId);
+                    let json = JSON.stringify(currentCats, '', 2);
+                    fs.writeFile('./data/cats.json', json, 'utf-8', () => {
+                        res.writeHead(302, {"Location": '/'});
+                        res.end();
+                    });
                 }
 
-                let allCats = JSON.parse(data);
-                let catId = urlObj.pathname.split("/")[2];
-                let currentCat = allCats.find((cat) => cat.catId === catId);
-                console.log(currentCat);
+                
+                
+                
+                //console.log(currentCat);
                 //let jsonFields = JSON.stringify(fields);
-                allCats.push({catId, ...fields, image: files.upload.name});
-                let json = JSON.stringify(allCats, '', 2);
-                fs.writeFile('./data/cats.json', json, 'utf-8', () => {
-                    res.writeHead(302, {"Location": '/'});
-                    res.end();
-                });
+                //allCats.push({catId, ...fields, image: files.upload.name});
+                
+               
             });
 
             // res.writeHead(200, {'Content-Type': 'text/plain'});
             // res.end();
-        });
+        
     }else if(urlObj.pathname.includes('/cats-find-new-home') && req.method == 'GET'){
 
         let filePath = path.normalize(
