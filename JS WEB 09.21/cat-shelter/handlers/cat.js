@@ -211,5 +211,46 @@ module.exports = (req, res) => {
             res.write(modifiedData);
             res.end();
         })
+    }else if(urlObj.pathname.includes('/cats-edit') && req.method === 'POST'){
+
+    }else if(urlObj.pathname.includes('/cats-find-new-home' && req.method === 'GET')){
+
+        let filePath = path.normalize(
+            path.join(__dirname, '../views/catShelter.html')
+        );
+
+        //console.log(urlObj.pathname.split("/")[2]);
+        fs.readFile(filePath, 'utf-8', (error, data) => {
+            if(error){
+                console.log(error);
+
+                res.writeHead(404, {
+                    'Content-Type': 'text/html'
+                });
+                res.write('File Not Found');
+                res.end();
+                return;
+            }
+            // let catId = urlObj.pathname.split("/")[2];
+            // let currentCat = cats.find((cat) => cat.catId === catId);
+            // let modifiedData = data.toString().replace('{{id}}', catId);
+            // modifiedData = modifiedData.replace('{{name}}', currentCat.name)
+            // modifiedData = modifiedData.replace('{{description}}', currentCat.description)
+
+            // const breedsAsOptions = breeds.map((b) => `
+            // <option value="${b}">${b}</option>
+            // `);
+            // modifiedData = modifiedData.replace('{{catBreeds}}', breedsAsOptions.join('/'));
+            // modifiedData = modifiedData.replace('{{breed}}', currentCat.breed)
+            // console.log(currentCat);
+            res.writeHead(200, {
+                'Content-Type': 'text/html'
+            })
+
+
+            res.write(data);
+            res.end();
+        })
+
     }
 }
