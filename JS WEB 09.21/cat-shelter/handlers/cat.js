@@ -106,29 +106,7 @@ module.exports = (req, res) => {
             });
             res.end();
         })
-        // let filePath = path.normalize(
-        //     path.join(__dirname, '../views/addBreed.html')
-        // );
-
-        // fs.readFile(filePath, (error, data) => {
-        //     if(error){
-        //         console.log(error);
-
-        //         res.writeHead(404, {
-        //             'Content-Type': 'text/html'
-        //         });
-        //         res.write('File Not Found');
-        //         res.end();
-        //         return;
-        //     }
-
-        //     res.writeHead(200, {
-        //         'Content-Type': 'text/html'
-        //     })
-        //     res.write(data);
-        //     res.end();
-
-        // });
+ 
 
     }else if(urlObj.pathname === '/cats/add-cat' && req.method.toLowerCase() === 'post'){
         console.log(req.method);
@@ -142,17 +120,10 @@ module.exports = (req, res) => {
                 console.error(err.message);
                 return;
             }
-            //let parsFields = JSON.parse(fields);
+           
             console.log(fields);
             let oldPath = files.upload.path;
-            // let newPath = ''
-
-            // fs.rename(oldPath, newPath, (err) => {
-            //     if(err) return err
-            //     console.log('The file has been renamed!');
-                
-
-            // });
+       
 
             fs.readFile('./data/cats.json', 'utf-8', (error, data) => {
                 if(error){
@@ -161,7 +132,6 @@ module.exports = (req, res) => {
 
                 let allCats = JSON.parse(data);
                 //console.log(allCats);
-                //let jsonFields = JSON.stringify(fields);
                 allCats.push({catId, ...fields, image: files.upload.name});
                 let json = JSON.stringify(allCats, '', 2);
                 fs.writeFile('./data/cats.json', json, 'utf-8', () => {
@@ -170,8 +140,6 @@ module.exports = (req, res) => {
                 });
             });
 
-            // res.writeHead(200, {'Content-Type': 'text/plain'});
-            // res.end();
         });
     }else if(urlObj.pathname.includes('/cats-edit') && req.method === 'GET'){
 
@@ -242,32 +210,12 @@ module.exports = (req, res) => {
                         res.end();
                     });
                 }
-                //console.log(currentCat);
-                //let jsonFields = JSON.stringify(fields);
-                //allCats.push({catId, ...fields, image: files.upload.name});
                 
                
             });
             
         });
 
-            
-            //let parsFields = JSON.parse(fields);
-            //let oldPath = files.upload.path;
-            // let newPath = ''
-
-            // fs.rename(oldPath, newPath, (err) => {
-            //     if(err) return err
-            //     console.log('The file has been renamed!');
-                
-
-            // });
-
-            
-
-            // res.writeHead(200, {'Content-Type': 'text/plain'});
-            // res.end();
-        
     }else if(urlObj.pathname.includes('/cats-find-new-home') && req.method == 'GET'){
 
         let filePath = path.normalize(
@@ -314,8 +262,6 @@ module.exports = (req, res) => {
         console.log(req.method);
         let form = new formidable.IncomingForm();
         //console.log(form);
-
-        //let catId = uniqId();
         
         form.parse(req, (err, fields, files) => {
             if(err){
@@ -333,18 +279,14 @@ module.exports = (req, res) => {
                     let catId = req.url.split("/")[2];
                     //console.log(catId);
                     currentCats = currentCats.filter((cat) => cat.catId !== catId);
-                    //currentCats.push({catId, ...fields, image: files.upload.name})
-                    //console.log(currentCats);
+                  
                     let json = JSON.stringify(currentCats, '', 2);
                     fs.writeFile('./data/cats.json', json, 'utf-8', () => {
                         res.writeHead(302, {"Location": '/'});
                         res.end();
                     });
                 }
-                //console.log(currentCat);
-                //let jsonFields = JSON.stringify(fields);
-                //allCats.push({catId, ...fields, image: files.upload.name});
-                
+               
                
             });
             
