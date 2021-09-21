@@ -7,13 +7,6 @@
     "image": "Slipy.jpg"
   },
   {
-    "catId": "88t0h49okts84x2f",
-    "name": "Nencho",
-    "description": "Home cat",
-    "breed": "Persian",
-    "image": "Home.jpg"
-  },
-  {
     "catId": "88t0h1b0kts870ak",
     "name": "Baby",
     "description": "swity",
@@ -22,15 +15,15 @@
   },
   {
     "catId": "88t0hhgkts883g3",
-    "name": "Tomi",
-    "description": "nice",
+    "name": "TomiTwo",
+    "description": "nice2",
     "breed": "Angora",
     "image": "Himalayan.jpg"
   },
   {
-    "catId": "hbo4jfau8ktt1eujr",
-    "name": "NenchoSec",
-    "description": "Home cat2",
+    "catId": "88t0h7skttq15nb",
+    "name": "Nencho",
+    "description": "Ehaaaa",
     "breed": "Persian",
     "image": "Home.jpg"
   }
