@@ -213,22 +213,47 @@ module.exports = (req, res) => {
         })
     }else if(urlObj.pathname.includes('/cats-edit') && req.method.toLowerCase() === 'post'){
         console.log(req.method);
-        // let form = new formidable.IncomingForm();
+        let form = new formidable.IncomingForm();
         //console.log(form);
 
-        // let catId = uniqId();
+        let catId = uniqId();
         
-        // form.parse(req, (err, fields, files) => {
-        //     if(err){
-        //         console.error(err.message);
-        //         return;
-        //     }
-        // });
+        form.parse(req, (err, fields, files) => {
+            if(err){
+                console.error(err.message);
+                return;
+            }
+            //console.log(fields);
+            
+            fs.readFile('./data/cats.json', 'utf-8', (error, data) => {
+                if(error){
+                    console.log(error);
+                }else{
+                    
+                    let currentCats = JSON.parse(data);
+                    let catId = req.url.split("/")[2];
+                    //console.log(catId);
+                    currentCats = currentCats.filter((cat) => cat.catId !== catId);
+                    currentCats.push({catId, ...fields, image: files.upload.name})
+                    //console.log(currentCats);
+                    let json = JSON.stringify(currentCats, '', 2);
+                    fs.writeFile('./data/cats.json', json, 'utf-8', () => {
+                        res.writeHead(302, {"Location": '/'});
+                        res.end();
+                    });
+                }
+                //console.log(currentCat);
+                //let jsonFields = JSON.stringify(fields);
+                //allCats.push({catId, ...fields, image: files.upload.name});
+                
+               
+            });
+            
+        });
 
             
             //let parsFields = JSON.parse(fields);
-            //console.log(fields);
-            let oldPath = files.upload.path;
+            //let oldPath = files.upload.path;
             // let newPath = ''
 
             // fs.rename(oldPath, newPath, (err) => {
@@ -238,31 +263,7 @@ module.exports = (req, res) => {
 
             // });
 
-            fs.readFile('data/cats.json', 'utf-8', (error, data) => {
-                if(error){
-                   console.log(error);
-                }else{
-                
-                    let currentCats = JSON.parse(data);
-                    let catId = urlObj.split("/")[2];
-                    console.log(catId);
-                    currentCats = currentCats.filter((cat) => cat.catId !== catId);
-                    let json = JSON.stringify(currentCats, '', 2);
-                    fs.writeFile('./data/cats.json', json, 'utf-8', () => {
-                        res.writeHead(302, {"Location": '/'});
-                        res.end();
-                    });
-                }
-
-                
-                
-                
-                //console.log(currentCat);
-                //let jsonFields = JSON.stringify(fields);
-                //allCats.push({catId, ...fields, image: files.upload.name});
-                
-               
-            });
+            
 
             // res.writeHead(200, {'Content-Type': 'text/plain'});
             // res.end();
@@ -304,7 +305,49 @@ module.exports = (req, res) => {
 
             res.write(modifiedData);
             res.end();
-        })
+        });
 
+        
+
+    }else if(urlObj.pathname.includes('/cats-find-new-home') && req.method.toLowerCase() === 'post'){
+
+        console.log(req.method);
+        let form = new formidable.IncomingForm();
+        //console.log(form);
+
+        //let catId = uniqId();
+        
+        form.parse(req, (err, fields, files) => {
+            if(err){
+                console.error(err.message);
+                return;
+            }
+            //console.log(fields);
+            
+            fs.readFile('./data/cats.json', 'utf-8', (error, data) => {
+                if(error){
+                    console.log(error);
+                }else{
+                    
+                    let currentCats = JSON.parse(data);
+                    let catId = req.url.split("/")[2];
+                    //console.log(catId);
+                    currentCats = currentCats.filter((cat) => cat.catId !== catId);
+                    //currentCats.push({catId, ...fields, image: files.upload.name})
+                    //console.log(currentCats);
+                    let json = JSON.stringify(currentCats, '', 2);
+                    fs.writeFile('./data/cats.json', json, 'utf-8', () => {
+                        res.writeHead(302, {"Location": '/'});
+                        res.end();
+                    });
+                }
+                //console.log(currentCat);
+                //let jsonFields = JSON.stringify(fields);
+                //allCats.push({catId, ...fields, image: files.upload.name});
+                
+               
+            });
+            
+        });
     }
 }
