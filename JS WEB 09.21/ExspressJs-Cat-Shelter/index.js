@@ -3,7 +3,7 @@ const app = express();
 const port = 5000;
 
 //const home = require('./views/home/index.html')
-app.use('/static', express.static('public'))
+app.use('/static', express.static('static'))
 
 app.get('/', (req,res)=> {
     // res.writeHead(200, {
