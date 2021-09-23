@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/add-cat', (req, res) => {
 
-    res.render('addCat');
+    res.render('addCat', {layout: false});
 
 });
 

@@ -4,11 +4,11 @@ const express = require('express');
 
 function setUpExpress(app){
 
-    app.engine('hbs', handlebars({
-        extname: 'hbs'
+    app.engine('.hbs', handlebars({
+        extname: '.hbs'
     }));
 
-    app.set('view engine', 'hbs');
+    app.set('view engine', '.hbs');
 
     app.use('/static', express.static("static"));
 
