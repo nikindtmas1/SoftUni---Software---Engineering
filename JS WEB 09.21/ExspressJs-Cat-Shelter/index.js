@@ -5,8 +5,10 @@ const routes = require('./routes');
 
 const app = express();
 //const home = require('./views/home/index.html')
-app.use('/static', express.static('static'));
+//app.use('/static', express.static('static'));
+const expressConfig = require('./config/configExpress');
 
+expressConfig(app);
 
 // app.get('/', (req,res)=> {
 //     // res.writeHead(200, {
@@ -15,13 +17,13 @@ app.use('/static', express.static('static'));
 //    res.sendFile(__dirname + '/views/home/home.html')
 // });
 
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');
+// app.engine('handlebars', exphbs());
+// app.set('view engine', 'handlebars');
 
-app.get('/add-cat', (req, res) => {
+// app.get('/add-cat', (req, res) => {
 
-    res.sendFile(__dirname + '/views/addCat.html')
-});
+//     res.sendFile(__dirname + '/views/addCat.html')
+// });
 
 app.get('/add-breed', (req, res) => {
 
