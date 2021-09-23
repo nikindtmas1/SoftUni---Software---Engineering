@@ -7,7 +7,12 @@ const app = express();
 app.use('/static', express.static('static'));
 
 
-
+// app.get('/', (req,res)=> {
+//     // res.writeHead(200, {
+//     //     'Content-Type': 'text/html'
+//     // });
+//    res.sendFile(__dirname + '/views/home/home.html')
+// });
 
 app.get('/add-cat', (req, res) => {
 
