@@ -1,4 +1,5 @@
 const express = require('express');
+const exphbs = require('express-handlebars');
 const port = 5000;
 const routes = require('./routes');
 
@@ -13,6 +14,9 @@ app.use('/static', express.static('static'));
 //     // });
 //    res.sendFile(__dirname + '/views/home/home.html')
 // });
+
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
 
 app.get('/add-cat', (req, res) => {
 
