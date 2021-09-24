@@ -2,10 +2,10 @@ const express = require('express');
 //const exphbs = require('express-handlebars');
 const port = 5000;
 const routes = require('./routes');
-
 const app = express();
 //const home = require('./views/home/index.html')
 //app.use('/static', express.static('static'));
+
 const expressConfig = require('./config/configExpress');
 
 expressConfig(app);
@@ -20,10 +20,10 @@ expressConfig(app);
 // app.engine('handlebars', exphbs());
 // app.set('view engine', 'handlebars');
 
-// app.get('/add-cat', (req, res) => {
+app.get('/add-cat', (req, res) => {
 
-//     res.sendFile(__dirname + '/views/addCat.html')
-// });
+    res.render('addCat');
+});
 
 app.get('/add-breed', (req, res) => {
 
