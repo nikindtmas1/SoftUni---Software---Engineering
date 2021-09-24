@@ -26,7 +26,10 @@ app.get('/add-cat', (req, res) => {
 });
 
 app.post('/add-cat', (req, res) => {
-    console.log(req);
+    console.log(req.method);
+    console.log(req.body);
+    console.log('You are posted');
+    res.redirect('/')
 });
 
 app.get('/add-breed', (req, res) => {
