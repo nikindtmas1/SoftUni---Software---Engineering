@@ -1,4 +1,7 @@
 const express = require('express');
+let filesData = require('./config/cats.json');
+const fs = require('fs');
+const uniqid = require('uniqid');
 //const exphbs = require('express-handlebars');
 const port = 5000;
 //const routes = require('./routes');
@@ -25,10 +28,29 @@ app.get('/add-cat', (req, res) => {
     res.render('addCat');
 });
 
-app.post('/add-cat', (req, res) => {
+
+app.post('/add-cat', validateProduct, (req, res) => {
     console.log(req.method);
     console.log(req.body);
+
+    let data = req.body;
+
+    let cat = new Cat(
+        uniqid(),
+        data.name,
+        data.description,
+        data.breed
+    )
     console.log('You are posted');
+    
+    filesData.push(cat);
+
+    fs.writeFile(path.join(__dirname, '/../config/cats.json'), JSON.stringify(filesData), (err) => {
+        if(err){
+            console.log(err);
+            return;
+        }
+    });
     res.redirect('/')
 });
 
@@ -38,5 +60,19 @@ app.get('/add-breed', (req, res) => {
 })
 
 //app.use(routes);
+
+function validateProduct(req, res, next){
+    let isValid = true;
+
+    if( req.body.name.length < 2 ){
+        isValid = false;
+    }else if(!req.body.imageUrl){
+        isValid = false;
+    }
+
+    if(isValid){
+        next();
+    }
+}
 
 app.listen(port, () => console.log(`Server listening on port: ${port}...`))
