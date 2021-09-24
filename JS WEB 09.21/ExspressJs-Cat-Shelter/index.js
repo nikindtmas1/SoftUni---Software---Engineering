@@ -25,6 +25,10 @@ app.get('/add-cat', (req, res) => {
     res.render('addCat');
 });
 
+app.post('/add-cat', (req, res) => {
+    console.log(req);
+});
+
 app.get('/add-breed', (req, res) => {
 
     res.render('addBreed')
