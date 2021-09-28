@@ -1,9 +1,11 @@
 const express = require('express');
+const router = express.Router();
 const fs = require('fs');
 const uniqid = require('uniqid');
-let filesData = require('../config/cats.json');
 const path = require('path');
-const router = express.Router();
+const bodyParser = require('body-parser');
+
+let filesData = require('../config/cats.json');
 
 router.get('/', (req, res) => {
     res.render('home');
@@ -20,7 +22,7 @@ router.post('/add-cat', (req, res) => {
     console.log(req.method);
     console.log(req.body);
 
-    let data = req.body;
+    let data = bodyParser(req.body);
 
     let cat = new Cat(
         uniqid(),
