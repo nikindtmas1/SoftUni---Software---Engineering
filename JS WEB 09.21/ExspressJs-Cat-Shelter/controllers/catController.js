@@ -21,8 +21,9 @@ router.post('/add-cat', (req, res) => {
     console.log(req.body);
 
     let data = (req.body);
+    console.log(data);
+    catService.addCat(data);
 
-    catService.addCat(data)
     console.log('You are posted');
     
     res.redirect('/');
