@@ -1,6 +1,7 @@
 
 const handlebars = require('express-handlebars');
 const express = require('express');
+const bodyParser = require('body-parser');
 
 
 function setUpExpress(app){
@@ -12,9 +13,11 @@ function setUpExpress(app){
 
     app.use('/static', express.static("static"));
 
-    app.use(express.urlencoded({
-        extended: true
-    }));
+    app.use(bodyParser.urlencoded({ extended: false }));
+
+    // app.use(express.urlencoded({
+    //     extended: true
+    // }));
 
 }
 
