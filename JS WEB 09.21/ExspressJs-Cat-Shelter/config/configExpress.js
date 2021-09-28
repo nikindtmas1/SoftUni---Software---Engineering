@@ -1,10 +1,10 @@
 
-const handlebars = require('express-handlebars');
 const express = require('express');
+const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 
 
-function setUpExpress(app){
+module.exports =  (app) => {
     app.engine('hbs', handlebars({
         extname: 'hbs'
     }));
@@ -21,4 +21,3 @@ function setUpExpress(app){
 
 }
 
-module.exports = setUpExpress;
