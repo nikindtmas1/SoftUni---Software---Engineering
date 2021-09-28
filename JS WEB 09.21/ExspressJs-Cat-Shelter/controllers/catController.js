@@ -15,7 +15,7 @@ router.get('/add-cat', (req, res) => {
 
 });
 
-router.post('/add-cat', validateData, (req, res) => {
+router.post('/add-cat', (req, res) => {
 
     console.log(req.method);
     console.log(req.body);
