@@ -1,10 +1,12 @@
-const express = require('express');
-const router = express.Router();
+
 
 const homeController = require('./controllers/homeController');
-const addCatController = require('./controllers/addCatController');
+const catController = require('./controllers/catController');
 
-router.use('/', homeController);
-router.use('/add-cat', addCatController);
 
-module.exports = router
+
+module.exports = (app) => {
+
+    app.use('/', homeController);
+    app.use('/cats', catController);
+}
