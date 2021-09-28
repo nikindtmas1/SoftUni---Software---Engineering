@@ -1,8 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 const uniqid = require('uniqid');
-let filesData = require('./config/cats.json');
-// const path = require('path');
+let filesData = require('../config/cats.json');
+const path = require('path');
 const router = express.Router();
 
 router.get('/', (req, res) => {
