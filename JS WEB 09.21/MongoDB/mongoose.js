@@ -7,6 +7,10 @@ const studentSchema = new mongoose.Schema({
     age: Number
 });
 
+studentSchema.methods.getInfo = function() {
+    return `I'm ${this.firstName} and I'm ${this.age} years old`
+}
+
 const Student = mongoose.model('Student', studentSchema);
 
 const myPerson = new Student({
@@ -25,11 +29,14 @@ async function main(){
 
     console.log('Data base connected');
 
-    await myPerson.save();
+    //await myPerson.save();
 
     const data = await Student.find({});
 
-    console.log(data);
+    //console.log(data);
+    
+
+    data.forEach((x) => console.log(x.getInfo()));
 };
 
 main()
