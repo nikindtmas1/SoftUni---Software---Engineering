@@ -40,3 +40,16 @@ async function main(){
 };
 
 main()
+
+// mongoose.connect('mongodb://localhost:27017/testdb', {
+//             useNewUrlParser: true,
+//             useUnifiedTopology: true
+//         })
+//         .then(() => {
+        
+//          let data = Student.find({})
+//             console.log(data);
+               
+          
+//         })
+       
