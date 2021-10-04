@@ -7,8 +7,20 @@ const app = express();
 app.use(cookieParser());
 
 app.get('/', (req, res) => {
-    res.cookie('CUSTOM-COOKIE', 'Initial cookie value')
-    res.send('<h1>Hello Express!</h1>')
+    let username = req.cookies.username;
+    //res.cookie('CUSTOM-COOKIE', 'Initial cookie value')
+    if(!username){
+        res.send(`<h1>Hello, You are not log in</h1>`);
+    }else{
+        res.send(`<h1>Hello ${username}, You are loged in successfuly</h1>`);
+    }
+});
+
+app.get('/login/:username', (req, res) => {
+    let username = req.params.username;
+    console.log(username);
+    res.cookie('username', `${username}`);
+    res.json(req.params.username);
 });
 
 app.get('/show', (req, res) => {
