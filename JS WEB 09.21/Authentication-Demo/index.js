@@ -15,6 +15,7 @@ const sessian = function(){
             let cookieId = uniqId();
 
             sessianData[cookieId] = {};
+            req.sessian = {};
 
             res.cookie('id', cookieId);
 
@@ -33,8 +34,10 @@ app.use(cookieParser());
 app.use(sessian());
 
 app.get('/', (req, res) => {
-    let username = req.cookies.username;
+    //let username = req.cookies.username;
     //res.cookie('CUSTOM-COOKIE', 'Initial cookie value')
+    let username = req.sessian?.username;
+
     if(!username){
         res.send(`<h1>Hello, You are not log in</h1>`);
     }else{
@@ -45,8 +48,15 @@ app.get('/', (req, res) => {
 app.get('/login/:username', (req, res) => {
     let username = req.params.username;
     console.log(username);
-    res.cookie('username', `${username}`);
+    //res.cookie('username', `${username}`);
+
+    req.sessian.username = username;
+
     res.json(req.params.username);
+});
+
+app.get('/session', (req, res) => {
+    res.send(req.sessian);
 });
 
 app.get('/show', (req, res) => {
