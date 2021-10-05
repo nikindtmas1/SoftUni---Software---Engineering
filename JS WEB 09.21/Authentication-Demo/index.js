@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
+const bcrypt = require('bcrypt');
 
 const uniqId = require('uniqid');
 
@@ -55,7 +56,8 @@ app.get('/', (req, res) => {
     }
 });
 
-app.get('/login/:username', (req, res) => {
+app.get('/login/:username/:password', (req, res) => {
+    let plainTextPassword = req.params.password;
     let username = req.params.username;
     console.log(username);
     //res.cookie('username', `${username}`);
