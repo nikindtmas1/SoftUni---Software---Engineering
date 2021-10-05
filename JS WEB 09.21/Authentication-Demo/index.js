@@ -1,10 +1,36 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
-
+const uniqId = require('uniqid');
 
 const app = express();
 
+const sessianData = {};
+
+const sessian = function(){
+
+   return (req, res, next) => {
+
+       if(!req.cookies.id){
+
+            let cookieId = uniqId();
+
+            sessianData[cookieId] = {};
+
+            res.cookie('id', cookieId);
+
+        }else{
+
+            let cookieId = req.cookies.id;
+
+            req.sessian = sessianData[cookieId];
+        }
+
+        next();
+    }
+}
+
 app.use(cookieParser());
+app.use(sessian());
 
 app.get('/', (req, res) => {
     let username = req.cookies.username;
