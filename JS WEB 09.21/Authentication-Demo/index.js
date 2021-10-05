@@ -57,14 +57,36 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login/:username/:password', (req, res) => {
+    const saltRounds = 9;
     let plainTextPassword = req.params.password;
     let username = req.params.username;
     console.log(username);
     //res.cookie('username', `${username}`);
 
-    req.sessian.username = username;
+    bcrypt.genSalt(saltRounds, (err, salt) => {
+        if(err) console.log(err);
+
+        bcrypt.hash(plainTextPassword, salt, (err, hash) => {
+        if(err) console.log(err);
+
+        console.log(hash);
+        });
+    });
+
+    //req.expressSession.username = username;
 
     res.json(req.params.username);
+});
+
+app.get('/compare/:password', (req, res) => {
+
+    let hash = '$2b$09$7hbmcDJ5n2zr43p2xs80f.4/KkSZMhBZSt.ArpsX1.Jlr0B1l16ZK';
+
+    bcrypt.compare(req.params.password, hash, (err, isIdenticle) => {
+        console.log(isIdenticle);
+        res.send(isIdenticle);
+    });
+
 });
 
 app.get('/session', (req, res) => {
