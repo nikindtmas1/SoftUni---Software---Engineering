@@ -1,5 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
+
 const uniqId = require('uniqid');
 
 const app = express();
@@ -31,7 +33,15 @@ const sessian = function(){
 }
 
 app.use(cookieParser());
-app.use(sessian());
+//app.use(sessian());
+app.use(expressSession(
+    {
+        secret: 'keyboard cat',
+        resave: false,
+        saveUninitialized: true,
+        cookie: { secure: false }
+      }
+));
 
 app.get('/', (req, res) => {
     //let username = req.cookies.username;
