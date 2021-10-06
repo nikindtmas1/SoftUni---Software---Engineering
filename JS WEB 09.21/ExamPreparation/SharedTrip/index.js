@@ -7,4 +7,4 @@ app.get('/', (req, res) => {
     res.send('Hello Express!');
 });
 
-app.listen(portConfig.development.PORT, () => console.log(`Server listening on port: ${portConfig.development.PORT}...`));
+app.listen(portConfig.PORT, () => console.log(`Server listening on port: ${portConfig.PORT}...`));

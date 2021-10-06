@@ -1,6 +1,6 @@
 
-module.exports = {
-    
+const config = {
+
     development: {
         PORT: 3000
     },
@@ -8,3 +8,4 @@ module.exports = {
         PORT: 80
     }
 }
+module.exports = config[process.env.NODE_ENV.trim()]
