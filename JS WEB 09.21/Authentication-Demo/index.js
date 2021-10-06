@@ -118,6 +118,18 @@ app.post('/token/create', (req, res) => {
     };
     const secret = 'mysecretsecret';
     const token = jwt.sign(payloads, secret, options);
+
+    res.cookie('jwt', token);
+    res.redirect('/token/show');
+});
+
+app.get('/token/show', (req, res) => {
+
+    let token = req.cookies.jwt;
+
+    let decodToken = jwt.verify(token, 'mysecretsecret');
+
+    res.send(decodToken);
 });
 
 app.get('/session', (req, res) => {
