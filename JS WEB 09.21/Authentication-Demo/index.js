@@ -172,7 +172,7 @@ app.get('/token/login', (req, res) => {
 
     bcrypt.compare(req.body.password, decodToken.password, (err, isIdenticle) => {
         if(isIdenticle){
-            res.send('You are loged in Wellcome ' + decodToken.username);
+            res.send('You are loged in, Wellcome ' + decodToken.username);
         }else{
             res.status(404).send('Not valid password');
         }
