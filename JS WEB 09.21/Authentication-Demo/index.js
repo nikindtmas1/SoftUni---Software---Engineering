@@ -2,7 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const bcrypt = require('bcrypt');
-const webtoken = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 const uniqId = require('uniqid');
 
@@ -107,6 +107,17 @@ app.get('/token/create', (req, res) => {
         </div>
     </form>
  `)
+});
+
+app.post('/token/create', (req, res) => {
+    let options = { expiresIn: '2d'};
+    let payloads = { 
+        _id: uniqId(),
+        username: req.body.username, 
+        password: req.body.password, 
+    };
+    const secret = 'mysecretsecret';
+    const token = jwt.sign(payloads, secret, options);
 });
 
 app.get('/session', (req, res) => {
