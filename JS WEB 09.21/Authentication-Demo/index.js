@@ -111,17 +111,24 @@ app.get('/token/create', (req, res) => {
 });
 
 app.post('/token/create', (req, res) => {
-    let options = { expiresIn: '2d'};
-    let payloads = { 
-        _id: uniqId(),
-        username: req.body.username, 
-        password: req.body.password, 
-    };
-    const secret = 'mysecretsecret';
-    const token = jwt.sign(payloads, secret, options);
 
-    res.cookie('jwt', token);
-    res.redirect('/token/show');
+    bcrypt.hash(req.body.password, 2, (err, hash) => {
+        if(err) console.log(err);
+        
+        let options = { expiresIn: '2d'};
+        let payloads = { 
+            _id: uniqId(),
+            username: req.body.username, 
+            password: hash, 
+        };
+        const secret = 'mysecretsecret';
+        const token = jwt.sign(payloads, secret, options);
+    
+        res.cookie('jwt', token);
+        res.redirect('/token/show');
+
+    });
+  
 });
 
 app.get('/token/show', (req, res) => {
