@@ -114,7 +114,7 @@ app.post('/token/create', (req, res) => {
 
     bcrypt.hash(req.body.password, 2, (err, hash) => {
         if(err) console.log(err);
-        
+
         let options = { expiresIn: '2d'};
         let payloads = { 
             _id: uniqId(),
@@ -138,6 +138,46 @@ app.get('/token/show', (req, res) => {
     let decodToken = jwt.verify(token, 'mysecretsecret');
 
     res.send(decodToken);
+});
+
+app.get('/token/login', (req, res) => {
+
+    res.send(`
+       <form action="/token/login" method="POST">
+           <div>
+               <label>Username</label>
+               <input type="text" name="username" />
+           </div>
+           <div>
+               <label>Password</label>
+               <input type="password" name="password" />
+           </div>
+           <div>
+               <input type="submit" value="Log In" />
+           </div>
+       </form>
+    `)
+   });
+
+   app.post('/token/login', (req, res) => {
+
+    let token = req.cookies.jwt;
+
+    let decodToken = jwt.verify(token, 'mysecretsecret');
+
+    if(req.body.username !== decodToken.username){
+
+      return  res.status(404).send('Not valid user');
+    }
+
+    bcrypt.compare(req.body.password, decodToken.password, (err, isIdenticle) => {
+        if(isIdenticle){
+            res.send('You are loged in Wellcome ' + decodToken.username);
+        }else{
+            res.status(404).send('Not valid password');
+        }
+    });
+    //res.send(decodToken);
 });
 
 app.get('/session', (req, res) => {
