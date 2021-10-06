@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.redirect('/trips');
+    res.render('home');
 });
 
-router.get('/profile', (req, res) => {
-    res.render('profile');
-});
+// router.get('/profile', (req, res) => {
+//     res.render('profile');
+// });
 
 
 
