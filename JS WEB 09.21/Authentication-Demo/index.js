@@ -34,6 +34,7 @@ const sessian = function(){
     }
 }
 
+app.use(express.urlencoded({extended: true}))
 app.use(cookieParser());
 //app.use(sessian());
 app.use(expressSession(
