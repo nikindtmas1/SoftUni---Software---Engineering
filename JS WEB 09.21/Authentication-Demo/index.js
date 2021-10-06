@@ -2,6 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const bcrypt = require('bcrypt');
+const webtoken = require('jsonwebtoken');
 
 const uniqId = require('uniqid');
 
