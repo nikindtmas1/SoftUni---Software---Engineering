@@ -90,6 +90,25 @@ app.get('/compare/:password', (req, res) => {
 
 });
 
+app.get('/token/create', (req, res) => {
+
+ res.send(`
+    <form action="/token/create" method="POST">
+        <div>
+            <label>Username</label>
+            <input type="text" name="username" />
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" name="password" />
+        </div>
+        <div>
+            <input type="submit" value="Log In" />
+        </div>
+    </form>
+ `)
+});
+
 app.get('/session', (req, res) => {
     res.send(req.sessian);
 });
