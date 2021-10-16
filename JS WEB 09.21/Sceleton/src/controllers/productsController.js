@@ -17,4 +17,11 @@ router.post('/create',async (req, res) => {
     res.redirect('/');
 });
 
+router.get('/show',async (req, res) => {
+
+    let results = await productService.getAllProduct();
+
+    res.render('products/show', {results});
+});
+
 module.exports = router;

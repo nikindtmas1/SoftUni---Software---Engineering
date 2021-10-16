@@ -9,7 +9,15 @@ function createProduct(data){
 
 };
 
+function getAllProduct(){
+
+  let results = Product.find({}).lean();
+
+  return results;
+}
+
 module.exports = {
 
     createProduct,
+    getAllProduct,
 }
