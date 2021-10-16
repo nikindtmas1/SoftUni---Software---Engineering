@@ -11,11 +11,13 @@ router.get('/register', (req, res) => {
     res.render('user/register');
 });
 
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res) => {
 
     let data = req.body;
+
+   await userService.createUser(data);
     
-    res.redirect('user/login');
+    res.redirect('/auth/login');
 });
 
 module.exports = router;
