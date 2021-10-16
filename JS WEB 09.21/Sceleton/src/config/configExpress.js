@@ -12,5 +12,5 @@ module.exports = (app) => {
 
     app.use(express.urlencoded({extended: true}));
 
-    app.set('views', path.join(__dirname, '/src/views'));
+    app.set('views', path.resolve(__dirname, '../views'));
 }
