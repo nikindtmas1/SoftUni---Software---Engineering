@@ -42,4 +42,9 @@ router.post('/register', async (req, res) => {
     res.redirect('/user/login');
 });
 
+router.get('/logout', (req, res) => {
+    res.clearCookie('cookieToken');
+    res.redirect('/user/login')
+});
+
 module.exports = router;
