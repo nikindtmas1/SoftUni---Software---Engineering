@@ -17,7 +17,7 @@ router.post('/register', async (req, res) => {
 
    await userService.createUser(data);
     
-    res.redirect('/auth/login');
+    res.redirect('/user/login');
 });
 
 module.exports = router;
