@@ -13,4 +13,6 @@ module.exports = (app) => {
     app.use(express.urlencoded({extended: true}));
 
     app.set('views', path.resolve(__dirname, '../views'));
+
+    app.use('/static', express.static(path.resolve(__dirname, '../static')));
 }
