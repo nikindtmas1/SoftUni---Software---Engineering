@@ -9,9 +9,16 @@ function createProduct(data){
 
 };
 
-function getAllProduct(){
+async function getAllProduct(){
 
-  let results = Product.find({}).lean();
+  let results = await Product.find({}).lean();
+
+  return results;
+};
+
+async function getOne(id){
+
+  let results = await Product.findById(id).lean();
 
   return results;
 }
@@ -20,4 +27,5 @@ module.exports = {
 
     createProduct,
     getAllProduct,
+    getOne,
 }
