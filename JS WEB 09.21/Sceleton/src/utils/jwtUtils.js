@@ -5,8 +5,8 @@ const secretStr = development.secret;
 function createToken(user){
 
     let payload = {
-        _id: user.get('_id'),
-        username: user.get('username')
+        _id: user._id,
+        username: user.username
     }
     let options = {
         expiresIn: '2d'
