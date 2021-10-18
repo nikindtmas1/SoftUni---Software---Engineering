@@ -28,7 +28,9 @@ router.get('/deatail/:prodId',async (req, res) => {
 
     let result = await productService.getOne(req.params.prodId);
 
-    res.render('products/details', {result});
+    let isOwn = result.userId == req.user._id;
+
+    res.render('products/details', {result, isOwn});
 });
 
 module.exports = router;
