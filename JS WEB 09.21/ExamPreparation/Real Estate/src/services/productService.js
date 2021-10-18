@@ -23,6 +23,19 @@ async function getOne(id){
   let results = await Product.findById(id).lean();
 
   return results;
+};
+
+function deleteProduct(id){
+   
+  //return Product.deleteOne(result);
+  return Product.findByIdAndDelete(id);
+};
+
+async function updateOne(id, data){
+
+  let results = await Product.findByIdAndUpdate(id, data).lean();
+
+  return results;
 }
 
 module.exports = {
@@ -30,4 +43,6 @@ module.exports = {
     createProduct,
     getAllProduct,
     getOne,
+    deleteProduct,
+    updateOne,
 }
