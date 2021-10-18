@@ -1,7 +1,9 @@
- <div class="">
-    <img class=""
-        src="{{imageUrl}}">
-    <p class=""><span>Name:</span>   {{name}}</p>
-    <p><span>Description:</span>   {{description}}</p>
-    <a class="btn" href="/products/details/{{_id}}">Details</a>
+
+<div class="card">
+    <h3>{{name}}</h3>
+    <p>{{description}}</p>
+
+    <div class="cta-container"><a href="/products/details/{{_id}}" class="det-link">Details</a></div>
+    <div class="card_circle"><img src="{{imageUrl}}"></div>
+
 </div>
