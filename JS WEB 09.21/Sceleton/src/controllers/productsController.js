@@ -26,9 +26,9 @@ router.get('/show',async (req, res) => {
 
 router.get('/deatail/:prodId',async (req, res) => {
 
-    let resutl = await productService.getOne(req.params.prodId);
+    let result = await productService.getOne(req.params.prodId);
 
-    res.render('details', {resutl});
+    res.render('products/details', {result});
 });
 
 module.exports = router;
