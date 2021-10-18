@@ -1,5 +1,5 @@
 const  { development } = require('../config/config');
-const secretStr = development.secret;
+//const secretStr = development.secret;
 const jwt = require('jsonwebtoken');
 
 
@@ -11,7 +11,8 @@ function auth(req, res, next){
         return next();
     }
 
-    jwt.verify(token, secretStr, function(err, decodedToken){
+    jwt.verify(token, development.secret, function(err, decodedToken){
+
         if(err){
             return res.status(401).redirect('/user/login');
         }
@@ -19,6 +20,7 @@ function auth(req, res, next){
         req.user = decodedToken;
         res.locals.user = decodedToken;
         next();
+
     });
 };
 
