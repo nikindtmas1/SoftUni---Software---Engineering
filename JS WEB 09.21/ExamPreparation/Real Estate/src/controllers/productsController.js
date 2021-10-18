@@ -27,14 +27,22 @@ router.get('/show',async (req, res) => {
     res.render('products/show', {results});
 });
 
-router.get('/details/:prodId',async (req, res) => {
+router.get('/details/:prodId', async (req, res) => {
 
     
     let result = await productService.getOne(req.params.prodId);
     
-    let isOwn = result.userId == req.user._id;
+    if(req.user){
+        let isOwn = result.userId == req.user._id;
+        let isAuth = req.user;
     
-    res.render('products/details', {result, isOwn});
+        res.render('products/details', {result, isOwn, isAuth});
+
+    }else{
+
+        res.render('products/details', {result});
+    }
+   
 });
 
 router.get('/:prodId/delete', isAuth, isOwn,async (req, res) => {

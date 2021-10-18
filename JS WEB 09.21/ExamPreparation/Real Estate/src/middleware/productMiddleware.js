@@ -10,7 +10,7 @@ async function isOwn(req, res, next){
 
         next();
     }else{
-        next('You are not authorized to edit this cube!');
+        next('You are not authorized to edit this product!');
     }
 
 }
