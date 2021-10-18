@@ -31,15 +31,17 @@
                 <h1>Top Houses</h1>
                 <div class="houses">
 
-
+                    {{#if results}}
                     {{#each results}}
                     {{>product}}
                     {{/each}}
+                    {{else}}
 
                     <!-- If there are still no offers for housing in the database display: -->
-                    <!--<div class="no-data-container">
+                    <div class="no-data-container">
                         <p class="no-data">There are no housing offers found...</p>
-                    </div>-->
+                    </div>
+                    {{/if}}
                 </div>
             </section>
         </main>
