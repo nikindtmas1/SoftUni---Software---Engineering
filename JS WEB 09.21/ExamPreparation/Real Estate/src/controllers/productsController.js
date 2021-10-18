@@ -59,7 +59,18 @@ router.get('/:prodId/delete', isAuth, isOwn,async (req, res) => {
 });
 
 router.get('/:prodId/edit', isAuth, isOwn, async (req, res) => {
+    let result = await productService.getOne(req.params.prodId);
 
+    res.render('products/edit', {result});
+});
+
+router.post('/:prodId/edit', isAuth, isOwn, async (req, res) => {
+
+    let {name, type, year, city, imageUrl, description, available} = req.body;
+
+    await productService.updateOne(req.params.prodId, {name, type, year, city, imageUrl, description, available});
+
+    res.redirect('/products/show')
 
 });
 
