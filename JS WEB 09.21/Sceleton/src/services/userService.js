@@ -16,7 +16,15 @@ function loginUser(data){
     return User.findByUsername(name)
     .then(user => {
         return Promise.all([bcrypt.compare(password, user.password), user]);
-    });
+    })
+    .then(([isValid, user]) => {
+        if(isValid){
+            return user
+        }else {
+            //throw { message: 'Username or password are invalid'}
+            return null;
+        }
+    })
 }
 
 module.exports = {
