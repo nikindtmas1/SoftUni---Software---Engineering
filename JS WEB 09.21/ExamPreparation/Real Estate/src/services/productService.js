@@ -1,9 +1,11 @@
 const Product = require('../models/product');
 
 
-function createProduct(data){
+function createProduct(data, userId){
 
-    let product = new Product(data);
+    let {name, type, year, city, imageUrl, description, available, rented} = data
+
+    let product = new Product({name, type, year, city, imageUrl, description, available, rented, userId});
 
   return  product.save();
 

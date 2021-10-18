@@ -12,7 +12,9 @@ router.post('/create',async (req, res) => {
 
     let data = req.body;
 
-    await productService.createProduct(data)
+    
+
+    await productService.createProduct(data, req.user._id)
 
     res.redirect('/');
 });
