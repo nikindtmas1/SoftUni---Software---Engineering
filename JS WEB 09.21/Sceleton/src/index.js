@@ -9,6 +9,8 @@ configExpress(app);
 
 const routes = require('./routes/routes');
 
+const { auth } = require('./middlewares/authMidleware');
+app.use(auth);
 
 mongooseConfig(app)
 routes(app);
