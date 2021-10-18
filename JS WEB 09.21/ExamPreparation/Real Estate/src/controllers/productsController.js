@@ -24,11 +24,13 @@ router.get('/show',async (req, res) => {
     res.render('products/show', {results});
 });
 
-router.get('/deatail/:prodId',async (req, res) => {
+router.get('/details/:prodId',async (req, res) => {
 
-    let resutl = await productService.getOne(req.params.prodId);
-
-    res.render('details', {resutl});
+    
+    let result = await productService.getOne(req.params.prodId);
+    
+    
+    res.render('products/details', {result});
 });
 
 module.exports = router;
