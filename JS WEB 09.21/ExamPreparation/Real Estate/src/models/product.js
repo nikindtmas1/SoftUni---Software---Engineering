@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const productSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        minlength: 6
     },
     type: {
         type: String,
@@ -11,23 +12,30 @@ const productSchema = new mongoose.Schema({
     },
     year: {
         type: Number,
-        required: true
+        required: true,
+        min: 1850,
+        max: 2021
     },
     city: {
         type: String,
-        required: true
+        required: true,
+        minlength: 4
     },
     imageUrl: {
         type: String,
-        required: true
+        required: true,
+        validate: /^https?/
     },
     description: {
         type: String,
-        required: true
+        required: true,
+        maxlength: 60
     },
     available: {
         type: Number,
-        required: true
+        required: true,
+        min: 0,
+        max: 10
     },
     rented: [
         {
