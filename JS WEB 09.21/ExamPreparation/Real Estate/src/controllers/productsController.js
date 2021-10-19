@@ -33,13 +33,15 @@ router.get('/details/:prodId', async (req, res) => {
     let result = await productService.getOne(req.params.prodId);
     let allProducts = await productService.getAllProduct();
     let count = allProducts.length;
-    console.log(allProducts.length);
+    
     
     if(req.user){
         let isOwn = result.userId == req.user._id;
         let isAuth = req.user;
+        let userRented = result.rented == req.user._id;
+        console.log(userRented);
     
-        res.render('products/details', {result, isOwn, isAuth, count});
+        res.render('products/details', {result, isOwn, isAuth, count, userRented});
 
     }else{
 

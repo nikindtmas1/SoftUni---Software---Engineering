@@ -33,8 +33,9 @@
                             {{else}}
                             <!-- logged in user with available pieces-->
                             <a href="/products/{{result._id}}/rent" class="rentHome">Rent a home, available {{count}} housing</a>
+                            {{#if userRented}}
                             <p class="alRentHome">You have already rent this home</p>
-
+                            {{/if}}
                             <!-- logged in user with no available pieces-->
                             <p class="no-housing">No Housing Available!</p>
                             {{/if}}
