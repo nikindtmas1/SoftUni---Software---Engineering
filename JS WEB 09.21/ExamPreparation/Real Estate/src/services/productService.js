@@ -1,4 +1,5 @@
 const Product = require('../models/product');
+const User = require('../models/user');
 
 
 function createProduct(data, userId){
@@ -36,7 +37,17 @@ async function updateOne(id, data){
   let results = await Product.findByIdAndUpdate(id, data).lean();
 
   return results;
-}
+};
+
+async function rentProduct(prodId, userId){
+
+  let product = await Product.findById(prodId);
+  let user = await User.findById(userId);
+
+  product.rented.push(user);
+
+  return product.save();
+};
 
 module.exports = {
 
@@ -45,4 +56,5 @@ module.exports = {
     getOne,
     deleteProduct,
     updateOne,
+    rentProduct,
 }
