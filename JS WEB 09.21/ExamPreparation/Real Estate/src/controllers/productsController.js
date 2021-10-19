@@ -52,6 +52,10 @@ router.get('/:prodId/rent',  async (req, res) => {
 
     let allProducts = await productService.getAllProduct();
     let count = allProducts.length;
+    count = count - 1;
+
+    productService.rentProduct(req.params.prodId, req.user._id)
+    .then(() => res.redirect(`/products/details/${req.params.prodId}`));
     
 });
 
