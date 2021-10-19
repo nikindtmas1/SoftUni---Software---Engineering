@@ -9,8 +9,8 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login',async (req, res) => {
-
-    let data = req.body;
+    try {
+        let data = req.body;
 
     let user = await userService.loginUser(data);
     if(!user){
@@ -26,6 +26,10 @@ router.post('/login',async (req, res) => {
     });
 
     res.redirect('/');
+    } catch (error) {
+        console.log(error);
+    }
+    
 });
 
 router.get('/register', (req, res) => {
@@ -33,12 +37,16 @@ router.get('/register', (req, res) => {
 });
 
 router.post('/register', async (req, res) => {
+    try {
+        let data = req.body;
 
-    let data = req.body;
-
-   await userService.createUser(data);
-    
-    res.redirect('/user/login');
+        await userService.createUser(data);
+         
+         res.redirect('/user/login');
+    } catch (error) {
+        console.log(error);
+    }
+   
 });
 
 router.get('/logout', (req, res) => {

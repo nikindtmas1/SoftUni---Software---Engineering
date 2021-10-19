@@ -15,24 +15,35 @@ router.post('/create',async (req, res) => {
 
     let data = req.body;
 
-    await productService.createProduct(data, req.user._id)
+    try {
+        await productService.createProduct(data, req.user._id)
+        res.redirect('/');
+        
+    } catch (error) {
+        console.log(error);
+    }
 
-    res.redirect('/');
 });
 
 router.get('/show',async (req, res) => {
 
-    let results = await productService.getAllProduct();
+    try {
+        let results = await productService.getAllProduct();
+        res.render('products/show', {results});
+        
+    } catch (error) {
+        console.log(error);
+    }
 
-    res.render('products/show', {results});
 });
 
 router.get('/details/:prodId', async (req, res) => {
 
-    
-    let result = await productService.getOne(req.params.prodId);
-    let allProducts = await productService.getAllProduct();
-    let count = allProducts.length;
+    try {
+
+        let result = await productService.getOne(req.params.prodId);
+        let allProducts = await productService.getAllProduct();
+        let count = allProducts.length;
     
     
     if(req.user){
@@ -47,6 +58,11 @@ router.get('/details/:prodId', async (req, res) => {
 
         res.render('products/details', {result});
     }
+        
+    } catch (error) {
+        console.log(error);
+    }
+    
    
 });
 
@@ -68,25 +84,39 @@ router.get('/:prodId/delete', isAuth, isOwn,async (req, res) => {
     if(!req.user){
         return res.redirect('/user/login');
     };
+    try {
+        await productService.deleteProduct(req.params.prodId);
+        
+        res.redirect('/');
+    } catch (error) {
+        console.log(error);
+    }
 
-    await productService.deleteProduct(req.params.prodId);
-
-    res.redirect('/');
 });
 
 router.get('/:prodId/edit', isAuth, isOwn, async (req, res) => {
-    let result = await productService.getOne(req.params.prodId);
+    try {
+        let result = await productService.getOne(req.params.prodId);
+        res.render('products/edit', {result});
+        
+    } catch (error) {
+        console.log(error);
+    }
 
-    res.render('products/edit', {result});
 });
 
 router.post('/:prodId/edit', isAuth, isOwn, async (req, res) => {
-
+try {
     let {name, type, year, city, imageUrl, description, available} = req.body;
 
     await productService.updateOne(req.params.prodId, {name, type, year, city, imageUrl, description, available});
 
-    res.redirect(`/products/details/${req.params.prodId}`)
+    res.redirect(`/products/details/${req.params.prodId}`);
+
+} catch (error) {
+    console.log(error);
+}
+    
 
 });
 
