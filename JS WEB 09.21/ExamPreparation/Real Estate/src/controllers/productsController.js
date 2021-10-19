@@ -38,8 +38,9 @@ router.get('/details/:prodId', async (req, res) => {
     if(req.user){
         let isOwn = result.userId == req.user._id;
         let isAuth = req.user;
-        let userRented = result.rented == req.user._id;
+        let userRented = result.rented.find((x) => x == req.user._id);
         console.log(userRented);
+        console.log(req.user._id);
     
         res.render('products/details', {result, isOwn, isAuth, count, userRented});
 
