@@ -31,12 +31,15 @@ router.get('/details/:prodId', async (req, res) => {
 
     
     let result = await productService.getOne(req.params.prodId);
+    let allProducts = await productService.getAllProduct();
+    let count = allProducts.length;
+    console.log(allProducts.length);
     
     if(req.user){
         let isOwn = result.userId == req.user._id;
         let isAuth = req.user;
     
-        res.render('products/details', {result, isOwn, isAuth});
+        res.render('products/details', {result, isOwn, isAuth, count});
 
     }else{
 
