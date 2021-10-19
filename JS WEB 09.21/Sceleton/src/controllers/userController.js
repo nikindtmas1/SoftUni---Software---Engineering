@@ -13,7 +13,6 @@ router.post('/login',async (req, res) => {
     let data = req.body;
 
     let user = await userService.loginUser(data);
-
     if(!user){
 
         return res.redirect('404');
