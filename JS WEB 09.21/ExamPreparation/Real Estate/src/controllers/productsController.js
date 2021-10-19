@@ -48,6 +48,13 @@ router.get('/details/:prodId', async (req, res) => {
    
 });
 
+router.get('/:prodId/rent',  async (req, res) => {
+
+    let allProducts = await productService.getAllProduct();
+    let count = allProducts.length;
+    
+});
+
 router.get('/:prodId/delete', isAuth, isOwn,async (req, res) => {
 
     //let result = await productService.getOne(req.params.prodId);
