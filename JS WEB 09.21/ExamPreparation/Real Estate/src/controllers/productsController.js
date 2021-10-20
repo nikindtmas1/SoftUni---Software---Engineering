@@ -37,6 +37,8 @@ router.get('/show',async (req, res) => {
 
 });
 
+
+
 router.get('/details/:prodId', async (req, res) => {
 
     try {

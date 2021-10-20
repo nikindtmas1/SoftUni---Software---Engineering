@@ -3,10 +3,21 @@ const router = express.Router();
 
 const productService = require('../services/productService');
 
+// router.get('/',async (req, res) => {
+  
+//     try {
+//         let results = await productService.getAllProduct();
+//         res.render('home', {results});
+//     } catch (error) {
+//         console.log(error);
+//     }
+    
+// });
+
 router.get('/',async (req, res) => {
   
     try {
-        let results = await productService.getAllProduct();
+        let results = await productService.getTopProd();
         res.render('home', {results});
     } catch (error) {
         console.log(error);

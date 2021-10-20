@@ -24,6 +24,18 @@ async function getAllProduct(){
   
 };
 
+async function getTopProd(){
+  try {
+    let results = await Product.find().sort({createdAt: -1}).limit(3).lean();
+
+  return results;
+  } catch (error) {
+    console.log(error);
+  }
+  
+
+};
+
 async function getOne(id){
 
   try {
@@ -73,6 +85,7 @@ module.exports = {
 
     createProduct,
     getAllProduct,
+    getTopProd,
     getOne,
     deleteProduct,
     updateOne,
