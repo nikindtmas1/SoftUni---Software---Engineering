@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const productService = require('../services/productService');
 
-const { isAuth } = require('../middleware/authMiddleware');
-const { isOwn } = require('../middleware/productMiddleware');
+//const { isAuth } = require('../middleware/authMiddleware');
+//const { isOwn } = require('../middleware/productMiddleware');
 
 
 router.get('/create', (req, res) => {
@@ -59,33 +59,33 @@ router.get('/:prodId/rent',  async (req, res) => {
     
 });
 
-router.get('/:prodId/delete', isAuth, isOwn,async (req, res) => {
+// router.get('/:prodId/delete', isAuth, isOwn,async (req, res) => {
 
-    //let result = await productService.getOne(req.params.prodId);
+   
 
-    if(!req.user){
-        return res.redirect('/user/login');
-    };
+//     if(!req.user){
+//         return res.redirect('/user/login');
+//     };
 
-    await productService.deleteProduct(req.params.prodId);
+//     await productService.deleteProduct(req.params.prodId);
 
-    res.redirect('/');
-});
+//     res.redirect('/');
+// });
 
-router.get('/:prodId/edit', isAuth, isOwn, async (req, res) => {
-    let result = await productService.getOne(req.params.prodId);
+// router.get('/:prodId/edit', isAuth, isOwn, async (req, res) => {
+//     let result = await productService.getOne(req.params.prodId);
 
-    res.render('products/edit', {result});
-});
+//     res.render('products/edit', {result});
+// });
 
-router.post('/:prodId/edit', isAuth, isOwn, async (req, res) => {
+// router.post('/:prodId/edit', isAuth, isOwn, async (req, res) => {
 
-    let {name, type, year, city, imageUrl, description, available} = req.body;
+//     let {name, type, year, city, imageUrl, description, available} = req.body;
 
-    await productService.updateOne(req.params.prodId, {name, type, year, city, imageUrl, description, available});
+//     await productService.updateOne(req.params.prodId, {name, type, year, city, imageUrl, description, available});
 
-    res.redirect(`/products/details/${req.params.prodId}`)
+//     res.redirect(`/products/details/${req.params.prodId}`)
 
-});
+// });
 
 module.exports = router;
