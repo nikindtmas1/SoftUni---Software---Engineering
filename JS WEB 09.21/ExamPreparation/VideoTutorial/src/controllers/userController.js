@@ -37,8 +37,23 @@ router.post('/register', async (req, res) => {
     let data = req.body;
 
    await userService.createUser(data);
+
+   let user = await userService.loginUser(data);
+    if(!user){
+
+        return res.redirect('404');
+
+    }
+
+    let token = await createToken(user);
+
+    res.cookie('cookieToken', token, {
+        httpOnly: true
+    });
+
+    res.redirect('/');
     
-    res.redirect('/user/login');
+    //res.redirect('/user/login');
 });
 
 router.get('/logout', (req, res) => {
