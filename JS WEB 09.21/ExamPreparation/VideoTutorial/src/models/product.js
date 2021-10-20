@@ -16,6 +16,10 @@ const productSchema = new mongoose.Schema({
     isPublic: {
         type: String,
         required: true
+    },
+    userId: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
     }
 });
 
