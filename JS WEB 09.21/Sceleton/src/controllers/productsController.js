@@ -27,7 +27,7 @@ router.get('/show',async (req, res) => {
     res.render('products/show', {results});
 });
 
-router.get('/detail/:prodId',async (req, res) => {
+router.get('/details/:prodId',async (req, res) => {
 
     let result = await productService.getOne(req.params.prodId);
     let allProducts = await productService.getAllProduct();

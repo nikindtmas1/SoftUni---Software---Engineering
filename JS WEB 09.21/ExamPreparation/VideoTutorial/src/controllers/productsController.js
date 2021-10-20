@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const productService = require('../services/productService');
 
-//const { isAuth } = require('../middleware/authMiddleware');
-//const { isOwn } = require('../middleware/productMiddleware');
+const { isAuth } = require('../middlewares/authMidleware');
+const { isOwn } = require('../middlewares/productMiddleware');
 
 
 router.get('/create', (req, res) => {
@@ -27,20 +27,20 @@ router.get('/show',async (req, res) => {
     res.render('products/show', {results});
 });
 
-router.get('/deatail/:prodId',async (req, res) => {
+router.get('/details/:prodId',async (req, res) => {
 
     let result = await productService.getOne(req.params.prodId);
-    let allProducts = await productService.getAllProduct();
-    let count = allProducts.length;
+    //let allProducts = await productService.getAllProduct();
+    //let count = allProducts.length;
     
     
     if(req.user){
         let isOwn = result.userId == req.user._id;
         let isAuth = req.user;
-        let userRented = result.rented.find((x) => x == req.user._id);
-       
-    
-        res.render('products/details', {result, isOwn, isAuth, count, userRented});
+        //let userRented = result.rented.find((x) => x == req.user._id);
+        
+        
+        res.render('products/details', {result, isOwn, isAuth});//, count, userRented
 
     }else{
 
