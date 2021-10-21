@@ -39,7 +39,7 @@ router.get('/show',async (req, res) => {
 
 
 
-router.get('/details/:prodId', async (req, res) => {
+router.get('/details/:prodId', isAuth, async (req, res) => {
 
     try {
 
