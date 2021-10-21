@@ -73,7 +73,7 @@ router.get('/details/:prodId', async (req, res) => {
 
 });
 
-router.get('/:prodId/rent', async (req, res) => {
+router.get('/:prodId/rent', isOwn, async (req, res) => {
 
     let allProducts = await productService.getAllProduct();
     let count = allProducts.length;
