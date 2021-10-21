@@ -81,6 +81,18 @@ async function rentProduct(prodId, userId){
   
 };
 
+async function rentedProduct(prodId){
+  try {
+    let product =await Product.findById(prodId).populate('rented').lean();
+
+    return product;
+
+  } catch (error) {
+    console.log(error);
+  }
+  
+};
+
 module.exports = {
 
     createProduct,
@@ -90,4 +102,5 @@ module.exports = {
     deleteProduct,
     updateOne,
     rentProduct,
+    rentedProduct,
 }
