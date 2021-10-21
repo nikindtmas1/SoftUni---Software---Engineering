@@ -52,11 +52,11 @@ router.get('/details/:prodId', async (req, res) => {
             let isOwn = result.userId == req.user._id;
             let isAuth = req.user;
 
-            let userRented = result.rented.find((x) => x == req.user._id);
+            let userRented = result.rented.find((x) => x._id == req.user._id);
             let rentedProduct = await productService.rentedProduct(req.params.prodId);
            
             let count = (allProducts.length - 1) - (rentedProduct.rented.length);
-            let isAveable = count > 0;
+            let isAveable = result.rented > 0;
             let rented = rentedProduct.rented.map(x => x.username).join(', ');
             
             res.render('products/details', { result, isOwn, isAuth, count, isAveable, rented, userRented });
