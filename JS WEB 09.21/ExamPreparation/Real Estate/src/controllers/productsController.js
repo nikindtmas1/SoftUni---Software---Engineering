@@ -45,7 +45,7 @@ router.get('/details/:prodId', async (req, res) => {
 
         let result = await productService.getOne(req.params.prodId);
         let allProducts = await productService.getAllProduct();
-        let count = allProducts.length;
+        
        
 
         if (req.user) {
@@ -55,9 +55,11 @@ router.get('/details/:prodId', async (req, res) => {
             let userRented = result.rented.find((x) => x == req.user._id);
             let rentedProduct = await productService.rentedProduct(req.params.prodId);
            
+            let count = (allProducts.length - 1) - (rentedProduct.rented.length);
+            let isAveable = count > 0;
             let rented = rentedProduct.rented.map(x => x.username).join(', ');
             
-            res.render('products/details', { result, isOwn, isAuth, count, rented, userRented });
+            res.render('products/details', { result, isOwn, isAuth, count, isAveable, rented, userRented });
 
         } else {
 
