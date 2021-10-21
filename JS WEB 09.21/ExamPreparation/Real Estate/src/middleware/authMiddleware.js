@@ -30,9 +30,18 @@ function isAuth(req, res, next){
     };
 
     next();
-}
+};
+
+function isGuest(req, res, next){
+    if(!req.user){
+        next();
+    }else{
+        res.redirect('/');
+    }
+};
 
 module.exports = {
     auth,
-    isAuth
+    isAuth,
+    isGuest,
 }

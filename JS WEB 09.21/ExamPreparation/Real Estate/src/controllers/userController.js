@@ -4,11 +4,13 @@ const router = express.Router();
 const userService = require('../services/userService');
 const { createToken } = require('../utils/jwtUtils');
 
-router.get('/login', (req, res) => {
+const { isGuest, isAuth } = require('../middleware/authMiddleware');
+
+router.get('/login',isGuest, (req, res) => {
     res.render('user/login');
 });
 
-router.post('/login',async (req, res) => {
+router.post('/login', isGuest, async (req, res) => {
     try {
         let data = req.body;
 
@@ -32,11 +34,11 @@ router.post('/login',async (req, res) => {
     
 });
 
-router.get('/register', (req, res) => {
+router.get('/register', isGuest, (req, res) => {
     res.render('user/register');
 });
 
-router.post('/register', async (req, res) => {
+router.post('/register', isGuest, async (req, res) => {
     try {
         let data = req.body;
 
@@ -49,7 +51,7 @@ router.post('/register', async (req, res) => {
    
 });
 
-router.get('/logout', (req, res) => {
+router.get('/logout', isAuth, (req, res) => {
     res.clearCookie('cookieToken');
     res.redirect('/user/login')
 });

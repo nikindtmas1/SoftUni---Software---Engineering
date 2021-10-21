@@ -8,5 +8,8 @@ module.exports = (app) => {
     app.use('/', homeController);
     app.use('/user', userController);
     app.use('/products', productsController);
+    app.use('*', (req, res) => {
+        res.render('404');
+    });
     
 }
