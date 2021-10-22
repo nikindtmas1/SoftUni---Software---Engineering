@@ -34,6 +34,7 @@ router.get('/show', async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        res.render('products/show', {error: error.message});
     }
 
 });
@@ -69,7 +70,7 @@ router.get('/details/:prodId', async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.render('products/details', {error: error.message})
+        res.render('products/details', {error: error.message});
     }
 
 
@@ -77,12 +78,18 @@ router.get('/details/:prodId', async (req, res) => {
 
 router.get('/:prodId/rent', isOwn, async (req, res) => {
 
-    let allProducts = await productService.getAllProduct();
+    try {
+        let allProducts = await productService.getAllProduct();
     let count = allProducts.length;
     count = count - 1;
 
     productService.rentProduct(req.params.prodId, req.user._id)
         .then(() => res.redirect(`/products/details/${req.params.prodId}`));
+    } catch (error) {
+        console.log(error);
+        res.redirect('/', {error: error.message});
+    }
+    
 
 });
 
@@ -99,6 +106,7 @@ router.get('/:prodId/delete', isAuth, isOwn, async (req, res) => {
         res.redirect('/');
     } catch (error) {
         console.log(error);
+        res.redirect('/', {error: error.message});
     }
 
 });
@@ -110,6 +118,7 @@ router.get('/:prodId/edit', isAuth, isOwn, async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        res.render('products/edit', {error: error.message});
     }
 
 });
@@ -124,6 +133,7 @@ router.post('/:prodId/edit', isAuth, isOwn, async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        res.render('products/details', {error: error.message});
     }
 
 
