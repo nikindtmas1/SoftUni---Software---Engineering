@@ -20,7 +20,14 @@ const productSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    usersEnrolled:
+    [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ]
 });
 
 module.exports = mongoose.model('Product', productSchema);

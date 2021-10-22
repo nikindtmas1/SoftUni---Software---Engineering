@@ -10,7 +10,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 5
-    }
+    },
+    courser: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product'
+        }
+    ]
 });
 
 userSchema.pre('save', function(next){

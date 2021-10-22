@@ -13,14 +13,15 @@
                     <div class="col-md-4 text-center">
                         <h3 class="my-3">{{result.description}}</h3>
                         <p>{{result.title}} is a platform for building mobile</p>
-
-                            {{#if isOwn}}
+                        {{#if user}}
+                        {{#if isOwn}}
                         <a class="btn btn-danger" href="/products/{{result._id}}/delete">Delete</a>
                         <a class="btn btn-warning" href="/products/{{result._id}}/edit">Edit</a>
-                        {{/if}}
+                        {{else}}
                         <span class="enrolled-span">You are already enrolled</span>
                         <a class="btn btn-primary" href="#">Enroll</a>
-
+                        {{/if}}
+                        {{/if}}
                     </div>
                 </div>
             </div>
