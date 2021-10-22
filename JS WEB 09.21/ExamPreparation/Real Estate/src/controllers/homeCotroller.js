@@ -21,6 +21,19 @@ router.get('/',async (req, res) => {
         res.render('home', {results});
     } catch (error) {
         console.log(error);
+        res.render('/', {error: error.message});
+    }
+    
+});
+
+router.get('/search', async (req, res) => {
+
+    try {
+        let results = await productService.getAllProduct(req.query.text);
+        res.render('search', {results});//
+    } catch (error) {
+        console.log(error);
+        res.render('/search', {error: error.message});
     }
     
 });

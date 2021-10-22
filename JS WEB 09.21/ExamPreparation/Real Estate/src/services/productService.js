@@ -12,9 +12,13 @@ function createProduct(data, userId){
 
 };
 
-async function getAllProduct(){
+async function getAllProduct(query){
+  
   try {
     let results = await Product.find({}).lean();
+    if(query){
+      results = results.filter((x) => x.type == query);
+    }
 
   return results;
   } catch (error) {
