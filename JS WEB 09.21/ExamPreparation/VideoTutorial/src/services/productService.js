@@ -39,12 +39,13 @@ async function updateOne(id, data){
   return results;
 };
 
-async function rentProduct(prodId, userId){
+async function enrollProduct(prodId, userId){
 
   let product = await Product.findById(prodId);
   let user = await User.findById(userId);
 
-  product.rented.push(user);
+  //product.rented.push(user);
+  product.usersEnrolled.push(user);
 
   return product.save();
 };
@@ -56,5 +57,5 @@ module.exports = {
     getOne,
     deleteProduct,
     updateOne,
-    rentProduct,
+    enrollProduct,
 }

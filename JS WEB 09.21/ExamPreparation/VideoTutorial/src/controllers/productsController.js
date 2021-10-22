@@ -32,15 +32,15 @@ router.get('/details/:prodId',async (req, res) => {
     let result = await productService.getOne(req.params.prodId);
     //let allProducts = await productService.getAllProduct();
     //let count = allProducts.length;
-    
+    console.log(result);
     
     if(req.user){
         let isOwn = result.userId == req.user._id;
         let isAuth = req.user;
-        //let userRented = result.rented.find((x) => x == req.user._id);
+        let isEnroll = result.usersEnrolled.filter((x) => x == req.user._id)        //let userRented = result.rented.find((x) => x == req.user._id);
         
         
-        res.render('products/details', {result, isOwn, isAuth});//, count, userRented
+        res.render('products/details', {result,isEnroll, isOwn, isAuth});//, count, userRented
 
     }else{
 
@@ -48,13 +48,10 @@ router.get('/details/:prodId',async (req, res) => {
     }
 });
 
-router.get('/:prodId/rent',  async (req, res) => {
+router.get('/:prodId/enroll',  async (req, res) => {
 
-    let allProducts = await productService.getAllProduct();
-    let count = allProducts.length;
-    count = count - 1;
 
-    productService.rentProduct(req.params.prodId, req.user._id)
+    productService.enrollProduct(req.params.prodId, req.user._id)
     .then(() => res.redirect(`/products/details/${req.params.prodId}`));
     
 });
