@@ -25,7 +25,11 @@ function loginUser(data){
             return null;
         }
     })
-}
+};
+
+function myProfile(userId){
+
+};
 
 module.exports = {
 

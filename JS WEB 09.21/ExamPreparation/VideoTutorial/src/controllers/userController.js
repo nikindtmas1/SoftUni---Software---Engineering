@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const userService = require('../services/userService');
+const productService = require('../services/productService');
 const { createToken } = require('../utils/jwtUtils');
 
 router.get('/login', (req, res) => {
@@ -54,6 +55,18 @@ router.post('/register', async (req, res) => {
     res.redirect('/');
     
     //res.redirect('/user/login');
+});
+
+router.get('/profile', async (req, res) => {
+
+    let results = await productService.getAllProduct();
+
+    let myCources = results.filter((x) => x.userId == req.user._id);
+    //myCources = myCources.filter((x) => x.title);
+    let myProf = req.user.username
+    
+
+    res.render('products/myProfile', {myCources, myProf});
 });
 
 router.get('/logout', (req, res) => {

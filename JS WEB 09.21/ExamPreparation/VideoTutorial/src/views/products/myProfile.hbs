@@ -1,0 +1,31 @@
+
+
+
+        <!-- In case of error, you should display section with class "notifications" -->
+        <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
+        <!--
+        <section class="notifications">
+            <p class="notification-message">Message...</p>
+        </section>-->
+
+        <main>
+            <h1 class="text-center">My Profile</h1>
+            <div class="profile"><img src="/static/img/profile.png" alt="default user">
+                <h3>User Info:</h3>
+                <div class="flex">
+                    <p>Username: </p>
+                    <p>{{myProf}}</p>
+                </div>
+
+                <div class="flex">
+                    <p>Enrolled Courses: </p>
+                    <p>
+                        {{#each myCources}}
+                        <span>{{title}}</span>
+                        {{/each}}
+                    </p>
+                </div>
+            </div>
+
+
+        </main>

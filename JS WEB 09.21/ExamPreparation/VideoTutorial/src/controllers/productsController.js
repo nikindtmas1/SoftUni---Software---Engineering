@@ -32,7 +32,7 @@ router.get('/details/:prodId',async (req, res) => {
     let result = await productService.getOne(req.params.prodId);
     //let allProducts = await productService.getAllProduct();
     //let count = allProducts.length;
-    console.log(result);
+   
     
     if(req.user){
         let isOwn = result.userId == req.user._id;
