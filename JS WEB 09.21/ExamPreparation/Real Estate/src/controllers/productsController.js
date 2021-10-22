@@ -6,21 +6,22 @@ const { isAuth } = require('../middleware/authMiddleware');
 const { isOwn } = require('../middleware/productMiddleware');
 
 
-router.get('/create', (req, res) => {
+router.get('/create',isAuth, (req, res) => {
 
     res.render('products/create');
 });
 
-router.post('/create', async (req, res) => {
-
-    let data = req.body;
-
+router.post('/create',isAuth, async (req, res) => {
+    
+    
     try {
+        let data = req.body;
         await productService.createProduct(data, req.user._id)
         res.redirect('/');
 
     } catch (error) {
         console.log(error);
+        res.render('products/create', {error: error.message})
     }
 
 });
@@ -68,6 +69,7 @@ router.get('/details/:prodId', async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        res.render('products/details', {error: error.message})
     }
 
 
