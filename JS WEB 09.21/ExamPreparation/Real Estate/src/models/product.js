@@ -35,6 +35,7 @@ const productSchema = new mongoose.Schema({
     available: {
         type: Number,
         required: true,
+        min: 0,
         max: 10
     },
     rented: [
