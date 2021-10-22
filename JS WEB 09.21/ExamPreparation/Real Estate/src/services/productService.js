@@ -23,6 +23,7 @@ async function getAllProduct(query){
   return results;
   } catch (error) {
     console.log(error);
+        res.redirect('/', {error: error.message});
   }
 
   
@@ -35,6 +36,7 @@ async function getTopProd(){
   return results;
   } catch (error) {
     console.log(error);
+    res.redirect('/', {error: error.message});
   }
   
 
@@ -49,6 +51,7 @@ async function getOne(id){
 
   } catch (error) {
     console.log(error);
+    res.redirect('/', {error: error.message});
   }
   
 };
@@ -67,6 +70,7 @@ async function updateOne(id, data){
 
   } catch (error) {
     console.log(error);
+    res.redirect('/', {error: error.message});
   }
   
 };
@@ -81,6 +85,7 @@ async function rentProduct(prodId, userId){
   return product.save();
   } catch (error) {
     console.log(error);
+    res.redirect('/', {error: error.message});
   }
   
 };
@@ -93,6 +98,7 @@ async function rentedProduct(prodId){
 
   } catch (error) {
     console.log(error);
+    res.redirect('/', {error: error.message});
   }
   
 };
