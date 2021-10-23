@@ -12,12 +12,17 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/create',async (req, res) => {
-
-    let data = req.body;
+    try {
+        let data = req.body;
 
     await productService.createProduct(data, req.user._id)
 
     res.redirect('/');
+    } catch (error) {
+        console.log(error);
+        res.render('products/create', {error: error.message});
+    }
+    
 });
 
 router.get('/show',async (req, res) => {
