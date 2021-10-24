@@ -1,5 +1,18 @@
 <main>
-
+<div id="container">
+        <div>
+            <div class="notification loadingBox">
+                Loading …
+            </div>
+            <div class="notification infoBox">
+                <span>Info</span>
+            </div>
+            {{#if error}}
+            <div class="notification errorBox">
+                <span>Error</span>
+            </div>
+            {{/if}}
+        </div>
     <section id="viewCatalog" class="background-img">
     
         <div class="added-hotels">
