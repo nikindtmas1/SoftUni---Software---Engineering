@@ -25,11 +25,18 @@ function loginUser(data){
             return null;
         }
     })
+};
+
+async function getUser(id){
+
+    let user = await User.findById(id);
+
+    return user;
 }
 
 module.exports = {
 
     createUser,
     loginUser,
-
+    getUser
 }
