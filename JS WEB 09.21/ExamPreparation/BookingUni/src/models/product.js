@@ -4,7 +4,6 @@ const productSchema = new mongoose.Schema({
     hotel: {
         type: String,
         required: true,
-        index: { unique: true }
     },
     city: {
         type: String,

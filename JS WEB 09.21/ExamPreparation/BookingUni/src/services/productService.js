@@ -8,8 +8,6 @@ function createProduct(data, userId){
 
     let product = new Product({hotel, city, imageUrl, freeRooms, userId});
 
-    console.log(product);
-
   return  product.save();
 
 };
