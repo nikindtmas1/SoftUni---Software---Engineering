@@ -16,13 +16,16 @@
                         {{result.city}}
                     </div>
                     <p><span >Free rooms: {{result.freeRooms}}</span> </p>
-                    <p><span class="green">You already have booked a room</span> </p>
                     {{#if isAuth}}
                     {{#if isOwn}}
                     <a href="/products/{{result._id}}/edit" class="edit">Edit</a>
                     <a href="/products/{{result._id}}/delete" class="remove">Delete</a>
                     {{else}}
+                    {{#if usersBooked}}
+                    <p><span class="green">You already have booked a room</span> </p>
+                    {{else}}
                     <a href="/products/{{result._id}}/book" class="book">Book</a>
+                    {{/if}}
                     {{/if}}
                     {{/if}}
                 </div>
