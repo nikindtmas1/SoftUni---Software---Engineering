@@ -3,9 +3,16 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
 
-    let results = await productService.getAllProduct();
+    try {
+        let results = await productService.getAllProduct();
 
-    res.render('home', {results});
+        res.render('home', {results});
+
+    } catch (error) {
+        console.log(error);
+        res.redirect('/', {error: error.message});
+    }
+  
 });
 
 module.exports = router;
