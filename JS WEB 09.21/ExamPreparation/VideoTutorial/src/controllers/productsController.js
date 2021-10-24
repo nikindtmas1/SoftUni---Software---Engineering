@@ -56,7 +56,7 @@ router.get('/details/:prodId',async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        res.redirect('products/details', {error: error.message});
+        res.redirect('/products/details', {error: error.message});
     }
    
 });
@@ -65,10 +65,10 @@ router.get('/:prodId/enroll', (req, res) => {
 
     try {
         productService.enrollProduct(req.params.prodId, req.user._id)
-        .then(() => res.redirect(`products/details/${req.params.prodId}`));
+        .then(() => res.redirect(`/products/details/${req.params.prodId}`));
     } catch (error) {
         console.log(error);
-        res.redirect(`products/details/${req.params.prodId}`, {error: error.message});
+        res.redirect(`/products/details/${req.params.prodId}`, {error: error.message});
     }
     
     
@@ -98,7 +98,7 @@ router.get('/:prodId/edit', isAuth, isOwn, async (req, res) => {
     res.render('products/edit', {result});
     } catch (error) {
         console.log(error);
-        res.redirect('products/edit', {error: error.message});
+        res.redirect('/products/edit', {error: error.message});
     }
     
 });
