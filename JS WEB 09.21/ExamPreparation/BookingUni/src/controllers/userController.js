@@ -11,23 +11,29 @@ router.get('/login', isGuest, (req, res) => {
 });
 
 router.post('/login', isGuest, async (req, res) => {
+    try {
+        
+        let data = req.body;
+        let user = await userService.loginUser(data);
+        if(!user){
+    
+            return res.redirect('404');
+    
+        }
+    
+        let token = await createToken(user);
+    
+        res.cookie('cookieToken', token, {
+            httpOnly: true
+        });
+    
+        res.redirect('/');
 
-    let data = req.body;
-
-    let user = await userService.loginUser(data);
-    if(!user){
-
-        return res.redirect('404');
-
+    } catch (error) {
+        console.log(error);
+        res.redirect('/user/login', {error: error.message});
     }
-
-    let token = await createToken(user);
-
-    res.cookie('cookieToken', token, {
-        httpOnly: true
-    });
-
-    res.redirect('/');
+   
 });
 
 router.get('/register', isGuest, (req, res) => {
@@ -35,12 +41,19 @@ router.get('/register', isGuest, (req, res) => {
 });
 
 router.post('/register', isGuest, async (req, res) => {
+    try {
+        
+        let data = req.body;
 
-    let data = req.body;
+        await userService.createUser(data);
 
-   await userService.createUser(data);
+        res.redirect('/user/login');
+
+    } catch (error) {
+        console.log(error);
+        res.redirect('/user/register', {error: error.message});
+    }
     
-    res.redirect('/user/login');
 });
 
 router.get('/logout', isAuth, (req, res) => {
