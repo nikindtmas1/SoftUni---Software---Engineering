@@ -19,6 +19,12 @@ const productSchema = new mongoose.Schema({
         min: 1,
         max: 100
     },
+    usersBooked: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ],
     userId: {
         type: mongoose.Types.ObjectId,
         ref: 'User'
