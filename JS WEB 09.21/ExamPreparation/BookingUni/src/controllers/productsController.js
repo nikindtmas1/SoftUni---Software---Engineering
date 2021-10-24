@@ -89,53 +89,53 @@ router.get('/details/:prodId',async (req, res) => {
     
 // });
 
-// router.get('/:prodId/delete', isAuth, isOwn,async (req, res) => {
+router.get('/:prodId/delete', isAuth, isOwn,async (req, res) => {
 
-//     //let result = await productService.getOne(req.params.prodId);
-//     try {
+    //let result = await productService.getOne(req.params.prodId);
+    try {
         
-//         if(!req.user){
-//             return res.redirect('/user/login');
-//         };
+        if(!req.user){
+            return res.redirect('/user/login');
+        };
     
-//         await productService.deleteProduct(req.params.prodId);
+        await productService.deleteProduct(req.params.prodId);
     
-//         res.redirect('/');
+        res.redirect('/');
 
-//     } catch (error) {
-//         console.log(error);
-//         res.redirect('/:prodId/delete', {error: error.message});
-//     }
+    } catch (error) {
+        console.log(error);
+        res.redirect('/', {error: error.message});
+    }
     
-// });
+});
 
-// router.get('/:prodId/edit', isAuth, isOwn, async (req, res) => {
-//     try {
+router.get('/:prodId/edit', isAuth, isOwn, async (req, res) => {
+    try {
         
-//         let result = await productService.getOne(req.params.prodId);
+        let result = await productService.getOne(req.params.prodId);
 
-//     res.render('products/edit', {result});
+    res.render('products/edit', {result});
 
-//     } catch (error) {
-//         console.log(error);
-//         res.redirect('/:prodId/edit', {error: error.message});
-//     }
+    } catch (error) {
+        console.log(error);
+        res.render('products/edit', {error: error.message});
+    }
     
-// });
+});
 
-// router.post('/:prodId/edit', isAuth, isOwn, async (req, res) => {
-//     try {
-//         let {name, type, year, city, imageUrl, description, available} = req.body;
+router.post('/:prodId/edit', isAuth, isOwn, async (req, res) => {
+    try {
+        let {hotel, city, imageUrl, freeRooms} = req.body;
 
-//     await productService.updateOne(req.params.prodId, {name, type, year, city, imageUrl, description, available});
+    await productService.updateOne(req.params.prodId, {hotel, city, imageUrl, freeRooms});
 
-//     res.redirect(`/products/details/${req.params.prodId}`);
+    res.redirect(`/products/details/${req.params.prodId}`);
 
-//     } catch (error) {
-//         console.log(error);
-//         res.redirect('/:prodId/edit', {error: error.message});
-//     }
+    } catch (error) {
+        console.log(error);
+        res.redirect('products/edit', {error: error.message});
+    }
 
-// });
+});
 
 module.exports = router;
