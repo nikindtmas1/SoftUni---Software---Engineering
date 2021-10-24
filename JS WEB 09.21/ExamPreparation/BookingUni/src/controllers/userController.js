@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 const userService = require('../services/userService');
-const { createToken } = require('../utils/jwtUtils');
+const productService = require('../services/productService');
 
+const { createToken } = require('../utils/jwtUtils');
 const { isGuest, isAuth } = require('../middlewares/authMidleware');
 
 router.get('/login', isGuest, (req, res) => {
@@ -56,8 +57,25 @@ router.post('/register', isGuest, async (req, res) => {
     
 });
 
-router.get('/profile', isAuth, (req, res) => {
-    res.render('user/profile');
+router.get('/profile', isAuth, async (req, res) => {
+
+    try {
+        let results = await productService.getAllProduct();
+
+    let myBookings = results.filter((x) => x.userId == req.user._id);
+    //myCources = myCources.filter((x) => x.title);
+    let myId = req.user._id;
+    let myProf = await userService.getUser(myId);
+    let username = myProf.username;
+    let email = myProf.email
+    
+    
+    res.render('user/profile', {myBookings, username, email});
+    } catch (error) {
+        console.log(error);
+        res.render('users/profile', {error: error.message});
+    }
+
 });
 
 router.get('/logout', isAuth, (req, res) => {
