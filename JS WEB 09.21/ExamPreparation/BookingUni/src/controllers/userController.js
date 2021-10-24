@@ -56,6 +56,10 @@ router.post('/register', isGuest, async (req, res) => {
     
 });
 
+router.get('/profile', isAuth, (req, res) => {
+    res.render('user/profile');
+});
+
 router.get('/logout', isAuth, (req, res) => {
     res.clearCookie('cookieToken');
     res.redirect('/user/login')
