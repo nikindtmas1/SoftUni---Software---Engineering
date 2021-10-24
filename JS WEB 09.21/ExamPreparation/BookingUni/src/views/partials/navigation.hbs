@@ -3,14 +3,20 @@
         <div class="left-container">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/user/login">Login</a></li>
-                <li><a href="/user/register">Register</a></li>
+               
+                {{#if user}}
                 <li><a href="/products/create">Add +</a></li>
+                {{else}}
+                     <li><a href="/user/login">Login</a></li>
+                <li><a href="/user/register">Register</a></li>
+                {{/if}}
             </ul>
         </div>
+        {{#if user}}
         <div class="right-container">
-            <a href="" class="log-out">{{name}}</a>
+            <a href="" class="log-out">{{user.username}}</a>
             <a href="/user/logout" class="log-out">Logout</a>
         </div>
+        {{/if}}
     </nav>
 </main>
