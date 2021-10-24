@@ -69,25 +69,24 @@ router.get('/details/:prodId',async (req, res) => {
    
 });
 
-// router.get('/:prodId/rent',  async (req, res) => {
+router.get('/:prodId/book',  async (req, res) => {
 
-//     try {
+    try {
 
-//         let allProducts = await productService.getAllProduct();
-//     let count = allProducts.length;
-//     count = count - 1;
+        let allProducts = await productService.getAllProduct();
+    
 
-//     productService.rentProduct(req.params.prodId, req.user._id)
-//     .then(() => res.redirect(`/products/details/${req.params.prodId}`));
+    productService.bookProduct(req.params.prodId, req.user._id)
+    .then(() => res.redirect(`/products/details/${req.params.prodId}`));
 
-//     } catch (error) {
-//         console.log(error);
-//         res.redirect('/:prodId/rent', {error: error.message});
-//     }
+    } catch (error) {
+        console.log(error);
+        res.redirect('/:prodId/rent', {error: error.message});
+    }
 
     
     
-// });
+});
 
 router.get('/:prodId/delete', isAuth, isOwn,async (req, res) => {
 
