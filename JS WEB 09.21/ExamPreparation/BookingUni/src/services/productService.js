@@ -46,12 +46,12 @@ async function updateOne(id, data){
   return results;
 };
 
-async function rentProduct(prodId, userId){
+async function bookProduct(prodId, userId){
 
   let product = await Product.findById(prodId);
   let user = await User.findById(userId);
 
-  product.rented.push(user);
+  product.usersBooked.push(user);
 
   return product.save();
 };
@@ -63,5 +63,5 @@ module.exports = {
     getOne,
     deleteProduct,
     updateOne,
-    rentProduct,
+    bookProduct,
 }
