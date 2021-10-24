@@ -32,7 +32,7 @@ router.post('/login', isGuest, async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.redirect('/user/login', {error: error.message});
+        res.render('user/login', {error: error.message});
     }
    
 });
@@ -46,13 +46,17 @@ router.post('/register', isGuest, async (req, res) => {
         
         let data = req.body;
 
+        if(data.password !== data.rePassword){
+            throw new Error('Password and rePassword musth by equel!');
+        }
+
         await userService.createUser(data);
 
         res.redirect('/user/login');
 
     } catch (error) {
         console.log(error);
-        res.redirect('/user/register', {error: error.message});
+        res.render('user/register', {error: error.message});
     }
     
 });

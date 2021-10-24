@@ -21,7 +21,7 @@ router.post('/create',isAuth, async (req, res) => {
         
     } catch (error) {
         console.log(error);
-        //res.status(401).redirect('/create', { error: error.message });
+        res.render('products/create', { error: error.message });
     }
     
 });
@@ -73,7 +73,7 @@ router.get('/:prodId/book',  async (req, res) => {
 
     try {
 
-        let allProducts = await productService.getAllProduct();
+        //let allProducts = await productService.getAllProduct();
     
 
     productService.bookProduct(req.params.prodId, req.user._id)
@@ -81,7 +81,7 @@ router.get('/:prodId/book',  async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.redirect('/:prodId/rent', {error: error.message});
+        res.render('products/details', {error: error.message});
     }
 
     
@@ -132,7 +132,7 @@ router.post('/:prodId/edit', isAuth, isOwn, async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.redirect('products/edit', {error: error.message});
+        res.render('products/edit', {error: error.message});
     }
 
 });
