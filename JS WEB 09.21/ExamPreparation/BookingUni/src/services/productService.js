@@ -4,19 +4,28 @@ const User = require('../models/user');
 
 function createProduct(data, userId){
 
-    let {name, type, year, city, imageUrl, description, available, rented} = data
+    let {hotel, city, imageUrl, freeRooms} = data
 
-    let product = new Product({name, type, year, city, imageUrl, description, available, rented, userId});
+    let product = new Product({hotel, city, imageUrl, freeRooms, userId});
+
+    console.log(product);
 
   return  product.save();
 
 };
 
 async function getAllProduct(){
-
-  let results = await Product.find({}).lean();
+  try {
+    let results = await Product.find({}).lean();
 
   return results;
+
+  } catch (error) {
+    console.log(error);
+    res.status(400).redirect('/', {error: error.message});
+  }
+
+  
 };
 
 async function getOne(id){

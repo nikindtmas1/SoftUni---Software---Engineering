@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const productService = require('../services/productService');
 
-//const { isAuth } = require('../middleware/authMiddleware');
-//const { isOwn } = require('../middleware/productMiddleware');
+const { isAuth } = require('../middlewares/authMidleware');
+//const { isOwn } = require('../middlewares/productMiddleware');
 
 
 router.get('/create', (req, res) => {
@@ -11,36 +11,37 @@ router.get('/create', (req, res) => {
     res.render('products/create');
 });
 
-router.post('/create',async (req, res) => {
+router.post('/create', isAuth, async (req, res) => {
 
     try {
         let data = req.body;
-
+        console.log(data);
+        console.log(req.user._id);
         await productService.createProduct(data, req.user._id)
 
         res.redirect('/');
         
     } catch (error) {
         console.log(error);
-        res.redirect('/', { error: error.message });
+        //res.status(401).redirect('/create', { error: error.message });
     }
     
 });
 
-router.get('/show',async (req, res) => {
-    try {
+// router.get('/show',async (req, res) => {
+//     try {
         
-        let results = await productService.getAllProduct();
+//         let results = await productService.getAllProduct();
 
-    res.render('products/show', {results});
+//     res.render('products/show', {results});
 
-    } catch (error) {
-        console.log(error);
-        res.redirect('/products/show', {error: error.message});
-    }
+//     } catch (error) {
+//         console.log(error);
+//         res.redirect('/products/show', {error: error.message});
+//     }
 
     
-});
+// });
 
 router.get('/details/:prodId',async (req, res) => {
 
@@ -70,25 +71,25 @@ router.get('/details/:prodId',async (req, res) => {
    
 });
 
-router.get('/:prodId/rent',  async (req, res) => {
+// router.get('/:prodId/rent',  async (req, res) => {
 
-    try {
+//     try {
 
-        let allProducts = await productService.getAllProduct();
-    let count = allProducts.length;
-    count = count - 1;
+//         let allProducts = await productService.getAllProduct();
+//     let count = allProducts.length;
+//     count = count - 1;
 
-    productService.rentProduct(req.params.prodId, req.user._id)
-    .then(() => res.redirect(`/products/details/${req.params.prodId}`));
+//     productService.rentProduct(req.params.prodId, req.user._id)
+//     .then(() => res.redirect(`/products/details/${req.params.prodId}`));
 
-    } catch (error) {
-        console.log(error);
-        res.redirect('/:prodId/rent', {error: error.message});
-    }
+//     } catch (error) {
+//         console.log(error);
+//         res.redirect('/:prodId/rent', {error: error.message});
+//     }
 
     
     
-});
+// });
 
 // router.get('/:prodId/delete', isAuth, isOwn,async (req, res) => {
 

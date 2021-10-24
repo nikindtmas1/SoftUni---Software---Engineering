@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
-    name: {
+    hotel: {
         type: String,
         required: true,
-        unique: true
+        index: { unique: true }
     },
     city: {
         type: String,
@@ -24,12 +24,6 @@ const productSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'User'
     },
-    bookedRoom: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
-        }
-    ]
 });
 
 module.exports = mongoose.model('Product', productSchema);
