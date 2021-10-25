@@ -6,7 +6,7 @@ const userService = require('../services/userService');
 const { createToken } = require('../utils/jwtUtils');
 
 const { isGuest, isAuth } = require('../middleware/authMiddleware');
-const { isCorect } = require('../middleware/userMiddleware');
+
 
 router.get('/login',isGuest, (req, res) => {
     res.render('user/login');
