@@ -67,7 +67,7 @@ router.post('/register', isGuest, async (req, res) => {
          res.redirect('/user/login');
     } catch (error) {
         console.log(error);
-        res.render('404', {error: error.message});
+        res.render('user/register', {error: error.message});
     }
    
 });

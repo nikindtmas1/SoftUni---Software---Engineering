@@ -1,15 +1,12 @@
 const Product = require('../models/product');
 const User = require('../models/user');
-const  validator = require('validator');
+//const  validator = require('validator');
 
 
 function createProduct(data, userId){
 
     let {name, type, year, city, imageUrl, description, available, rented} = data
 
-    if(validator.isURL(imageUrl)){
-      console.log('Is URL');
-    }
     let product = new Product({name, type, year, city, imageUrl, description, available, rented, userId});
 
   return  product.save();
