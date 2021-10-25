@@ -16,22 +16,27 @@ router.post('/login', isGuest, async (req, res) => {
     try {
         let data = req.body;
 
+        if(data.username.length < 2){
+            throw {message: 'Username must by at last 6 characters !'};
+        }
+
         let user = await userService.loginUser(data);
-    if(!user){
+        if(!user){
+            throw {message: 'Invalid username or password!'}
+            //return res.redirect('404');
+            
+        }
 
-        return res.redirect('404');
+        let token = await createToken(user);
 
-    }
-
-    let token = await createToken(user);
-
-    res.cookie('cookieToken', token, {
+        res.cookie('cookieToken', token, {
         httpOnly: true
     });
 
     res.redirect('/');
     } catch (error) {
         console.log(error);
+        res.render('404', {error: error.message});
     }
     
 });

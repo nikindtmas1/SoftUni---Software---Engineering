@@ -47,8 +47,9 @@ async function loginUser(data){
         if(isValid){
             return user
         }else {
-            //throw { message: 'Username or password are invalid'}
-            return null;
+            
+            throw {message: 'Username or password are invalid'};
+            //return null;
         }
     })
     
