@@ -17,8 +17,8 @@ router.post('/login', isGuest, async (req, res) => {
         let data = req.body;
         let user = await userService.loginUser(data);
         if(!user){
-    
-            return res.redirect('404');
+            throw {message: 'Invalid user!'}
+            //return res.redirect('404');
     
         }
     
