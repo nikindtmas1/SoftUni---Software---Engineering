@@ -9,10 +9,36 @@ let user = new User(data)
 return user.save();
 }
 
-function loginUser(data){
+async function loginUser(data){
     let name = data.username;
     let password = data.password;
-   
+//     try {
+//        let user = await User.findByUsername(name);
+       
+//        bcrypt.compare(password, user.password, function(error, isMatch){
+//                let isValid = true;
+//                 if(error){
+//                     console.log(error);
+//                     isValid = false;
+//                     throw {message: 'The password is not valid!'};
+//                 }else if(!isMatch){
+//                     isValid = false;
+//                     console.log('Password not match');
+//                     throw {message: 'Password not match'}
+//                 }else{
+//                     console.log('Password match!');
+                
+//                     return user
+//                 }
+               
+//            });
+
+           
+       
+//    } catch (error) {
+//        console.log(error);
+//        res.render('404', {error: error.message});
+//    }
     return User.findByUsername(name)
     .then(user => {
         return Promise.all([bcrypt.compare(password, user.password), user]);
@@ -25,6 +51,7 @@ function loginUser(data){
             return null;
         }
     })
+    
 }
 
 module.exports = {
