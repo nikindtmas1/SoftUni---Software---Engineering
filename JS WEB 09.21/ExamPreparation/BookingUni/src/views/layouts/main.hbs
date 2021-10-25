@@ -16,9 +16,12 @@
                 <span>Info</span>
             </div>
             {{#if error}}
-                <div class="notification errorBox">
-                    <span>{{error.message}}</span>
+            <div>
+                 <div class="notification errorBox">
+                    <span>{{error}}</span>
                 </div>
+            </div>
+               
             {{/if}}
         </div>
     {{>navigation}}

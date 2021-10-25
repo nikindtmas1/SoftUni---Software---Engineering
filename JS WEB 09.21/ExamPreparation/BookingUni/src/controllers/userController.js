@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const User = require('../models/user');
+
 const userService = require('../services/userService');
 const productService = require('../services/productService');
 
@@ -45,6 +47,11 @@ router.post('/register', isGuest, async (req, res) => {
     try {
         
         let data = req.body;
+
+        let user = await User.findByUsername(data.username);
+        if(user){
+            throw {message: 'The username all ready exists!'}
+        }
 
         if(data.password !== data.rePassword){
             throw new Error('Password and rePassword musth by equel!');
