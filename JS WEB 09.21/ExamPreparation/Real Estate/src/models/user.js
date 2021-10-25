@@ -5,11 +5,13 @@ const userSchema = new mongoose.Schema({
     fullname: {
         type: String,
         required: true,
-        validate: /[A-Za-z]+/
+        validate: /[A-Za-z]+/,
+        minlength: 3
     },
     username: {
         type: String,
-        required: true
+        required: true,
+        minlength: 3
     },
     password: {
         type: String,

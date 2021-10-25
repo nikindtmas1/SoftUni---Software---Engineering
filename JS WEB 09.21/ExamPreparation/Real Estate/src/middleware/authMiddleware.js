@@ -40,8 +40,11 @@ function isGuest(req, res, next){
     }
 };
 
+
+
 module.exports = {
     auth,
     isAuth,
     isGuest,
+    
 }
