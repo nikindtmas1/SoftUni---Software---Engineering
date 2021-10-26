@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const productService = require('../services/productService');
 
-//const { isAuth } = require('../middleware/authMiddleware');
-//const { isOwn } = require('../middleware/productMiddleware');
+const { isAuth } = require('../middlewares/authMidleware');
+const { isOwn } = require('../middlewares/productMiddleware');
 
 
 router.get('/create', (req, res) => {
@@ -71,59 +71,78 @@ router.get('/details/:prodId', async (req, res) => {
 
 });
 
-router.get('/:prodId/rent', async (req, res) => {
+// router.get('/:prodId/like', async (req, res) => {
+
+//     try {
+
+//         let allProducts = await productService.getAllProduct();
+//         let count = allProducts.length;
+//         count = count - 1;
+
+//         productService.rentProduct(req.params.prodId, req.user._id)
+//             .then(() => res.redirect(`/products/details/${req.params.prodId}`));
+
+//     } catch (error) {
+//         console.log(error);
+//         res.render('products/details', { error: error.message });
+//     }
+
+
+
+// });
+
+router.get('/:prodId/like',  async (req, res) => {
 
     try {
 
-        let allProducts = await productService.getAllProduct();
-        let count = allProducts.length;
-        count = count - 1;
+        //let allProducts = await productService.getAllProduct();
+    
 
-        productService.rentProduct(req.params.prodId, req.user._id)
-            .then(() => res.redirect(`/products/details/${req.params.prodId}`));
+    productService.likeProduct(req.params.prodId, req.user._id)
+    .then(() => res.redirect(`/products/details/${req.params.prodId}`));
 
     } catch (error) {
         console.log(error);
-        res.render('products/details', { error: error.message });
+        res.render('products/details', {error: error.message});
     }
 
+    
+    
+});
 
+router.get('/:prodId/delete', isAuth, isOwn,async (req, res) => {
+
+    //let result = await productService.getOne(req.params.prodId);
+    try {
+
+        if(!req.user){
+            return res.redirect('/user/login');
+        };
+
+        await productService.deleteProduct(req.params.prodId);
+
+        res.redirect('/');
+
+    } catch (error) {
+        console.log(error);
+        res.redirect('/:prodId/delete', {error: error.message});
+    }
 
 });
 
-// router.get('/:prodId/delete', isAuth, isOwn,async (req, res) => {
+router.get('/:prodId/edit', isAuth, isOwn, async (req, res) => {
+    try {
 
-//     //let result = await productService.getOne(req.params.prodId);
-//     try {
+        let result = await productService.getOne(req.params.prodId);
 
-//         if(!req.user){
-//             return res.redirect('/user/login');
-//         };
+    res.render('products/edit', {result});
 
-//         await productService.deleteProduct(req.params.prodId);
+    } catch (error) {
+        console.log(error);
+        res.redirect('/:prodId/edit', {error: error.message});
+    }
 
-//         res.redirect('/');
-
-//     } catch (error) {
-//         console.log(error);
-//         res.redirect('/:prodId/delete', {error: error.message});
-//     }
-
-// });
-
-// router.get('/:prodId/edit', isAuth, isOwn, async (req, res) => {
-//     try {
-
-//         let result = await productService.getOne(req.params.prodId);
-
-//     res.render('products/edit', {result});
-
-//     } catch (error) {
-//         console.log(error);
-//         res.redirect('/:prodId/edit', {error: error.message});
-//     }
-
-// });
+});
 
 // router.post('/:prodId/edit', isAuth, isOwn, async (req, res) => {
 //     try {
