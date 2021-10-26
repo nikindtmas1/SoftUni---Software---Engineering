@@ -10,10 +10,12 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        validate: [validateEmail, 'Please fill a valid email address'],
-        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
+        validate: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+        //[validateEmail, 'Please fill a valid email address'],
+        //match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
         trim: true,
         lowercase: true,
+        //validate: /^[A-Za-z0-9]+$/
     },
     username: {
         type: String,
@@ -24,7 +26,8 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 5
+        minlength: 5,
+        validate: /^[A-Za-z0-9]+$/
     },
     bookedHotells: [
         {
