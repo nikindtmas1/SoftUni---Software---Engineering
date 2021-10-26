@@ -4,10 +4,12 @@ const productSchema = new mongoose.Schema({
     hotel: {
         type: String,
         required: true,
+        minlength: 4,
     },
     city: {
         type: String,
-        required: true
+        required: true,
+        minlength: 3
     },
     imageUrl: {
         type: String,
