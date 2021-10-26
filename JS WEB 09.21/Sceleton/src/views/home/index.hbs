@@ -3,7 +3,7 @@
     <section id="viewCatalog" class="background-img">
     
         <div class="added-hotels">
-            {{#if results}}
+            {{!-- {{#if results}}
             {{#each results}}
             {{>product}}
             {{/each}}
@@ -11,7 +11,9 @@
                 <div class="guest">
                     There are no Hotels found...
                 </div>
-            {{/if}}
+            {{/if}} --}}
+
+            {{>product}}
     
         </div>
     </section>
