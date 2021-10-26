@@ -159,4 +159,28 @@ router.post('/:prodId/edit', isAuth, isOwn, async (req, res) => {
 
 });
 
+router.get('/sort-data',async (req, res) => {
+    try {
+        let results = await productService.getSortProd();
+        
+        res.render('home', {results});
+    } catch (error) {
+        console.log(error);
+        res.render('home', {error: error.message});
+    }
+  
+});
+
+router.get('/sort-likes',async (req, res) => {
+    try {
+        let results = await productService.getSortLikes();
+        
+        res.render('home', {results});
+    } catch (error) {
+        console.log(error);
+        res.render('home', {error: error.message});
+    }
+  
+});
+
 module.exports = router;
