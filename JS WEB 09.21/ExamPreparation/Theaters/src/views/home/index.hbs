@@ -1,5 +1,21 @@
 <main>
 
-    <h1>Hello Express Handlebars</h1>
+    <section>
+                <div class="aux">
+                    <h1>Available Plays</h1>
+                    <div class="home-buttons">
+                        <a class="btn create-play" href="/products/create">Create Theater</a>
+                        <a class="btn create-play" href="">Sort by Date</a>
+                        <a class="btn create-play" href="">Sort by Likes</a>
+                    </div>
+                </div>
+                <div class="theaters-container">
+               
+
+                    {{>product}}
+
+                    <!-- <h4>No plays yet...</h4> -->
+                </div>
+            </section>
 
 </main>

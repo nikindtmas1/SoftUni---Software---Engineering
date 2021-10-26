@@ -1,5 +1,19 @@
 <main>
 
-    <h1>Hello Express Handlebars</h1>
+    <section id="viewCatalog" class="background-img">
+    
+        <div class="added-hotels">
+            {{#if results}}
+            {{#each results}}
+            {{>product}}
+            {{/each}}
+            {{else}}
+                <div class="guest">
+                    There are no Hotels found...
+                </div>
+            {{/if}}
+    
+        </div>
+    </section>
 
 </main>

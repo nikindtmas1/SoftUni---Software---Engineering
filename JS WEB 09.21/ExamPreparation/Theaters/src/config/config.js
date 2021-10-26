@@ -1,8 +1,8 @@
 
 module.exports = {
     development: {
-        PORT: 5000,
-        dbUrl: 'mongodb://localhost:27017/test',
+        PORT: 3000,
+        dbUrl: 'mongodb://localhost:27017/theaters',
         secret: 'mnogoqkaparola'
     },
     production: {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,16 @@
     <link href="/static/css/style.css" type="text/css" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
+    {{#if error}}
+    <section class="notifications error">
+        <p>{{error}}</p>
+    </section>
+    {{/if}}
     {{>navigation}}
     {{{ body }}}
     {{>footer}}
 </body>
+
 </html>
