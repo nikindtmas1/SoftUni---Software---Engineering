@@ -18,6 +18,8 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
+        validate: /^[A-Za-z0-9_-]*$/
+
     },
     password: {
         type: String,
