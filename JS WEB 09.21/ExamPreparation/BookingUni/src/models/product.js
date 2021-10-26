@@ -11,7 +11,8 @@ const productSchema = new mongoose.Schema({
     },
     imageUrl: {
         type: String,
-        required: true
+        required: true,
+        validate: /^https?/
     },
     freeRooms: {
         type: Number,
