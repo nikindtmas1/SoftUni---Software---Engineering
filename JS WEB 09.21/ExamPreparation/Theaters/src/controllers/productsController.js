@@ -56,7 +56,7 @@ router.get('/details/:prodId', async (req, res) => {
             let userLikes = result.usersLike.filter((x) => x == req.user._id);
 
 
-            res.render('products/details', { result, isOwn, isAuth, count, userLikes });
+            res.render('products/details', { result, isOwn, isAuth, userLikes });
 
         } else {
 
