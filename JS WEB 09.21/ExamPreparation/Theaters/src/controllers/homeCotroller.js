@@ -6,8 +6,7 @@ const productService = require('../services/productService');
 router.get('/', async (req, res) => {
 
     try {
-        //let results = await productService.getAllProduct();
-        let results = await productService.getSortProd();
+        let results = await productService.getAllProduct();
 
         res.render('home', {results});//
 
