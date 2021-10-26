@@ -3,11 +3,13 @@
     <section>
                 <div class="aux">
                     <h1>Available Plays</h1>
+                    {{#if user}}
                     <div class="home-buttons">
                         <a class="btn create-play" href="/products/create">Create Theater</a>
                         <a class="btn create-play" href="">Sort by Date</a>
                         <a class="btn create-play" href="">Sort by Likes</a>
                     </div>
+                    {{/if}}
                 </div>
                 <div class="theaters-container">
                
