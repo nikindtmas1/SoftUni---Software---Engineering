@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.redirect('/', {error: error.message});
+        res.render('home', {error: error.message});
     }
   
 });
