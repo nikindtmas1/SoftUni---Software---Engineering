@@ -13,6 +13,12 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    usersLike: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ],
     userId: {
         type: mongoose.Types.ObjectId,
         ref: 'User'

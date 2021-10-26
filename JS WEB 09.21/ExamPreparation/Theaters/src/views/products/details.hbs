@@ -1,47 +1,25 @@
+<main>
+    <div class="container">
 
+        <section class="details">
+            <h1>Theater title: {{result.title}}</h1>
+            <div>
+                <img src="{{result.imageUrl}}" />
+            </div>
+        </section>
 
-        <main>
-            <section id="deatils-page">
-                <div class="wrapper">
-                    <div class="product-img">
-                        <img src="{{result.imageUrl}}">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-text">
-                            <div class="product-text">
-                                <h1>Name: {{result.name}}</h1>
-                                <h2>Type: {{result.type}}</h2>
-                                <h4>Year: {{result.year}}</h4>
-                                <h4>City: {{result.city}}</h4>
-                                <p>Description: {{result.description}}</p>
-
-                                <!-- if there are already tenants of the housing, separate their names with a comma and a space ", "  -->
-                                <p>People rented this housing: Alex Petkov, Ivan Dobrev</p>
-
-                                <!-- If not display: -->
-                                <p>People rented this housing: There are no tenants yet.</p>
-                            </div>
-                        </div>
-
-                        <!-- if there is no registered user, do not display buttons-->
-                        {{#if user}}
-                        <div class="product-btn">
-                            <!-- Only for registered user and creator of the housing offer-->
-                            {{#if isOwn}}
-                            <a href="/products/{{result._id}}/edit" class="edit">Edit</a>
-                            <a href="/products/{{result._id}}/delete" class="remove">Delete</a>
-                            {{else}}
-                            <!-- logged in user with available pieces-->
-                            <a href="/products/{{result._id}}/rent" class="rentHome">Rent a home, available {{count}} housing</a>
-                            {{#if userRented}}
-                            <p class="alRentHome">You have already rent this home</p>
-                            {{/if}}
-                            <!-- logged in user with no available pieces-->
-                            <p class="no-housing">No Housing Available!</p>
-                            {{/if}}
-                        </div>
-                        {{/if}}
-                    </div>
-                </div>
-            </section>
-        </main>
+        <section class="details">
+            <h3>Theater Description</h3>
+            <p>{{result.description}}</p>
+            <div class="buttons">
+                {{#if isOwn}}
+                <a class="btn delete" href="">Delete</a>
+                <a class="btn edit" href="">Edit</a>
+                {{else}}
+                <span class="liked">You have already liked this play!</span>
+                <a class="btn like" href="">Like</a>
+                {{/if}}
+            </div>
+        </section>
+    </div>
+</main>

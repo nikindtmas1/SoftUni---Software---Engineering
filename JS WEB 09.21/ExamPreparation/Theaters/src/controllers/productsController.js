@@ -53,15 +53,16 @@ router.get('/details/:prodId', async (req, res) => {
         if (req.user) {
             let isOwn = result.userId == req.user._id;
             let isAuth = req.user;
-            let userRented = result.rented.find((x) => x == req.user._id);
+            let userLikes = result.usersLike.find((x) => x == req.user._id);
 
 
-            res.render('products/details', { result, isOwn, isAuth, count, userRented });
+            res.render('products/details', { result, isOwn, isAuth, count, userLikes });
 
         } else {
 
             res.render('products/details', { result });
         }
+        //res.render('products/details', { result });
 
     } catch (error) {
         console.log(error);
