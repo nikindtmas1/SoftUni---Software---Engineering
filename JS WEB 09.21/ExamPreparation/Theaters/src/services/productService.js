@@ -4,9 +4,15 @@ const User = require('../models/user');
 
 function createProduct(data, userId){
 
-    let {title, imageUrl, description} = data
+    let {title, imageUrl, description, checkPublic} = data
+      if(checkPublic == 'on'){
+        checkPublic = true;
+      }else{
+        checkPublic = false;
+      }
+    console.log(checkPublic);
 
-    let product = new Product({title, imageUrl, description, userId});
+    let product = new Product({title, imageUrl, description, checkPublic, userId});
 
   return  product.save();
 

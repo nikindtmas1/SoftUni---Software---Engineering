@@ -144,19 +144,19 @@ router.get('/:prodId/edit', isAuth, isOwn, async (req, res) => {
 
 });
 
-// router.post('/:prodId/edit', isAuth, isOwn, async (req, res) => {
-//     try {
-//         let {name, type, year, city, imageUrl, description, available} = req.body;
+router.post('/:prodId/edit', isAuth, isOwn, async (req, res) => {
+    try {
+        let {title, imageUrl, description, checkPublic} = req.body;
 
-//     await productService.updateOne(req.params.prodId, {name, type, year, city, imageUrl, description, available});
+    await productService.updateOne(req.params.prodId, {title, imageUrl, description, checkPublic});
 
-//     res.redirect(`/products/details/${req.params.prodId}`);
+    res.redirect(`/products/details/${req.params.prodId}`);
 
-//     } catch (error) {
-//         console.log(error);
-//         res.redirect('/:prodId/edit', {error: error.message});
-//     }
+    } catch (error) {
+        console.log(error);
+        res.redirect('/:prodId/edit', {error: error.message});
+    }
 
-// });
+});
 
 module.exports = router;

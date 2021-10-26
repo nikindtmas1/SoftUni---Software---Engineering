@@ -1,51 +1,23 @@
- <main>
-            <section id="edit-page">
-                <div class="edit-container">
-                    <div class="box-image">
+<main>
+    <form class="theater-form" method="POST">
+        <h1>Edit Theater</h1>
+        <div>
+            <label for="title">Theater Title:</label>
+            <input type="text" placeholder="Theater name" value="{{result.title}}">
+        </div>
+        <div>
+            <label for="description">Theater Description:</label>
+            <textarea placeholder="Description" value="{{result.description}}"></textarea>
+        </div>
+        <div>
+            <label for="imageUrl">Image url:</label>
+            <input type="text" placeholder="Image Url" value="{{result.imageUrl}}">
+        </div>
+        <div class="check">
+            <input type="checkbox" id="check-box">
+            <label for="check-box">Public</label>
+        </div>
+        <button class="btn" type="submit">Submit</button>
+    </form>
 
-                    </div>
-                    <h2 class="box-heading">
-                        Edit Home
-                    </h2>
-
-                    <form class="form" action="" method="POST">
-                        <div class="input">
-                            <input type="text" class="input-field" id="home-name" name="name" value="{{result.name}}" />
-                            <label class="home-name">Name:</label>
-                        </div>
-                        <div class="input">
-                            <input type="text" class="input-field" id="type" name="type" value="{{result.type}}" />
-                            <label class="type">Property Type:</label>
-                        </div>
-                        <div class="input">
-                            <input type="number" class="input-field" id="year" name="year" value="{{result.year}}" />
-                            <label class="year">Year Built:</label>
-                        </div>
-                        <div class="input">
-                            <input type="text" class="input-field" id="city" name="city" value="{{result.city}}" />
-                            <label class="city">City</label>
-                        </div>
-
-                        <div class="input">
-                            <input type="text" class="input-field" id="homeImage" name="imageUrl" value="{{result.imageUrl}}" />
-                            <label class="homeImage">Home Image:</label>
-                        </div>
-
-                        <div class="input">
-                            <input type="text" class="input-field" id="description" name="description" value="{{result.description}}" />
-                            <label class="description">Property Description:</label>
-                        </div>
-
-                        <div class="input">
-                            <input type="number" class="input-field" id="availablePieces" name="available" value="{{result.available}}" />
-                            <label class="availablePieces">Available pieces:</label>
-                        </div>
-
-                        <div class="create-action">
-                            <button class="create-button">Edit</button>
-                        </div>
-                    </form>
-                </div>
-            </section>
-
-        </main>
+</main>

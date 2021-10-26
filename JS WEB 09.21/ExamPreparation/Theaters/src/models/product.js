@@ -13,6 +13,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    checkPublic: {
+        type: Boolean,
+        required: true
+    },
     usersLike: [
         {
             type: mongoose.Schema.Types.ObjectId,
