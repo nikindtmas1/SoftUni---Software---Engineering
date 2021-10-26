@@ -46,14 +46,14 @@ router.get('/details/:prodId', async (req, res) => {
 
     try {
         let result = await productService.getOne(req.params.prodId);
-        let allProducts = await productService.getAllProduct();
-        let count = allProducts.length;
-
-
+        //let allProducts = await productService.getAllProduct();
+        //let count = userLikes.length;
+        
+        
         if (req.user) {
             let isOwn = result.userId == req.user._id;
             let isAuth = req.user;
-            let userLikes = result.usersLike.find((x) => x == req.user._id);
+            let userLikes = result.usersLike.filter((x) => x == req.user._id);
 
 
             res.render('products/details', { result, isOwn, isAuth, count, userLikes });
