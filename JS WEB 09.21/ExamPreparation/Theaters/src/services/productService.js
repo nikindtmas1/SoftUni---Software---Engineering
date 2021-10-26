@@ -10,7 +10,7 @@ function createProduct(data, userId){
       }else{
         checkPublic = false;
       }
-    console.log(checkPublic);
+    
 
     let product = new Product({title, imageUrl, description, checkPublic, userId});
 
@@ -70,12 +70,28 @@ async function getSortProd(){
 
 };
 
+async function getSortLikes(){
+  try {
+    //let results = await Product.find().sort({createdAt: -1}).lean();
+    //let results = await Product.find().sort({createdAt: -1}).limit(3).lean();
+    let results = await Product.find({}).sort([['usersLike', -1]]).lean();
+
+  return results;
+  } catch (error) {
+    console.log(error);
+    res.redirect('/', {error: error.message});
+  }
+  
+
+};
+
 module.exports = {
 
     createProduct,
     getAllProduct,
     getOne,
     getSortProd,
+    getSortLikes,
     deleteProduct,
     updateOne,
     likeProduct,
