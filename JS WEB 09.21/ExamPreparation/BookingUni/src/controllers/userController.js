@@ -54,7 +54,7 @@ router.post('/register', isGuest, async (req, res) => {
         }
 
         if(data.password !== data.rePassword){
-            throw new Error('Password and rePassword musth by equel!');
+            throw {message: 'Password and rePassword musth by equel!'};
         }
 
         await userService.createUser(data);
