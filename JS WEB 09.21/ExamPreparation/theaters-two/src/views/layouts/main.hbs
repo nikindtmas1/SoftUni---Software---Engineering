@@ -3,21 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Exam</title>
     <link href="/static/css/style.css" type="text/css" rel="stylesheet">
-    <title>Document</title>
 </head>
+    
 
 <body>
+    {{!-- <div class="container"> </div> --}}
+    {{>navigation}}
     {{#if error}}
     <section class="notifications error">
         <p>{{error}}</p>
     </section>
     {{/if}}
-    {{>navigation}}
     {{{ body }}}
     {{>footer}}
+   
 </body>
 
 </html>

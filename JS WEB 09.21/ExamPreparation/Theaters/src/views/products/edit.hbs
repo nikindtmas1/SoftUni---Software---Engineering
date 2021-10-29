@@ -7,14 +7,14 @@
         </div>
         <div>
             <label for="description">Theater Description:</label>
-            <textarea placeholder="Description" name="description" value="{{result.description}}"></textarea>
+            <textarea placeholder="Description" name="description">{{result.description}}</textarea>
         </div>
         <div>
             <label for="imageUrl">Image url:</label>
             <input type="text" placeholder="Image Url" name="imageUrl" value="{{result.imageUrl}}">
         </div>
         <div class="check">
-            <input type="checkbox" id="check-box">
+            <input type="checkbox" id="check-box" name="checkPublic" {{#if result.checkPublic}}checked{{/if}}>
             <label for="check-box">Public</label>
         </div>
         <button class="btn" type="submit">Submit</button>

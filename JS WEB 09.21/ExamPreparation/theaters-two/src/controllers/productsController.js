@@ -2,16 +2,16 @@ const express = require('express');
 const router = express.Router();
 const productService = require('../services/productService');
 
-//const { isAuth } = require('../middleware/authMiddleware');
-//const { isOwn } = require('../middleware/productMiddleware');
+const { isAuth } = require('../middlewares/authMidleware');
+const { isOwn } = require('../middlewares/productMiddleware');
 
 
-router.get('/create', (req, res) => {
+router.get('/create',isAuth, (req, res) => {
 
     res.render('products/create');
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create',isAuth, async (req, res) => {
 
     try {
         let data = req.body;
@@ -53,10 +53,10 @@ router.get('/details/:prodId', async (req, res) => {
         if (req.user) {
             let isOwn = result.userId == req.user._id;
             let isAuth = req.user;
-            let userRented = result.rented.find((x) => x == req.user._id);
+            //let userRented = result.rented.find((x) => x == req.user._id);
+            let userLikes = result.usersLike.filter((x) => x == req.user._id);
 
-
-            res.render('products/details', { result, isOwn, isAuth, count, userRented });
+            res.render('products/details', { result, isOwn, isAuth, userLikes });//, userRented
 
         } else {
 
@@ -90,53 +90,101 @@ router.get('/:prodId/rent', async (req, res) => {
 
 });
 
-// router.get('/:prodId/delete', isAuth, isOwn,async (req, res) => {
+router.get('/:prodId/delete', isAuth, isOwn,async (req, res) => {
 
-//     //let result = await productService.getOne(req.params.prodId);
-//     try {
+    //let result = await productService.getOne(req.params.prodId);
+    try {
 
-//         if(!req.user){
-//             return res.redirect('/user/login');
-//         };
+        if(!req.user){
+            return res.redirect('/user/login');
+        };
 
-//         await productService.deleteProduct(req.params.prodId);
+        await productService.deleteProduct(req.params.prodId);
 
-//         res.redirect('/');
+        res.redirect('/');
 
-//     } catch (error) {
-//         console.log(error);
-//         res.redirect('/:prodId/delete', {error: error.message});
-//     }
+    } catch (error) {
+        console.log(error);
+        res.redirect('/:prodId/delete', {error: error.message});
+    }
 
-// });
+});
 
-// router.get('/:prodId/edit', isAuth, isOwn, async (req, res) => {
-//     try {
+router.get('/:prodId/edit', isAuth, isOwn, async (req, res) => {
+    try {
 
-//         let result = await productService.getOne(req.params.prodId);
+        let result = await productService.getOne(req.params.prodId);
 
-//     res.render('products/edit', {result});
+    res.render('products/edit', {result});
 
-//     } catch (error) {
-//         console.log(error);
-//         res.redirect('/:prodId/edit', {error: error.message});
-//     }
+    } catch (error) {
+        console.log(error);
+        res.redirect('/:prodId/edit', {error: error.message});
+    }
 
-// });
+});
 
-// router.post('/:prodId/edit', isAuth, isOwn, async (req, res) => {
-//     try {
-//         let {name, type, year, city, imageUrl, description, available} = req.body;
+router.post('/:prodId/edit', isAuth, isOwn, async (req, res) => {
+    try {
+        let {title, imageUrl, description, checkPublic} = req.body;
+        if(checkPublic == 'on'){
+            checkPublic = true;
+          }else{
+            checkPublic = false;
+          }
 
-//     await productService.updateOne(req.params.prodId, {name, type, year, city, imageUrl, description, available});
+    await productService.updateOne(req.params.prodId, {title, imageUrl, description, checkPublic});
 
-//     res.redirect(`/products/details/${req.params.prodId}`);
+    res.redirect(`/products/details/${req.params.prodId}`);
 
-//     } catch (error) {
-//         console.log(error);
-//         res.redirect('/:prodId/edit', {error: error.message});
-//     }
+    } catch (error) {
+        console.log(error);
+        res.redirect('/:prodId/edit', {error: error.message});
+    }
 
-// });
+});
+
+router.get('/:prodId/like',  async (req, res) => {
+
+    try {
+
+        //let allProducts = await productService.getAllProduct();
+    
+
+    productService.likeProduct(req.params.prodId, req.user._id)
+    .then(() => res.redirect(`/products/details/${req.params.prodId}`));
+
+    } catch (error) {
+        console.log(error);
+        res.render('products/details', {error: error.message});
+    }
+    
+});
+
+router.get('/sort-data',async (req, res) => {
+    try {
+        let results = await productService.getSortProd();
+        
+        res.render('home', {results});
+    } catch (error) {
+        console.log(error);
+        res.render('home', {error: error.message});
+    }
+  
+});
+
+router.get('/sort-likes',async (req, res) => {
+    try {
+        let results = await productService.getSortLikes();
+        
+        res.render('home', {results});
+    } catch (error) {
+        console.log(error);
+        res.render('home', {error: error.message});
+    }
+  
+});
+
+
 
 module.exports = router;
