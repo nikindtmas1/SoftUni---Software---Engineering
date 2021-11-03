@@ -13,6 +13,6 @@ require('./config/mongooseSetup');
 
 app.use(routes);
 
-app.use(errHandler);
+//app.use(errHandler);
 
 app.listen(portConfig.PORT, () => console.log(`Server listening on port: ${portConfig.PORT}...`));

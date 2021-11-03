@@ -25,6 +25,15 @@ export default function Navigation(){
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">contact us</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#login">login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#register">register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#story">share story</a>
+                        </li>
                         <li class="nav-item .search-container">
                             <a class="nav-link search" href="#"><i class="fas fa-search"></i></a>
                             <form>
