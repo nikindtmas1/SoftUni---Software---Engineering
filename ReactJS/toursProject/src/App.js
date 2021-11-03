@@ -1,17 +1,11 @@
 
 import './App.css';
-import Hello from './components/Hello.js'
-import Welcome from './components/Welcome.js'
+import Header from './components/Header.js';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-       <Hello />
-       <Welcome />
-        
-      </header>
+    <Header />
     </div>
   );
 
@@ -20,4 +14,4 @@ function App() {
 
 
 export default App;
-//export default Welcome;
+
