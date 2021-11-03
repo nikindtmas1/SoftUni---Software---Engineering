@@ -11,7 +11,7 @@ import Contact from './components/Contact';
 
 function App() {
   return (
-    <div id="root">
+    <div >
       <Navigation />
       <Header />
       <About />
