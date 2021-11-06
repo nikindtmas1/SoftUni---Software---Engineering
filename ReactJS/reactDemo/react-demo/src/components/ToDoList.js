@@ -5,8 +5,11 @@ const TodoList = () => {
     return (
         <>
         <h1>Tasks</h1>
+            <BookList
+            title='IT'
+            author='Stephen King'
+            price='20' />
         <ul>
-            <BookList />
             <li>Clean your room</li>
             <li>Go shoping</li>
             <li>Learn React</li>

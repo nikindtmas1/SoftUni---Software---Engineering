@@ -1,7 +1,12 @@
-const BookList = () => {
-
+const BookList = (props) => {
+console.log(props);
     return (
-        <li>Clean your room</li>
+        <ul>
+            <li>Title: {props.title}</li>
+            <li>Author: {props.author}</li>
+            <li>Price: {props.price}</li>
+        </ul>
+        
         // <ul>
         //     <Book
         //     title='IT'
