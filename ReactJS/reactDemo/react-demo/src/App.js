@@ -15,7 +15,7 @@ function App() {
       </header>
 
       <main>
-        <h1>Tasks</h1>
+        
         <TodoList />
       </main>
 
