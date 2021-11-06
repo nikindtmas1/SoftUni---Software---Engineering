@@ -1,4 +1,5 @@
 import BookList from './TodoBookList';
+import TodoItem from './TodoItem';
 
 const TodoList = () => {
 
@@ -10,9 +11,9 @@ const TodoList = () => {
             author='Stephen King'
             price='20' />
         <ul>
-            <li>Clean your room</li>
-            <li>Go shoping</li>
-            <li>Learn React</li>
+            <TodoItem text="Clean your room" />
+            <TodoItem text="Go shoping" />
+            <TodoItem text="Learn React" />
         </ul>
         </>
     );
