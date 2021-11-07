@@ -23,7 +23,7 @@ const TodoList = () => {
         </ul>
 
         <ul>
-            {todos.map(todo => <TodoItem>{todo}</TodoItem>)}
+            {todos.map(todo => <TodoItem color='blue'>{todo}</TodoItem>)}
         </ul>
         </>
     );
