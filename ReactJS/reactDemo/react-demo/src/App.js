@@ -3,6 +3,7 @@ import './App.css';
 import Hello from './components/Hello.js'
 import Welcome from './components/Welcome.js'
 import TodoList from './components/ToDoList';
+import FavoritColor from './components/TodoColorButton';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
       <main>
         
         <TodoList />
+
+        <FavoritColor />
       </main>
 
       <footer>

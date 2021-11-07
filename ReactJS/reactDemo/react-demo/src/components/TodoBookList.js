@@ -1,5 +1,5 @@
 const BookList = (props) => {
-console.log(props);
+
     return (
         <ul>
             <li>Title: {props.text.title}</li>
