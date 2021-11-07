@@ -3,6 +3,8 @@ import TodoItem from './TodoItem';
 
 const TodoList = () => {
 
+    const firstTask = 'Clean your room';
+    
     const bookData = {
             title:'IT',
             author:'Stephen King',
@@ -14,7 +16,7 @@ const TodoList = () => {
         <h1>Tasks</h1>
             <BookList text={bookData} />
         <ul>
-            <TodoItem color='red'>Clean your room</TodoItem>
+            <TodoItem color='red'>{firstTask}</TodoItem>
             <TodoItem color='green' text="Go shoping" />
             <TodoItem color='pink' text="Learn React" />
         </ul>
