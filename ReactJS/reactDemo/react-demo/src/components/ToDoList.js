@@ -14,7 +14,7 @@ const TodoList = () => {
         <h1>Tasks</h1>
             <BookList text={bookData} />
         <ul>
-            <TodoItem text="Clean your room" />
+            <TodoItem>Clean your room</TodoItem>
             <TodoItem text="Go shoping" />
             <TodoItem text="Learn React" />
         </ul>
