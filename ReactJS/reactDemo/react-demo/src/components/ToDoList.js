@@ -4,7 +4,8 @@ import TodoItem from './TodoItem';
 const TodoList = () => {
 
     const firstTask = 'Clean your room';
-    
+    const firstColor = 'red';
+
     const bookData = {
             title:'IT',
             author:'Stephen King',
@@ -16,7 +17,7 @@ const TodoList = () => {
         <h1>Tasks</h1>
             <BookList text={bookData} />
         <ul>
-            <TodoItem color='red'>{firstTask}</TodoItem>
+            <TodoItem color={firstColor}>{firstTask}</TodoItem>
             <TodoItem color='green' text="Go shoping" />
             <TodoItem color='pink' text="Learn React" />
         </ul>
