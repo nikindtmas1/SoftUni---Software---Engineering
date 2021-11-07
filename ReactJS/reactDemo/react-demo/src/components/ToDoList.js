@@ -2,7 +2,7 @@ import BookList from './TodoBookList';
 import TodoItem from './TodoItem';
 
 const TodoList = () => {
-
+    const todos = ['Call me', 'Go out', 'Stai home']
     const firstTask = 'Clean your room';
     const firstColor = 'red';
 
@@ -20,6 +20,10 @@ const TodoList = () => {
             <TodoItem color={firstColor}>{firstTask}</TodoItem>
             <TodoItem color='green' text="Go shoping" />
             <TodoItem color='pink' text="Learn React" />
+        </ul>
+
+        <ul>
+            {todos.map(todo => <TodoItem>{todo}</TodoItem>)}
         </ul>
         </>
     );
