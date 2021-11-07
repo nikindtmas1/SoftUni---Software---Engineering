@@ -14,9 +14,9 @@ const TodoList = () => {
         <h1>Tasks</h1>
             <BookList text={bookData} />
         <ul>
-            <TodoItem>Clean your room</TodoItem>
-            <TodoItem text="Go shoping" />
-            <TodoItem text="Learn React" />
+            <TodoItem color='red'>Clean your room</TodoItem>
+            <TodoItem color='green' text="Go shoping" />
+            <TodoItem color='pink' text="Learn React" />
         </ul>
         </>
     );
