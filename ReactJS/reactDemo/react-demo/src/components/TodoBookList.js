@@ -2,9 +2,9 @@ const BookList = (props) => {
 console.log(props);
     return (
         <ul>
-            <li>Title: {props.title}</li>
-            <li>Author: {props.author}</li>
-            <li>Price: {props.price}</li>
+            <li>Title: {props.text.title}</li>
+            <li>Author: {props.text.author}</li>
+            <li>Price: {props.text.price}</li>
         </ul>
         
         // <ul>

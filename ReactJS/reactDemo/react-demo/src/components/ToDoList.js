@@ -3,13 +3,16 @@ import TodoItem from './TodoItem';
 
 const TodoList = () => {
 
+    const bookData = {
+            title:'IT',
+            author:'Stephen King',
+            price:'20'
+    }
+    
     return (
         <>
         <h1>Tasks</h1>
-            <BookList
-            title='IT'
-            author='Stephen King'
-            price='20' />
+            <BookList text={bookData} />
         <ul>
             <TodoItem text="Clean your room" />
             <TodoItem text="Go shoping" />
