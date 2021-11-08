@@ -7,8 +7,11 @@ const FavoritColor = () => {
     const counter = `My count number is ${count}!`;
     let changeColor = 'red';
 
-    if(count > 2){
+    if(count > 2 && count < 5){
         changeColor = 'green'
+    }else if(count >= 5){
+        changeColor = 'black'
+
     }
 
     return (
