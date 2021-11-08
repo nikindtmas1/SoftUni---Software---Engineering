@@ -10,7 +10,7 @@ const FavoritColor = () => {
     if(count > 2 && count < 5){
         changeColor = 'green'
     }else if(count >= 5){
-        changeColor = 'black'
+        changeColor = 'blue'
 
     }
 
