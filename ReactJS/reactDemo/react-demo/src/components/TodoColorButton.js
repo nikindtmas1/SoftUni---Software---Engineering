@@ -14,12 +14,19 @@ const FavoritColor = () => {
 
     }
 
+    const colorHeader = (
+        <header>
+            <h3>Super color</h3>
+            <p>Lorem20</p>
+        </header>
+    )
+
     return (
         <>
             <h1 style={{ color: changeColor }}>{counter}</h1>
 
             { changeColor == 'red' 
-                ? <h3>Super color</h3> 
+                ? colorHeader
                 : <h3>Nah</h3>
             }
 
