@@ -17,6 +17,12 @@ const FavoritColor = () => {
     return (
         <>
             <h1 style={{ color: changeColor }}>{counter}</h1>
+
+            { changeColor == 'red' 
+                ? <h3>Super color</h3> 
+                : <h3>Nah</h3>
+            }
+
             <button
                 type='button'
                 onClick={() => setCount((count) => count + 1)}
