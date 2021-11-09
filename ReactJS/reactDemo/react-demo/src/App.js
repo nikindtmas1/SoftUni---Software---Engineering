@@ -4,6 +4,7 @@ import Hello from './components/Hello.js'
 import Welcome from './components/Welcome.js'
 import TodoList from './components/ToDoList';
 import FavoritColor from './components/TodoColorButton';
+import MyComponent from './components/Fetch';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <TodoList />
 
         <FavoritColor />
+
+        <MyComponent />
       </main>
 
       <footer>
