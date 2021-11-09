@@ -22,7 +22,7 @@ class MyComponent extends React.Component {
     }
   
     componentDidMount() {
-      fetch("../package.json")
+      fetch("/date.js")
         .then(res => res.json())
         .then(
           (result) => {
