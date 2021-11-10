@@ -1,18 +1,23 @@
-import {useEffect} from 'react'
+import {useState, useEffect} from 'react'
+
+const API_URL = 'http://localhost:3030/admin'
 
 const TakeData = () => {
-
+  const [todos, setTodos] = useState([]);
   useEffect(() => {
 
-    fetch('http://localhost:3030/admin')
+    fetch(`${API_URL}/recipes`)
 
     .then((response) => response.json())
 
-    .then((myJson) => console.log(myJson))
+    .then((myJson) => 
+    console.log(myJson),
+    setTodos(Object.values(myJson))
+    )
 
     .catch((myErr) => console.error(myErr));
 
-})
+},[])
 
 }
 

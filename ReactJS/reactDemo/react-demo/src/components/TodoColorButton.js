@@ -1,9 +1,11 @@
 import { useState } from "react";
 
+
 const FavoritColor = () => {
 
     const [color, setColor] = useState('red');
     const [count, setCount] = useState(0);
+    
     const counter = `My count number is ${count}!`;
     let changeColor = 'red';
 
