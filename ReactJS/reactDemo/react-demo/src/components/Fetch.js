@@ -22,7 +22,7 @@ const TakeData = () => {
 },[])
 return (
   <>
-  <p>{todos}</p>
+  <p>Data: {todos}</p>
   </>
 )
 }
