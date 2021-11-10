@@ -6,19 +6,25 @@ const TakeData = () => {
   const [todos, setTodos] = useState([]);
   useEffect(() => {
 
-    fetch(`${API_URL}/recipes`)
+    fetch(`${API_URL}`)
 
     .then((response) => response.json())
 
     .then((myJson) => 
-    console.log(myJson),
+  
+    
     setTodos(Object.values(myJson))
     )
 
     .catch((myErr) => console.error(myErr));
+  
 
 },[])
-
+return (
+  <>
+  <p>{todos}</p>
+  </>
+)
 }
 
 // class MyComponent extends React.Component {
