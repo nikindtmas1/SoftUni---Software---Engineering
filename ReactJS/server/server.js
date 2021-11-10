@@ -87,16 +87,15 @@
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json'
             };
-            let result = '';
+            let result;
             let context;
 
-            // NOTE: the OPTIONS method results in undefined result and also it never processes plugins - keep this in mind
             if (method == 'OPTIONS') {
                 Object.assign(headers, {
                     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
                     'Access-Control-Allow-Credentials': false,
                     'Access-Control-Max-Age': '86400',
-                    'Access-Control-Allow-Headers': 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, X-Authorization, X-Admin'
+                    'Access-Control-Allow-Headers': 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, X-Authorization'
                 });
             } else {
                 try {
@@ -118,7 +117,7 @@
 
             res.writeHead(status, headers);
             if (context != undefined && context.util != undefined && context.util.throttle) {
-                await new Promise(r => setTimeout(r, 500 + Math.random() * 500));
+                await new Promise(r => setTimeout(r, 250 + Math.random() * 750));
             }
             res.end(result);
 
@@ -135,9 +134,9 @@
                 } else if (serviceName == 'favicon.ico') {
                     return ({ headers, result } = services['favicon'](method, tokens, query, body));
                 }
-
+                
                 const service = services[serviceName];
-
+                
                 if (service === undefined) {
                     status = 400;
                     result = composeErrorObject(400, `Service "${serviceName}" is not supported`);
@@ -146,13 +145,10 @@
                     result = await service(context, { method, tokens, query, body });
                 }
 
-                // NOTE: logout does not return a result
-                // in this case the content type header should be omitted, to allow checks on the client
+                // NOTE: currently there is no scenario where result is undefined - it will either be data, or an error object;
+                // this may change with further extension of the services, so this check should stay in place
                 if (result !== undefined) {
                     result = JSON.stringify(result);
-                } else {
-                    status = 204;
-                    delete headers['Content-Type'];
                 }
             }
         };
@@ -215,7 +211,7 @@
          * @param {{method: string, tokens: string[], query: *, body: *}} request Request parameters
          */
         async parseRequest(context, request) {
-            for (let { method, name, handler } of this._actions) {
+            for (let {method, name, handler} of this._actions) {
                 if (method === request.method && matchAndAssignParams(context, request.tokens[0], name)) {
                     return await handler(context, request.tokens.slice(1), request.query, request.body);
                 }
@@ -229,7 +225,7 @@
          * @param {(context, tokens: string[], query: *, body: *)} handler Request handler
          */
         registerAction(method, name, handler) {
-            this._actions.push({ method, name, handler });
+            this._actions.push({method, name, handler});
         }
 
         /**
@@ -257,15 +253,6 @@
          */
         put(name, handler) {
             this.registerAction('PUT', name, handler);
-        }
-
-        /**
-         * Register PATCH action
-         * @param {string} name Action name. Can be a glob pattern.
-         * @param {(context, tokens: string[], query: *, body: *)} handler Request handler
-         */
-        patch(name, handler) {
-            this.registerAction('PATCH', name, handler);
         }
 
         /**
@@ -308,7 +295,7 @@
     const uuid$1 = util.uuid;
 
 
-    const data = fs__default['default'].existsSync('./data') ? fs__default['default'].readdirSync('./data').reduce((p, c) => {
+    const data = fs__default['default'].readdirSync('./data').reduce((p, c) => {
         const content = JSON.parse(fs__default['default'].readFileSync('./data/' + c));
         const collection = c.slice(0, -5);
         p[collection] = {};
@@ -316,7 +303,7 @@
             p[collection][endpoint] = content[endpoint];
         }
         return p;
-    }, {}) : {};
+    }, {});
 
     const actions = {
         get: (context, tokens, query, body) => {
@@ -347,21 +334,6 @@
             return responseData[newId];
         },
         put: (context, tokens, query, body) => {
-            tokens = [context.params.collection, ...tokens];
-            console.log('Request body:\n', body);
-
-            let responseData = data;
-            for (let token of tokens.slice(0, -1)) {
-                if (responseData !== undefined) {
-                    responseData = responseData[token];
-                }
-            }
-            if (responseData !== undefined && responseData[tokens.slice(-1)] !== undefined) {
-                responseData[tokens.slice(-1)] = body;
-            }
-            return responseData[tokens.slice(-1)];
-        },
-        patch: (context, tokens, query, body) => {
             tokens = [context.params.collection, ...tokens];
             console.log('Request body:\n', body);
 
@@ -400,7 +372,6 @@
     dataService.get(':collection', actions.get);
     dataService.post(':collection', actions.post);
     dataService.put(':collection', actions.put);
-    dataService.patch(':collection', actions.patch);
     dataService.delete(':collection', actions.delete);
 
 
@@ -410,27 +381,12 @@
      * This service requires storage and auth plugins
      */
 
-    const { AuthorizationError: AuthorizationError$1 } = errors;
-
-
-
     const userService = new Service_1();
 
-    userService.get('me', getSelf);
     userService.post('register', onRegister);
     userService.post('login', onLogin);
     userService.get('logout', onLogout);
-
-
-    function getSelf(context, tokens, query, body) {
-        if (context.user) {
-            const result = Object.assign({}, context.user);
-            delete result.hashedPassword;
-            return result;
-        } else {
-            throw new AuthorizationError$1();
-        }
-    }
+    // TODO: get user details
 
     function onRegister(context, tokens, query, body) {
         return context.auth.register(body);
@@ -446,17 +402,18 @@
 
     var users = userService.parseRequest;
 
-    const { NotFoundError: NotFoundError$1, RequestError: RequestError$1 } = errors;
+    /*
+     * This service requires storage and auth plugins
+     */
+
+    const { NotFoundError: NotFoundError$1, RequestError: RequestError$1, CredentialError: CredentialError$1, AuthorizationError: AuthorizationError$1 } = errors;
 
 
-    var crud = {
-        get,
-        post,
-        put,
-        patch,
-        delete: del
-    };
-
+    const dataService$1 = new Service_1();
+    dataService$1.get(':collection', get);
+    dataService$1.post(':collection', post);
+    dataService$1.put(':collection', put);
+    dataService$1.delete(':collection', del);
 
     function validateRequest(context, tokens, query) {
         /*
@@ -469,50 +426,6 @@
         }
     }
 
-    function parseWhere(query) {
-        const operators = {
-            '<=': (prop, value) => record => record[prop] <= JSON.parse(value),
-            '<': (prop, value) => record => record[prop] < JSON.parse(value),
-            '>=': (prop, value) => record => record[prop] >= JSON.parse(value),
-            '>': (prop, value) => record => record[prop] > JSON.parse(value),
-            '=': (prop, value) => record => record[prop] == JSON.parse(value),
-            ' like ': (prop, value) => record => record[prop].toLowerCase().includes(JSON.parse(value).toLowerCase()),
-            ' in ': (prop, value) => record => JSON.parse(`[${/\((.+?)\)/.exec(value)[1]}]`).includes(record[prop]),
-        };
-        const pattern = new RegExp(`^(.+?)(${Object.keys(operators).join('|')})(.+?)$`, 'i');
-
-        try {
-            let clauses = [query.trim()];
-            let check = (a, b) => b;
-            let acc = true;
-            if (query.match(/ and /gi)) {
-                // inclusive
-                clauses = query.split(/ and /gi);
-                check = (a, b) => a && b;
-                acc = true;
-            } else if (query.match(/ or /gi)) {
-                // optional
-                clauses = query.split(/ or /gi);
-                check = (a, b) => a || b;
-                acc = false;
-            }
-            clauses = clauses.map(createChecker);
-
-            return (record) => clauses
-                .map(c => c(record))
-                .reduce(check, acc);
-        } catch (err) {
-            throw new Error('Could not parse WHERE clause, check your syntax.');
-        }
-
-        function createChecker(clause) {
-            let [match, prop, operator, value] = pattern.exec(clause);
-            [prop, value] = [prop.trim(), value.trim()];
-
-            return operators[operator.toLowerCase()](prop, value);
-        }
-    }
-
 
     function get(context, tokens, query, body) {
         validateRequest(context, tokens);
@@ -521,12 +434,28 @@
 
         try {
             if (query.where) {
-                responseData = context.storage.get(context.params.collection).filter(parseWhere(query.where));
+                const [prop, value] = query.where.split('=');
+                responseData = context.storage.query(context.params.collection, { [prop]: JSON.parse(value) });
             } else if (context.params.collection) {
                 responseData = context.storage.get(context.params.collection, tokens[0]);
             } else {
                 // Get list of collections
                 return context.storage.get();
+            }
+
+            if (query.distinct) {
+                const props = query.distinct.split(',').filter(p => p != '');
+                responseData = Object.values(responseData.reduce((distinct, c) => {
+                    const key = props.map(p => c[p]).join('::');
+                    if (distinct.hasOwnProperty(key) == false) {
+                        distinct[key] = c;
+                    }
+                    return distinct;
+                }, {}));
+            }
+
+            if (query.count) {
+                return responseData.length;
             }
 
             if (query.sortBy) {
@@ -536,7 +465,7 @@
                     .map(p => p.split(' ').filter(p => p != ''))
                     .map(([p, desc]) => ({ prop: p, desc: desc ? true : false }));
 
-                // Sorting priority is from first to last, therefore we sort from last to first
+                // Sorting priority is from first ot last, therefore we sort from last to first
                 for (let i = props.length - 1; i >= 0; i--) {
                     let { prop, desc } = props[i];
                     responseData.sort(({ [prop]: propA }, { [prop]: propB }) => {
@@ -556,31 +485,14 @@
             if (query.pageSize) {
                 responseData = responseData.slice(0, pageSize);
             }
-    		
-    		if (query.distinct) {
-                const props = query.distinct.split(',').filter(p => p != '');
-                responseData = Object.values(responseData.reduce((distinct, c) => {
-                    const key = props.map(p => c[p]).join('::');
-                    if (distinct.hasOwnProperty(key) == false) {
-                        distinct[key] = c;
-                    }
-                    return distinct;
-                }, {}));
-            }
-
-            if (query.count) {
-                return responseData.length;
-            }
 
             if (query.select) {
                 const props = query.select.split(',').filter(p => p != '');
-                responseData = Array.isArray(responseData) ? responseData.map(transform) : transform(responseData);
-
-                function transform(r) {
+                responseData = responseData.map(r => {
                     const result = {};
                     props.forEach(p => result[p] = r[p]);
                     return result;
-                }
+                });
             }
 
             if (query.load) {
@@ -590,28 +502,19 @@
                     const [idSource, collection] = relationTokens.split(':');
                     console.log(`Loading related records from "${collection}" into "${propName}", joined on "_id"="${idSource}"`);
                     const storageSource = collection == 'users' ? context.protectedStorage : context.storage;
-                    responseData = Array.isArray(responseData) ? responseData.map(transform) : transform(responseData);
-
-                    function transform(r) {
+                    responseData.forEach(r => {
                         const seekId = r[idSource];
                         const related = storageSource.get(collection, seekId);
                         delete related.hashedPassword;
                         r[propName] = related;
-                        return r;
-                    }
+                    });
                 });
             }
 
         } catch (err) {
             console.error(err);
-            if (err.message.includes('does not exist')) {
-                throw new NotFoundError$1();
-            } else {
-                throw new RequestError$1(err.message);
-            }
+            throw new NotFoundError$1();
         }
-
-        context.canAccess(responseData);
 
         return responseData;
     }
@@ -623,10 +526,14 @@
         if (tokens.length > 0) {
             throw new RequestError$1('Use PUT to update records');
         }
-        context.canAccess(undefined, body);
 
-        body._ownerId = context.user._id;
         let responseData;
+
+        if (context.user) {
+            body._ownerId = context.user._id;
+        } else {
+            throw new AuthorizationError$1();
+        }
 
         try {
             responseData = context.storage.add(context.params.collection, body);
@@ -646,6 +553,11 @@
         }
 
         let responseData;
+
+        if (!context.user) {
+            throw new AuthorizationError$1();
+        }
+
         let existing;
 
         try {
@@ -654,38 +566,12 @@
             throw new NotFoundError$1();
         }
 
-        context.canAccess(existing, body);
+        if (context.user._id !== existing._ownerId) {
+            throw new CredentialError$1();
+        }
 
         try {
             responseData = context.storage.set(context.params.collection, tokens[0], body);
-        } catch (err) {
-            throw new RequestError$1();
-        }
-
-        return responseData;
-    }
-
-    function patch(context, tokens, query, body) {
-        console.log('Request body:\n', body);
-
-        validateRequest(context, tokens);
-        if (tokens.length != 1) {
-            throw new RequestError$1('Missing entry ID');
-        }
-
-        let responseData;
-        let existing;
-
-        try {
-            existing = context.storage.get(context.params.collection, tokens[0]);
-        } catch (err) {
-            throw new NotFoundError$1();
-        }
-
-        context.canAccess(existing, body);
-
-        try {
-            responseData = context.storage.merge(context.params.collection, tokens[0], body);
         } catch (err) {
             throw new RequestError$1();
         }
@@ -700,6 +586,11 @@
         }
 
         let responseData;
+
+        if (!context.user) {
+            throw new AuthorizationError$1();
+        }
+
         let existing;
 
         try {
@@ -708,7 +599,9 @@
             throw new NotFoundError$1();
         }
 
-        context.canAccess(existing);
+        if (context.user._id !== existing._ownerId) {
+            throw new CredentialError$1();
+        }
 
         try {
             responseData = context.storage.delete(context.params.collection, tokens[0]);
@@ -719,16 +612,6 @@
         return responseData;
     }
 
-    /*
-     * This service requires storage and auth plugins
-     */
-
-    const dataService$1 = new Service_1();
-    dataService$1.get(':collection', crud.get);
-    dataService$1.post(':collection', crud.post);
-    dataService$1.put(':collection', crud.put);
-    dataService$1.patch(':collection', crud.patch);
-    dataService$1.delete(':collection', crud.delete);
 
     var data$1 = dataService$1.parseRequest;
 
@@ -902,36 +785,13 @@
         }
 
         /**
-         * Replace entry by ID
-         * @param {string} collection Name of collection to access. Throws error if not found.
-         * @param {number|string} id ID of entry to update. Throws error if not found.
-         * @param {Object} data Value to store. Record will be replaced!
-         * @return {Object} Updated entry.
-         */
-        function set(collection, id, data) {
-            if (!collections.has(collection)) {
-                throw new ReferenceError('Collection does not exist: ' + collection);
-            }
-            const targetCollection = collections.get(collection);
-            if (!targetCollection.has(id)) {
-                throw new ReferenceError('Entry does not exist: ' + id);
-            }
-
-            const existing = targetCollection.get(id);
-            const record = assignSystemProps(deepCopy(data), existing);
-            record._updatedOn = Date.now();
-            targetCollection.set(id, record);
-            return Object.assign(deepCopy(record), { _id: id });
-        }
-
-        /**
-         * Modify entry by ID
+         * Update entry by ID
          * @param {string} collection Name of collection to access. Throws error if not found.
          * @param {number|string} id ID of entry to update. Throws error if not found.
          * @param {Object} data Value to store. Shallow merge will be performed!
          * @return {Object} Updated entry.
          */
-         function merge(collection, id, data) {
+        function set(collection, id, data) {
             if (!collections.has(collection)) {
                 throw new ReferenceError('Collection does not exist: ' + collection);
             }
@@ -1005,27 +865,7 @@
             return result;
         }
 
-        return { get, add, set, merge, delete: del, query };
-    }
-
-
-    function assignSystemProps(target, entry, ...rest) {
-        const whitelist = [
-            '_id',
-            '_createdOn',
-            '_updatedOn',
-            '_ownerId'
-        ];
-        for (let prop of whitelist) {
-            if (entry.hasOwnProperty(prop)) {
-                target[prop] = deepCopy(entry[prop]);
-            }
-        }
-        if (rest.length > 0) {
-            Object.assign(target, ...rest);
-        }
-
-        return target;
+        return { get, add, set, delete: del, query };
     }
 
 
@@ -1060,7 +900,7 @@
 
     var storage = initPlugin;
 
-    const { ConflictError: ConflictError$1, CredentialError: CredentialError$1, RequestError: RequestError$2 } = errors;
+    const { ConflictError: ConflictError$1, CredentialError: CredentialError$2, RequestError: RequestError$2 } = errors;
 
     function initPlugin$1(settings) {
         const identity = settings.identity;
@@ -1086,7 +926,7 @@
                 if (user !== undefined) {
                     context.user = user;
                 } else {
-                    throw new CredentialError$1('Invalid access token');
+                    throw new CredentialError$2('Invalid access token');
                 }
             }
 
@@ -1099,10 +939,10 @@
                 } else if (context.protectedStorage.query('users', { [identity]: body[identity] }).length !== 0) {
                     throw new ConflictError$1(`A user with the same ${identity} already exists`);
                 } else {
-                    const newUser = Object.assign({}, body, {
+                    const newUser = {
                         [identity]: body[identity],
                         hashedPassword: hash(body.password)
-                    });
+                    };
                     const result = context.protectedStorage.add('users', newUser);
                     delete result.hashedPassword;
 
@@ -1125,10 +965,10 @@
 
                         return result;
                     } else {
-                        throw new CredentialError$1('Login or password don\'t match');
+                        throw new CredentialError$2('Login or password don\'t match');
                     }
                 } else {
-                    throw new CredentialError$1('Login or password don\'t match');
+                    throw new CredentialError$2('Login or password don\'t match');
                 }
             }
 
@@ -1139,7 +979,7 @@
                         context.protectedStorage.delete('sessions', session._id);
                     }
                 } else {
-                    throw new CredentialError$1('User session does not exist');
+                    throw new CredentialError$2('User session does not exist');
                 }
             }
 
@@ -1183,210 +1023,151 @@
 
     var util$2 = initPlugin$2;
 
-    /*
-     * This plugin requires auth and storage plugins
-     */
-
-    const { RequestError: RequestError$3, ConflictError: ConflictError$2, CredentialError: CredentialError$2, AuthorizationError: AuthorizationError$2 } = errors;
-
-    function initPlugin$3(settings) {
-        const actions = {
-            'GET': '.read',
-            'POST': '.create',
-            'PUT': '.update',
-            'PATCH': '.update',
-            'DELETE': '.delete'
-        };
-        const rules = Object.assign({
-            '*': {
-                '.create': ['User'],
-                '.update': ['Owner'],
-                '.delete': ['Owner']
-            }
-        }, settings.rules);
-
-        return function decorateContext(context, request) {
-            // special rules (evaluated at run-time)
-            const get = (collectionName, id) => {
-                return context.storage.get(collectionName, id);
-            };
-            const isOwner = (user, object) => {
-                return user._id == object._ownerId;
-            };
-            context.rules = {
-                get,
-                isOwner
-            };
-            const isAdmin = request.headers.hasOwnProperty('x-admin');
-
-            context.canAccess = canAccess;
-
-            function canAccess(data, newData) {
-                const user = context.user;
-                const action = actions[request.method];
-                let { rule, propRules } = getRule(action, context.params.collection, data);
-
-                if (Array.isArray(rule)) {
-                    rule = checkRoles(rule, data);
-                } else if (typeof rule == 'string') {
-                    rule = !!(eval(rule));
-                }
-                if (!rule && !isAdmin) {
-                    throw new CredentialError$2();
-                }
-                propRules.map(r => applyPropRule(action, r, user, data, newData));
-            }
-
-            function applyPropRule(action, [prop, rule], user, data, newData) {
-                // NOTE: user needs to be in scope for eval to work on certain rules
-                if (typeof rule == 'string') {
-                    rule = !!eval(rule);
-                }
-
-                if (rule == false) {
-                    if (action == '.create' || action == '.update') {
-                        delete newData[prop];
-                    } else if (action == '.read') {
-                        delete data[prop];
-                    }
-                }
-            }
-
-            function checkRoles(roles, data, newData) {
-                if (roles.includes('Guest')) {
-                    return true;
-                } else if (!context.user && !isAdmin) {
-                    throw new AuthorizationError$2();
-                } else if (roles.includes('User')) {
-                    return true;
-                } else if (context.user && roles.includes('Owner')) {
-                    return context.user._id == data._ownerId;
-                } else {
-                    return false;
-                }
-            }
-        };
-
-
-
-        function getRule(action, collection, data = {}) {
-            let currentRule = ruleOrDefault(true, rules['*'][action]);
-            let propRules = [];
-
-            // Top-level rules for the collection
-            const collectionRules = rules[collection];
-            if (collectionRules !== undefined) {
-                // Top-level rule for the specific action for the collection
-                currentRule = ruleOrDefault(currentRule, collectionRules[action]);
-
-                // Prop rules
-                const allPropRules = collectionRules['*'];
-                if (allPropRules !== undefined) {
-                    propRules = ruleOrDefault(propRules, getPropRule(allPropRules, action));
-                }
-
-                // Rules by record id 
-                const recordRules = collectionRules[data._id];
-                if (recordRules !== undefined) {
-                    currentRule = ruleOrDefault(currentRule, recordRules[action]);
-                    propRules = ruleOrDefault(propRules, getPropRule(recordRules, action));
-                }
-            }
-
-            return {
-                rule: currentRule,
-                propRules
-            };
-        }
-
-        function ruleOrDefault(current, rule) {
-            return (rule === undefined || rule.length === 0) ? current : rule;
-        }
-
-        function getPropRule(record, action) {
-            const props = Object
-                .entries(record)
-                .filter(([k]) => k[0] != '.')
-                .filter(([k, v]) => v.hasOwnProperty(action))
-                .map(([k, v]) => [k, v[action]]);
-
-            return props;
-        }
-    }
-
-    var rules = initPlugin$3;
-
-    var identity = "username";
+    var identity = "email";
     var protectedData = {
     	users: {
     		"35c62d76-8152-4626-8712-eeb96381bea8": {
-    			username: "Peter",
+    			email: "peter@abv.bg",
     			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
     		},
     		"847ec027-f659-4086-8032-5173e2f9c93a": {
-    			username: "John",
+    			email: "george@abv.bg",
     			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
+    		},
+    		"60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
+    			email: "admin@abv.bg",
+    			hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302"
     		}
     	},
     	sessions: {
     	}
     };
     var seedData = {
-    	cars: {
+    	recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
-                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-                "brand": "Audi",
-                "model": "A3",
-                "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
-                "year": 2018,
-                "imageUrl": "/images/audia3.jpg",
-                "price": 25000,
-                "_createdOn": 1616162253496
-            },
-            "8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
-                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
-                "brand": "Mercedes",
-                "model": "A-class",
-                "description": "Voluptate expedita odio tempore aliquam rem neque sunt dignissimos ratione nulla quod dolore dolor animi cupiditate, labore ad maiores?",
-                "year": 2016,
-                "imageUrl": "/images/benz.jpg",
-                "price": 27000,
-                "_createdOn": 1616162253496
-            },
-            "3a432947-3e43-42a8-bcbc-100d2b199892": {
-                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
-                "brand": "BMW",
-                "model": "3 Series",
-                "description": "Quisquam modi vitae explicabo fugit delectus voluptate fuga nisi quo impedit temporibus est magni optio, at, natus odit maxime vero corporis unde sequi? Minima atque, laborum impedit deserunt sequi assumenda laudantium vitae corporis?",
-                "year": 2016,
-                "imageUrl": "/images/bmw.jpg",
-                "price": 22000,
-                "_createdOn": 1616162253496
-            }
-    	}
-    };
-    var rules$1 = {
-    	users: {
-    		".create": false,
-    		".read": [
-    			"Owner"
-    		],
-    		".update": false,
-    		".delete": false
+    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+    			name: "Easy Lasagna",
+    			img: "assets/lasagna.jpg",
+    			ingredients: [
+    				"1 tbsp Ingredient 1",
+    				"2 cups Ingredient 2",
+    				"500 g  Ingredient 3",
+    				"25 g Ingredient 4"
+    			],
+    			steps: [
+    				"Prepare ingredients",
+    				"Mix ingredients",
+    				"Cook until done"
+    			],
+    			_createdOn: 1613551279012
+    		},
+    		"8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
+    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+    			name: "Grilled Duck Fillet",
+    			img: "assets/roast.jpg",
+    			ingredients: [
+    				"500 g  Ingredient 1",
+    				"3 tbsp Ingredient 2",
+    				"2 cups Ingredient 3"
+    			],
+    			steps: [
+    				"Prepare ingredients",
+    				"Mix ingredients",
+    				"Cook until done"
+    			],
+    			_createdOn: 1613551344360
+    		},
+    		"985d9eab-ad2e-4622-a5c8-116261fb1fd2": {
+    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+    			name: "Roast Trout",
+    			img: "assets/fish.jpg",
+    			ingredients: [
+    				"4 cups Ingredient 1",
+    				"1 tbsp Ingredient 2",
+    				"1 tbsp Ingredient 3",
+    				"750 g  Ingredient 4",
+    				"25 g Ingredient 5"
+    			],
+    			steps: [
+    				"Prepare ingredients",
+    				"Mix ingredients",
+    				"Cook until done"
+    			],
+    			_createdOn: 1613551388703
+    		}
+    	},
+    	comments: {
+    		"0a272c58-b7ea-4e09-a000-7ec988248f66": {
+    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+    			content: "Great recipe!",
+    			recipeId: "8f414b4f-ab39-4d36-bedb-2ad69da9c830",
+    			_createdOn: 1614260681375,
+    			_id: "0a272c58-b7ea-4e09-a000-7ec988248f66"
+    		}
+    	},
+    	records: {
+    		i01: {
+    			name: "John1",
+    			val: 1,
+    			_createdOn: 1613551388703
+    		},
+    		i02: {
+    			name: "John2",
+    			val: 1,
+    			_createdOn: 1613551388713
+    		},
+    		i03: {
+    			name: "John3",
+    			val: 2,
+    			_createdOn: 1613551388723
+    		},
+    		i04: {
+    			name: "John4",
+    			val: 2,
+    			_createdOn: 1613551388733
+    		},
+    		i05: {
+    			name: "John5",
+    			val: 2,
+    			_createdOn: 1613551388743
+    		},
+    		i06: {
+    			name: "John6",
+    			val: 3,
+    			_createdOn: 1613551388753
+    		},
+    		i07: {
+    			name: "John7",
+    			val: 3,
+    			_createdOn: 1613551388763
+    		},
+    		i08: {
+    			name: "John8",
+    			val: 2,
+    			_createdOn: 1613551388773
+    		},
+    		i09: {
+    			name: "John9",
+    			val: 3,
+    			_createdOn: 1613551388783
+    		},
+    		i10: {
+    			name: "John10",
+    			val: 1,
+    			_createdOn: 1613551388793
+    		}
     	}
     };
     var settings = {
     	identity: identity,
     	protectedData: protectedData,
-    	seedData: seedData,
-    	rules: rules$1
+    	seedData: seedData
     };
 
     const plugins = [
         storage(settings),
         auth(settings),
-        util$2(),
-        rules(settings)
+        util$2()
     ];
 
     const server = http__default['default'].createServer(requestHandler(plugins, services));
