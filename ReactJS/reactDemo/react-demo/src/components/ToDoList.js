@@ -45,7 +45,7 @@ const TodoList = () => {
     }
 
     const deleteTodoItemClickHandler = (id) => {
-        console.log('Delete, ', id);
+        setTodos(oldTodos => oldTodos.filter(todo => todo.id != id))
     }
       //const numbers = props.numbers;
         let listItem = arrNumbers.map((x) => <li>{x}</li>)
