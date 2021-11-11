@@ -11,7 +11,7 @@ const TodoList = () => {
     useEffect(() => {
         fetch(`${API_URL}/todos`)
         .then(res => res.json())
-        .then(result => {console.log(result)})
+        .then(result => setTodos(Object.values(result)))
     }, []);
 
    
