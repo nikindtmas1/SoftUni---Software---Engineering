@@ -43,6 +43,10 @@ const TodoList = () => {
 
         e.target.value = ''
     }
+
+    const deleteTodoItemClickHandler = (id) => {
+        console.log('Delete, ', id);
+    }
       //const numbers = props.numbers;
         let listItem = arrNumbers.map((x) => <li>{x}</li>)
 
@@ -61,7 +65,7 @@ const TodoList = () => {
         <input type='text' name='todo' onBlur={onTodoInputBlur} />
         
         <ul>
-            {todos.map(todo => <TodoItem color='blue' key={todo.id} id={todo.id}>{todo.text}</TodoItem>)}
+            {todos.map(todo => <TodoItem color='blue' key={todo.id} id={todo.id} onDelete={deleteTodoItemClickHandler}>{todo.text}</TodoItem>)}
         </ul>
 
         {listItem}
