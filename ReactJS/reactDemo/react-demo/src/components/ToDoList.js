@@ -30,6 +30,16 @@ const TodoList = () => {
             price:'20'
     }
     
+    const onTodoInputBlur = (e) => {
+        let todo = {
+            id: todos.length + 1,
+            text: e.target.value
+        }
+        setTodos([
+            ...todos,
+            todo
+        ])
+    }
       //const numbers = props.numbers;
         let listItem = arrNumbers.map((x) => <li>{x}</li>)
 
@@ -44,6 +54,9 @@ const TodoList = () => {
             <TodoItem numbers={arrNumbers} />
         </ul>
 
+        <label>Add Todo</label>
+        <input type='text' name='todo' onBlur={onTodoInputBlur} />
+        
         <ul>
             {todos.map(todo => <TodoItem color='blue' key={todo.id} id={todo.id}>{todo.text}</TodoItem>)}
         </ul>
