@@ -8,7 +8,7 @@ const TodoItem = (props) => {
         return () => {
             console.log(`${props.id} - Unmount`);
         }
-    }, [])
+    }, [props.id])
 
 
     return(
