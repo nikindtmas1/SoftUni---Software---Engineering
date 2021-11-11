@@ -6,7 +6,11 @@ import { useState } from 'react';
 const API_URL = 'http://localhost:3030/jsonstore'
 
 const TodoList = () => {
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState([]);
+
+    fetch(`${API_URL}/todos`)
+    .then(res => res.json())
+    .then(result => {console.log(result)})
         // {id: 1, text:'Call me', isDone: false},
         // {id: 2, text: 'Go out', isDone: false},
         // {id: 3, text: 'Stai home', isDone: false}
