@@ -35,10 +35,12 @@ const TodoList = () => {
             id: todos.length + 1,
             text: e.target.value
         }
-        setTodos([
-            ...todos,
+        setTodos(oldTodos => [
+            ...oldTodos,
             todo
         ])
+
+        e.target.value = ''
     }
       //const numbers = props.numbers;
         let listItem = arrNumbers.map((x) => <li>{x}</li>)
