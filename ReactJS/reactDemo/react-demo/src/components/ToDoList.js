@@ -1,7 +1,9 @@
 import BookList from './TodoBookList';
 import TodoItem from './TodoItem';
 
+
 import { useState, useEffect } from 'react';
+import uniqid from 'uniqid';
 
 const API_URL = 'http://localhost:3030/jsonstore'
 
@@ -33,7 +35,7 @@ const TodoList = () => {
     
     const onTodoInputBlur = (e) => {
         let todo = {
-            id: todos.length + 1,
+            id: uniqid(),
             text: e.target.value
         }
         setTodos(oldTodos => [

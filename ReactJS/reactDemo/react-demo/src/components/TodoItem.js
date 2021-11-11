@@ -1,7 +1,14 @@
+import { useEffect } from "react";
 
 const TodoItem = (props) => {
 
-    
+    useEffect(() => {
+        console.log(`${props.id} - Mounted`);
+
+        return () => {
+            console.log(`${props.id} - Unmount`);
+        }
+    }, [])
 
 
     return(
