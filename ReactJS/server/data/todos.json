@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1,
+        "text": "Give dog a bath",
+        "isDone": true},
+    {
+        "id": 2,
+        "text": "Do laundry",
+        "isDone": false
+    },
+    {
+        "id": 3,
+        "text": "Feed cat",
+        "isDone": true
+    },
+    {
+        "id": 4,
+        "text": "Vacuum floor",
+        "isDone": false
+    }
+]
