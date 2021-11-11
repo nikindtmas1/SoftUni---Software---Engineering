@@ -17,5 +17,15 @@
         "id": 4,
         "text": "Vacuum floor",
         "isDone": false
+    },
+    {
+        "id": 5,
+        "text": "Exercise",
+        "isDone": true
+    },
+    {
+        "id": 6,
+        "text": "Go Home",
+        "isDone": false
     }
 ]
