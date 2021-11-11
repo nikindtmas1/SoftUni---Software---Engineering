@@ -1,14 +1,16 @@
 import BookList from './TodoBookList';
 import TodoItem from './TodoItem';
 
+import { useState } from 'react';
 
+const API_URL = 'http://localhost:3030/jsonstore'
 
 const TodoList = () => {
-    const todos = [
-        {id: 1, text:'Call me'},
-        {id: 2, text: 'Go out'},
-        {id: 3, text: 'Stai home'}
-    ];
+    const [todos, setTodos] = useState([])
+        // {id: 1, text:'Call me', isDone: false},
+        // {id: 2, text: 'Go out', isDone: false},
+        // {id: 3, text: 'Stai home', isDone: false}
+    ;
     const firstTask = 'Clean your room';
 
     const arrNumbers = [1,2,3,4,5,6]
