@@ -39,7 +39,8 @@ const TodoList = () => {
     const onTodoInputBlur = (e) => {
         let todo = {
             id: uniqid(),
-            text: e.target.value
+            text: e.target.value,
+            isDone: false
         }
         setTodos(oldTodos => [
             ...oldTodos,
@@ -51,6 +52,29 @@ const TodoList = () => {
 
     const deleteTodoItemClickHandler = (id) => {
         setTodos(oldTodos => oldTodos.filter(todo => todo.id != id))
+    }
+
+    const toggoleTodoItemClickHandler = (id) => {
+
+        let currentTodo;
+        let currentIndex;
+
+        for(let i = 0; i < todos.length; i++){
+            if(todos[i].id == id){
+                currentTodo = todos[i];
+                currentIndex = i;
+
+                break;
+            }
+        }
+      
+        let toggledTodo = {...currentTodo, isDone: !currentTodo.isDone};
+
+        setTodos(oldTodos => [
+            ...oldTodos.slice(0, currentIndex),
+            toggledTodo,
+            ...oldTodos.slice(currentIndex + 1)
+        ])
     }
       //const numbers = props.numbers;
         let listItem = arrNumbers.map((x) => <li>{x}</li>)
@@ -70,7 +94,15 @@ const TodoList = () => {
         <input type='text' name='todo' onBlur={onTodoInputBlur} />
         
         <ul>
-            {todos.map(todo => <TodoItem color='blue' key={todo.id} id={todo.id} onDelete={deleteTodoItemClickHandler}>{todo.text}</TodoItem>)}
+            {todos.map(todo => 
+            <TodoItem color='blue' 
+            key={todo.id} 
+            id={todo.id} 
+            onDelete={deleteTodoItemClickHandler}
+            onClick={toggoleTodoItemClickHandler}
+            >
+            {todo.text}
+            </TodoItem>)}
         </ul>
 
         {listItem}
