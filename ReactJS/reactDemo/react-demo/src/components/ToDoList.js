@@ -8,8 +8,11 @@ import uniqid from 'uniqid';
 const API_URL = 'http://localhost:3030/jsonstore'
 
 const TodoList = () => {
+
     const [todos, setTodos] = useState([]);
+
     console.log('Render');
+    
     useEffect(() => {
         console.log('Mounted');
         fetch(`${API_URL}/todos`)
