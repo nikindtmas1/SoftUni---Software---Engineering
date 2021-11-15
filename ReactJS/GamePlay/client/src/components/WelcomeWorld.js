@@ -8,13 +8,13 @@ const WelcomeWorld = () => {
           <h2>ALL new games are</h2>
           <h3>Only in GamesPlay</h3>
         </div>
-        <img src="./images/four_slider_img01.png" alt="hero" />
+        <img src="/images/four_slider_img01.png" alt="hero" />
 
         <div id="home-page">
           <h1>Latest Games</h1>
           <div class="game">
             <div class="image-wrap">
-              <img src="./images/CoverFire.png" />
+              <img src="/images/CoverFire.png" />
             </div>
             <h3>Cover Fire</h3>
             <div class="rating">
@@ -26,7 +26,7 @@ const WelcomeWorld = () => {
           </div>
           <div class="game">
             <div class="image-wrap">
-              <img src="./images/ZombieLang.png" />
+              <img src="/images/ZombieLang.png" />
             </div>
             <h3>Zombie Lang</h3>
             <div class="rating">
@@ -38,7 +38,7 @@ const WelcomeWorld = () => {
           </div>
           <div class="game">
             <div class="image-wrap">
-              <img src="./images/MineCraft.png" />
+              <img src="/images/MineCraft.png" />
             </div>
             <h3>MineCraft</h3>
             <div class="rating">
