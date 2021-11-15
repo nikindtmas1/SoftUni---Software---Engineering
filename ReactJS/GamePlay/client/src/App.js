@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, createElement } from 'react';
 
 import Header from "./components/Header";
 import WelcomeWorld from "./components/WelcomeWorld";
@@ -28,7 +28,7 @@ function App() {
       <Header navigationChangeHandler={navigationChangeHandler} />
 
       <main id="main-content">
-        {routes[page] || <h2>No page found</h2>}
+        { createElement(routes[page]) || <h2>No page found</h2>}
       </main>
 
     </div>
