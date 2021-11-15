@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const homeService = require('../services/homeServices');
+const gameService = require('../services/gameServices');
 
-router.get('/', async (req, res) => {
+router.get('/games', async (req, res) => {
 
     try {
-        let results = await homeService.getAll();
+        let results = await gameService.getAll();
 
         res.json(results);//
 

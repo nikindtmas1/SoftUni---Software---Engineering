@@ -1,5 +1,17 @@
+import { useState, useEffect } from 'react';
+
+const API_URL = 'http://localhost:5000/';
 
 const Catalog = () => {
+
+  const [games, setGames] = useState([]);
+  
+  useEffect(() => {
+    fetch(`${API_URL}`)
+    .then(res => res.json())
+    .then(results => setGames(results))
+
+  }, [])
 
     return (
         <section id="catalog-page">

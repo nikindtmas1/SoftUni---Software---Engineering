@@ -1,9 +1,9 @@
-const Home = require('../models/homeModel');
+const Game = require('../models/gameModel');
 
 
 async function getAll(){
 
-    let results = await Home.find({}).lean();
+    let results = await Game.find({}).lean();
   
     return results;
   };

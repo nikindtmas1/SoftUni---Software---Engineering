@@ -1,8 +1,8 @@
 
-const homeController = require('../controllers/homeController');
+const gameController = require('../controllers/gameController');
 
 module.exports = (app) => {
 
-    app.use('/', homeController);
+    app.use('/', gameController);
     
 }
