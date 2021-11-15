@@ -19,8 +19,6 @@ function App() {
 
     const navigationChangeHandler = (path) => {
 
-      console.log(path);
-
       setPage(path);
     }
 

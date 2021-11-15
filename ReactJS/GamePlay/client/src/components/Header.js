@@ -6,10 +6,8 @@ const Header = ({
   const onHeaderClick = (e) => {
     e.preventDefault();
 
-    console.log('clicked');
-
     if (e.target.tagName == 'A') {
-      console.log(e.target.href);
+   
       let url = new URL(e.target.href)
       navigationChangeHandler(url.pathname)
     }
