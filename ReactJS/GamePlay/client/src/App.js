@@ -6,17 +6,16 @@ import CreateGame from "./components/CreateGame";
 
 function App() {
   return (
-    <div>
-      <div id="box">
+    <div id="box">
 
-       <Header />
+      <Header />
 
-        <main id="main-content">
-          <WelcomeWorld />
-        </main>
+      <main id="main-content">
+        <WelcomeWorld />
+      </main>
 
-      </div>
     </div>
+
   );
 }
 
