@@ -7,7 +7,7 @@ const Catalog = () => {
   const [games, setGames] = useState([]);
   
   useEffect(() => {
-    fetch(`${API_URL}`)
+    fetch(`${API_URL}/games`)
     .then(res => res.json())
     .then(results => setGames(results))
 
