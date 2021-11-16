@@ -19,6 +19,7 @@ router.get('/games', async (req, res) => {
 
 router.get('/details/:id', async (req, res) => {
 
+   
     try {
         let result = await gameService.getOne(req.params.id);
         
@@ -27,6 +28,21 @@ router.get('/details/:id', async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-})
+});
+
+router.post('/create', async (req, res) => {
+
+    try {
+        let data = req.body;
+
+        await gameService.createGame(data)
+
+        res.end();
+
+    } catch (error) {
+        console.log(error);
+    }
+
+});
 
 module.exports = router;

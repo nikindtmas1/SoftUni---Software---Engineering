@@ -6,7 +6,7 @@ const gameSchema = new mongoose.Schema({
     category: String,
     maxLevel: Number,
     imageUrl: String,
-    
+    summary: String,
 });
 
 module.exports = mongoose.model('Game', gameSchema);

@@ -14,8 +14,19 @@ async function getAll(){
   
     return results;
   };
+
+  function createGame(data){
+
+    let {title, category, imageUrl, maxLevel, summary} = data
+
+    let game = new Game({title, category, imageUrl, maxLevel, summary});
+
+  return  game.save();
+
+};
   module.exports = {
     getAll,
     getOne,
-
+    createGame,
+    
   }

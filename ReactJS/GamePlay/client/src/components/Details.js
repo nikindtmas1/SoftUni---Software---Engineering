@@ -19,17 +19,14 @@
         <div class="info-section">
 
           <div class="game-header">
-            <img class="game-img" src="images/MineCraft.png" />
-            <h1>Bright</h1>
-            <span class="levels">MaxLevel: 4</span>
-            <p class="type">Action, Crime, Fantasy</p>
+            <img class="game-img" src={game.imageUrl} />
+            <h1>{game.title}</h1>
+            <span class="levels">MaxLevel: {game.maxLevel}</span>
+            <p class="type">{game.category}</p>
           </div>
 
           <p class="text">
-            Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work
-            with an Orc to find a weapon everyone is prepared to kill for. Set in a world where fantasy
-            creatures live side by side with humans. A human cop is forced
-            to work with an Orc to find a weapon everyone is prepared to kill for.
+            {game.summary}
           </p>
 
           <div class="details-comments">
