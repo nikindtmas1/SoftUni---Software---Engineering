@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
 
-const API_URL = 'http://localhost:5000/';
+import GamesItem from './GamesItem';
+
+const API_URL = 'http://localhost:5000/games';
 
 const Catalog = () => {
 
   const [games, setGames] = useState([]);
   
   useEffect(() => {
-    fetch(`${API_URL}/games`)
+    fetch(`${API_URL}`)
     .then(res => res.json())
-    .then(results => setGames(results))
+    .then(results => {setGames(results)})
 
   }, [])
 
@@ -17,6 +19,8 @@ const Catalog = () => {
         <section id="catalog-page">
         <h1>All Games</h1>
         <div class="allGames">
+
+          {games.map(x => <GamesItem  />)}
           <div class="allGames-info">
             <img src="./images/avatar-1.jpg" />
             <h6>Action</h6>
