@@ -1,4 +1,18 @@
- const Details = (id) => {
+ import { useState, useEffect } from "react";
+
+ import * as gameService from '../services/gameService';
+ 
+ const Details = ({
+   id
+  }) => {
+
+    const [game, setGame] = useState({});
+
+    useEffect(() => {
+        gameService.getOne(id)
+        .then(result => setGame(result))
+    }, []);
+
     return(
         <section id="game-details">
         <h1>Game Details</h1>

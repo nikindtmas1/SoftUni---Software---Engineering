@@ -8,7 +8,14 @@ async function getAll(){
     return results;
   };
 
+  async function getOne(id){
+
+    let results = await Game.findById(id).lean();
+  
+    return results;
+  };
   module.exports = {
-    getAll
+    getAll,
+    getOne,
 
   }
