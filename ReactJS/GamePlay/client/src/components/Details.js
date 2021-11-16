@@ -1,4 +1,4 @@
- const Details = () => {
+ const Details = (id) => {
     return(
         <section id="game-details">
         <h1>Game Details</h1>
