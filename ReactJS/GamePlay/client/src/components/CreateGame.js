@@ -28,7 +28,7 @@ const CreateGame
     };
     
       gameService.create(requestOptions)
-      .then(res => console.log(res));
+      .then(res => res.redirect('/games'));
   };
 
     return (

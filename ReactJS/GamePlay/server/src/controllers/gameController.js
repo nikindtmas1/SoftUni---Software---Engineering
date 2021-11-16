@@ -30,7 +30,7 @@ router.get('/details/:id', async (req, res) => {
     }
 });
 
-router.post('/create-game', async (req, res) => {
+router.post('/games/create-game', async (req, res) => {
 
     try {
         let data = req.body;
