@@ -21,7 +21,7 @@ router.get('/details/:id', async (req, res) => {
 
     try {
         let result = await gameService.getOne(req.params.id);
-
+        
         res.json(result);
 
     } catch (error) {
