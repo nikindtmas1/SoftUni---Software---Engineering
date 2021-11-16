@@ -1,4 +1,5 @@
 import { useState, createElement } from 'react';
+import {Route} from 'react-router-dom'
 
 import Header from "./components/Header";
 import WelcomeWorld from "./components/WelcomeWorld";
@@ -51,7 +52,12 @@ function App() {
       <Header navigationChangeHandler={navigationChangeHandler} />
 
       <main id="main-content">
+        {/* <Switch>
+        </Switch> */}
+
         { router(page) || <ErrorPage />}
+        {/* <Route path="/home" exact component={WelcomeWorld} /> */}
+        {/* <Route path="/games" component={Catalog} /> */}
       </main>
 
     </div>
