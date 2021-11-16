@@ -1,5 +1,5 @@
 import { useState, createElement } from 'react';
-import {Route, Link} from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom';
 
 import Header from "./components/Header";
 import WelcomeWorld from "./components/WelcomeWorld";
