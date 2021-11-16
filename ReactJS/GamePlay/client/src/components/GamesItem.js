@@ -1,13 +1,16 @@
 
-const GamesItem = (props) => {
+const GamesItem = ({ game }) => {
 
     return (
-        <div class="allGames-info">
-            <img src={props.imageUrl} />
-            <h6>{props.title}</h6>
-            <h2>{props.category}</h2>
-            <a href="#" class="details-button">Details</a>
-          </div>
+        <div class="allGames">
+            <div class="allGames-info">
+                <img src={game.imageUrl} />
+                <h6>{game.category}</h6>
+                <h2>{game.title}</h2>
+                <a href="#" class="details-button">Details</a>
+            </div>
+        </div>
+
     );
 };
 
