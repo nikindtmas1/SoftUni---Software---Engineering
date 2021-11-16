@@ -1,26 +1,32 @@
 import { useState, useEffect } from 'react';
 
 import GamesItem from './GamesItem';
+import * as gameService from '../services/gameService';
 
-const API_URL = 'http://localhost:5000/games';
 
 const Catalog = () => {
 
   const [games, setGames] = useState([]);
-  
+
   useEffect(() => {
-    fetch(`${API_URL}`)
-    .then(res => res.json())
-    .then(results => {setGames(results)})
+
+    setTimeout(() => {
+      gameService.getAll()
+      .then(results => {setGames(results)})
+    }, 1000)
+    
 
   }, [])
 
     return (
         <section id="catalog-page">
         <h1>All Games</h1>
-          {games.map(x => <GamesItem game={x} />)}
+        
+          {games.length > 0 
+          ? games.map(x => <GamesItem key={x._id} game={x} />) 
+          : <h3 class="no-articles">No games yet</h3>
+          }
        
-        <h3 class="no-articles">No games yet</h3>
       </section>
     );
 };
