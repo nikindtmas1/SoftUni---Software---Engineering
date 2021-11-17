@@ -11,8 +11,22 @@ export function getOne(id){
     .then(res => res.json())
 }
 
-export function create(requestOptions){
+export function create(title, category, maxLevel, imageUrl, summary) {
 
-  return fetch(`${API_URL}/games`, requestOptions)
-    //   .then(response => response.json())
+
+
+  //console.log(JSON.stringify(game));
+
+  return fetch(`${API_URL}/games`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      title,
+      category,
+      maxLevel,
+      imageUrl,
+      summary
+    })
+  })
+    //.then(response => response.json())
 }

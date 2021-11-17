@@ -27,15 +27,15 @@ const CreateGame
     let imageUrl = e.target.imageUrl.value;
     let summary = e.target.summary.value;
     
-    const data = { title, category, maxLevel, imageUrl, summary };
+    //const data = { title, category, maxLevel, imageUrl, summary };
     
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    };
+    // const requestOptions = {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(data)
+    // };
     
-      gameService.create(requestOptions)
+      gameService.create(title, category, maxLevel, imageUrl, summary )
       .then(history.push('/games'))
       //.then(res => res.redirect('/games'));
   };

@@ -20,7 +20,7 @@ async function getAll(){
     let {title, category, imageUrl, maxLevel, summary} = data
 
     let game = new Game({title, category, imageUrl, maxLevel, summary});
-
+    
   return  game.save();
 
 };

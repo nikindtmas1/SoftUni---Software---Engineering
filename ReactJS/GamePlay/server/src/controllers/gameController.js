@@ -32,9 +32,11 @@ router.get('/details/:id', async (req, res) => {
 
 router.post('/games', async (req, res) => {
 
+    console.log(req.url)
+    console.log(req.method)
+    console.log(req.body)
     try {
         let data = req.body;
-
         await gameService.createGame(data)
 
         res.end();
