@@ -5,7 +5,7 @@ import * as gameService from '../services/gameService';
 
 
 const Catalog = ({
-  navigationChangeHandler
+
 }) => {
 
   const [games, setGames] = useState([]);
@@ -25,7 +25,7 @@ const Catalog = ({
         <h1>All Games</h1>
         
           {games.length > 0 
-          ? games.map(x => <GamesItem key={x._id} game={x} navigationChangeHandler={navigationChangeHandler} />) 
+          ? games.map(x => <GamesItem key={x._id} game={x} />) 
           : <h3 class="no-articles">No games yet</h3>
           }
        

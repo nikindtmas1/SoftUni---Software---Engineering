@@ -4,19 +4,11 @@ const Header = ({
   navigationChangeHandler,
 }) => {
 
-  const onHeaderClick = (e) => {
-    e.preventDefault();
 
-    // if (e.target.tagName == 'A') {
-   
-    //   let url = new URL(e.target.href)
-    //   navigationChangeHandler(url.pathname)
-    // }
-  };
 
   return (
-      <header onClick={onHeaderClick}>
-      <h1><Link class="home" to="/home">GamesPlay</Link></h1>
+      <header>
+      <h1><Link class="home" to="/">GamesPlay</Link></h1>
       <nav>
         <Link to="/games">All games</Link>
         <div id="user">

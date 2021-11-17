@@ -54,11 +54,12 @@ function App() {
       <main id="main-content">
         <Switch>
 
-          <Route path="/home" exact component={WelcomeWorld} />
+          <Route path="/" exact component={WelcomeWorld} />
           <Route path="/games" component={Catalog} />
           <Route path="/create-game" component={CreateGame} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/details/:id" component={Details} />
         </Switch>
        
 
