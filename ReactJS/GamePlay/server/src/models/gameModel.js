@@ -4,7 +4,7 @@ const gameSchema = new mongoose.Schema({
 
     title: String,
     category: String,
-    maxLevel: Number,
+    maxLevel: String,
     imageUrl: String,
     summary: String,
 });

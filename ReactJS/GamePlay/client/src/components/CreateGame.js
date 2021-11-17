@@ -3,7 +3,7 @@ import * as gameService from '../services/gameService';
 
 
 const CreateGame
- = () => {
+ = ({history}) => {
 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
@@ -11,16 +11,17 @@ const CreateGame
   const [imageUrl, setImageUrl] = useState("");
   const [summary, setSummary] = useState("");
 
-  const onTitleChange = e => setTitle(e.target.value);
-  const onCategoryChange = e => setCategory(e.target.value);
-  const onMaxLevelChange = e => setMaxLevel(e.target.value);
-  const onImageUrlChange = e => setImageUrl(e.target.value);
-  const onSummaryChange = e => setSummary(e.target.value);
+  const onTitleChange = (e) => setTitle(e.target.value);
+  const onCategoryChange = (e) => setCategory(e.target.value);
+  const onMaxLevelChange = (e) => setMaxLevel(e.target.value);
+  const onImageUrlChange = (e) => setImageUrl(e.target.value);
+  const onSummaryChange = (e) => setSummary(e.target.value);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const data = { title, category, maxLevel, imageUrl, summary };
+    console.log(data);
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -28,7 +29,8 @@ const CreateGame
     };
     
       gameService.create(requestOptions)
-      .then(res => res.redirect('/games'));
+      .then(history.push('/games'))
+      //.then(res => res.redirect('/games'));
   };
 
     return (

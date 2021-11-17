@@ -14,5 +14,5 @@ export function getOne(id){
 export function create(requestOptions){
 
   return fetch(`${API_URL}/games`, requestOptions)
-      .then(response => response.json())
+    //   .then(response => response.json())
 }
