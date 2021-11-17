@@ -12,12 +12,12 @@ import Details from './components/Details';
 
 function App() {
 
-  const [page, setPage] = useState('/home');
+  // const [page, setPage] = useState('/home');
 
-  const navigationChangeHandler = (path) => {
+  // const navigationChangeHandler = (path) => {
 
-    setPage(path);
-  }
+  //   setPage(path);
+  // }
 
 
   // const routes = {
@@ -29,35 +29,36 @@ function App() {
   //   '/details': <Details  />,//id={argument}
   // }
 
-   const router = (path) => {
-      let pathNames = path.split('/');
-      let rootPath = pathNames[1];
-      let argument = pathNames[2];
+  //  const router = (path) => {
+  //     let pathNames = path.split('/');
+  //     let rootPath = pathNames[1];
+  //     let argument = pathNames[2];
 
-      const routes = {
-        'home': <WelcomeWorld />,
-        'games': <Catalog navigationChangeHandler={navigationChangeHandler} />,
-        'create-game': <CreateGame />,
-        'login': <Login />,
-        'register': <Register />,
-        'details': <Details id={argument} />,
-      }
+  //     const routes = {
+  //       'home': <WelcomeWorld />,
+  //       'games': <Catalog navigationChangeHandler={navigationChangeHandler} />,
+  //       'create-game': <CreateGame />,
+  //       'login': <Login />,
+  //       'register': <Register />,
+  //       'details': <Details id={argument} />,
+  //     }
 
-      return routes[rootPath];
-   }
+  //     return routes[rootPath];
+  //  }
 
   return (
     <div id="box">
 
-      <Header navigationChangeHandler={navigationChangeHandler} />
+      <Header component={Header} />
 
       <main id="main-content">
-        <Switch>
-        <Route path="/home" component={WelcomeWorld} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="/games" component={Catalog} />
-        </Switch>
+        
+          <Route path="/" exact component={WelcomeWorld} />
+          <Route path="/games" component={Catalog} />
+          <Route path="/create-game" component={CreateGame} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+       
 
         {/* { router(page) || <ErrorPage />} */}
         
