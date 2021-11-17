@@ -52,12 +52,14 @@ function App() {
       <Header component={Header} />
 
       <main id="main-content">
-        
-          <Route path="/" exact component={WelcomeWorld} />
+        <Switch>
+
+          <Route path="/home" exact component={WelcomeWorld} />
           <Route path="/games" component={Catalog} />
           <Route path="/create-game" component={CreateGame} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+        </Switch>
        
 
         {/* { router(page) || <ErrorPage />} */}
