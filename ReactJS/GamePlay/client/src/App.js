@@ -1,6 +1,11 @@
 //import { useState, createElement } from 'react';
 import { Route, Switch } from 'react-router-dom';
-//import Parse from 'parse';
+
+//import AsyncStorage from '@react-native-async-storage/async-storage';
+//import Parse from 'parse/react-native';
+
+
+
 
 import * as api from './services/data';
 
@@ -14,6 +19,7 @@ import Catalog from "./components/Catalog";
 import Details from './components/Details';
 
 window.api = api;
+//Parse.setAsyncStorage(AsyncStorage);
 function App() {
     // Parse.serverURL = 'https://parseapi.back4app.com';
     // Parse.initialize(
