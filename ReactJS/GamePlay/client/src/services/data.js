@@ -31,23 +31,3 @@ export async function deleteGame(id){
 export async function searchCars(query){
     return await service.get(host + `/37CCEB5C-F7E5-BFB6-FFAA-12879CF3A000/775F0275-7F15-48D6-87F9-41CFA9076E16/data/test_menu?props=price,${query}`)//url take not from test
 }
-//  export function create(title, category, maxLevel, imageUrl, summary) {
- 
-//    let game = {
-//      title,
-//      category,
-//      maxLevel,
-//      imageUrl,
-//      summary
-//    }
- 
-//    let jsonGame = JSON.stringify(game)
-//    console.log(jsonGame);
- 
-//    return fetch(host + `/games`, {
-//      method: "POST",
-//      headers: { "Content-Type": "application/json" },
-//      body: JSON.stringify(game)
-//    })
-//      //.then(response => response.json())
-//  }
