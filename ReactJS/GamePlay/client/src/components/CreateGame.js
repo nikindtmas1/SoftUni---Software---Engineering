@@ -1,5 +1,5 @@
 //import {useState, useEffect} from 'react';
-import * as gameService from '../services/gameService';
+import {create} from '../services/data';
 
 
 const CreateGame
@@ -27,7 +27,7 @@ const CreateGame
     let imageUrl = e.target.imageUrl.value;
     let summary = e.target.summary.value;
     
-    //const data = { title, category, maxLevel, imageUrl, summary };
+    const data = { title, category, maxLevel, imageUrl, summary };
     
     // const requestOptions = {
     //   method: "POST",
@@ -35,7 +35,7 @@ const CreateGame
     //   body: JSON.stringify(data)
     // };
     
-      gameService.create(title, category, maxLevel, imageUrl, summary )
+      create(data)
       .then(history.push('/games'))
       //.then(res => res.redirect('/games'));
   };

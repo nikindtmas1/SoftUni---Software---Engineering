@@ -1,6 +1,7 @@
  import { useState, useEffect } from "react";
 
- import * as gameService from '../services/gameService';
+ //import * as gameService from '../services/gameService';
+ import {getOne} from '../services/data'
  
  const Details = ({
    match
@@ -9,7 +10,7 @@
     const [game, setGame] = useState({});
 
     useEffect(() => {
-        gameService.getOne(match.params.id)
+        getOne(match.params.id)
         .then(result => setGame(result))
     }, []);
 
