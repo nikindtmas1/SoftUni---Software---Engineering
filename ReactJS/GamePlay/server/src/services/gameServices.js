@@ -21,7 +21,7 @@ async function getAll(){
 
     let game = new Game({title, category, imageUrl, maxLevel, summary});
     
-  return  game.save();
+    return  game;  //game.save();
 
 };
   module.exports = {

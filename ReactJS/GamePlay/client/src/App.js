@@ -1,5 +1,6 @@
-import { useState, createElement } from 'react';
-import { Route, Link, Switch, Redirect } from 'react-router-dom';
+//import { useState, createElement } from 'react';
+import { Route, Switch } from 'react-router-dom';
+//import Parse from 'parse';
 
 import Header from "./components/Header";
 import WelcomeWorld from "./components/WelcomeWorld";
@@ -7,11 +8,14 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import CreateGame from "./components/CreateGame";
 import Catalog from "./components/Catalog";
-import ErrorPage from './components/ErrorPage';
+//import ErrorPage from './components/ErrorPage';
 import Details from './components/Details';
 
 function App() {
-
+    // Parse.serverURL = 'https://parseapi.back4app.com';
+    // Parse.initialize(
+    //   'L3A2gZGIu7UpTKTKwO3yTGs4QS0j6JGEeR4qKv5U', // Application ID
+    //   'sNs8wSD5FQtaOMFoGdxg5A4pNT5EmbCtFNrHvvsX' )// Javascript key
   // const [page, setPage] = useState('/home');
 
   // const navigationChangeHandler = (path) => {
