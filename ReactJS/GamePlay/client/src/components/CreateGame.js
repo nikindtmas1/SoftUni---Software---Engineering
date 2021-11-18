@@ -5,6 +5,7 @@ import {create} from '../services/data';
 const CreateGame
  = ({history}) => {
 
+  
   // const [title, setTitle] = useState("");
   // const [category, setCategory] = useState("");
   // const [maxLevel, setMaxLevel] = useState("");
@@ -35,8 +36,9 @@ const CreateGame
     //   body: JSON.stringify(data)
     // };
     
-      create(data)
-      .then(history.push('/games'))
+    
+    create(data)
+    .then(history.push('/games'))
       //.then(res => res.redirect('/games'));
   };
 
