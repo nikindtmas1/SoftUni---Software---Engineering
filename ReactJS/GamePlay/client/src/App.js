@@ -2,6 +2,8 @@
 import { Route, Switch } from 'react-router-dom';
 //import Parse from 'parse';
 
+import * as api from './services/data';
+
 import Header from "./components/Header";
 import WelcomeWorld from "./components/WelcomeWorld";
 import Login from "./components/Login";
@@ -11,6 +13,7 @@ import Catalog from "./components/Catalog";
 //import ErrorPage from './components/ErrorPage';
 import Details from './components/Details';
 
+window.api = api;
 function App() {
     // Parse.serverURL = 'https://parseapi.back4app.com';
     // Parse.initialize(

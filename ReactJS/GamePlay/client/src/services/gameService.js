@@ -29,7 +29,7 @@ function getOption(method = 'get',body){
 
   const options = {
       method,
-      headers:{ "Content-Type": "application/json" 
+      headers:{ 
           //'X-Parse-Application-Id': 'GwOuRx9b2yahh6b9Ijtko0EqBnfxxTIWUWTcyBDX',
           //'X-Parse-REST-API-Key': 'WhpWvVDJz4iOciZNlUpqRsvr19DIUCEG7n5ANMvS'
       }
@@ -43,7 +43,6 @@ function getOption(method = 'get',body){
   // }
 
   if (body) {
-
       options.headers['Content-Type'] = 'application/json';
       options.body = JSON.stringify(body);
   }
