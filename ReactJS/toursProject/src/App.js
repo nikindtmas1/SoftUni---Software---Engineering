@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header.js';
 import Navigation from './components/Navigation';
@@ -11,16 +11,18 @@ import Contact from './components/Contact';
 
 function App() {
   return (
-    <div >
+    <>
       <Navigation />
-      <Header />
-      <About />
-      <Service />
-      <Agenci />
-      <Text />
-      <Contact />
+      <Switch >
+        <Route path="/" component={Header} />
+        <Route path="/about" component={About} />
+        <Route path="/service" component={Service} />
+        <Route path="/agenci" component={Agenci} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/text" component={Text} />
+      </Switch>
       <Footer />
-    </div>
+    </>
   );
 
 }
