@@ -3,7 +3,7 @@ const Destination = require('../models/gameModel');
 
 function getAll(){
 
-   Destination.find({})
+   Destination.find()
   
   };
 
