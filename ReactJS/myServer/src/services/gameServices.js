@@ -1,27 +1,21 @@
 const Game = require('../models/gameModel');
 
 
-async function getAll(){
+function getAll(){
 
-    let results = await Game.find({}).lean();
+   Game.find()
   
-    return results;
   };
 
-  async function getOne(id){
+  function getOne(id){
 
-    let results = await Game.findById(id).lean();
+    Game.findById(id)
   
-    return results;
   };
 
   function createGame(data){
 
-    let {name, description, imgOne, imgTwo, imgThree} = data
-
-    let game = new Game({name, description, imgOne, imgTwo, imgThree});
-    
-    return  game.save();
+      Game.create(data)
 
 };
   module.exports = {

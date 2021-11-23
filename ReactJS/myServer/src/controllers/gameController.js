@@ -5,15 +5,8 @@ const gameService = require('../services/gameServices');
 
 router.get('/jsonstore/destinations', async (req, res) => {
 
-    try {
-        let results = await gameService.getAll();
-
-        res.json(results);//
-
-    } catch (error) {
-        console.log(error);
-      
-    }
+    let games = await gameService.getAll();
+    res.json(games);
   
 });
 
@@ -32,18 +25,8 @@ router.get('/details/:id', async (req, res) => {
 
 router.post('/jsonstore/destinations', async (req, res) => {
 
-    console.log(req.url)
-    console.log(req.method)
-    console.log(req.body)
-    try {
-        let data = req.body;
-        await gameService.createGame(data)
-
-        res.end();
-
-    } catch (error) {
-        console.log(error);
-    }
+   await gameService.createGame({...req.body});
+   res.json({ok: true})
 
 });
 
