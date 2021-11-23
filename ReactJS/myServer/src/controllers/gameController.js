@@ -10,18 +10,18 @@ router.get('/jsonstore/destinations', async (req, res) => {
   
 });
 
-router.get('/details/:id', async (req, res) => {
+// router.get('/details/:id', async (req, res) => {
 
    
-    try {
-        let result = await gameService.getOne(req.params.id);
+//     try {
+//         let result = await gameService.getOne(req.params.id);
         
-        res.json(result);
+//         res.json(result);
 
-    } catch (error) {
-        console.log(error);
-    }
-});
+//     } catch (error) {
+//         console.log(error);
+//     }
+// });
 
 router.post('/jsonstore/destinations', async (req, res) => {
 
