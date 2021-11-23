@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
 router.get('/destinations', async (req, res) => {
 
     let games = await gameService.getAll();
+    console.log(games);
     res.json(games);
   
 });

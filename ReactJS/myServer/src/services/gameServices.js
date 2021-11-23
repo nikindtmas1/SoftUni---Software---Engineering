@@ -3,7 +3,7 @@ const Destination = require('../models/gameModel');
 
 function getAll(){
 
-   Destination.find()
+   Destination.find({})
   
   };
 
@@ -14,7 +14,6 @@ function getAll(){
   };
 
   function createGame(data){
-
     Destination.create(data)
 
 };
