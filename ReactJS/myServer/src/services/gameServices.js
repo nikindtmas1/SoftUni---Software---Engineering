@@ -1,11 +1,7 @@
 const Destination = require('../models/gameModel');
 
 
-function getAll(){
-
-   Destination.find()
-  
-  };
+const getAll = () => Destination.find();
 
   function getOne(id){
 
