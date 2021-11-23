@@ -3,7 +3,7 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 
 const portConfig = require('./config/config');
 const mongooseConfig = require('./config/configMongoose');
