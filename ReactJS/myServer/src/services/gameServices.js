@@ -1,21 +1,21 @@
-const Game = require('../models/gameModel');
+const Destination = require('../models/gameModel');
 
 
 function getAll(){
 
-   Game.find()
+   Destination.find()
   
   };
 
   function getOne(id){
 
-    Game.findById(id)
+   Destination.findById(id)
   
   };
 
   function createGame(data){
 
-      Game.create(data)
+    Destination.create(data)
 
 };
   module.exports = {

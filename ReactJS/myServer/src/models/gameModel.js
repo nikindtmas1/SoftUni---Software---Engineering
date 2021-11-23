@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const gameSchema = new mongoose.Schema({
+const desctinationSchema = new mongoose.Schema({
 
     name: String,
     description: String,
@@ -9,4 +9,4 @@ const gameSchema = new mongoose.Schema({
     imgThree: String,
 });
 
-module.exports = mongoose.model('Game', gameSchema);
+module.exports = mongoose.model('Destination', desctinationSchema);

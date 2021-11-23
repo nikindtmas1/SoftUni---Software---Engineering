@@ -3,7 +3,11 @@ const router = express.Router();
 
 const gameService = require('../services/gameServices');
 
-router.get('/jsonstore/destinations', async (req, res) => {
+router.get('/', (req, res) => {
+    res.json({text: 'It is working!'})
+});
+
+router.get('/destinations', async (req, res) => {
 
     let games = await gameService.getAll();
     res.json(games);
@@ -23,7 +27,7 @@ router.get('/jsonstore/destinations', async (req, res) => {
 //     }
 // });
 
-router.post('/jsonstore/destinations', async (req, res) => {
+router.post('/destinations', async (req, res) => {
 
    await gameService.createGame({...req.body});
    res.json({ok: true})
