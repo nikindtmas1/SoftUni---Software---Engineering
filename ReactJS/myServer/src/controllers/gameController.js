@@ -41,4 +41,19 @@ router.post('/destinations', async (req, res) => {
 
 });
 
+router.put('/destinations/:id', async (req, res) => {
+    await gameService.update(req.params.id, req.body);
+
+    res.json({ok: true});
+});
+
+
+router.delete('/destinations/:id', async (req, res) => {
+    console.log('Delete');
+    console.log(req.param.id);
+   await gameService.deleteDestination(req.params.id);
+
+   res.json({ok: true});
+});
+
 module.exports = router;

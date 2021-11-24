@@ -11,7 +11,7 @@ const update = (id, destinationData) => Destination.findByIdAndUpdate(id, destin
  
 const getOwn = (userId) => Destination.find({_ownerId: userId});
 
-const deleteGame = (id) => Destination.findByIdAndDelete(id);
+const deleteDestination = (id) => Destination.findByIdAndDelete(id);
 
 
 module.exports = {
@@ -20,5 +20,5 @@ module.exports = {
   createGame,
   update,
   getOwn,
-  deleteGame
+  deleteDestination
 }
