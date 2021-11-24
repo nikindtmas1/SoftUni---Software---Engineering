@@ -27,6 +27,13 @@ router.get('/destinations', async (req, res) => {
 //     }
 // });
 
+router.get('/destinations/:id', async (req, res) => {
+
+   let result = await gameService.getOne(req.params.id);
+
+   res.json(result);
+});
+
 router.post('/destinations', async (req, res) => {
 
    await gameService.createGame({...req.body});
