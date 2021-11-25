@@ -10,7 +10,7 @@ const login = async (username, password) => {
     
 
     if(user){
-        let accessToken = jwt.sign({ _id: user._id, username: user.username }, 'MOGYSHTSECRET', { expiresIn: '3m' });
+        let accessToken = jwt.sign({ _id: user._id, username: user.username }, 'MOGYSHTSECRET', { expiresIn: '1m' });
         let refreshToken = jwt.sign({ _id: user._id }, 'MOGYSHTSECRET2', { expiresIn: '7d' });
 
         user.refreshToken = refreshToken;
@@ -30,7 +30,7 @@ const refresh = async (refreshToken) => {
     let user = await User.find({ _id, refreshToken });
 
     if (user) {
-        let accessToken = jwt.sign({ _id: user._id, username: user.username }, 'MOGYSHTSECRET', { expiresIn: '3m' });
+        let accessToken = jwt.sign({ _id: user._id, username: user.username }, 'MOGYSHTSECRET', { expiresIn: '1m' });
         let refreshToken = jwt.sign({ _id: user._id }, 'MOGYSHTSECRET2', { expiresIn: '7d' });
 
         return { accessToken, refreshToken };
