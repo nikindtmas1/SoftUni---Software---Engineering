@@ -3,11 +3,11 @@ const router = express.Router();
 
 const gameService = require('../services/gameServices');
 
-router.get('/', (req, res) => {
-    res.json({text: 'It is working!'})
-});
+// router.get('/', (req, res) => {
+//     res.json({text: 'It is working!'})
+// });
 
-router.get('/destinations', async (req, res) => {
+router.get('/', async (req, res) => {
 
     let games = await gameService.getAll()
     res.json(games);
@@ -27,21 +27,21 @@ router.get('/destinations', async (req, res) => {
 //     }
 // });
 
-router.get('/destinations/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
 
    let result = await gameService.getOne(req.params.id);
 
    res.json(result);
 });
 
-router.post('/destinations', async (req, res) => {
+router.post('/', async (req, res) => {
 
    await gameService.createGame({...req.body});
    res.json({ok: true})
 
 });
 
-router.put('/destinations/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     console.log(req.params.id);
     await gameService.update(req.params.id, req.body);
 
@@ -49,7 +49,7 @@ router.put('/destinations/:id', async (req, res) => {
 });
 
 
-router.delete('/destinations/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     console.log('Delete');
    await gameService.deleteDestination(req.params.id);
 
