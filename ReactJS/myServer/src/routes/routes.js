@@ -1,6 +1,6 @@
 
 const gameController = require('../controllers/gameController');
-const placesController = require('../controllers/placesControler');
+const placesController = require('../controllers/placesController');
 //const userController = require('../controllers/userController');
 
 module.exports = (app) => {
