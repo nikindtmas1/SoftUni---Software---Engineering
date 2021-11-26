@@ -7,5 +7,6 @@ module.exports = (app) => {
 
     app.use('/journey/destinations', gameController);
     app.use('/journey/places', placesController);
+    //app.use('/journey/asias', placesController);
     // app.use('/users', userController);
 }

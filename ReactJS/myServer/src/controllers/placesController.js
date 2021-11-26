@@ -111,7 +111,42 @@ router.delete('/place3a/:id', async (req, res) => {
    res.json({ok: true});
 });
 
+// Fourth place Asia
 
+router.get('/place4a', async (req, res) => {
+
+   let places = await placeService.getAllPlaces();
+   res.json(places);
+ 
+});
+
+router.get('/place4a/:id', async (req, res) => {
+
+  let result = await placeService.getOnePlace(req.params.id);
+
+  res.json(result);
+});
+
+router.post('/place4a', async (req, res) => {
+
+  await placeService.createPlace({...req.body});
+  res.json({ok: true});
+
+});
+
+router.put('/place4a/:id', async (req, res) => {
+  
+   await placeService.updatePlace(req.params.id, req.body);
+
+   res.json({ok: true});
+});
+
+router.delete('/place4a/:id', async (req, res) => {
+ 
+  await placeService.deletePlace(req.params.id);
+
+  res.json({ok: true});
+});
 
 
 module.exports = router;
