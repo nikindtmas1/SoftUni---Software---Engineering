@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-
+    
    await gameService.createGame({...req.body});
    res.json({ok: true})
 

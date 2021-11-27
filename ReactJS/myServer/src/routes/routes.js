@@ -1,12 +1,13 @@
 
 const gameController = require('../controllers/gameController');
 const placesController = require('../controllers/placesController');
+// const asiaController = require('../controllers/asiaController');
 //const userController = require('../controllers/userController');
 
 module.exports = (app) => {
 
     app.use('/journey/destinations', gameController);
     app.use('/journey/places', placesController);
-    //app.use('/journey/asias', placesController);
+    // app.use('/journey/asias', asiaController);
     // app.use('/users', userController);
 }
