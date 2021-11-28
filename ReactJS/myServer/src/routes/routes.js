@@ -3,6 +3,7 @@ const router = require('express').Router();
 const gameController = require('../controllers/gameController');
 const placesController = require('../controllers/placesController');
 const asiaController = require('../controllers/asiaController');
+const africaController = require('../controllers/africaController');
 //const userController = require('../controllers/userController');
 
 // module.exports = (app) => {
@@ -15,5 +16,6 @@ const asiaController = require('../controllers/asiaController');
 router.use('/destinations', gameController);
 router.use('/places', placesController);
 router.use('/asias', asiaController);
+router.use('/africas', africaController);
 
 module.exports = router;
