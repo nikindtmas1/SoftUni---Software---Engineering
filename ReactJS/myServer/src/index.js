@@ -27,7 +27,8 @@ const routes = require('./routes/routes');
 
 app.use(cors());
 
-routes(app);
+app.use('/journey', routes)
+// routes(app);
 mongooseConfig(app);
 
 

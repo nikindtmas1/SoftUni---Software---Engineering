@@ -1,13 +1,19 @@
+const router = require('express').Router();
 
 const gameController = require('../controllers/gameController');
 const placesController = require('../controllers/placesController');
-// const asiaController = require('../controllers/asiaController');
+const asiaController = require('../controllers/asiaController');
 //const userController = require('../controllers/userController');
 
-module.exports = (app) => {
+// module.exports = (app) => {
 
-    app.use('/journey/destinations', gameController);
-    app.use('/journey/places', placesController);
-    // app.use('/journey/asias', asiaController);
-    // app.use('/users', userController);
-}
+//     app.use('/journey/destinations', gameController);
+//     app.use('/journey/places', placesController);
+//     app.use('/journey/asias', asiaController);
+//     // app.use('/users', userController);
+// }
+router.use('/destinations', gameController);
+router.use('/places', placesController);
+router.use('/asias', asiaController);
+
+module.exports = router;

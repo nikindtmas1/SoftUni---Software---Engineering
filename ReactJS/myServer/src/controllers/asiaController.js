@@ -1,39 +1,39 @@
 const express = require('express');
 const router = express.Router();
 
-const placeService = require('../services/placeService');
+const asiaService = require('../services/asiaService');
 // First place container
 router.get('/', async (req, res) => {
 
-   let places = await placeService.getAllPlaces();
+   let places = await asiaService.getAll();
    res.json(places);
  
 });
 
 router.get('/:id', async (req, res) => {
 
-  let result = await placeService.getOnePlace(req.params.id);
+  let result = await asiaService.getOne(req.params.id);
 
   res.json(result);
 });
 
 router.post('/', async (req, res) => {
 
-  await placeService.createPlace({...req.body});
+  await asiaService.createGame({...req.body});
   res.json({ok: true});
 
 });
 
-router.put('/place1a/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   
-   await placeService.updatePlace(req.params.id, req.body);
+   await asiaService.update(req.params.id, req.body);
 
    res.json({ok: true});
 });
 
-router.delete('/place1a/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
  
-  await placeService.deletePlace(req.params.id);
+  await asiaService.deleteAsiaPlace(req.params.id);
 
   res.json({ok: true});
 });
