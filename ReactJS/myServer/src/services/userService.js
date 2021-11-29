@@ -2,6 +2,7 @@ const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 
 const register = ({username, password}) => {
+    
     User.create({username, password})
 };
 
