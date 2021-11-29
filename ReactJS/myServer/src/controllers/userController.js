@@ -2,24 +2,40 @@
 const router = require('express').Router();
 const services = require('../services/userService');
 
-router.post('/register', async (req, res, next) => {
+router.post('/register', async (req, res) => {
     let { username, password } = req.body;
 
     try {
-
-       let user = await services.register({username, password});
-       let { accessToken, refreshToken } = await userService.login({ email, password });
-
+        let user = await services.register({username, password});
+        let token = await services.login({username, password})
        res.json({
            _id: user._id,
            username: user.username,
-           accessToken,
-           refreshToken,
+           accessToken: token,
        })
-        
     } catch (error) {
-        next(error);
+        res.json({type: 'error',
+        message: error.message
+    })
+        
     }
+  
+
+    // try {
+
+    //    let user = await services.register({username, password});
+    //    let { accessToken, refreshToken } = await userService.login({ email, password });
+
+    //    res.json({
+    //        _id: user._id,
+    //        username: user.username,
+    //        accessToken,
+    //        refreshToken,
+    //    })
+        
+    // } catch (error) {
+    //     next(error);
+    // }
 });
 
 router.post('/login', async (req, res) => {

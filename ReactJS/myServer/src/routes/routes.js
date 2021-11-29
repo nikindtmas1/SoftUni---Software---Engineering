@@ -4,7 +4,7 @@ const gameController = require('../controllers/gameController');
 const placesController = require('../controllers/placesController');
 const asiaController = require('../controllers/asiaController');
 const africaController = require('../controllers/africaController');
-const userController = require('../controllers/userController');
+//const userController = require('../controllers/userController');
 
 // module.exports = (app) => {
 
@@ -17,6 +17,6 @@ router.use('/destinations', gameController);
 router.use('/places', placesController);
 router.use('/asias', asiaController);
 router.use('/africas', africaController);
-router.use('/users', userController);
+//router.use('/users', userController);
 
 module.exports = router;
