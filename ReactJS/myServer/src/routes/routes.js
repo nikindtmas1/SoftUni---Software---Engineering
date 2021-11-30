@@ -6,6 +6,7 @@ const asiaController = require('../controllers/asiaController');
 const africaController = require('../controllers/africaController');
 const southAmericaController = require('../controllers/southAmericaController');
 const northAmericaController = require('../controllers/northAmericaController');
+const australiaController = require('../controllers/australiaController');
 
 //const userController = require('../controllers/userController');
 
@@ -22,6 +23,7 @@ router.use('/asias', asiaController);
 router.use('/africas', africaController);
 router.use('/southAmericas', southAmericaController);
 router.use('/northAmericas', northAmericaController);
+router.use('/australias', australiaController);
 //router.use('/users', userController);
 
 module.exports = router;
