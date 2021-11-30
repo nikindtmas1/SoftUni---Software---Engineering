@@ -7,7 +7,7 @@ const getOne = (id) => AsiaPlace.findById(id);
 
 const createGame = (data) => AsiaPlace.create(data);
 
-const update = (id, AsiaPlaceData) => AsiaPlace.findByIdAndUpdate(id, AsiaPlaceData);
+const update = (id, data) => AsiaPlace.findByIdAndUpdate(id, data);
  
 const getOwn = (userId) => AsiaPlace.find({_ownerId: userId});
 
