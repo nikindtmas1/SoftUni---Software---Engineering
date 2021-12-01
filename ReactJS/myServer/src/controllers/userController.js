@@ -40,13 +40,13 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
     let { username, password } = req.body;
 
-    let { user, accessToken, refreshToken } = await services.login({ username, password });
+    let { user, accessToken } = await services.login({ username, password });
 
     res.json({
         _id: user._id,
-        email: user.email,
+        username: user.username,
         accessToken,
-        refreshToken,
+        // refreshToken,
     });
 });
 
