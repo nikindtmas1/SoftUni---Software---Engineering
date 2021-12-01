@@ -20,7 +20,6 @@ router.post('/register', async (req, res) => {
         
     }
   
-
     // try {
 
     //    let user = await services.register({username, password});
