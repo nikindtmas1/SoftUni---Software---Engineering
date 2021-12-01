@@ -25,7 +25,7 @@ router.use('/africas', africaController);
 router.use('/southAmericas', southAmericaController);
 router.use('/northAmericas', northAmericaController);
 router.use('/australias', australiaController);
-router.use('./antarticas', antarticaController);
+router.use('/antarticas', antarticaController);
 //router.use('/users', userController);
 
 module.exports = router;
