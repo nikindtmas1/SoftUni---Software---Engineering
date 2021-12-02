@@ -7,6 +7,7 @@ const desctinationSchema = new mongoose.Schema({
     imgOne: String,
     imgTwo: String,
     imgThree: String,
+    ownId: String,
 });
 
 module.exports = mongoose.model('Destination', desctinationSchema);
