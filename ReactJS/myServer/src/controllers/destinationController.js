@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-    console.log(req.params.id);
+  
     await gameService.update(req.params.id, req.body);
 
     res.json({ok: true});
