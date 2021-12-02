@@ -1,4 +1,4 @@
-const Destination = require('../models/gameModel');
+const Destination = require('../models/destinationModel');
 
 
 const getAll = () => Destination.find();

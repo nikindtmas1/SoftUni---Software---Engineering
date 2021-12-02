@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const gameService = require('../services/gameServices');
+const gameService = require('../services/destinationServices');
 
 // router.get('/', (req, res) => {
 //     res.json({text: 'It is working!'})
