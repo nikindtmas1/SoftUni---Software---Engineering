@@ -8,7 +8,9 @@ const desctinationSchema = new mongoose.Schema({
     imgTwo: String,
     imgThree: String,
     ownId: String,
-    likes: Number
+    likes: {
+        type: Number
+    },
 });
 
 module.exports = mongoose.model('Destination', desctinationSchema);
