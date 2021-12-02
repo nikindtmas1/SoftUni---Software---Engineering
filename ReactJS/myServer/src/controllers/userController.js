@@ -7,11 +7,12 @@ router.post('/register', async (req, res) => {
 
     try {
         let user = await services.register({username, password});
-        let token = await services.login({username, password})
+        let { accessToken, refreshToken } = await services.login({username, password})
        res.json({
            _id: user._id,
            username: user.username,
-           accessToken: token,
+           accessToken,
+           refreshToken
        })
     } catch (error) {
         res.json({type: 'error',
@@ -40,13 +41,13 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
     let { username, password } = req.body;
 
-    let { user, accessToken } = await services.login({ username, password });
+    let { user, accessToken, refreshToken } = await services.login({ username, password });
 
     res.json({
         _id: user._id,
         username: user.username,
         accessToken,
-        // refreshToken,
+        refreshToken,
     });
 });
 
