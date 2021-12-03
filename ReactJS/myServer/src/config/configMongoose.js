@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 
 const { development } = require('../config/config');
-const connectStr = development.dbUrl;
+//const connectStr = development.dbUrl;
+const connectAtlas = development.dbAtlas;
 
 module.exports = (app) => {
 
     async function main(){
 
-        await mongoose.connect(connectStr, {
+        await mongoose.connect(connectAtlas, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
