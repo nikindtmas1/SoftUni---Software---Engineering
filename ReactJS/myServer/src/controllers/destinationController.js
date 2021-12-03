@@ -8,6 +8,7 @@ const gameService = require('../services/destinationServices');
 // });
 
 router.get('/', async (req, res) => {
+    
 
     let games = await gameService.getAll()
     res.json(games);

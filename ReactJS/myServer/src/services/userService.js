@@ -9,7 +9,7 @@ exports.login = async ({username, password}) => {
 
     if(user){
        //let token = await jwt.sign({_id: user._id, username: user.username}, 'MOGYSHTSECRET')
-       let accessToken = jwt.sign({ _id: user._id, email: user.email }, 'MOGYSHTSECRET', { expiresIn: '1m' });
+       let accessToken = jwt.sign({ _id: user._id, username: user.username }, 'MOGYSHTSECRET', { expiresIn: '1m' });
        let refreshToken = await jwt.sign({ _id: user._id }, 'MOGYSHTSECRET2', { expiresIn: '7d' });
         
        user.refreshToken = refreshToken;
