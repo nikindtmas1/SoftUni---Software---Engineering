@@ -1,1 +1,6 @@
-console.log('Your code goes here!');
+const person = {
+    name: 'Nikolay',
+    age: 47
+};
+
+console.log(person.name);
