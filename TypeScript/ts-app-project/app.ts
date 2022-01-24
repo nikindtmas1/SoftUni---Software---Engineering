@@ -1,9 +1,9 @@
-function add(n1:number, n2: number) {
-    return n1 + n2;
-};
+let userInput: unknown;//any
+let userName: string;
 
-function printResult(num: number): void {
-    console.log("Result: " + num);
-};
+userInput = 5;
+userInput = "Max";
 
-printResult(add(5, 12))
+if(typeof userInput === 'string'){
+    userName = userInput;
+}
