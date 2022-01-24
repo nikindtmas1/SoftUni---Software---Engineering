@@ -1,5 +1,6 @@
-var userInput; //any
-var userName;
+"use strict";
+let userInput; //any
+let userName;
 userInput = 5;
 userInput = "Maxim";
 if (typeof userInput === 'string') {
