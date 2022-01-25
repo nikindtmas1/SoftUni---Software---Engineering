@@ -14,12 +14,15 @@ interface IState {
 
 function App() {
 
-  const [people, setPeople] = useState<IState["people"]>([])
+  const [people, setPeople] = useState<IState["people"]>([
+    {
+      name: "LebRon James",
+      url: "https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png",
+      age: 36,
+      note: "Allegeric to staying on the same team"
+    }])
 
-  people.map(person => {
-   console.log(person.name);
-    
-  })
+  
   return (
     <div className="App">
       <h1>People Invited to my Party</h1>
