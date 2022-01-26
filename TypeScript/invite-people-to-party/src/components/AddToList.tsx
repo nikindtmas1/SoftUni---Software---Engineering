@@ -9,7 +9,7 @@ const AddToList = () => {
         note: ''
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
         setInput({
             ...input,
@@ -42,13 +42,13 @@ const AddToList = () => {
                 placeholder='Image url'
                 className='AddToList-input'
                 value={input.img}
+                onChange={handleChange}
+                name='img'
             />
             <textarea
                 placeholder='Note'
                 className='AddToList-input'
                 value={input.note}
-                onChange={handleChange}
-                name='note'
 
             />
         </div>
