@@ -9,13 +9,17 @@ const AddToList = () => {
         note: ''
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 
         setInput({
             ...input,
             [e.target.name]: e.target.value
         })
 
+    };
+
+    const handleClick = () => {
+        
     }
 
     return (
@@ -49,8 +53,15 @@ const AddToList = () => {
                 placeholder='Note'
                 className='AddToList-input'
                 value={input.note}
-
+                onChange={handleChange}
+                name='note'
             />
+            <button 
+            className='AddToList-btn'
+            onClick={handleClick}
+            >
+                Add to List
+            </button>
         </div>
     );
 };
