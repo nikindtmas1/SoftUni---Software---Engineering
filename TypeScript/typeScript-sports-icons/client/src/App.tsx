@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+
 import './App.css';
 
+
+
 function App() {
+
+
+  const [people, setPeople] = useState({
+    name: 'Niki',
+    age: 30,
+    description: 'Great',
+
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <>
+        <h1>{people.name}</h1>
+        <p>{people.age}</p>
+        <p>{people.description}</p>
+      </>
     </div>
   );
 }
