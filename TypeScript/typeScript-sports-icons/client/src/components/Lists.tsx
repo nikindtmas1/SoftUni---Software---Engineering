@@ -9,7 +9,8 @@ const Lists: React.FC<IProp> = ({people}) => {
       {people.map((person) => {
           return (
               <li className='List'>
-                  <div>
+                  <div className='List-header'>
+                      <img className='List-img' src={person.img} alt=''/>
                       <h2>
                           {person.name}
                       </h2>
