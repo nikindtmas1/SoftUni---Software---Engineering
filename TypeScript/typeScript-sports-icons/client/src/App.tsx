@@ -31,7 +31,7 @@ function App() {
 
       <h1>Sport Icons</h1>
       <Lists people={people}></Lists>
-      <AddToList></AddToList>
+      <AddToList people={people} setPeople={setPeople}></AddToList>
     </div>
   );
 }
