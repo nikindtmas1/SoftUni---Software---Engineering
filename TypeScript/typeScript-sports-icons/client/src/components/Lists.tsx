@@ -8,12 +8,14 @@ const Lists: React.FC<IProp> = ({people}) => {
   <ul>
       {people.map((person) => {
           return (
-              <li>
+              <li className='List'>
                   <div>
                       <h2>
                           {person.name}
                       </h2>
                   </div>
+                  <p>Age: {person.age}</p>
+                  <p>Description: {person.description}</p>
               </li>
           )
       })}
