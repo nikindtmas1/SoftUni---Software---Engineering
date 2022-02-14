@@ -26,6 +26,28 @@ const AddToList: React.FC<IProps> = ({people, setPeople}) => {
             ...input,
             [e.target.name]: e.target.value
         })
+    };
+
+    const handleClick = (): void => {
+
+        if(
+            !input.name ||
+            !input.age ||
+            !input.img ||
+            !input.description
+        ){
+            return
+        }
+
+        setPeople([
+            ...people,
+            {
+                name: input.name,
+                age: parseInt(input.age),
+                img: input.img,
+                description:input.description
+            }
+        ])
     }
 
     return (
@@ -68,6 +90,7 @@ const AddToList: React.FC<IProps> = ({people, setPeople}) => {
 
             <button
             className='AddToList-btn'
+            onClick={handleClick}
             >Add to List</button>
         </div>);
 };
