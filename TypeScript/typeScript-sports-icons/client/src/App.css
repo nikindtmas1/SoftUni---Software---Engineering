@@ -72,3 +72,12 @@
   font-size: 1rem;
   margin: 0.3rem 0rem;
 }
+
+.AddToList-btn {
+  padding: 1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  color: aliceblue;
+  background: #61dafb;
+}
