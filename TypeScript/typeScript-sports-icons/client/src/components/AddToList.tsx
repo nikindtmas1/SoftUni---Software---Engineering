@@ -12,6 +12,8 @@ interface IProps {
 }
 
 const AddToList: React.FC<IProps> = ({people, setPeople}) => {
+
+
     return (
         <div className='AddToList'>
             <h2>Add Person</h2>
@@ -19,6 +21,9 @@ const AddToList: React.FC<IProps> = ({people, setPeople}) => {
             <input className='AddToList-input' placeholder='Image'></input>
             <input className='AddToList-input' placeholder='Age'></input>
             <textarea className='AddToList-input' placeholder='Description'></textarea>
+            <button
+            className='AddToList-btn'
+            >Add to List</button>
         </div>);
 };
 
