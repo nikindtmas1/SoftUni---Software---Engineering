@@ -48,7 +48,16 @@ const AddToList: React.FC<IProps> = ({people, setPeople}) => {
                 description:input.description
             }
         ])
-    }
+
+        setInput({
+            name: '',
+            age: '',
+            description: '',
+            img: ''
+        })
+    };
+
+    
 
     return (
         <div className='AddToList'>
