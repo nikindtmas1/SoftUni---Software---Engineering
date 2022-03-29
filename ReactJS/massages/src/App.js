@@ -1,13 +1,24 @@
+//import Navigation from "./components/Navigation";
+import React from 'react';
+
+
 
 
 function App() {
 
-  
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        
+    <div>
+      <header>
+        <h1>Hello world</h1>
+
+        <ul>
+         <li>
+           <a href='/'>About us</a>
+         </li>
+       </ul>
       </header>
+     
     </div>
   );
 }
