@@ -9,6 +9,8 @@ import InputBase from '@mui/material/InputBase';
 //import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 
+import {Link} from 'react-router-dom';
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -74,10 +76,10 @@ export default function SearchAppBar() {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             <ul style={{'display': 'inline-flex'}}>
-              <li style={{'margin': '10px'}}><a href='/'>About us</a></li>
-              <li style={{'margin': '10px'}}><a href='/services'>Services</a></li>
-              <li style={{'margin': '10px'}}><a href='/bodyTreatments'>Therapies</a></li>
-              <li style={{'margin': '10px'}}><a href='/staff'>Our Staff</a></li>
+              <li style={{'margin': '10px'}}><Link to='/'>About us</Link></li>
+              <li style={{'margin': '10px'}}><Link to='/services'>Services</Link></li>
+              <li style={{'margin': '10px'}}><Link to='/bodyTreatments'>Therapies</Link></li>
+              <li style={{'margin': '10px'}}><Link to='/staff'>Our Staff</Link></li>
           </ul>
           </Typography>
           
