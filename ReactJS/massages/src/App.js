@@ -19,7 +19,7 @@ function App() {
         <SearchAppBar />
       </header>
      <Switch>
-        <Route path='/' component={HomePage} />
+        <Route path='/' exact component={HomePage} />
         <Route path='/services' component={ServicesPage} />
         <Route path='/bodyTreatments' component={TherapiesPage} />
         <Route path='/staff' component={OurStaffPage} />
