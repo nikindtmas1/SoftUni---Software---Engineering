@@ -112,7 +112,7 @@ export default function SearchAppBar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            <ul style={{'display': 'inline-flex'}}>
+            <ul className='menu' style={{'display': 'inline-flex'}}>
               <li style={{'margin': '10px'}}><Link className={isActive ? 'active' : ''}
                 onClick={toggleClass} to='/'>About us</Link></li>
               <li style={{'margin': '10px'}}><Link className={isGuestService ? 'active': ''} 
