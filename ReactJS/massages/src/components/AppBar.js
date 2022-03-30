@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -53,7 +53,44 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
+
 export default function SearchAppBar() {
+
+  const [isActive, setActive] = useState(false);
+  const [isGuestService, setGuestService] = useState(false);
+  const [isTherapies, setIsTherapies] = useState(false);
+  const [isStaff, setIsStaff] = useState(false);
+
+
+  const toggleClass = () => {
+    setGuestService(false);
+    setIsTherapies(false);
+    setIsStaff(false);
+    setActive(!isActive);
+  };
+
+  const toggGuestService = () => {
+    setActive(false);
+    setIsTherapies(false);
+    setIsStaff(false);
+    setGuestService(!isGuestService);
+  };
+
+  const toggleTherapies = () => {
+    setActive(false);
+    setGuestService(false);
+    setIsStaff(false);
+    setIsTherapies(!isTherapies);
+  };
+
+  const toggleStaff = () => {
+    setActive(false);
+    setGuestService(false);
+    setIsTherapies(false);
+    setIsStaff(!isStaff);
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -76,10 +113,14 @@ export default function SearchAppBar() {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             <ul style={{'display': 'inline-flex'}}>
-              <li style={{'margin': '10px'}}><Link to='/'>About us</Link></li>
-              <li style={{'margin': '10px'}}><Link to='/services'>Services</Link></li>
-              <li style={{'margin': '10px'}}><Link to='/bodyTreatments'>Therapies</Link></li>
-              <li style={{'margin': '10px'}}><Link to='/staff'>Our Staff</Link></li>
+              <li style={{'margin': '10px'}}><Link className={isActive ? 'active' : ''}
+                onClick={toggleClass} to='/'>About us</Link></li>
+              <li style={{'margin': '10px'}}><Link className={isGuestService ? 'active': ''} 
+                onClick={toggGuestService} to='/services'>Services</Link></li>
+              <li style={{'margin': '10px'}}><Link className={isTherapies ? 'active': ''} 
+               onClick={toggleTherapies} to='/bodyTreatments'>Therapies</Link></li>
+              <li style={{'margin': '10px'}}><Link className={isStaff ? 'active': ''}
+               onClick={toggleStaff}  to='/staff'>Our Staff</Link></li>
           </ul>
           </Typography>
           
