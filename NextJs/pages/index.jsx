@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import Link from 'next/link';
 
 function Header({title}) {
     return <h1>{title ? title : "Default title"}</h1>
@@ -21,6 +22,12 @@ export default function HomePage() {
                 ))}
             </ul>
             <button onClick={handleClick}>like ({likes})</button>
+            <h2>
+                <Link href='/login'>Login</Link>
+            </h2>
+            <h2>
+                <Link href='/posts/first-post'>Posts</Link>
+            </h2>
         </div>
     );
 };
