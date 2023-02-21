@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
+import { getFetchData } from '../lib/fetch';
 
 function Header({title}) {
     return <h1>{title ? title : "Default title"}</h1>
@@ -11,6 +12,8 @@ function Header({title}) {
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
+  // const allFetchData = await getFetchData()
+  // console.log(allFetchData)
   return {
     props: {
       allPostsData,
