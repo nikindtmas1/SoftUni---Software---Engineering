@@ -12,6 +12,7 @@ function Header({title}) {
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
+  // const allPostsData = getFetchData();
   // const allFetchData = await getFetchData()
   // console.log(allFetchData)
   return {
