@@ -1,16 +1,18 @@
 import Layout from "../../components/layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
+import Head from 'next/head';
 
 export default function Post({ postData }) {
-    return (
-        <Layout>
-          {postData.title}
-          <br />
-          {postData.id}
-          <br />
-          {postData.date}
-        </Layout>
-      );
+  return (
+    <Layout>
+      {/* Add this <Head> tag */}
+      <Head>
+        <title>{postData.title}</title>
+      </Head>
+
+      {/* Keep the existing code here */}
+    </Layout>
+  );
 }
 
 // export async function getStaticPaths() {
@@ -19,7 +21,7 @@ export default function Post({ postData }) {
 
 export async function getStaticProps({ params }) {
   // Fetch necessary data for the blog post using params.id
-  const postData = getPostData(params.id);
+  const postData = await getPostData(params.id);
   return {
     props: {
       postData,
