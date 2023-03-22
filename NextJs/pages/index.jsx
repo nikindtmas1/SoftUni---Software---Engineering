@@ -6,6 +6,7 @@ import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import { getFetchData } from '../lib/fetch';
 import Date from '../components/date';
+import { useRouter } from 'next/router';
 
 function Header({title}) {
     return <h1>{title ? title : "Default title"}</h1>
