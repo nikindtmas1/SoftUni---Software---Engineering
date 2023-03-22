@@ -1,15 +1,16 @@
 import Layout from "../../components/layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import Head from 'next/head';
+import Date from "../../components/date";
 
 export default function Post({ postData }) {
   return (
     <Layout>
       {/* Add this <Head> tag */}
-      <Head>
+      {/* <Head>
         <title>{postData.title}</title>
-      </Head>
-
+      </Head> */}
+      <Date dataString={postData.data} />
       {/* Keep the existing code here */}
     </Layout>
   );
